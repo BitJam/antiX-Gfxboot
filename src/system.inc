@@ -652,7 +652,7 @@ def
 
     gfxconfig.data {
 
-      skipspaces 
+      skipspaces
 
       dup 0 get dup 0 eq over ';' eq or exch '#' eq or {
         % empty or comment
@@ -666,7 +666,7 @@ def
             1 sub over exch 0 put
             exch free
           } {
-           % wrong [section] entry 
+           % wrong [section] entry
            pop pop
           } ifelse
         } {
@@ -979,7 +979,7 @@ def
 %
 /split {
 
-  % split does not work if str1 is in a special memory region (where 
+  % split does not work if str1 is in a special memory region (where
   % 'cvp length' does not work). So we dup it first.
 
   exch strdup dup rot
@@ -1118,7 +1118,7 @@ def
 %
 % group: gfx.screen
 %
-% ( int1 int2 int3 -- int4 )   
+% ( int1 int2 int3 -- int4 )
 %
 % int1, int2: width, height
 % int3: color bits

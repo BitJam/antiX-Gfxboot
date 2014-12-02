@@ -62,7 +62,7 @@
   xmenu .xm_title  /txt_options put
 
   "options.men" findfile dup .undef ne {
-  
+
     % Copy raw file data into a string then free raw data
     dup dup length dup string dup cvp 4 2 roll memcpy exch free
 
@@ -77,7 +77,7 @@
     /options.data exch array def
 
     % Now have: Array, length in stack
-    
+
     1 sub
     0 1 rot {
       over over get strdup '`' split
@@ -97,10 +97,10 @@
 
 
   0 1 labels.max {
-    dup 
+    dup
     options.labels exch dup exch
     options.data exch get .opt.label get put
-    
+
     options.options exch dup exch
     options.data exch get .opt.option get put
   } for

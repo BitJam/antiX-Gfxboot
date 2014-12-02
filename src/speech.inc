@@ -89,7 +89,7 @@
   dup window.init window.show
 
   load_talk
-  config.volume sound.setvolume 
+  config.volume sound.setvolume
 
   window.done
 } def

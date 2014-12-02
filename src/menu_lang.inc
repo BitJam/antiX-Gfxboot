@@ -152,7 +152,7 @@
 
   /la.tmp.datalen lang.data length def
   /la.tmp.str lang.data cvs def
- 
+
   la.tmp.datalen 0 eq { return } if
   la.tmp.str la.tmp.datalen 1 sub get '\n' ne { return } if
 

@@ -192,7 +192,7 @@
   0 2 translation.texts length -2 and 1 sub {
     translation.texts over get 2 index eq {
       1 add translation.texts exch get exch pop exit
-    } { pop } ifelse 
+    } { pop } ifelse
   } for
 
 } def
@@ -219,7 +219,7 @@
     la.tmp.str la.tmp.datalen 1 sub get '\n' ne { return } if
 
     '\n' seteotchar
-   
+
     /translation.texts [
 
       /la.tmp.len 0 def

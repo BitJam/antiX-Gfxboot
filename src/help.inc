@@ -565,19 +565,19 @@ clip.size pop 1024 eq {
   dup 0 eq { return } if
 
   dup keyEsc eq { /window.action actNothing def window.done } if
-  dup keyCtrlDown eq { 1 help.test 0 0 help.initpage } if 
-  dup keyCtrlUp eq { -1 help.test 0 0 help.initpage } if 
-  dup keyDown eq { help.key.down } if 
-  dup keyUp eq { help.key.up } if 
-  dup keyPgDown eq { help.key.pagedown } if 
-  dup keyPgUp eq { help.key.pageup } if 
-  dup keyHome eq { help.key.home } if 
-  dup keyEnd eq { help.key.end } if 
-  dup keyRight eq { help.followlink } if 
-  dup keyEnter eq { help.followlink } if 
-  dup 0xff and ' ' eq { help.followlink } if 
-  dup keyLeft eq { help.prevlink } if 
-  dup 0xff and '\x08' eq { help.prevlink } if 
+  dup keyCtrlDown eq { 1 help.test 0 0 help.initpage } if
+  dup keyCtrlUp eq { -1 help.test 0 0 help.initpage } if
+  dup keyDown eq { help.key.down } if
+  dup keyUp eq { help.key.up } if
+  dup keyPgDown eq { help.key.pagedown } if
+  dup keyPgUp eq { help.key.pageup } if
+  dup keyHome eq { help.key.home } if
+  dup keyEnd eq { help.key.end } if
+  dup keyRight eq { help.followlink } if
+  dup keyEnter eq { help.followlink } if
+  dup 0xff and ' ' eq { help.followlink } if
+  dup keyLeft eq { help.prevlink } if
+  dup 0xff and '\x08' eq { help.prevlink } if
   dup keyF1 eq {
     "help" help.findpage
     dup help.currenttext eq {
@@ -586,11 +586,11 @@ clip.size pop 1024 eq {
       help.add2history
       0 0 help.initpage
     } ifelse
-  } if 
+  } if
 %  dup keyF9 eq {
 %    /help.font help.font 8 add 10 mod def help.reinit
 %    help.currenttext help.startrow help.selectedlink help.initpage
-%  } if 
+%  } if
   pop 0
 } def
 
@@ -629,7 +629,7 @@ clip.size pop 1024 eq {
 
   help.x 1 sub help.y 1 sub moveto
   %help.light help.light
-  
+
   help.border1 help.border2
   help.width 2 add help.height 2 add
   over over

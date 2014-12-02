@@ -43,7 +43,7 @@
    [ "Jwm"            "desktop=jwm"           ]
    [ "min-Jwm"        "desktop=min-jwm"       ]
 ] def
-  
+
 /desktop.default 0 def
 /.desk.label  0 def
 /.desk.option 1 def
@@ -58,7 +58,7 @@
   /xmenu xmenu.desktop def
 
   "desktop.men" findfile dup .undef ne {
-  
+
     % Copy raw file data into a string then free raw data
     dup dup length dup string dup cvp 4 2 roll memcpy exch free
 
@@ -73,7 +73,7 @@
     /desktop.data exch array def
 
     % Now have: Array, length in stack
-    
+
     1 sub
     0 1 rot {
       over over get strdup '`' split
@@ -124,14 +124,14 @@
 
   0 1 labels.max {
     desktop.options desktop.labels rot
-    dup start.index add dup 4 1 roll exch 
-    desktop.data exch get dup 4 1 roll .desk.label get 
+    dup start.index add dup 4 1 roll exch
+    desktop.data exch get dup 4 1 roll .desk.label get
     dup default.desktop eq {
         pop pop pop pop pop
         /start.index 0 def
     } {
         put .desk.option get put
-    } ifelse 
+    } ifelse
 
   } for
 

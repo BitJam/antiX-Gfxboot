@@ -93,7 +93,7 @@
     % Start timer with a small gap away from menu bar
     % gap is 20% of icon width plus 2
     timeout.leftside {
-      /timeout.x menu.start.x 
+      /timeout.x menu.start.x
         timeout.width 5 div sub
         timeout.width timeout.gap add timeout.icons mul sub def
     } {
@@ -114,15 +114,15 @@
     /timeout.bg_imgs    timeout.icons array def
     /timeout.img_bufs   timeout.icons array def
     /timeout.alpha_bufs timeout.icons array def
-    
+
     0 1 timeout.icons 1 sub {
 
       % Grab background image for each timer icon
       dup timeout.bg.moveto
 
-      dup timeout.img_bufs   exch timeout.width dup savescreen put 
-      dup timeout.alpha_bufs exch timeout.width dup savescreen put 
-      dup timeout.bg_imgs    exch timeout.width dup savescreen put 
+      dup timeout.img_bufs   exch timeout.width dup savescreen put
+      dup timeout.alpha_bufs exch timeout.width dup savescreen put
+      dup timeout.bg_imgs    exch timeout.width dup savescreen put
 
       % Blend in first frame and display them
       0 timeout.frame.moveto
@@ -185,7 +185,7 @@
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %
 %  Perform moveto to position of timer icon associated with this step
-%  
+%
 %  (step) ==> ()
 %
 
@@ -195,7 +195,7 @@
     timeout.width timeout.gap add timeout.icons mul sub neg
     main.rtl.xoff add
   } {
-    timeout.width timeout.gap add mul 
+    timeout.width timeout.gap add mul
   } ifelse
 
   timeout.x add timeout.y moveto
@@ -227,7 +227,7 @@
   0 1 timeout.icons 1 sub {
 
     dup timeout.bg_imgs exch get
-    timeout.test not { 
+    timeout.test not {
       over timeout.bg.moveto
       dup restorescreen
     } if free
@@ -237,7 +237,7 @@
   } for
 
   timeout.bg_imgs    free
-  timeout.img_bufs   free 
+  timeout.img_bufs   free
   timeout.alpha_bufs free
   /timeout.image timeout.image free .undef def
   /timeout.file timeout.file free .undef def

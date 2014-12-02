@@ -69,10 +69,10 @@
   /dpi.options labels.size array def
 
   0 1 labels.max {
-    dup 
+    dup
     dpi.labels exch dup exch
     dpi.data exch get .vga.label get put
-    
+
     dpi.options exch dup exch
     dpi.data exch get .vga.option get put
   } for

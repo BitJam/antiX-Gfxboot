@@ -71,10 +71,10 @@
   /console.options labels.size array def
 
   0 1 labels.max {
-    dup 
+    dup
     console.labels exch dup exch
     console.data exch get .vga.label get put
-    
+
     console.options exch dup exch
     console.data exch get .vga.option get put
   } for

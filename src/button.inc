@@ -73,7 +73,7 @@
   /bt.height over 3 get def
   /bt.text over 4 get def
   /bt.default exch 5 get def
-  
+
   bt.text strsize
   bt.height sub neg 2 div /bt.y.textofs exch def
   bt.width sub neg 2 div /bt.x.textofs exch def
@@ -86,18 +86,18 @@
 
   bt.default {
     button.selected.border1 button.selected.border2
-    button.selected.bg 
+    button.selected.bg
   } {
     button.border1 button.border2
-    button.bg 
+    button.bg
   } ifelse
 
-  setcolor 
+  setcolor
   bt.width bt.height over over
   fillrect
   drawborder
   moveto 1 1 rmoveto
-  bt.default { white black } { black white } ifelse 
+  bt.default { white black } { black white } ifelse
   bt.width 2 sub bt.height 2 sub drawborder
   moveto
   % 2 2 rmoveto white black bt.width 4 sub bt.height 4 sub drawborder

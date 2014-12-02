@@ -1415,7 +1415,7 @@
   boot.ed.list buildcmdline pop dup /xxx.cmdline exch def
   length 1 lt { return } if
 
-  window.dialog 
+  window.dialog
 
   dup .title "Kernel command line" put
   dup .text "" put
@@ -1427,7 +1427,7 @@
   dup .ed.focus 0 put
   dup .ed.width 750 put
   dup .ed.font font.normal put
-  dup .buttons [ 
+  dup .buttons [
     button.ok_esc button.default actNothing button.setaction
   ] put
   dup window.init

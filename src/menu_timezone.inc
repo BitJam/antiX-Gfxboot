@@ -65,7 +65,7 @@
   % avoid "tz=" here too if "auto" is selected
   xmenu .xm_current get 0 ne {
     timezones xmenu .xm_current get get .tz.id get settimezone
-  } 
+  }
   { /config.timezone.id .undef def }
   ifelse
 

@@ -447,9 +447,9 @@
     pop 0
   } if
 
-  dup keyShiftF10 eq { 
-    exit_popup 
-    pop 0 
+  dup keyShiftF10 eq {
+    exit_popup
+    pop 0
   } if
 
   dup keyF10 eq {

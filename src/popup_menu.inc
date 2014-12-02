@@ -79,34 +79,34 @@
   dup keyDown eq {
     xmenu .xm_current get 1 add xmenu.select
     pop 0
-  } if 
+  } if
 
   dup keyUp eq {
     xmenu .xm_current get 1 sub xmenu.select
     pop 0
-  } if 
+  } if
 
   dup keyPgDown eq {
     xmenu .xm_current get 5 add
     xmenu .xm_list get length 1 sub min xmenu.select
     pop 0
-  } if 
+  } if
 
   dup keyPgUp eq {
     xmenu .xm_current get 5 sub
     0 max xmenu.select
     pop 0
-  } if 
+  } if
 
   dup keyHome eq {
     0 xmenu.select
     pop 0
-  } if 
+  } if
 
   dup keyEnd eq {
     xmenu .xm_list get length 1 sub xmenu.select
     pop 0
-  } if 
+  } if
 
   dup config.rtl { keyLeft } { keyRight } ifelse eq {
     xmenu .xm_current get
@@ -118,7 +118,7 @@
       xmenu .xm_list get length 1 sub min xmenu.select
     } ifelse
     pop 0
-  } if 
+  } if
 
   dup config.rtl { keyRight } { keyLeft } ifelse eq {
     xmenu .xm_current get
@@ -130,7 +130,7 @@
       xmenu .xm_list get length 1 sub min xmenu.select
     } ifelse
     pop 0
-  } if 
+  } if
 
 } def
 
@@ -172,13 +172,13 @@
   xmenu .xm_y panel.text.y  6 sub xmenu.height sub put
 
   %-- jbb
-  xmenu .xm_x xmenu .xm_panel_x get 
+  xmenu .xm_x xmenu .xm_panel_x get
   %- sbox.enabled { menu.xoffset } { 0 } ifelse
   menu.xoffset
-  config.rtl { 
+  config.rtl {
       add xmenu .xm_width get sub
   } {
-     sub 
+     sub
   } ifelse put
 
 } def
@@ -417,98 +417,98 @@
 %-jbb sbox.enabled {
 %-jbb   /pmenu.update {
 %-jbb     % note: we're always redrawing the whole panel
-%-jbb   
+%-jbb
 %-jbb     panel.title.fg setcolor
 %-jbb     panel.font setfont
-%-jbb   
+%-jbb
 %-jbb     xmenu .xm_panel_x get xmenu.hspace config.rtl { neg } if add
 %-jbb     panel.text.y
 %-jbb     moveto
-%-jbb   
+%-jbb
 %-jbb     currentpoint
-%-jbb   
+%-jbb
 %-jbb     xmenu .xm_title get
 %-jbb     dup .undef ne { exec show.rtl } { pop } ifelse
-%-jbb   
-%-jbb     moveto 
-%-jbb    
+%-jbb
+%-jbb     moveto
+%-jbb
 %-jbb     %-- jbb
 %-jbb     xmenu .xm_list get xmenu .xm_current get get
 %-jbb     dup .undef eq { pop return } if
-%-jbb   
+%-jbb
 %-jbb     sbox.bg setcolor
-%-jbb 
+%-jbb
 %-jbb     % get width of box
 %-jbb     dup exec strsize pop sbox.xpad 2 mul add 2 add
 %-jbb     dup
 %-jbb     menu.xoffset config.rtl { over sub  } { neg } ifelse
 %-jbb     lineheight 8 add rmoveto
-%-jbb 
+%-jbb
 %-jbb     % get height of box
-%-jbb     lineheight sbox.ypad 2 mul add 
-%-jbb 
+%-jbb     lineheight sbox.ypad 2 mul add
+%-jbb
 %-jbb     over over fillrect
 %-jbb     sbox.border1 sbox.border2 4 2 roll drawborder
-%-jbb 
+%-jbb
 %-jbb     sbox.xpad
 %-jbb     config.rtl { sub } { exch pop } ifelse
 %-jbb     lineheight neg sbox.ypad sub rmoveto
-%-jbb   
+%-jbb
 %-jbb     sbox.fg setcolor
 %-jbb     exec show.rtl
-%-jbb 
+%-jbb
 %-jbb   } def
 %-jbb } {
 %-jbb   /pmenu.update {
 %-jbb     % note: we're always redrawing the whole panel
-%-jbb   
+%-jbb
 %-jbb     panel.title.fg setcolor
 %-jbb     panel.font setfont
-%-jbb   
+%-jbb
 %-jbb     xmenu .xm_panel_x get xmenu.hspace config.rtl { neg } if add
 %-jbb     panel.text.y
 %-jbb     moveto
-%-jbb   
+%-jbb
 %-jbb     currentpoint
-%-jbb   
+%-jbb
 %-jbb     xmenu .xm_title get
 %-jbb     dup .undef ne { exec show.rtl } { pop } ifelse
-%-jbb   
+%-jbb
 %-jbb     moveto
-%-jbb 
+%-jbb
 %-jbb     menu.xoffset config.rtl { } { neg } ifelse
 %-jbb     lineheight 4 add rmoveto
-%-jbb   
+%-jbb
 %-jbb     panel.normal.fg setcolor
-%-jbb     
+%-jbb
 %-jbb     xmenu .xm_list get xmenu .xm_current get get
 %-jbb     dup .undef ne { exec show.rtl } { pop } ifelse
-%-jbb   
+%-jbb
 %-jbb   } def
 %-jbb } ifelse
 
 /pmenu.update {
   sbox.enabled {
     % note: we're always redrawing the whole panel
-  
+
     panel.title.fg setcolor
     panel.font setfont
-  
+
     xmenu .xm_panel_x get xmenu.hspace config.rtl { neg } if add
     panel.text.y
     moveto
-  
+
     currentpoint
-  
+
     xmenu .xm_title get
     dup .undef ne { exec show.rtl } { pop } ifelse
-  
-    moveto 
-   
+
+    moveto
+
     %-- jbb
     xmenu .xm_list get xmenu .xm_current get get
     dup .undef eq { pop return } if
-  
+
     sbox.bg setcolor
 
     % get width of box
@@ -518,7 +518,7 @@
     lineheight 8 add rmoveto
 
     % get height of box
-    lineheight sbox.ypad 2 mul add 
+    lineheight sbox.ypad 2 mul add
 
     over over fillrect
     sbox.border1 sbox.border2 4 2 roll drawborder
@@ -526,31 +526,31 @@
     sbox.xpad
     config.rtl { sub } { exch pop } ifelse
     lineheight neg sbox.ypad sub rmoveto
-  
+
     sbox.fg setcolor
     exec show.rtl
   } {
     % note: we're always redrawing the whole panel
-  
+
     panel.title.fg setcolor
     panel.font setfont
-  
+
     xmenu .xm_panel_x get xmenu.hspace config.rtl { neg } if add
     panel.text.y
     moveto
-  
+
     currentpoint
-  
+
     xmenu .xm_title get
     dup .undef ne { exec show.rtl } { pop } ifelse
-  
+
     moveto
 
     menu.xoffset config.rtl { } { neg } ifelse
     lineheight 4 add rmoveto
-  
+
     panel.normal.fg setcolor
-    
+
     xmenu .xm_list get xmenu .xm_current get get
     dup .undef ne { exec show.rtl } { pop } ifelse
   } ifelse

@@ -29,13 +29,13 @@
 
   %/config.key.F1 about.msg { "about" } { "help" } ifelse def
 
-     
+
   "gfxsave.on" filesize .undef ne {
     clip.size pop 1024 eq {
-        /config.key.F8 "gfx_save" def 
+        /config.key.F8 "gfx_save" def
     } {
         clip.size pop 800 eq {
-          /config.key.F7 "gfx_save" def 
+          /config.key.F7 "gfx_save" def
         } if
     } ifelse
   } if
