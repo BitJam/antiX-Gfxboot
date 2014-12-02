@@ -2,3 +2,13 @@
 .*.swp
 other
 bin/gfxboot-compile
+src/main.bin
+src/main.log
+po/tr
+po/text.inc
+po/.ready
+test-gfxboot.iso
+Help/*/en-split
+Help/*/en.hlp
+Output
+iso-dir
