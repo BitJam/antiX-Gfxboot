@@ -205,6 +205,12 @@
 
     [
       xmenu.column xmenu.width 2 add mul config.rtl { neg } if xmenu.x add 1 sub xmenu.y 1 sub moveto
+
+      % don't let menus leak off the right edge
+      clip.size pop currentpoint pop xmenu.width add sub
+      dup 0 le {
+        6 sub 0 rmoveto
+       } { pop } ifelse
       currentpoint
 
       menu.border1 menu.border2
@@ -263,6 +269,12 @@
 
   dup xmenu.maxlines div /xmenu.column over def
   xmenu.width 2 add mul config.rtl { neg } if xmenu.x add /xmenu.pos.x exch def
+
+  % don't let menus leak off the right edge
+  clip.size pop xmenu.pos.x xmenu.width add sub
+  dup 0 le {
+    5 sub xmenu.pos.x add /xmenu.pos.x exch def
+   } { pop } ifelse
 
   xmenu.pos.x xmenu.pos.y moveto
 
