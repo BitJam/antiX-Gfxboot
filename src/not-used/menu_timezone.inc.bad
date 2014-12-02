@@ -1,0 +1,118 @@
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%
+% timezone selection dialog.
+%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+/timezone.setdefault {
+
+  %xmenu.timezone .xm_current
+
+  "timezone.def" findfile dup .undef ne {
+    % Copy raw file data into a string then free raw data
+    dup dup length dup string dup cvp 4 2 roll memcpy exch free
+    
+    dup dropwhite
+
+    /timezone.default exch def
+
+    0
+    timezones {
+      .tz.id get exec timezone.default eq { exit } if
+      1 add
+    } forall
+
+    dup timezones length ge { pop 0 } if
+    
+    dup xmenu .xm_current rot put
+
+    0 ne {
+      timezones xmenu .xm_current get get .tz.id get settimezone
+    } if
+
+  }  if
+
+} def
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Build menu list.
+%
+% ( ) ==> ( )
+%
+/timezone.init {
+  /xmenu.timezone .xm_size array def
+
+  /xmenu xmenu.timezone def
+
+  xmenu .xm_list [
+    timezones { .tz.name get } forall
+  ] put
+
+  xmenu .xm_title /txt_timezone put
+  %xmenu .xm_title "Timezone" put
+
+  xmenu .xm_current 0 put
+  timezone.setdefault
+
+  % just once (see lang.init)
+  /timezone.init { } def
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Update timezone selection menu.
+%
+% ( ) ==> ( )
+%
+/timezone.update {
+  /xmenu xmenu.timezone def
+
+  timezones xmenu .xm_current get get .tz.id get settimezone
+
+  /window.action actRedrawPanel def
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Show timezone selection menu.
+%
+% ( ) => ( )
+%
+/panel.timezone {
+  % "keymap" help.setcontext
+
+  timezone.setdefault
+
+  window.xmenu
+  dup .xmenu xmenu.timezone put
+  dup .xmenu.update /timezone.update put
+  dup window.init
+      window.show
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Return width of panel entry.
+%
+% ( ) => ( width )
+%
+/panel.timezone.width {
+  /xmenu xmenu.timezone def
+
+  pmenu.width
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Redraw panel entry.
+%
+% ( panel ) => ( )
+%
+/panel.timezone.update {
+  /xmenu xmenu.timezone def
+
+  pmenu.panel.update
+} def
+
+

@@ -1,0 +1,34 @@
+%% include system.inc
+%% include timeout.inc
+%% include common.inc
+
+%% include dummy_txt.inc
+%% include ../po/text.inc
+%% include window.inc
+%% include button.inc
+%% include help.inc
+%% include main_menu.inc
+%% include popup_menu.inc
+%% include menu_lang.inc
+%% include menu_help.inc
+%% include menu_options.inc
+%% include menu_video_mode.inc
+%% include menu_desktop.inc
+% %% include menu_splash_vga.inc
+%% include menu_gfx_save.inc
+%% include menu_console.inc
+% %% include menu_options1.inc
+% %% include menu_options_ax.inc
+% %% include menu_options_mx.inc
+% %% include menu_custom1.inc
+% %% include menu_custom2.inc
+% %% include menu_vga_res.inc
+% %% include menu_splash_only.inc
+% %% include menu_dpi.inc
+% %% include menu_keymap.inc
+%% include menu_timezone.inc
+%% include panel.inc
+%% include keytables.inc
+%% include timezones.inc
+%% include locale.inc
+%% include speech.inc

@@ -1,0 +1,64 @@
+Ambiente de Trabalho
+
+MLX  whisker start at 3489
+MX   whisker start at 3647
+
+antiX-init MLX        3548
+antiX-init MX         3587
+
+MX                    3494
+MLX                   3621
+
+init MX               3520
+
+init MLX              3548
+
+MLX                   3510
+MX                    3681
+
+
+I did four tests and ran each one twice.  MX vs. MLX and
+stock antiX-init versus starting haveged in antiX-init.
+I measured the starting time of the whisker menu.
+
+h_in_antiX-init    antiX=   Times (seconds)
+    Y               MLX     35.48    35.48
+    Y               MX      35.20    35.87
+    N               MLX     34.89    36.21    35.10
+    N               MX      36.47    34.94    36.81
+
+
+explore checkbox items in gfxboot?
+
+update isolinux.msg file ...
+update antiX help
+
+X Use one options menu with the entries (and not the titleX 
+X programmable via options.men.  Just like desktop.men.
+
+X Compare my gfxsave with RC2
+
+X Investigate custom menu entry locally
+
+?? use frugal in vbox for other problems and to verify.
+
+Missing operating system.
+FATAL: INT18 BOOT FAILURE
+
+X Try chain loading via Grub on iso
+
+
+X   1) time zone menu default worked but the time zone did not
+X       get set.  BTW, you could use F12 to see if "tz=" is a boot
+X       parameter.  Or "cat /proc/cmdline".
+
+X This is broken in gfxboot.  Darn.
+
+   2) "to ram" did not stick. The error message you got might be
+      intermittent and not related to "to ram".
+
+Works here.  Must look deeper.
+
+   3) Custom main menu entry did not work.
+
+Works here.  Must look deeper.

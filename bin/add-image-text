@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# Please change these defaults (if you want to)
+
+COLOR="#a0a0a0"
+TEXT="press F1 for help"
+FONT_SIZE="28"
+POSITION="280,490"
+FONT="Nimbus-Sans-L"
+
+ME=$(basename $0)
+
+usage() {
+    cat <<Usage
+Usage: $ME  [options] [other convert options] input.jpg output.jpg
+
+Add text to an image and resize the image.
+
+Options:
+    -c --color       <color>   default: $COLOR
+    -f --font        <font>    default: $FONT
+    -h --help                  Show this help
+    -s --size        <number>  default: $FONT_SIZE
+    -p --position    <X,Y>     default: $POSITION
+    -t --text        <text>    default: $TEXT
+
+Resizing is based on the output filename:
+
+    *800*   --> 800x600
+    *640*   --> 640x480
+    *1024*  --> 1024x768
+Usage
+    exit
+}
+
+main() {
+
+    [ $# -gt 0 ] || usage
+
+    local arg val
+    while [ $# -gt 0 -a -z "${1##-*}" ]; do
+        arg=${1#-}; shift
+        case $arg in
+            -color|-font|-size|-position|-text|[cfspt]) 
+                  [ $# -lt 1 ] && fatal "Expected a parameter after: -$arg"
+                  val=$1
+                  shift ;;
+
+            *=*)  val=${arg#*=}
+                  arg=${arg%%=*} ;;
+
+            *)    val="???"      ;;
+        esac
+
+        case $arg in
+            -color|c) COLOR=$val     ;;
+             -font|f) FONT=$val      ;;
+             -size|s) FONT_SIZE=$val ;;
+         -position|p) POSITION=$val  ;;
+             -text|t) TEXT=$val      ;;
+                   *) fatal "Unknown argument -$arg" ;;
+        esac
+
+    done
+
+    local target=${BASH_ARGV[0]}
+    case $target in
+        *1024*) resize="-resize 1024x768" ;;
+         *800*) resize="-resize 800x600"  ;;
+         *640*) resize="-resize 640x480"  ;;
+    esac
+
+    [ $# -eq 2 ] || fatal "Expected exactly two arguments."
+
+    convert -pointsize $FONT_SIZE -font $FONT -draw "text $POSITION '$TEXT'" \
+        -fill $COLOR $resize "$@"
+}
+
+fatal() {
+    echo -e "$ME fatal error: $*" >&2
+    exit 2
+}
+
+main "$@"

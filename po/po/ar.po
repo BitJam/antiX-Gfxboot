@@ -1,0 +1,177 @@
+# LANGUAGE translations for boot loader
+# Copyright (C) 2005 SUSE Linux GmbH
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: antix-development\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-05-18 10:26+0200\n"
+"PO-Revision-Date: 2013-02-21 15:11+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/antix-development/"
+"language/ar/)\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. ok button label
+#. txt_ok
+msgid "OK"
+msgstr "موافق"
+
+#. cancel button label
+#. txt_cancel
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. txt_boot_harddisk
+msgid "Boot from Hard Disk"
+msgstr "تشغيل من القرص الصلب"
+
+#. txt_memtest
+msgid "Memory Test"
+msgstr "اختبار الذاكرة"
+
+#. txt_bootoptions
+msgid "Boot Options"
+msgstr "خيارات التشغيل"
+
+#. window title for exit dialog
+#. txt_exit_title (see txt_exit_dialog)
+msgid "Exiting..."
+msgstr "خروج..."
+
+#. txt_help
+msgid "Help"
+msgstr "تعليمات"
+
+#. power off dialog title
+#. txt_power_off_title
+msgid "Power Off"
+msgstr "إيقاف التشغيل"
+
+#. txt_power_off
+msgid "Halt the system now?"
+msgstr "هل تريد إيقاف النظام الآن؟"
+
+#. label for language selection
+#. txt_language
+msgid "Language"
+msgstr "اللغة"
+
+#. video mode/display size menu title
+#. ** please keep it really short (comparable to the english text) **
+#. txt_video_mode
+msgid "Video Mode"
+msgstr ""
+
+#. Like automatic, not automobile.
+#. txt_auto
+msgid "auto"
+msgstr ""
+
+#. Perform md5 check. "md5" should not be translated?
+#. txt_check_md5
+msgid "check md5"
+msgstr ""
+
+#. Short for "command line".  Please keep it short.
+#. txt_cmd_line
+msgid "cmd. line"
+msgstr ""
+
+#. Boot directly into command line (for low memory systems).
+#. txt_command_line_install
+msgid "Command Line Install"
+msgstr ""
+
+#. Title for console resolution menu.  Please keep it short.
+#. txt_console
+msgid "Console"
+msgstr ""
+
+#. As in "the default option".  Please keep it short.
+#. txt_default
+msgid "default"
+msgstr ""
+
+#. Title of menu to select desktop program.
+#. txt_desktop
+msgid "Desktop"
+msgstr "سطح المكتب"
+
+#. Boot with home persistence enabled.
+#. txt_home_persistence
+msgid "Home Persistence"
+msgstr ""
+
+#. Default for Options menu.  Please keep it short.
+#. txt_none
+msgid "none"
+msgstr ""
+
+#. Enable automatic mounting.
+#. txt_automount
+msgid "auto mount"
+msgstr ""
+
+#. Title of Options menu.  Please keep it short.
+#. txt_options
+msgid "Options"
+msgstr "خيارات"
+
+#. Boot with root persistence enabled.
+#. txt_root_persistence
+msgid "Root Persistence"
+msgstr ""
+
+#. Title of Time Zone menu.
+#. txt_timezone
+msgid "Timezone"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_off
+msgid "off"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_menus
+msgid "menus"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_custom
+msgid "custom"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_both
+msgid "both"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_reset
+msgid "reset"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_save
+msgid "Save"
+msgstr ""
+
+#. txt_memtest_full
+msgid "Memory test (memtest86+)"
+msgstr "اختبار الذاكرة (memtest86+)"
+
+#. txt_static_root_persistence
+msgid "Static Root Persistence"
+msgstr ""
+
+#. txt_reboot
+msgid "Reboot"
+msgstr "إعادة تشغيل"

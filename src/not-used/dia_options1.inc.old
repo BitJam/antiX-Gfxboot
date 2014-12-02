@@ -1,0 +1,113 @@
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%
+% Kernel options dialog.
+%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Some global vars.
+%
+/options1.default 0 def
+
+/options1.data [
+    [ /txt_none       "nouveau.modeset=0"                ]
+    [ /txt_check_md5  "check nouveau.modeset=0"          ]
+    [ "nouveau"       "drvr=nouveau"                     ]
+    [ "nomodeset"     "nomodeset nouveau.modeset=0"      ]
+    [ "to ram"        "toram nouveau.modeset=0"          ]
+    [ /txt_automount  "automount nouveau.modeset=0"      ]
+    [ "mount usb"     "automount=usb nouveau.modeset=0"  ]
+    [ "mount all"     "automount=all nouveau.modeset=0"  ]
+%   [ "fstab off"     "fstab=off nouveau.modeset=0"      ]
+%   [ "auto off*"     "automount=off nouveau.modeset=0"  ]
+%   [ "fstab on*"     "fstab=on nouveau.modeset=0"       ]
+] def
+
+/.opt1.label  0 def
+/.opt1.option 1 def
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Build options1 list.
+%
+% ( ) ==> ( )
+%
+/options1.init {
+  /xmenu.options1 .xm_size array def
+  /xmenu xmenu.options1 def
+
+  /labels.size options1.data length       def
+  /labels.max  options1.data length 1 sub def
+
+  /options1.labels  labels.size array def
+  /options1.options labels.size array def
+
+  0 1 labels.max {
+    dup 
+    options1.labels exch dup exch
+    options1.data exch get .opt1.label get put
+    
+    options1.options exch dup exch
+    options1.data exch get .opt1.option get put
+  } for
+
+  xmenu .xm_current options1.default put
+  xmenu .xm_list    options1.labels  put
+  xmenu .xm_title   /txt_options     put
+
+  /options1.init { } def
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Update options1 mode.
+%
+% ( ) ==> ( )
+%
+/options1.update {
+  /xmenu xmenu.options1 def
+
+  /window.action actRedrawPanel def
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Show options1 menu.
+%
+% ( ) => ( )
+%
+/panel.options1 {
+  "main" help.setcontext
+
+  window.xmenu
+  dup .xmenu xmenu.options1 put
+  dup .xmenu.update /options1.update put
+  dup window.init
+      window.show
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Return width of panel entry.
+%
+% ( ) => ( width )
+%
+/panel.options1.width {
+  /xmenu xmenu.options1 def
+
+  pmenu.width
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Redraw panel entry.
+%
+% ( panel ) => ( )
+%
+/panel.options1.update {
+  /xmenu xmenu.options1 def
+
+  pmenu.panel.update
+} def
+
+

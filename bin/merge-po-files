@@ -1,0 +1,50 @@
+#!/bin/bash
+
+
+ME=${0##*/}
+usage() {
+    ret=${1:-0}
+    cat <<Usage
+Usage: $ME dir1 dir2 result-dir
+merge .po files under dir2 with matching .po files under
+dir1.  Put results in result-dir.
+    
+Usage
+    exit $ret
+}
+
+main() {
+    [ $# -eq 3 ] || usage 2
+    local dir_a=${1%/}  dir_b=${2%/} dir_r=${3%/}
+
+    [ -d $dir_a ] || fatal "$dir_a is not a directory"
+    [ -d $dir_b ] || fatal "$dir_b is not a directory"
+
+    local found
+    local a_only=0  b_only=0 a_larger=0 b_larger=0
+    local file_a file_b file_r stem
+
+    for file_a in $(find $dir_a -type f -name "*.po" | sort); do
+        stem=${file_a#$dir_a/}
+        [ "$SYMMETRIC" ] && found="$found,$stem"
+        file_b=$dir_b/$stem
+        file_r=$dir_r/$stem
+
+        local file_r_dir=$(dirname $file_r)
+        mkdir -p $file_r_dir
+        if [ -e $file_b ]; then 
+            cp $file_b $file_r
+            msgmerge -v -U -N -C $file_a $file_r $file_a
+        else
+            cp $file_a $file_r
+        fi
+    done
+}
+
+fatal() {
+    printf "$ME: fatal error: $@" >&2
+    echo
+    exit 2
+}
+
+main "$@"

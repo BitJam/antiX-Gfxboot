@@ -1,0 +1,19 @@
+#!/bin/bash
+
+in_vid="-c 'In the \"Video Mode\" menu.  Keep it short (10 chars or less.)'"
+in_opt="-c 'in the \"Options\" menu.  Keep it short (10 chars or less).'"
+
+bin/add_text -c "Like automatic, not automobile."                             auto                  "auto"
+bin/add_text -c "Perform md5 check. \"md5\" should not be translated?"        $in_opt check_md5     "check md5" 
+bin/add_text -c "Short for \"command line\".  Please keep it short."          cmd_line              "cmd. line"
+bin/add_text -c "Boot directly into command line (for low memory systems)."   command_line_install  "Command Line Install"
+bin/add_text -c "Title for console resolution menu.  Please keep it short."   console               "Console"
+bin/add_text -c "As in \"the default option\".  Please keep it short."        default               "default"
+bin/add_text -c "Title of menu to select desktop program."                    desktop               "Desktop"
+bin/add_text -c "Boot with home persistence enabled."                         home_persistence      "Home Persistence"
+bin/add_text -c "Default for Options menu.  Please keep it short."            $in_opt none          "none"
+bin/add_text -c "Enable automatic mounting."                                  $in_opt automount     "auto mount"
+bin/add_text -c "Copy everything to RAM for faster running."                  $in_opt to_ram        "to ram"
+bin/add_text -c "Title of Options menu.  Please keep it short."               options               "Options"
+bin/add_text -c "Boot with root persistence enabled."                         root_persistence      "Root Persistence"
+bin/add_text -c "Title of Time Zone menu."                                    timezone              "Timezone"

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+dir=$(dirname $0)
+
+for t in $(cat $dir/to-delete); do
+    bin/rm_text $t
+done

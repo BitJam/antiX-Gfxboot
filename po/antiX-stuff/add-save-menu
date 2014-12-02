@@ -1,0 +1,11 @@
+#!/bin/bash
+
+in_vid="-c 'In the \"Video Mode\" menu.  Keep it short (10 chars or less.)'"
+in_opt="-c 'in the \"Options\" menu.  Keep it short (10 chars or less).'"
+
+bin/add_text -c "Please keep it short like the English"  off     "off"
+bin/add_text -c "Please keep it short like the English"  menus   "menus"
+bin/add_text -c "Please keep it short like the English"  custom  "custom"
+bin/add_text -c "Please keep it short like the English"  both    "both"
+bin/add_text -c "Please keep it short like the English"  reset   "reset"
+bin/add_text -c "Please keep it short like the English"  save    "Save"

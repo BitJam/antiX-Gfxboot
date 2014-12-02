@@ -1,0 +1,61 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use Getopt::Long;
+
+my $ME = $0; $ME =~ s{.*/}{};
+
+my ($dir, $verbose);
+
+sub usage {
+    print <<Usage;
+Usage: $ME --dir <directory> <input.html>
+Splits the input html file into smaller chunks suitable for
+for giving to gfxboot to make a pageinated help file.
+
+Files are split on finding: <div id="something" 
+The "somthing" is used to name the output file along with
+leading digits to maintain the order of the output files.
+
+Options:
+    -d --dir <dir>  Directory for output html files
+    -h --help       Show this help
+    -v --verbose    Print each filename 
+Usage
+    exit;
+}
+
+GetOptions(
+    "dir=s"   => \$dir,
+    "help"    => sub { usage(); },
+    "verbose" => \$verbose,
+) or die;
+
+$dir or die "$ME: must specifiy an output directory\n";
+
+@ARGV or die "$ME: Must specify one single input file\n";
+
+-d $dir or do {
+    print "Making output directory $dir\n";
+    system "mkdir -p $dir";
+};
+
+my ($file, $fh, $cnt, @lines);
+
+while (<>) {
+    m/<div\s+id="([^"]+)"/ or do {
+        $fh and print $fh $_;
+        next;
+    };
+    my $name = $1;
+
+    $fh and close $fh;
+    $fh = undef;
+
+    $file = sprintf "%s/%02d-%s.html", $dir, ++$cnt, $name;
+    $verbose and print "open: $file\n";
+    open $fh, ">", $file or die "Could not open($file) $!\n";
+    print $fh $_;
+}
+

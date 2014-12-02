@@ -1,0 +1,3 @@
+default      `
+fluxbox      `desktop=fluxbox
+rox-fluxbox  `desktop=rox-fluxbox

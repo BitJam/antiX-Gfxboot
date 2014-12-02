@@ -1,0 +1,172 @@
+# LANGUAGE translations for boot loader
+# Copyright (C) 2004 SUSE LINUX AG
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bootloader\n"
+"PO-Revision-Date: 2009-10-05 22:35+0900\n"
+"Last-Translator: Yasuhiko Kamata <belphegor@belbel.or.jp>\n"
+"Language-Team: Japanese <opensuse-ja@opensuse.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#. ok button label
+#. txt_ok
+msgid "OK"
+msgstr "OK"
+
+#. cancel button label
+#. txt_cancel
+msgid "Cancel"
+msgstr "キャンセル"
+
+#. txt_boot_harddisk
+msgid "Boot from Hard Disk"
+msgstr "ハードディスクから起動"
+
+#. txt_memtest
+msgid "Memory Test"
+msgstr "メモリテスト"
+
+#. txt_bootoptions
+msgid "Boot Options"
+msgstr "起動オプション"
+
+#. window title for exit dialog
+#. txt_exit_title (see txt_exit_dialog)
+msgid "Exiting..."
+msgstr "終了しています..."
+
+#. txt_help
+msgid "Help"
+msgstr "ヘルプ"
+
+#. power off dialog title
+#. txt_power_off_title
+msgid "Power Off"
+msgstr "電源オフ"
+
+#. txt_power_off
+msgid "Halt the system now?"
+msgstr "システムを中止しますか？"
+
+#. label for language selection
+#. txt_language
+msgid "Language"
+msgstr "言語"
+
+#. video mode/display size menu title
+#. ** please keep it really short (comparable to the english text) **
+#. txt_video_mode
+msgid "Video Mode"
+msgstr "ビデオモード"
+
+#. Like automatic, not automobile.
+#. txt_auto
+msgid "auto"
+msgstr ""
+
+#. Perform md5 check. "md5" should not be translated?
+#. txt_check_md5
+msgid "check md5"
+msgstr ""
+
+#. Short for "command line".  Please keep it short.
+#. txt_cmd_line
+msgid "cmd. line"
+msgstr ""
+
+#. Boot directly into command line (for low memory systems).
+#. txt_command_line_install
+msgid "Command Line Install"
+msgstr ""
+
+#. Title for console resolution menu.  Please keep it short.
+#. txt_console
+msgid "Console"
+msgstr ""
+
+#. As in "the default option".  Please keep it short.
+#. txt_default
+msgid "default"
+msgstr ""
+
+#. Title of menu to select desktop program.
+#. txt_desktop
+msgid "Desktop"
+msgstr ""
+
+#. Boot with home persistence enabled.
+#. txt_home_persistence
+msgid "Home Persistence"
+msgstr ""
+
+#. Default for Options menu.  Please keep it short.
+#. txt_none
+msgid "none"
+msgstr ""
+
+#. Enable automatic mounting.
+#. txt_automount
+msgid "auto mount"
+msgstr ""
+
+#. Title of Options menu.  Please keep it short.
+#. txt_options
+msgid "Options"
+msgstr ""
+
+#. Boot with root persistence enabled.
+#. txt_root_persistence
+msgid "Root Persistence"
+msgstr ""
+
+#. Title of Time Zone menu.
+#. txt_timezone
+msgid "Timezone"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_off
+msgid "off"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_menus
+msgid "menus"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_custom
+msgid "custom"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_both
+msgid "both"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_reset
+msgid "reset"
+msgstr ""
+
+#. Please keep it short like the English
+#. txt_save
+msgid "Save"
+msgstr ""
+
+#. txt_memtest_full
+msgid "Memory test (memtest86+)"
+msgstr "メモリテスト (memtest86+)"
+
+#. txt_static_root_persistence
+msgid "Static Root Persistence"
+msgstr ""
+
+#. txt_reboot
+msgid "Reboot"
+msgstr ""

@@ -1,0 +1,104 @@
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%
+% Desktop options dialog for Full Flavour
+%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Some global vars.
+%
+/desktop_full.default 0 def
+
+/desktop_full.options [
+  ""
+  "desktop=icewm noRox"
+  "desktop=fluxbox"
+  "desktop=fluxbox noRox"
+  "desktop=jwm"
+  "desktop=jwm noRox"
+  "desktop=dwm"
+  "desktop=wmii"
+  "3 db+"
+] def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Build desktop list.
+%
+% ( ) ==> ( )
+%
+/desktop_full.init {
+  /xmenu.desktop_full .xm_size array def
+
+  /xmenu xmenu.desktop_full def
+
+  xmenu .xm_current desktop_full.default put
+  xmenu .xm_list [
+    "Rox-IceWM"
+    "IceWM"
+    "Rox-Fluxbox"
+    "Fluxbox"
+    "Rox-Jwm"
+    "Jwm"
+    "Dwm"
+    "Wmii"
+    /txt_cmd_line
+  ] put
+  xmenu .xm_title /txt_desktop put
+
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Update desktop mode.
+%
+% ( ) ==> ( )
+%
+/desktop_full.update {
+  /xmenu xmenu.desktop_full def
+
+  /window.action actRedrawPanel def
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Show desktop menu.
+%
+% ( ) => ( )
+%
+/panel.desktop_full {
+  "main" help.setcontext
+
+  window.xmenu
+  dup .xmenu xmenu.desktop_full put
+  dup .xmenu.update /desktop_full.update put
+  dup window.init
+      window.show
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Return width of panel entry.
+%
+% ( ) => ( width )
+%
+/panel.desktop_full.width {
+  /xmenu xmenu.desktop_full def
+
+  pmenu.width
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Redraw panel entry.
+%
+% ( panel ) => ( )
+%
+/panel.desktop_full.update {
+  /xmenu xmenu.desktop_full def
+
+  pmenu.panel.update
+} def
+
+

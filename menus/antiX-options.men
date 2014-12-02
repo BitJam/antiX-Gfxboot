@@ -1,0 +1,12 @@
+none         `
+checkmd5     `checkmd5
+checkfs      `checkfs
+toram        `toram
+from=usb     `from=usb
+automount    `automount
+mount=usb    `mount=usb
+mount=all    `mount=all
+nousb2       `nousb2
+acpi=off     `acpi=off
+HP Laptop    `video.use_bios_initial_backlight=0 video.brightness_switch_enabled=1
+

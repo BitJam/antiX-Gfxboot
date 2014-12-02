@@ -1,0 +1,12 @@
+bsplash.inc
+serial.inc
+dia_video.inc
+dia_dud.inc
+dia_profile.inc
+dia_install.inc
+dia_bits.inc
+dia_about.inc
+dia_restore.inc
+dia_net.inc
+dia_otheropts.inc
+penguin.inc

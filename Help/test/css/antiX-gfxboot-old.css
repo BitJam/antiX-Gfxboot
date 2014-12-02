@@ -1,0 +1,136 @@
+
+body {
+    background-color:                    #e0e0e0;
+    font-size:                              100%;
+    margin:                                  0px;
+    font-family:
+       'DejaVu Sans', Arial,Helvetica,sans-serif;
+}
+
+h3 > a:hover {}
+
+a {
+    color:                                  blue;
+}
+
+a:visited {
+    color:                                purple;
+}
+
+a:hover {
+    color:                               #a2cbff;
+    color:                                 white;
+    background:                             grey;
+    background-color:                    #804080;
+}
+
+h1, h2, h3, h4, h5, h6,
+{
+    font-family:
+        'DejaVu Sans',Arial,Helvetica,sans-serif;
+}
+
+p {
+    margin-right:                           20px;
+    margin-top:                            0.5em;
+    margin-bottom:                         0.5em;
+    padding-left:                            2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight:                          normal;
+    color:                               #144AA1;
+    margin-bottom:                           0em;
+    font-family:
+        'DejaVu Sans',Arial,Helvetica,sans-serif;
+}
+
+h1 {
+    font-size:                             1.4em;
+}
+
+h3 {
+    margin-top:                              1em;
+    margin-bottom:                           0em;
+    font-size:                             1.2em;
+    width:                                  25em;
+    border-bottom:              2px solid silver;
+    border-top:                 2px solid silver;
+    background:                          #e0e0ff;
+    padding:                       3px 0 0 0.5em;
+}
+
+
+h3, h4, h5 {
+    padding:                         0 0 0 0.5em;
+}
+
+h4 {
+    margin-top:                              1em;
+    margin-bottom:                        -0.5em;
+    font-size:                               1em;
+    font-weight:                            bold;
+}
+
+h5 {
+    margin-top:                              1em;
+    margin-bottom:                         -.5em;
+    font-size:                             0.9em;
+    font-weight:                            bold;
+
+}
+
+em {
+    font-style:                           italic;
+    color:                                 green;
+}
+
+
+div#antix-logo {
+    /* position:                              fixed; */
+    top:                                     0px;
+    left:                                    0px;
+    width:                                 138px;
+    height:                                111px;
+    background-color:                    #804080;
+}
+
+div#banner-text {
+    top:                                     0px;
+    width:                                  100%;
+    height:                                111px;
+    background-color:                    #804080;
+    color:                               #a2cbff;
+    text-align:                            right;
+    font-family:
+              'DejaVu Sans',Helvetica,sans-serif;
+}
+
+#banner-title {
+    padding:                   15px 0px 0px 20px;
+    letter-spacing:                       0.05em;
+    font-size:                             1.6em;
+    color:                               #a2cbff;
+}
+
+#banner-subtitle {
+    padding:                    0px 0px 0px 20px;
+    margin:                                  0px;
+    font-size:                             1.4em;
+    color:                               #a2cbff;
+}
+
+div#right-col {
+    padding-left:                          138px;
+}
+
+div#body-text {
+    padding-left:                            1em;
+    padding-right:                           1em;
+}
+
+
+
+hr {
+    border:                     1px solid silver;
+}

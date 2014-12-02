@@ -1,0 +1,42 @@
+#!/bin/bash
+
+
+ME=${0##*/}
+usage() {
+    ret=${1:-0}
+    cat <<Usage
+Usage: $ME pot-file po-dir ref-dir
+Update po files under po-dir adding strings from ref-dir
+    
+Usage
+    exit $ret
+}
+
+main() {
+    [ $# -eq 3 ] || usage 2
+    local pot=$1 dir_a=${2%/}  dir_b=${3%/}
+
+    [ -d $dir_a ] || fatal "$dir_a is not a directory"
+    [ -d $dir_b ] || fatal "$dir_b is not a directory"
+
+    local found
+    local a_only=0  b_only=0 a_larger=0 b_larger=0
+    local file_a file_b file_r stem
+
+    for file_a in $(find $dir_a -type f -name "*.po" | sort); do
+        stem=${file_a#$dir_a/}
+        file_b=$dir_b/$stem
+
+        if [ -e $file_b ]; then 
+            msgmerge -v -U -N -C $file_b $file_a $pot
+        fi
+    done
+}
+
+fatal() {
+    printf "$ME: fatal error: $@" >&2
+    echo
+    exit 2
+}
+
+main "$@"

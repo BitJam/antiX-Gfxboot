@@ -1,0 +1,3056 @@
+#! /usr/bin/perl
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# package Tmp version 1.0
+#
+# Create temporary files/directories and ensure they are removed at
+# program end.
+#
+# Copyright (c) 2008 Steffen Winterfeldt
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+{
+  package Tmp;
+
+  use File::Temp;
+  use strict 'vars';
+
+  sub new
+  {
+    my $self = {};
+    my $save_tmp = shift;
+
+    bless $self;
+
+    my $x = $0;
+    $x =~ s#.*/##;
+    $x =~ s/(\s+|"|\\|')/_/;
+    $x = 'tmp' if$x eq "";
+
+    my $t = File::Temp::tempdir("/tmp/$x.XXXXXXXX", CLEANUP => $save_tmp ? 0 : 1);
+
+    $self->{base} = $t;
+
+    if(!$save_tmp) {
+      my $s_t = $SIG{TERM};
+      $SIG{TERM} = sub { File::Temp::cleanup; &$s_t if $s_t };
+
+      my $s_i = $SIG{INT};
+      $SIG{INT} = sub { File::Temp::cleanup; &$s_i if $s_i };
+    }
+
+    return $self
+  }
+
+  sub dir
+  {
+    my $self = shift;
+    my $dir = shift;
+    my $t;
+
+    if($dir ne "" && !-e("$self->{base}/$dir")) {
+      $t = "$self->{base}/$dir";
+      die "error: mktemp failed\n" unless mkdir $t, 0755;
+    }
+    else {
+      chomp ($t = `mktemp -d $self->{base}/XXXX`);
+      die "error: mktemp failed\n" if $?;
+    }
+
+    return $t;
+  }
+
+  sub file
+  {
+    my $self = shift;
+    my $file = shift;
+    my $t;
+
+    if($file ne "" && !-e("$self->{base}/$file")) {
+      $t = "$self->{base}/$file";
+      open my $f, ">$t";
+      close $f;
+    }
+    else {
+      chomp ($t = `mktemp $self->{base}/XXXX`);
+      die "error: mktemp failed\n" if $?;
+    }
+
+    return $t;
+  }
+}
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# package HDImage version 1.4
+#
+# Create disk image with partition table and a single partition.
+#
+# Copyright (c) 2008 Steffen Winterfeldt
+#
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+{
+  package HDImage;
+
+  use strict 'vars';
+  use integer;
+
+  sub new
+  {
+    my $self = {};
+
+    bless $self;
+
+    return $self;
+  }
+
+  sub verbose
+  {
+    my $self = shift;
+
+    $self->{verbose} = shift;
+  }
+
+  sub no_pt
+  {
+    my $self = shift;
+
+    $self->{no_pt} = shift;
+  }
+
+  sub mbr
+  {
+    my $self = shift;
+
+    if(@_) {
+      my $file = shift;
+      open F1, $file;
+      sysread F1, $self->{mbr}, 440;
+      close F1;
+
+      if(length($self->{mbr}) != 440) {
+        print STDERR "warning: $file: no valid MBR\n";
+      }
+    }
+    else {
+      undef $self->{mbr};
+    }
+  }
+
+  sub boot_fat12
+  {
+    my $self = shift;
+
+    if(@_) {
+      my $file = shift;
+      open F1, $file;
+      sysread F1, $self->{boot_fat12}, 512;
+      close F1;
+
+      if(length($self->{boot_fat12}) != 512 || substr($self->{boot_fat12}, 0x1fe, 2) ne "\x55\xaa") {
+        print STDERR "warning: $file: no valid boot block\n";
+      }
+    }
+    else {
+      undef $self->{boot_fat12};
+    }
+  }
+
+  sub boot_fat16
+  {
+    my $self = shift;
+
+    if(@_) {
+      my $file = shift;
+      open F1, $file;
+      sysread F1, $self->{boot_fat16}, 512;
+      close F1;
+
+      if(length($self->{boot_fat16}) != 512 || substr($self->{boot_fat16}, 0x1fe, 2) ne "\x55\xaa") {
+        print STDERR "warning: $file: no valid boot block\n";
+      }
+    }
+    else {
+      undef $self->{boot_fat16};
+    }
+  }
+
+  sub chs
+  {
+    my $self = shift;
+    my $c = shift;
+    my $h = shift;
+    my $s = shift;
+
+    $h = 255 if $h < 1 || $h > 255;
+    $s = 63 if $s < 1 || $s > 63;
+
+    $self->{h} = $h;
+    $self->{s} = $s;
+
+    if($c == 0 && $self->{size}) {
+      $c = ($self->{size} + $h * $s) / $h / $s;
+    }
+
+    if($c > 0) {
+      $self->{c} = $c;
+      $self->{size} = $c * $h * $s;
+    }
+
+    return $self->{size};
+  }
+
+  sub size
+  {
+    my $self = shift;
+    my $size = shift;
+
+    $self->{size} = $size;
+    if($self->{h} && $self->{s}) {
+      $self->{c} = ($self->{size} + $self->{h} * $self->{s}) / $self->{h} / $self->{s};
+      $self->{size} = $self->{c} * $self->{h} * $self->{s};
+    }
+
+    return $self->{size};
+  }
+
+  sub extra_size
+  {
+    my $self = shift;
+
+    $self->{extra_size} = shift;
+  }
+
+  sub type
+  {
+    my $self = shift;
+
+    $self->{type} = shift;
+  }
+
+  sub label
+  {
+    my $self = shift;
+
+    $self->{label} = shift;
+  }
+
+  sub fs
+  {
+    my $self = shift;
+
+    $self->{fs} = shift;
+  }
+
+  sub add_files
+  {
+    my $self = shift;
+    local $_;
+
+    for (@_) {
+      if(-f || -d) {
+        push @{$self->{files}}, $_;
+      }
+      else {
+        print STDERR "$_: no such file or directory\n";
+      }
+    }
+  }
+
+  sub tmp_file
+  {
+    my $self = shift;
+
+    chomp (my $t = `mktemp /tmp/HDImage.XXXXXXXXXX`);
+    die "error: mktemp failed\n" if $?;
+
+    eval 'END { unlink $t }';
+
+    my $s_t = $SIG{TERM};
+    $SIG{TERM} = sub { unlink $t; &$s_t if $s_t };
+
+    my $s_i = $SIG{INT};
+    $SIG{INT} = sub { unlink $t; &$s_i if $s_i };
+
+    return $t;
+  }
+
+  sub partition_ofs
+  {
+    my $self = shift;
+
+    return $self->{no_pt} ? 0 : $self->{s};
+  }
+
+  sub write
+  {
+    my $self = shift;
+    local $_;
+
+    return unless @_;
+
+    my $file = shift;
+    $self->{image_name} = $file;
+
+    $self->chs(0, 255, 63) unless $self->{s};
+
+    my $c = $self->{c};
+    my $h = $self->{h};
+    my $s = $self->{s};
+    my $type = $self->{type};
+    my $pt_size = $self->{no_pt} ? 0 : $s;
+
+    $type = 0x83 unless defined $type;
+
+    print "$file: chs = $c/$h/$s, size = $self->{size} blocks\n" if $self->{verbose};
+
+    print "- writing mbr\n" if $self->{verbose} && $self->{mbr};
+
+    $c = 1024 if $c > 1024;
+
+    if($pt_size) {
+      open W1, ">$file";
+
+      my $mbr = pack (
+        "Z446CCvCCCCVVZ48v",
+        $self->{mbr},                 # boot code, if any
+        0x80,                         # bootflag
+        $h > 1 ? 1 : 0,               # head 1st
+        $h > 1 ? 1 : 0x101,           # cyl/sector 1st
+        $type,                        # partition type
+        $h - 1,                       # head last
+        ((($c - 1) >> 8) << 6) + $s,  # cyl/sector last, byte 0
+        ($c - 1) & 0xff,              # cyl/sector last, byte 1
+        $pt_size,                     # partition offset
+        $self->{size} - $pt_size,     # partition size
+        "", 0xaa55
+      );
+
+      syswrite W1, $mbr;
+      sysseek W1, $pt_size * 512 - 1, 0;
+      syswrite W1, "\x00", 1;
+
+      close W1;
+    }
+
+    if($self->{fs}) {
+      my $f = $pt_size ? tmp_file() : $file;
+      open W1, ">$f";
+      seek W1, ($self->{size} - $pt_size) * 512 - 1, 0;
+      syswrite W1, "\x00", 1;
+      close W1;
+      if($self->{fs} eq 'fat') {
+        my $x = " -n '$self->{label}'" if $self->{label} ne "";
+        system "mkfs.vfat -h $pt_size$x $f >/dev/null";
+
+        my ($fat, $boot);
+
+        # mkfs.vfat is a bit stupid; fix FAT superblock
+        open W1, "+<$f";
+        sysseek W1, 0x18, 0;
+        syswrite W1, pack("vv", $s, $h);
+        sysseek W1, 0x24, 0;
+        syswrite W1, "\xff";
+        sysseek W1, 0x36, 0;
+        sysread W1, $fat, 5;
+        # FAT32: at ofs 0x52
+        close W1;
+
+        $boot = $self->{boot_fat12} if $fat eq "FAT12";
+        $boot = $self->{boot_fat16} if $fat eq "FAT16";
+
+        # write boot block ex bpb
+        if($boot) {
+          print "- writing \L$fat\E boot block\n" if $self->{verbose};
+          open W1, "+<$f";
+          syswrite W1, $boot, 11;
+          sysseek W1, 0x3e, 0;
+          syswrite W1, substr($boot, 0x3e);
+          close W1;
+        }
+
+        if($self->{files}) {
+          print "- copying:\n    " . join("\n    ", @{$self->{files}}) . "\n" if $self->{verbose};
+          system "mcopy -D o -s -i $f " . join(" ", @{$self->{files}}) . " ::";
+        }
+      }
+      elsif($self->{fs} eq 'ext2' || $self->{fs} eq 'ext3') {
+        my $x = " -L '$self->{label}'" if $self->{label} ne "";
+        system "mkfs.$self->{fs} -q -m 0 -F$x $f";
+        system "tune2fs -c 0 -i 0 $f >/dev/null 2>&1";
+      }
+      elsif($self->{fs} eq 'reiserfs') {
+        my $x = " -l '$self->{label}'" if $self->{label} ne "";
+        system "mkfs.reiserfs -q -ff$x $f";
+      }
+      elsif($self->{fs} eq 'xfs') {
+        my $x = " -L '$self->{label}'" if $self->{label} ne "";
+        system "mkfs.xfs -q$x $f";
+      }
+      else {
+        print STDERR "warning: $self->{fs}: unsupported file system\n";
+      }
+
+      if($pt_size) {
+        system "cat $f >>$file";
+        unlink $f;
+      }
+    }
+    else {
+      open W1, "+<$file";
+      sysseek W1, $self->{size} * 512 - 1, 0;
+      syswrite W1, "\x00", 1;
+      close W1;
+    }
+
+    if($self->{extra_size}) {
+      open W1, "+<$file";
+      sysseek W1, $self->{extra_size} * 512 - 1, 2;
+      syswrite W1, "\x00", 1;
+      close W1;
+    }
+
+  }
+}
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+{
+  package Help;
+
+  use HTML::Parser;
+  use strict 'vars';
+  use integer;
+
+  sub new;
+  sub set_entity;
+  sub navi;
+  sub decode_file;
+  sub add_html;
+  sub check;
+  sub write;
+  sub encode_file;
+  sub text_handler;
+  sub comment_handler;
+  sub default_handler;
+  sub start_handler;
+  sub end_handler;
+  sub pop_elements;
+
+  my %markup = (
+    page         => "\x04",		# start new page
+
+    normal       => "\x10",		# back to normal (color, text output)
+    em           => "\x11",		# set alternative text color (gfx_color1)
+    label        => "\x12",		# label start, no text output; label end = "\x13"
+    link         => "\x13",		# label end; set link text color (gfx_color2/3)
+    title        => "\x14",		# start page description; ends with "\x10"
+    vspace       => "\x15",		# add empty line
+    li           => "\x16",		# start list item; ends with "\x15" or "\x16"
+    ind          => "\x17",		# set indentation
+
+    br           => "\x1e",		# internal: fake <br>
+
+    vspace_extra => "\n",			# new line
+    li_extra     => "  \xe2\x80\xa2 \x17",	# list item prefix (\u2022, \u2023)
+  );
+
+  sub new
+  {
+    my $self = {};
+
+    bless $self;
+
+    return $self;
+  }
+
+  sub set_entity
+  {
+    my $self = shift;
+
+    $self->{entity}{$_[0]} = $_[1];
+  }
+
+  sub navi
+  {
+    my $self = shift;
+    my $file = shift;
+
+    my $res = $self->encode_file($file);
+    $self->{navi} = $res->{text};
+    die "$file: no link to foobar\n" unless $res->{ref}{foobar};
+  }
+
+  sub decode_file
+  {
+    my $self = shift;
+    my $file = shift;
+    local ($_, $/);
+    my ($page_id, $buf, $f);
+
+    open $f, $file or die "$file: $!\n";
+    $buf = <$f>;
+    close $f;
+
+    if(substr($buf, 0, 1) eq "\x04" && substr($buf, -1, 1) eq "\x00") {
+      substr($buf, 0, 1) = undef;
+      substr($buf, -1, 1) = undef;
+    }
+    else {
+      die "$file: not a gfxboot help file\n";
+    }
+
+    my @pages = split /\x04/, $buf;
+
+    $buf = "<html>\n<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\" />\n<body>\n\n";
+
+    for (@pages) {
+      undef $page_id;
+      s#\x1f#\xc2\xa0#g;	# utf8: \xa0
+
+      s#($markup{vspace})$markup{vspace_extra}#$1#g;
+      s#($markup{li})\Q$markup{li_extra}\E#$1#g;
+
+      s#\n#<br/>\n#g;
+
+      s#$markup{em}([^\x00-\x1e]*)$markup{normal}#<em>$1</em>#g;
+
+      s#$markup{label}([^\x00-\x1e]+)$markup{title}$markup{normal}#<a name="$1"/>\n#g;
+
+      if(s#$markup{label}([^\x00-\x1e]+)$markup{title}([^\x00-\x1e]+)$markup{normal}#<h3>\n<a name="$1">$2</a>\n</h3>\n$markup{vspace}#) {
+        $page_id = $1;
+      }
+
+      s:$markup{label}([^\x00-\x1e]+)$markup{link}([^\x00-\x1e]*)$markup{normal}:<a href="#$1">$2</a>:g;
+
+      s#$markup{vspace}($markup{li}.*?)($markup{vspace}|$)#\n<ul>$1\n</ul>\n#gs;
+
+      { } while s#$markup{li}(.*?)($markup{li}|\n</ul>)#\n  <li>$1</li>$2#s;
+
+      { } while s#$markup{vspace}(.*?)($markup{vspace}|$)#\n<p>\n$1\n</p>\n$2#s;
+
+      s/([\x10-\x1f])/sprintf("<!-- %02x -->", ord $1)/ge;
+
+      $buf .= "<div id=\"$page_id\">\n$_\n</div>\n\n";
+    }
+
+    $buf .= "\n</body>\n</html>\n";
+
+    return $buf;
+  }
+
+
+  sub add_html
+  {
+    my $self = shift;
+    my $file = shift;
+    local $_;
+    my ($x, $up);
+
+    my $res = $self->encode_file($file);
+    $self->{out_buf} .= $res->{text};
+
+    $self->{label}{$_} = $res->{label}{$_} for keys %{$res->{label}};
+    $self->{ref}{$_} += $res->{ref}{$_} for keys %{$res->{ref}};
+
+    if($file =~ /([^:\/]+)::([^:\/]+)\.html$/) {
+      $up = $1;
+
+      $self->{ref}{$up}++;
+
+      $x = $self->{navi};
+      $x =~ s/foobar/$up/;
+      $x =~ s/FOOBAR/$self->{label}{$up}/;
+
+      if($self->{label}{$up}) {
+        # convert page break into line break
+        substr($x, 0, 1) = "$markup{vspace}\n" if substr($x, 0, 1) eq $markup{page};
+        $self->{out_buf} .= $x;
+      }
+    }
+  }
+
+  sub check
+  {
+    my $self = shift;
+    local $_;
+    my ($first, $err);
+
+    $first = 1;
+    for (sort keys %{$self->{label}}) {
+      if(!/^o_./ && !$self->{ref}{$_}) {
+        if($first) {
+          print STDERR "unused pages:\n";
+          $err = 1;
+          $first = 0;
+        }
+        print STDERR "  $_\n";
+      }
+    }
+
+    $first = 1;
+    for (sort keys %{$self->{ref}}) {
+      if(!$self->{label}{$_}) {
+        if($first) {
+          print STDERR "missing pages:\n";
+          $err = 2;
+          $first = 0;
+        }
+        print STDERR "  $_\n";
+      }
+    }
+
+    return $err;
+  }
+
+  sub write
+  {
+    my $self = shift;
+    my $file = shift;
+    my $f;
+
+    if($file) {
+      open $f, ">$file";
+      print $f $self->{out_buf}, "\x00";
+      close $f;
+    }
+    else {
+      print $self->{out_buf}, "\x00";
+    }
+  }
+
+  sub encode_file
+  {
+    my $self = shift;
+    my $file = shift;
+    my ($x, $t, $p);
+
+    $p = HTML::Parser->new(api_version => 3);
+
+    # $p->utf8_mode(1);
+    # $p->xml_mode(1);
+    $p->unbroken_text(1);
+    $p->empty_element_tags(1);
+
+    $p->handler(text => \&text_handler, "self,tagname,attr,text,line");
+    $p->handler(comment => \&comment_handler, "self,tagname,attr,text,line" );
+    $p->handler(default => \&default_handler, "self,tagname,attr,text,line" );
+    $p->handler(start => \&start_handler, "self,tagname,attr,text,line");
+    $p->handler(end => \&end_handler, "self,tagname,attr,text,line");
+    $p->handler(start_document => "");
+    $p->handler(end_document => "");
+
+    $p->{file} = $file;
+    $p->parse_file($p->{file}) or die "$file: $!\n";
+
+    for $x (@{$p->{elements}}) {
+      die "$p->{file} line $x->[3], <$x->[0]>: not text\n" unless $x->[0] eq 'text';
+      $t .= $x->[2];
+    }
+
+    $t = $markup{page} . $t;
+
+    $t =~ s/\s*$//;
+    $t =~ s/\s+/ /g;
+    $t =~ s/($markup{vspace})(\s*$markup{vspace})+/$1/g;
+    $t =~ s/($markup{page})$markup{vspace}*/$1/g;
+    $t =~ s/$markup{vspace}*($markup{page}|$)/$1/gs;
+    $t =~ s/\s+($markup{page})/$1/g;
+    $t =~ s/$markup{br}/\n/g;
+
+    # remove the vspace at page start
+    $t =~ s/($markup{label}([^\x00-\x1e]+)$markup{title}([^\x00-\x1e]*)$markup{normal})$markup{vspace}/$1/;
+
+    $t =~ s/($markup{vspace})/$1$markup{vspace_extra}/g;
+    $t =~ s/($markup{li})/$1$markup{li_extra}/g;
+
+    for $x (keys %{$self->{entity}}) {
+      $t =~ s/(&$x;|\@{3}$x\@{3})/$self->{entity}{$x}/g;
+    }
+
+    return { text => $t, label => $p->{label}, ref => $p->{ref} };
+  }
+
+  sub text_handler
+  {
+    my ($self, $tag, $attr, $text, $line) = @_;
+
+    $text =~ s/^\s+$//;
+
+    push @{$self->{elements}}, [ 'text', $attr, $text, $line ];
+  }
+
+
+  sub comment_handler
+  {
+    my ($self, $tag, $attr, $text, $line) = @_;
+
+    # $helptype = $1 if $text =~ /\bhelp=([a-z]+)/;
+  }
+
+
+  sub default_handler
+  {
+    my ($self, $tag, $attr, $text, $line) = @_;
+
+    # return if $tag =~ /^doctype|DOCTYPE$/;
+
+    die "invalid help text at line=$line, tag='$tag', attr='$attr', text='$text'\n";
+  }
+
+
+  sub start_handler
+  {
+    my ($self, $tag, $attr, $text, $line) = @_;
+
+    return if $tag =~ /^(html|body|meta)$/;
+
+    if($tag =~ /^(a|h\d|em|p|ul|li|br|div)$/) {
+      $self->{state}{$tag}++;
+      push @{$self->{elements}}, [ $tag, $attr, $text, $line ];
+    }
+    else {
+      die "$self->{file} line $line, <$tag>: unsupported element\n";
+    }
+  }
+
+
+  sub end_handler
+  {
+    my ($self, $tag, $attr, $text, $line) = @_;
+    my ($elem_text, $elem_tag, $label);
+
+    return if $tag =~ /^(html|body|meta)$/;
+
+    die "$self->{file} line $line, </$tag>: element not started\n" unless $self->{state}{$tag} > 0;
+
+    if($tag =~ /^h\d$/) {
+      $elem_text = pop_elements $self, 'text', $tag;
+      $elem_tag = pop_elements $self, $tag;
+      push @{$self->{elements}}, $elem_text;
+    }
+    elsif($tag eq "em") {
+      $elem_text = pop_elements $self, 'text', $tag;
+      $elem_tag = pop_elements $self, $tag;
+      die "$self->{file} line $line, <$tag>: empty element\n" unless defined $elem_text;
+      $elem_text->[2] = $markup{em} . $elem_text->[2] . $markup{normal};
+      push @{$self->{elements}}, $elem_text;
+    }
+    elsif($tag eq "p") {
+      $elem_text = pop_elements $self, 'text', $tag;
+      $elem_tag = pop_elements $self, $tag;
+      $elem_text->[2] = $markup{vspace} . $elem_text->[2] . $markup{vspace};
+      push @{$self->{elements}}, $elem_text;
+    }
+    elsif($tag eq "br") {
+      $elem_tag = pop_elements $self, $tag;
+      push @{$self->{elements}}, [ 'text', undef , $markup{br},  ];
+    }
+    elsif($tag eq "ul") {
+      $elem_text = pop_elements $self, 'text', $tag;
+      $elem_tag = pop_elements $self, $tag;
+      $elem_text->[2] = $markup{vspace} . $elem_text->[2] . $markup{vspace};
+      push @{$self->{elements}}, $elem_text;
+    }
+    elsif($tag eq "li") {
+      $elem_text = pop_elements $self, 'text', $tag;
+      $elem_tag = pop_elements $self, $tag;
+      $elem_text->[2] = $markup{li} . $elem_text->[2];
+      push @{$self->{elements}}, $elem_text;
+    }
+    elsif($tag eq "div") {
+      $elem_text = pop_elements $self, 'text', $tag;
+      $elem_tag = pop_elements $self, $tag;
+      push @{$self->{elements}}, $elem_text;
+    }
+    elsif($tag eq "a") {
+      $elem_text = pop_elements $self, 'text', $tag;
+      $elem_tag = pop_elements $self, $tag;
+      die "$self->{file} line $line, <$tag>: empty element\n" unless defined $elem_text;
+
+      if($elem_tag->[1]{name}) {
+        # name -> page title
+        $label = $elem_tag->[1]{name};
+        die "$self->{file} line $line, <$tag>: label '$label' too long (max. 32)\n" if length($label) > 32;
+        die "$self->{file} line $line, <$tag>: label '$label' redefined\n" if $self->{label}{$label};
+        $self->{label}{$label} = $elem_text->[2];
+        $elem_text->[2] = $markup{label} . $label . $markup{title} . $elem_text->[2] . $markup{normal};
+        push @{$self->{elements}}, $elem_text;
+      }
+      elsif($elem_tag->[1]{href}) {
+        # href -> link
+        $label = $elem_tag->[1]{href};
+        $label =~ s/^#//;
+        die "$self->{file} line $line, <$tag>: label '$label' too long (max. 32)\n" if length($label) > 32;
+        $self->{ref}{$label}++;
+        $elem_text->[2] =~ s/\s/\xc2\xa0/g;
+        $elem_text->[2] = $markup{label} . $label . $markup{link} . $elem_text->[2] . $markup{normal};
+        push @{$self->{elements}}, $elem_text;
+      }
+      else {
+        die "$self->{file} line $line, <$tag>: neither 'name' nor 'href' attribute\n";
+      }
+    }
+    else {
+      die "$self->{file} line $line, <$tag>: unsupported element\n";
+    }
+
+    $self->{state}{$tag}--;
+  }
+
+  sub pop_elements
+  {
+    my ($self, $tag, $tag_limit) = @_;
+    my ($elem, $line, $all, $x);
+
+    return undef if @{$self->{elements}} == 0;
+
+    $line = $self->{elements}[-1][3];
+
+    while(defined($elem = pop @{$self->{elements}})) {
+      if($elem->[0] eq $tag) {
+        $all->[0] = $elem->[0];
+        $all->[1] = $elem->[1];
+        $x = $elem->[2];
+        $x = "" if $x =~ /^\s*$/;
+        $all->[2] = $x . $all->[2];
+        $all->[3] = $elem->[3];
+        next;
+      }
+      if(!defined($tag_limit) || $elem->[0] eq $tag_limit) {
+        push @{$self->{elements}}, $elem;
+        last;
+      }
+    }
+
+    # for tag 'text': always return something
+
+    if($tag eq 'text') {
+      if(defined $all) {
+        $all->[2] =~ s/(^\s*|\s*$)//g;
+        $all->[2] =~ s/\s+/ /g;
+        $all->[2] = "" if $all->[2] eq " ";
+      }
+      else {
+        $all = [ 'text' ];
+      }
+    }
+    else {
+      die "$self->{file} line $line, <$tag>: no start found\n" unless defined $all;
+    }
+
+    return $all;
+  }
+
+  sub set_used
+  {
+    my $self = shift;
+    local $_;
+
+    $self->{ref}{$_}++ for @_;
+  }
+}
+
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+use strict qw ( subs vars );
+
+use Getopt::Long;
+
+sub usage;
+sub unpack_it;
+sub check_root;
+sub susystem;
+sub preview;
+sub has_command;
+sub check_vm;
+sub read_grub_menu;
+sub read_lilo_menu;
+sub fake_menu;
+sub prepare_grub;
+sub prepare_lilo;
+sub prepare_isolinux;
+sub prepare_syslinux;
+sub prepare_pxelinux;
+sub prepare_qemu;
+sub run_qemu;
+sub prepare_vbox;
+sub run_vbox;
+sub run_vboxsdl;
+sub prepare_vmware;
+sub run_vmplayer;
+sub run_vmware;
+sub prepare_bd;
+sub run_bd;
+sub prepare_bochs;
+sub run_bochs;
+sub find_free_loop;
+sub show_config;
+sub is_cpio;
+sub is_gfxcode;
+sub unpack_archive;
+sub pack_archive;
+sub update_archive;
+sub read_gfxboot_config;
+sub write_gfxboot_config;
+sub change_config;
+sub rm_config;
+sub rm_section;
+sub add_files;
+sub rm_files;
+sub extract_files;
+sub update_theme;
+sub short_locale;
+sub add_languages;
+sub rm_languages;
+sub default_language;
+sub get_theme;
+sub unpack_rpm;
+sub create_vmdk;
+
+my $opt_verbose = 0;
+my $opt_preview = 0;
+my $opt_gfxarchive = "/boot/message";
+my $opt_bootloader;
+my $opt_vm = "qemu64";
+my $opt_savetemp = 0;
+my $opt_grub = "/";
+my $opt_lilo = "/";
+my $opt_syslinux = "/";
+my $opt_password = undef;
+my $opt_showconfig = 0;
+my @opt_changeconfig;
+my @opt_rmconfig;
+my @opt_rmsection;
+my $opt_test = 0;
+my $opt_ls = 0;
+my @opt_addfiles;
+my @opt_rmfiles;
+my @opt_test_addfiles;
+my @opt_test_rmfiles;
+my @opt_extractfiles;
+my $opt_showfile;
+my $opt_theme;
+my $opt_theme_update;
+my @opt_addlanguages;
+my @opt_rmlanguages;
+my $opt_defaultlanguage;
+my $opt_gfxboot_cfg;
+my $opt_expand_archive;
+my $opt_pack_archive;
+my $opt_32;
+my $opt_64;
+my $opt_media;
+my $opt_save_image;
+my $opt_help_create;
+my $opt_help_show;
+my $opt_help_navi;
+my @opt_help_used;
+my %opt_help_entity;
+my $opt_no_unpack = 0;
+my $opt_mem = 512;
+my $opt_efi;
+
+my $sudo;
+my %config;
+my $work_dir;
+my $work_dir2;
+my $work_archive_name;
+my $write_archive = 0;
+my $new_archive;
+my $theme_dir;
+my $theme_archive;
+my $preview_image;
+
+my %vm_list = (
+  'qemu'        => { cmd => 'qemu', package => 'qemu' },
+  'qemu-kvm'    => { cmd => 'qemu-kvm', package => 'kvm' },
+  'qemu-i386'   => { cmd => 'qemu-system-i386', package => 'qemu' },
+  'qemu-x86_64' => { cmd => 'qemu-system-x86_64', package => 'qemu' },
+  'qemu32'      => { cmd => 'qemu-system-i386', package => 'qemu' },
+  'qemu64'      => { cmd => 'qemu-system-x86_64', package => 'qemu' },
+  'vbox'        => { cmd => 'VBoxManage', package => 'virtualbox' },
+  'vbox64'      => { cmd => 'VBoxManage', package => 'virtualbox' },
+  'vboxsdl'     => { cmd => 'VBoxSDL', package => 'virtualbox' },
+  'vmplayer'    => { cmd => 'vmplayer', package => 'vmware-player' },
+  'vmware'      => { cmd => 'vmware', package => 'VMwareWorkstation' },
+  'bd'          => { cmd => 'bd' },
+  'bochs'       => { cmd => 'bochs', package => 'bochs' },
+);
+
+my @vm_order = qw ( qemu64 qemu32 qemu qemu-kvm vbox vbox64 vboxsdl vmplayer vmware bochs );
+
+my %bl_list = (
+  grub     => '/usr/sbin/grub',
+  lilo     => '/sbin/lilo',
+  isolinux => '/usr/share/syslinux/isolinux.bin',
+  syslinux => '/usr/bin/syslinux',
+  pxelinux => '/usr/share/syslinux/pxelinux.0',
+  bd       => '/usr/bin/bd',
+  bochs    => '/usr/bin/bochs',
+);
+
+usage 0 if !@ARGV;
+
+GetOptions(
+  'help'                => sub { usage 0 },
+  'version'             => sub { print "4.5.1\n" ; exit 0 },
+  'archive|a=s'         => \$opt_gfxarchive,
+  'config-file=s'       => \$opt_gfxboot_cfg,
+  'verbose|v+'          => \$opt_verbose,
+  'preview|p'           => \$opt_preview,
+  'test|t'              => \$opt_test,
+  'save-temp'           => \$opt_savetemp,
+  'bootloader|b=s'      => \$opt_bootloader,
+  'vm|m=s'              => \$opt_vm,
+  'grub=s'              => \$opt_grub,
+  'lilo=s'              => \$opt_lilo,
+  'isolinux=s'          => \$opt_syslinux,
+  'syslinux=s'          => \$opt_syslinux,
+  'pxelinux=s'          => \$opt_syslinux,
+  'password=s'          => \$opt_password,
+  'show-config'         => \$opt_showconfig,
+  'change-config=s{1,}' => \@opt_changeconfig,
+  'rm-config=s{1,}'     => \@opt_rmconfig,
+  'rm-section=s{1,}'    => \@opt_rmsection,
+  'list-files|ls'       => \$opt_ls,
+  'add-files=s{1,}'     => \@opt_addfiles,
+  'rm-files=s{1,}'      => \@opt_rmfiles,
+  'test-add-files=s{1,}' => \@opt_test_addfiles,
+  'test-rm-files=s{1,}'  => \@opt_test_rmfiles,
+  'extract-files=s{1,}' => \@opt_extractfiles,
+  'show-file=s'         => \$opt_showfile,
+  'new-theme=s'         => sub { $opt_theme = $_[1]; $opt_theme_update = 0 },
+  'update-theme=s'      => sub { $opt_theme = $_[1]; $opt_theme_update = 1 },
+  'add-languages=s{1,}' => \@opt_addlanguages,
+  'rm-languages=s{1,}'  => \@opt_rmlanguages,
+  'default-language=s'  => \$opt_defaultlanguage,
+  'expand-archive=s'    => \$opt_expand_archive,
+  'pack-archive=s'      => \$opt_pack_archive,
+  'cdrom|dvd'           => sub { $opt_media = 'cdrom' },
+  'disk'                => sub { $opt_media = 'disk' },
+  'floppy'              => sub { $opt_media = 'floppy' },
+  'net'                 => sub { $opt_media = 'net' },
+  'biarch'              => sub { $opt_32 = $opt_64 = 1 },
+  '32'                  => \$opt_32,
+  '64'                  => \$opt_64,
+  'save-image=s'        => \$opt_save_image,
+  'help-create=s'       => \$opt_help_create,
+  'help-show=s'         => \$opt_help_show,
+  'used-pages=s{1,}'    => \@opt_help_used,
+  'navi=s'              => \$opt_help_navi,
+  'define=s%{1,}'       => \%opt_help_entity,
+  'no-unpack'           => \$opt_no_unpack,
+  'mem=i'               => \$opt_mem,
+  'efi'                 => sub { $opt_efi = 64 },
+  'efi64'               => sub { $opt_efi = 64 },
+  'efi32'               => sub { $opt_efi = 32 },
+) || usage 1;
+
+$ENV{PATH} = "/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin";
+
+if(open F, "$ENV{HOME}/.gfxbootrc") {
+  while(<F>) {
+    if(/^(\S+?)=\"(.*)\"\s*$/) {
+      $config{$1} = $2;
+    }
+  }
+  close F;
+}
+
+if($config{sudo}) {
+  $sudo = $config{sudo};
+  $sudo =~ s/\s*$/ /;
+}
+
+if($opt_help_show) {
+  usage 1 if @ARGV;
+  print Help::new()->decode_file($opt_help_show);
+  exit 0;
+}
+
+if($opt_help_create) {
+  usage 1 if !@ARGV;
+
+  my $help = Help::new;
+  $help->navi($opt_help_navi) if $opt_help_navi;
+
+  $opt_help_entity{product} = 'Linux' unless exists $opt_help_entity{product};
+  $help->set_entity($_, $opt_help_entity{$_}) for (sort keys %opt_help_entity);
+  $help->set_used(@opt_help_used) if @opt_help_used;
+  $help->add_html($_) for (@ARGV);
+  $help->check;
+  exit $help->write($opt_help_create);
+}
+
+
+
+my $gfxboot_tmp = Tmp::new($opt_savetemp);
+
+if(!$vm_list{$opt_vm}) {
+  $_ = join ', ', sort keys %vm_list;
+  die "$opt_vm: unsupported virtual machine; use one of\n  $_\n";
+}
+
+# we'll need a bootloader
+if($opt_preview) {
+  if(!$opt_bootloader) {
+    if(open F, "/etc/sysconfig/bootloader") {
+      while(<F>) {
+        if(/^LOADER_TYPE=\"(grub|lilo)\"/) {
+          $opt_bootloader = $1;
+          last;
+        }
+      }
+      close F;
+    }
+  }
+
+  die "please use '--bootloader' to select a bootloader\n" if !$opt_bootloader;
+
+  if(!$bl_list{$opt_bootloader}) {
+    $_ = join ', ', sort keys %bl_list;
+    die "$opt_bootloader: unsupported boot loader; use one of\n  $_\n";
+  }
+}
+
+if($opt_expand_archive) {
+  die "$opt_expand_archive: not a directory\n" unless -d $opt_expand_archive;
+  unpack_it 1;
+  $opt_gfxarchive = $opt_expand_archive;
+}
+
+if($opt_pack_archive) {
+  die "$opt_pack_archive: is a directory\n" if -d $opt_pack_archive;
+  unpack_it 1;
+  $opt_gfxarchive = $opt_pack_archive;
+}
+
+if(@opt_extractfiles) {
+  unpack_it 0;
+  extract_files $work_dir;
+}
+
+if($opt_theme) {
+  $theme_dir = "/etc/bootsplash/themes/$opt_theme/bootloader";
+  $theme_archive = "$theme_dir/message";
+  die "$opt_theme: no such theme\n" unless -f $theme_archive;
+  $write_archive = 1;
+  ( $work_dir, $work_archive_name ) = unpack_archive $theme_archive unless $work_dir;
+  if($opt_theme_update && -e $opt_gfxarchive) {
+    ( $work_dir2, $work_archive_name )= unpack_archive $opt_gfxarchive;
+    update_theme $opt_theme, $theme_dir, $work_dir, $work_dir2;
+  }
+}
+
+if(@opt_addlanguages) {
+  unpack_it 1;
+  add_languages $work_dir;
+}
+
+if(@opt_rmlanguages) {
+  unpack_it 1;
+  rm_languages $work_dir;
+}
+
+if($opt_defaultlanguage) {
+  unpack_it 1;
+  system "echo '$opt_defaultlanguage' >$work_dir/lang";
+}
+
+if(@opt_addfiles) {
+  unpack_it 1;
+  add_files $work_dir;
+}
+
+if(@opt_rmfiles) {
+  unpack_it 1;
+  rm_files $work_dir;
+}
+
+if($opt_ls) {
+  unpack_it 0;
+  system "cd $work_dir ; ls -l | grep -v ^total";
+}
+
+if($opt_showfile) {
+  unpack_it 0;
+  system "cd $work_dir ; cat $opt_showfile";
+}
+
+if(@opt_rmsection) {
+  if($opt_gfxboot_cfg) {
+    rm_section;
+  }
+  else {
+    unpack_it 1;
+    rm_section $work_dir;
+  }
+}
+
+if(@opt_rmconfig) {
+  if($opt_gfxboot_cfg) {
+    rm_config;
+  }
+  else {
+    unpack_it 1;
+    rm_config $work_dir;
+  }
+}
+
+if(@opt_changeconfig) {
+  if($opt_gfxboot_cfg) {
+    change_config;
+  }
+  else {
+    unpack_it 1;
+    change_config $work_dir;
+  }
+}
+
+if($opt_showconfig) {
+  if($opt_gfxboot_cfg) {
+    show_config;
+  }
+  else {
+    unpack_it 0;
+    show_config $work_dir;
+  }
+}
+
+if($write_archive) {
+  $new_archive = pack_archive $work_dir;
+}
+
+if($opt_preview) {
+  preview $new_archive ? $new_archive : $opt_gfxarchive, $opt_bootloader;
+}
+
+if($new_archive && !$opt_test) {
+  update_archive $new_archive, $opt_gfxarchive;
+}
+
+if($opt_save_image && $preview_image) {
+  if(-f $preview_image) {
+    system "cp $preview_image $opt_save_image";
+  }
+  else {
+    system "cp -a $preview_image $opt_save_image";
+  }
+}
+
+
+sub usage
+{
+  my $err = shift;
+
+  if($err) {
+    print STDERR "Try 'gfxboot --help' for more information.\n";
+
+    exit $err;
+  }
+
+  print <<"  usage";
+Usage: gfxboot [OPTIONS] ARGS
+Graphical boot screen test and config tool.
+
+General options:
+
+  -a, --archive FILE|DIRECTORY  Use FILE as gfxboot archive (default is /boot/message).
+                                If it points to a directory, assume it is an expanded archive
+                                (see --expand-archive option below).
+  -v, --verbose                 Increase verbosity.
+      --save-temp               Keep temporary files.
+      --version                 Show gfxboot version.
+      --help                    Write this help text.
+
+Switching themes:
+
+      --new-theme THEME         Activate THEME. Theme files are stored in
+                                /etc/bootsplash/themes/THEME/bootloader.
+      --update-theme THEME      Activate THEME but keep language settings from
+                                current gfxboot archive.
+
+Changing gfxboot config:
+
+      --show-config             Show gfxboot config file (gfxboot.cfg).
+      --change-config [SECTION1::]OPTION1=FOO1 [SECTION2::]OPTION2=FOO2 ...
+                                Change gfxboot config options. If sections are omitted,
+                                section "base" is used.
+      --rm-config [SECTION1::]OPTION1 [SECTION2::]OPTION2 ...
+                                Delete gfxboot config options. If sections are omitted,
+                                section "base" is used.
+      --rm-section SECTION1 SECTION2 ...
+                                Delete sections in gfxboot config file.
+      --default-language LANG   Make LANG the default language. LANG is a
+                                locale string (e.g. en_US).
+      --add-languages LANG1 LANG2 ...
+                                Add translation files.
+      --rm-languages LANG1 LANG2 ...
+                                Remove translation files.
+      --config-file FILE        Don't work on gfxboot.cfg from gfxboot archive but on FILE.
+                                NOTE: FILE will be modified even with "--test".
+
+Preview/test gfxboot setup:
+
+  -p, --preview                 Try current config (needs some virtual machine).
+  -t, --test                    Test only (don't actually change any files).
+  -b, --bootloader BOOTLOADER   Use BOOTLOADER (grub, lilo, isolinux, syslinux, pxelinux) for
+                                preview.
+  -m, --vm VM                   Use virtual machine VM (bochs, qemu, qemu32, qemu64,
+                                vbox, vbox64, vmplayer, vmware) for preview.
+      --grub DIRECTORY|RPM      Use grub from DIRECTORY or RPM (default is /).
+      --lilo DIRECTORY|RPM      Use lilo from DIRECTORY or RPM (default is /).
+      --syslinux DIRECTORY|RPM  Use syslinux from DIRECTORY or RPM (default is /).
+      --isolinux DIRECTORY|RPM  Use isolinux from DIRECTORY or RPM (default is /).
+      --pxelinux DIRECTORY|RPM  Use pxelinux from DIRECTORY or RPM (default is /).
+      --password PASSWORD       Create test config with PASSWORD for preview.
+      --32                      Create 32 bit test image.
+      --64                      Create 64 bit test image.
+      --biarch                  Create biarch test image (same as using --32 and --64).
+      --cdrom, --dvd            Create iso image for preview.
+      --disk                    Create harddisk image for preview.
+      --floppy                  Create floppy image for preview.
+      --net                     Create tftp directory for preview.
+      --save-image FILE         Copy preview image to FILE.
+      --test-add-files FILE1 FILE2 ...
+                                Add files to test directory.
+      --test-rm-files FILE1 FILE2 ...
+                                Delete files from test directory.
+
+Adding/removing files from gfxboot archive:
+
+      --ls, --list-files        List gfxboot archive files.
+      --add-files FILE1 FILE2 ...
+                                Add files to gfxboot archive.
+      --rm-files FILE1 FILE2 ...
+                                Delete files from gfxboot archive.
+      --extract-files FILE1 FILE2 ...
+                                Copy files from gfxboot archive to current
+                                working directory.
+      --show-file FILE          Print FILE.
+      --expand-archive DIRECTORY
+                                Create expanded gfxboot archive version in DIRECTORY.
+                                That is, only files that cannot be read directly from
+                                file system are kept in a cpio archive. All others are
+                                unpacked. Use only for isolinux, syslinux, or pxelinux.
+      --pack-archive FILE       Pack all gfxboot files into cpio archive FILE.
+
+Modifying help files:
+
+      --help-show FILE          Print FILE (internal help file format) as HTML.
+      --help-create FILE        Convert HTML files passed as ARGS to FILE (internal format).
+      --used-pages LINK1 LINK2 ...
+                                Mark pages as referenced.
+      --navi FILE               Use FILE as template for navigation links.
+      --define ENTITY1=VALUE1 ENTITY2=VALUE2 ...
+                                Define ENTITYx with VALUEx.
+
+  usage
+
+  exit $err;
+}
+
+
+sub unpack_it
+{
+  $write_archive = 1 if $_[0];
+  ( $work_dir, $work_archive_name ) = unpack_archive $opt_gfxarchive unless $work_dir;
+}
+
+
+sub check_root
+{
+  my $p;
+  my $msg = shift;
+
+  if(!$>) {
+    undef $sudo;
+    return;
+  }
+
+  chomp($p = `bash -c 'type -p $sudo'`) if $sudo;
+
+  $msg = "sorry, you must be root" if $msg eq "";
+
+  die "$msg\n" if $p eq "";
+}
+
+
+sub susystem
+{
+  system $sudo . $_[0];
+}
+
+
+sub preview
+{
+  local $_;
+
+  my $file = shift;
+  my $bootloader = shift;
+  my $vm_env;
+
+  check_vm;
+
+  print "vm: using $opt_vm\n" if $opt_verbose;
+
+  if($bootloader eq 'grub') {
+    $vm_env->{hd0} = prepare_grub $file;
+    $vm_env->{hds} = 1;
+    $vm_env->{boot} = 'hd';
+    $preview_image = $vm_env->{hd0}{image_name};
+  }
+  elsif($bootloader eq 'lilo') {
+    $vm_env->{hd0} = prepare_lilo $file;
+    $vm_env->{hds} = 1;
+    $vm_env->{boot} = 'hd';
+    $preview_image = $vm_env->{hd0}{image_name};
+  }
+  elsif($bootloader eq 'isolinux') {
+    $vm_env->{cd0} = prepare_isolinux $file;
+    $vm_env->{cds} = 1;
+    $vm_env->{boot} = 'cd';
+    $preview_image = $vm_env->{cd0}{image_name};
+  }
+  elsif($bootloader eq 'syslinux') {
+    $vm_env->{hd0} = prepare_syslinux $file;
+    $vm_env->{hds} = 1;
+    $vm_env->{boot} = 'hd';
+    $preview_image = $vm_env->{hd0}{image_name};
+  }
+  elsif($bootloader eq 'pxelinux') {
+    $vm_env->{tftp} = prepare_pxelinux $file;
+    $vm_env->{boot} = 'net';
+    $preview_image = $vm_env->{tftp}{image_name};
+  }
+  else {
+    return;
+  }
+
+  if($opt_vm =~ /^qemu(|32|64|-kvm|-i386|-x86_64)$/) {
+    prepare_qemu $vm_env;
+    run_qemu $vm_env;
+  }
+  elsif($opt_vm eq 'vbox') {
+    prepare_vbox $vm_env;
+    run_vbox $vm_env;
+  }
+  elsif($opt_vm eq 'vbox64') {
+    prepare_vbox $vm_env, 1;
+    run_vbox $vm_env;
+  }
+  elsif($opt_vm eq 'vboxsdl') {
+    prepare_vbox $vm_env;
+    run_vboxsdl $vm_env;
+  }
+  elsif($opt_vm eq 'vmplayer') {
+    prepare_vmware $vm_env;
+    run_vmplayer $vm_env;
+  }
+  elsif($opt_vm eq 'vmware') {
+    prepare_vmware $vm_env;
+    run_vmware $vm_env;
+  }
+  elsif($opt_vm eq 'bd') {
+    prepare_bd $vm_env;
+    run_bd $vm_env;
+  }
+  elsif($opt_vm eq 'bochs') {
+    prepare_bochs $vm_env;
+    run_bochs $vm_env;
+  }
+}
+
+
+sub has_command
+{
+  return `which $_[0] 2>/dev/null` ? 1 : 0;
+}
+
+
+sub check_vm
+{
+  local $_;
+  my %vms;
+
+  return if has_command $vm_list{$opt_vm}{cmd};
+
+  for (@vm_order) {
+    if(has_command $vm_list{$_}{cmd}) {
+      $opt_vm = $_;
+      return;
+    }
+  }
+
+  $vms{$vm_list{$_}{package}} = 1 for (keys %vm_list);
+
+  die
+    "No supported virtual machine found. Please install one of:\n  " .
+    join(', ', grep { $_ } sort keys %vms) .
+    "\n";
+}
+
+
+sub read_grub_menu
+{
+  local $_;
+  my ($menu, $default);
+
+  print STDERR "/boot/grub/menu.lst: $!\n" unless open ML, "${sudo}cat /boot/grub/menu.lst 2>/dev/null |";
+
+  while(<ML>) {
+    push @{$menu->{list}}, $1 if /^\s*title\s+(.+?)\s*$/;
+    $default = $1 + 0 if /^\s*default\s+(\d+)/;
+  }
+  
+  close ML;
+
+  return $menu unless $menu;
+
+  $default = 0 unless $default < @{$menu->{list}};
+
+  $menu->{default} = $default;
+
+  return $menu;
+}
+
+
+sub read_lilo_menu
+{
+  local $_;
+  my ($menu, $default, $i);
+
+  print STDERR "/etc/lilo.conf: $!\n" unless open ML, "${sudo}cat /etc/lilo.conf 2>/dev/null |";
+
+  while(<ML>) {
+    push @{$menu->{list}}, $1 if /^\s*label\s*=\s*(.+?)\s*$/;
+    $default = $1 if /^\s*default\s*=\s*(.+?)\s*$/;
+  }
+
+  close ML;
+
+  return $menu unless $menu;
+
+  @{$menu->{list}} = map { /^"(.*)"$/ ? $1 : $_ } (@{$menu->{list}});
+  $default = $1 if $default =~ /^"(.*)"$/;
+
+  $menu->{default} = 0;
+
+  $i = 0;
+  for (@{$menu->{list}}) {
+    if(/^${default}$/i) {
+      $menu->{default} = $i;
+      last;
+    }
+    $i++;
+  }
+
+  return $menu;
+}
+
+
+sub fake_menu
+{
+  my $type = shift;
+  my $menu;
+
+  if($type eq 'install') {
+    $menu->{list} = [ 'harddisk', 'linux', 'repair', 'rescue', 'mediachk', 'firmware', 'memtest' ];
+    $menu->{default} = 0;
+  }
+  else {
+    $menu->{list} = [ 'Linux1', 'Linux2', 'Linux3' ];
+    $menu->{default} = 0;
+  }
+
+  return $menu;
+}
+
+
+sub prepare_grub
+{
+  local $_;
+  my $file = shift;
+
+  die "Can't setup grub on $opt_media.\n" if $opt_media && $opt_media ne 'disk';
+
+  $opt_grub = unpack_rpm $opt_grub if -f $opt_grub;
+
+  die "error: grub not found\n" unless -x "$opt_grub/$bl_list{grub}";
+
+  my $menu = read_grub_menu;
+  $menu = read_lilo_menu unless $menu;
+  $menu = fake_menu unless $menu;
+
+  if($opt_verbose) {
+    print "menu items (default $menu->{default}):\n";
+    print "  $_\n" for (@{$menu->{list}});
+  }
+
+  my $dst = $gfxboot_tmp->dir('grub');
+  my $img = $gfxboot_tmp->file('grub.img');
+
+  mkdir "$dst/boot", 0755;
+  mkdir "$dst/boot/grub", 0755;
+
+  system "cp $opt_grub/usr/lib/grub/{fat_stage1_5,stage1,stage2} $dst/boot/grub" and die "error: no grub\n";
+  system "cp $file $dst/boot/message";
+
+  system "cp /boot/vmlinuz $dst/boot" if -f "/boot/vmlinuz";
+  system "cp /boot/initrd $dst/boot" if -f "/boot/initrd";
+
+  open F, ">$dst/boot/grub/device.map";
+  print F "(hd0) $img\n";
+  close F;
+
+  open F, ">$dst/boot/grub/menu.lst";
+  print F "default $menu->{default}\ntimeout 20\ngfxmenu (hd0,0)/boot/message\n\n";
+
+  for (@{$menu->{list}}) {
+    print F "title $_\n  root (hd0,0)\n  kernel /boot/vmlinuz\n  initrd /boot/initrd\n\n"
+  }
+  close F;
+
+  for (@opt_test_addfiles) {
+    system "cp -r $_ $dst/boot" and die "error copying file: $_\n";
+  }
+
+  for (@opt_test_rmfiles) {
+    s#^/+##;
+    system "cd $dst/boot ; rm -f $_" and die "error deleting file: $_\n";
+  }
+
+  my $img_size = `du -s --apparent-size --block-size 1k $dst 2>/dev/null`;
+  $img_size = $img_size =~ /^(\d+)/ ? $1 * 2 + 2 * 200 : 0;		# add 200k
+
+  my $hdimage = HDImage::new;
+  $hdimage->verbose($opt_verbose);
+  $hdimage->chs(0, 4, 16);
+  $hdimage->size($img_size);
+  $hdimage->type(1);
+  $hdimage->label('GFXBOOT');
+  $hdimage->fs('fat');
+  $hdimage->mbr('/usr/lib/boot/master-boot-code');
+  $hdimage->add_files(<$dst/*>);
+  $hdimage->write($img);
+
+  my $log = $gfxboot_tmp->file('grub.log');
+
+  open F, "| $opt_grub/usr/sbin/grub --batch --config-file=$dst/boot/grub/menu.lst --device-map=$dst/boot/grub/device.map >$log 2>&1";
+  print F "setup --prefix=/boot/grub (hd0,0) (hd0,0)\n";
+  close F;
+
+  print `cat $log`, "\n" if $opt_verbose >= 2;
+
+  return $hdimage;
+}
+
+
+sub prepare_lilo
+{
+  local $_;
+  my $file = shift;
+  my $no_initrd;
+
+  die "Can't setup lilo on $opt_media.\n" if $opt_media && $opt_media ne 'disk';
+
+  $opt_lilo = unpack_rpm $opt_lilo if -f $opt_lilo;
+
+  die "error: lilo not found\n" unless -x "$opt_lilo/$bl_list{lilo}";
+
+  check_root "Cannot setup lilo; you need root privileges.";
+
+  my $menu = read_lilo_menu;
+  $menu = read_grub_menu unless $menu;
+  $menu = fake_menu unless $menu;
+
+  # lilo-ize menu items
+  map { s/\s.*//; $_ = substr $_, 0, 15 } @{$menu->{list}};
+
+  if($opt_verbose) {
+    print "menu items (default $menu->{default}):\n";
+    print "  $_\n" for (@{$menu->{list}});
+  }
+
+  my $loop1 = find_free_loop;
+  my $loop2 = find_free_loop $loop1;
+
+  print "loop devices: using $loop1 & $loop2\n" if $opt_verbose;
+
+  my $dst = $gfxboot_tmp->dir('lilo');
+  my $img = $gfxboot_tmp->file('lilo.img');
+  my $mp = $gfxboot_tmp->dir('mount');
+
+  mkdir "$dst/boot", 0755;
+
+  system "cp $file $dst/boot/message";
+
+  if(-f "/boot/vmlinuz") {
+    system "cp /boot/vmlinuz $dst/boot";
+  }
+  else {
+    system "dd if=/dev/zero bs=100k count=1 of=$dst/boot/vmlinuz 2>/dev/null";
+    $no_initrd = "# ";
+  }
+  if(-f "/boot/initrd") {
+    system "cp /boot/initrd $dst/boot";
+  }
+  else {
+    system "dd if=/dev/zero bs=100k count=1 of=$dst/boot/initrd 2>/dev/null";
+  }
+
+  my $pw = "";
+  $pw = "password = \"$opt_password\"\n    restricted\n" if defined $opt_password;
+
+  open F, ">$dst/boot/lilo.conf";
+  print F <<"  lilo_conf";
+    boot = $loop2
+    disk = $loop1
+    bios = 0x80
+    sectors = 16
+    heads = 4   
+    cylinders = 1023
+    partition = $loop2
+    start = 16
+    vga = normal
+    change-rules reset
+    read-only
+    prompt
+    lba32
+    timeout = 600
+    message = $mp/boot/message
+    $pw
+    default = $menu->{list}[$menu->{default}]
+
+  lilo_conf
+
+  for (@{$menu->{list}}) {
+    print F "      image = $mp/boot/vmlinuz\n      label = $_\n      ${no_initrd}initrd = $mp/boot/initrd\n\n"
+  }
+  close F;
+
+  for (@opt_test_addfiles) {
+    system "cp -r $_ $dst/boot" and die "error copying file: $_\n";
+  }
+
+  for (@opt_test_rmfiles) {
+    s#^/+##;
+    system "cd $dst/boot ; rm -f $_" and die "error deleting file: $_\n";
+  }
+
+  my $msg_size = `du -s --apparent-size --block-size 1k $dst/boot/message 2>/dev/null`;
+  $msg_size = $msg_size =~ /^(\d+)/ ? $1 * 2 : 0;
+  my $img_size = `du -s --apparent-size --block-size 1k $dst 2>/dev/null`;
+  $img_size = $img_size =~ /^(\d+)/ ? $1 * 2 + $msg_size + 2 * 500 : 0;		# add 500k
+
+  my $hdimage = HDImage::new;
+  $hdimage->verbose($opt_verbose);
+  $hdimage->chs(0, 4, 16);	# see lilo.conf above!
+  $hdimage->size($img_size);
+  $hdimage->type(1);
+  $hdimage->label('GFXBOOT');
+  $hdimage->fs('fat');
+  $hdimage->mbr('/usr/lib/boot/master-boot-code');
+  $hdimage->add_files(<$dst/*>);
+  $hdimage->write($img);
+
+  my $log = $gfxboot_tmp->file('lilo.log');
+
+  susystem "mount -oloop=$loop2,offset=" . $hdimage->partition_ofs * 512 . " $img $mp";
+  die "error: mount failed\n" if $?;
+  susystem "losetup $loop1 $img";
+  susystem "$opt_lilo/sbin/lilo -v -w -C $mp/boot/lilo.conf -m $mp/boot/map >$log 2>&1";
+  susystem "losetup -d $loop1";
+  susystem "umount $mp";
+
+  print `cat $log`, "\n" if $opt_verbose >= 2;
+
+  return $hdimage;
+}
+
+
+sub prepare_isolinux
+{
+  local $_;
+  my $file = shift;
+  my $cdimage;
+  my $arch_dir;
+  my $comboot;
+
+  die "Can't setup isolinux on $opt_media.\n" if $opt_media && $opt_media ne 'cdrom';
+
+  $opt_syslinux = unpack_rpm $opt_syslinux if -f $opt_syslinux;
+
+  die "error: isolinux not found\n" unless -f "$opt_syslinux/$bl_list{isolinux}";
+
+  $arch_dir = 'i386';
+  $arch_dir = 'x86_64' if $opt_64 && !$opt_32;
+
+  $comboot = "$opt_syslinux/usr/share/syslinux/gfxboot.c32";
+  $comboot = "$opt_syslinux/usr/share/syslinux/gfxboot.com" unless -f $comboot;
+  $comboot = 0 unless -f $comboot;
+
+  my $menu = fake_menu 'install';
+
+  if($opt_verbose) {
+    print "menu items (default $menu->{default}):\n";
+    print "  $_\n" for (@{$menu->{list}});
+  }
+
+  my $dst = $gfxboot_tmp->dir('isolinux');
+  my $img = $gfxboot_tmp->file('isolinux.iso');
+
+  my $loader = "";
+  if(-x "$opt_syslinux/usr/bin/isolinux-config") {
+    $loader = "boot/$arch_dir/loader/";
+
+    mkdir "$dst/boot", 0755;
+    mkdir "$dst/boot/$arch_dir", 0755;
+    mkdir "$dst/boot/$arch_dir/loader", 0755;
+  }
+
+  if($opt_no_unpack) {
+    system "cp -a $file $dst/${loader}/bootlogo";
+  }
+  else {
+    my $bl_unpacked;
+    ( $bl_unpacked ) = unpack_archive $file;
+    my $bl_packed = pack_archive $bl_unpacked, 'bootlogo';
+    system "cp -a $bl_packed/* $dst/${loader}";
+  }
+
+  system "cp /boot/vmlinuz $dst/${loader}linux" if -f "/boot/vmlinuz";
+  system "cp /boot/initrd $dst/${loader}initrd" if -f "/boot/initrd";
+
+  if(! -f "$dst/${loader}message") {
+    open F, ">$dst/${loader}message";
+    print F "\x0cgfxboot didn't work? Try one of those:\n";
+    print F "  $_\n" for (@{$menu->{list}});
+    print F "\n";
+    close F;
+  }
+
+  if(! -f "$dst/${loader}isolinux.cfg") {
+    open F, ">$dst/${loader}isolinux.cfg";
+    print F "default $menu->{list}[$menu->{default}]\n\n";
+
+    for (@{$menu->{list}}) {
+      print F "label $_\n";
+      if($_ eq 'harddisk') {
+        print F "  localboot 0x80\n\n";
+      }
+      elsif($_ eq 'memtest' && -f("$dst/${loader}memtest")) {
+        print F "  kernel memtest\n\n";
+      }
+      else {
+        print F "  kernel linux\n  append initrd=initrd splash=silent showopts\n\n";
+      }
+    }
+
+    print F $comboot ? "ui gfxboot bootlogo message\n" : "gfxboot bootlogo\ndisplay message\n";
+
+    print F
+      "implicit 1\n" .
+      "prompt 1\n" .
+      "timeout 600\n";
+
+    close F;
+  }
+
+  system "cp $opt_syslinux/usr/share/syslinux/isolinux.bin $dst/$loader" and die "error: no isolinux\n";
+  system "cp $comboot $dst/$loader" if $comboot;
+
+  for (@opt_test_addfiles) {
+    system "cp -r $_ $dst/${loader}" and die "error copying file: $_\n";
+  }
+
+  for (@opt_test_rmfiles) {
+    s#^/+##;
+    system "cd $dst/${loader} ; rm -f $_" and die "error deleting file: $_\n";
+  }
+
+  if($loader ne "") {
+    system "$opt_syslinux/usr/bin/isolinux-config --base=/boot/$arch_dir/loader $dst/${loader}isolinux.bin" .
+    ($opt_verbose ? "" : " >/dev/null");
+  }
+
+  if($opt_32 && $opt_64) {
+    symlink "i386", "$dst/boot/x86_64" if -d "$dst/boot/i386";
+  }
+
+  system "genisoimage" . ($opt_verbose ? "" : " --quiet") .
+    " -o $img -f -r -no-emul-boot -boot-load-size 4 -boot-info-table" .
+    " -b ${loader}isolinux.bin -hide boot.catalog $dst";
+
+  $cdimage->{image_name} = $img;
+  $cdimage->{size} = (-s $img) >> 10;
+
+  return $cdimage;
+}
+
+
+sub prepare_syslinux
+{
+  local $_;
+  my $file = shift;
+  my $comboot;
+
+  die "Can't setup syslinux on $opt_media.\n" if $opt_media && $opt_media ne 'disk';
+
+  $opt_syslinux = unpack_rpm $opt_syslinux if -f $opt_syslinux;
+
+  die "error: syslinux not found\n" unless -f "$opt_syslinux/$bl_list{syslinux}";
+
+  $comboot = "$opt_syslinux/usr/share/syslinux/gfxboot.c32";
+  $comboot = "$opt_syslinux/usr/share/syslinux/gfxboot.com" unless -f $comboot;
+  $comboot = 0 unless -f $comboot;
+
+  my $menu = fake_menu 'install';
+
+  if($opt_verbose) {
+    print "menu items (default $menu->{default}):\n";
+    print "  $_\n" for (@{$menu->{list}});
+  }
+
+  my $dst = $gfxboot_tmp->dir('syslinux');
+  my $img = $gfxboot_tmp->file('syslinux.img');
+
+  if($opt_no_unpack) {
+    system "cp -a $file $dst/bootlogo";
+  }
+  else {
+    my $bl_unpacked;
+    ( $bl_unpacked ) = unpack_archive $file;
+    my $bl_packed = pack_archive $bl_unpacked, 'bootlogo';
+    system "cp -a $bl_packed/* $dst";
+  }
+
+  system "cp /boot/vmlinuz $dst/linux" if -f "/boot/vmlinuz";
+  system "cp /boot/initrd $dst/initrd" if -f "/boot/initrd";
+
+  if(! -f "$dst/message") {
+    open F, ">$dst/message";
+    print F "\x0cgfxboot didn't work? Try one of those:\n";
+    print F "  $_\n" for (@{$menu->{list}});
+    print F "\n";
+    close F;
+  }
+
+  if(! -f "$dst/syslinux.cfg") {
+    open F, ">$dst/syslinux.cfg";
+    print F "default $menu->{list}[$menu->{default}]\n\n";
+
+    for (@{$menu->{list}}) {
+      print F "label $_\n";
+      if($_ eq 'harddisk') {
+        print F "  localboot 0x80\n\n";
+      }
+      elsif($_ eq 'memtest' && -f("$dst/memtest")) {
+        print F "  kernel memtest\n\n";
+      }
+      else {
+        print F "  kernel linux\n  append initrd=initrd splash=silent showopts\n\n";
+      }
+    }
+
+    print F
+      "implicit 1\n" .
+      "gfxboot bootlogo\n" .
+      "display message\n" .
+      "prompt 1\n" .
+      "timeout 600\n";
+
+    close F;
+  }
+
+  system "cp $comboot $dst" if $comboot;
+
+  for (@opt_test_addfiles) {
+    system "cp -r $_ $dst" and die "error copying file: $_\n";
+  }
+
+  for (@opt_test_rmfiles) {
+    s#^/+##;
+    system "cd $dst ; rm -f $_" and die "error deleting file: $_\n";
+  }
+
+  my $img_size = `du -s --apparent-size --block-size 1k $dst 2>/dev/null`;
+  $img_size = $img_size =~ /^(\d+)/ ? $1 * 2 + 2 * 200 : 0;		# add 200k
+
+  my $hdimage = HDImage::new;
+  $hdimage->verbose($opt_verbose);
+  $hdimage->chs(0, 4, 16);
+  $hdimage->size($img_size);
+  $hdimage->type(1);
+  $hdimage->label('GFXBOOT');
+  $hdimage->fs('fat');
+  $hdimage->mbr('/usr/lib/boot/master-boot-code');
+  $hdimage->add_files(<$dst/*>);
+  $hdimage->write($img);
+
+  my $log = $gfxboot_tmp->file('syslinux.log');
+
+  system "$opt_syslinux/$bl_list{syslinux} -o " . $hdimage->partition_ofs * 512 . " $img >$log 2>&1";
+
+  print `cat $log`, "\n" if $opt_verbose >= 2;
+
+  return $hdimage;
+}
+
+
+sub prepare_pxelinux
+{
+  local $_;
+  my $file = shift;
+  my $pxeimage;
+  my $arch_dir;
+  my $comboot;
+
+  die "Can't setup pxelinux on $opt_media.\n" if $opt_media && $opt_media ne 'net';
+
+  $opt_syslinux = unpack_rpm $opt_syslinux if -f $opt_syslinux;
+
+  die "error: pxelinux not found\n" unless -f "$opt_syslinux/$bl_list{pxelinux}";
+
+  $arch_dir = 'i386';
+  $arch_dir = 'x86_64' if $opt_64 && !$opt_32;
+
+  $comboot = "$opt_syslinux/usr/share/syslinux/gfxboot.c32";
+  $comboot = "$opt_syslinux/usr/share/syslinux/gfxboot.com" unless -f $comboot;
+  $comboot = 0 unless -f $comboot;
+
+  my $menu = fake_menu 'install';
+
+  if($opt_verbose) {
+    print "menu items (default $menu->{default}):\n";
+    print "  $_\n" for (@{$menu->{list}});
+  }
+
+  my $dst = $gfxboot_tmp->dir('pxelinux');
+
+  my $loader = "";
+  if(-x "$opt_syslinux/usr/bin/isolinux-config") {
+    $loader = "boot/$arch_dir/loader/";
+
+    mkdir "$dst/boot", 0755;
+    mkdir "$dst/boot/$arch_dir", 0755;
+    mkdir "$dst/boot/$arch_dir/loader", 0755;
+  }
+
+  if($opt_no_unpack) {
+    system "cp -a $file $dst/${loader}/bootlogo";
+  }
+  else {
+    my $bl_unpacked;
+    ( $bl_unpacked ) = unpack_archive $file;
+    my $bl_packed = pack_archive $bl_unpacked, 'bootlogo';
+    system "cp -a $bl_packed/* $dst/${loader}";
+  }
+
+  system "cp /boot/vmlinuz $dst/${loader}linux" if -f "/boot/vmlinuz";
+  system "cp /boot/initrd $dst/${loader}initrd" if -f "/boot/initrd";
+
+  if(! -f "$dst/${loader}message") {
+    open F, ">$dst/${loader}message";
+    print F "\x0cgfxboot didn't work? Try one of those:\n";
+    print F "  $_\n" for (@{$menu->{list}});
+    print F "\n";
+    close F;
+  }
+
+  if(! -f "$dst/${loader}pxelinux.cfg/default") {
+    mkdir "$dst/${loader}pxelinux.cfg", 0755;
+    open F, ">$dst/${loader}pxelinux.cfg/default";
+    print F "default $menu->{list}[$menu->{default}]\n\n";
+
+    for (@{$menu->{list}}) {
+      print F "label $_\n";
+      if($_ eq 'harddisk') {
+        print F "  localboot 0x80\n\n";
+      }
+      elsif($_ eq 'memtest' && -f("$dst/${loader}memtest")) {
+        print F "  kernel memtest\n\n";
+      }
+      else {
+        print F "  kernel linux\n  append initrd=initrd splash=silent showopts\n\n";
+      }
+    }
+
+    print F $comboot ? "ui gfxboot bootlogo message\n" : "gfxboot bootlogo\ndisplay message\n";
+
+    print F
+      "implicit 1\n" .
+      "prompt 1\n" .
+      "timeout 600\n";
+
+    close F;
+  }
+
+  system "cp $opt_syslinux/usr/share/syslinux/pxelinux.0 $dst/$loader" and die "error: no pxelinux\n";
+  system "cp $comboot $dst/$loader" if $comboot;
+
+  for (@opt_test_addfiles) {
+    system "cp -r $_ $dst/${loader}" and die "error copying file: $_\n";
+  }
+
+  for (@opt_test_rmfiles) {
+    s#^/+##;
+    system "cd $dst/${loader} ; rm -f $_" and die "error deleting file: $_\n";
+  }
+
+  if($opt_32 && $opt_64) {
+    symlink "i386", "$dst/boot/x86_64" if -d "$dst/boot/i386";
+  }
+
+  $pxeimage->{image_name} = $dst;
+  $pxeimage->{loader} = "/${loader}pxelinux.0";
+
+  return $pxeimage;
+}
+
+
+sub prepare_qemu
+{
+}
+
+
+sub run_qemu
+{
+  my $vm_env = shift;
+  my $q = $vm_list{$opt_vm}{cmd};
+
+  $q = "MALLOC_CHECK_=0 $q -enable-kvm" if -d "/sys/devices/system/kvm";
+
+  $q .= " -m 512";
+
+  $q .= " -boot c" if $vm_env->{boot} eq 'hd';
+  $q .= " -boot d" if $vm_env->{boot} eq 'cd';
+  $q .= " -boot a" if $vm_env->{boot} eq 'fd';
+  $q .= " -boot n" if $vm_env->{boot} eq 'net';
+
+  $q .= " -hda $vm_env->{hd0}{image_name}" if $vm_env->{hd0};
+  $q .= " -hdb $vm_env->{hd1}{image_name}" if $vm_env->{hd1};
+  $q .= " -fda $vm_env->{fd0}{image_name}" if $vm_env->{fd0};
+  $q .= " -cdrom $vm_env->{cd0}{image_name}" if $vm_env->{cd0};
+
+  if($vm_env->{tftp}) {
+    $q .= " -net user,hostname=vm,tftp=$vm_env->{tftp}{image_name},bootfile=$vm_env->{tftp}{loader} -net nic,model=pcnet";
+  }
+
+  my $log = $gfxboot_tmp->file('qemu.log');
+
+  system "$q >$log 2>&1";
+
+  print `cat $log`, "\n" if $opt_verbose >= 2;
+}
+
+
+sub prepare_vbox
+{
+  my $vm_env = shift;
+  my $vm_64 = shift;
+  my $idx;
+
+  $vm_env->{vmname} = sprintf "gfxboot.%04u", int(rand 10000);
+
+  $vm_env->{base} = $gfxboot_tmp->dir('vbox');
+
+  $ENV{VBOX_USER_HOME} = $vm_env->{base};
+  mkdir "$vm_env->{base}/HardDisks", 0755;
+
+  # print "*** $vm_env->{base}\n";
+
+  my $log = $gfxboot_tmp->file('vbox.log');
+
+  system "VBoxManage createvm --name $vm_env->{vmname} --register >$log 2>&1";
+
+  system "VBoxManage setextradata global 'GUI/UpdateDate' 'never' >$log 2>&1";
+  system "VBoxManage setextradata global 'GUI/RegistrationData' 'triesLeft=0' >$log 2>&1";
+  system "VBoxManage setextradata global 'GUI/LicenseAgreed' '7,8' >$log 2>&1";
+  system "VBoxManage setextradata global 'GUI/SuppressMessages' 'remindAboutAutoCapture,remindAboutInputCapture,remindAboutMouseIntegrationOn,remindAboutMouseIntegrationOff,remindAboutWrongColorDepth,confirmInputCapture' >$log 2>&1";
+
+  system "VBoxManage modifyvm $vm_env->{vmname} --ostype OpenSUSE_64 >$log 2>&1";
+  system "VBoxManage modifyvm $vm_env->{vmname} --memory $opt_mem --biosbootmenu disabled --bioslogofadein off --bioslogofadeout off >$log 2>&1";
+  system "VBoxManage modifyvm $vm_env->{vmname} --hwvirtex on >$log 2>&1" if $vm_64;
+  system "VBoxManage modifyvm $vm_env->{vmname} --ioapic on >$log 2>&1";
+#  system "VBoxManage modifyvm $vm_env->{vmname} --hwvirtexexcl off >$log 2>&1";
+  system "VBoxManage modifyvm $vm_env->{vmname} --firmware efi64 >$log 2>&1" if $opt_efi == 64;
+  system "VBoxManage modifyvm $vm_env->{vmname} --firmware efi32 >$log 2>&1" if $opt_efi == 32;
+
+  if($vm_env->{hds} > 0) {
+    system "VBoxManage storagectl $vm_env->{vmname} --name sata1 --add sata >$log 2>&1";
+  }
+  if($vm_env->{cds} > 0) {
+    system "VBoxManage storagectl $vm_env->{vmname} --name ide1 --add ide >$log 2>&1";
+  }
+  if($vm_env->{fds} > 0) {
+    system "VBoxManage storagectl $vm_env->{vmname} --name floppy1 --add floppy >$log 2>&1";
+  }
+
+  for($idx = 0; $idx < $vm_env->{hds}; $idx++) {
+    if($vm_env->{"hd$idx"}) {
+      create_vmdk $vm_env->{"hd$idx"}, "$vm_env->{base}/HardDisks/hd${idx}.vmdk";
+      my $opt = "hd" . chr($idx + ord("a"));
+      system "VBoxManage storageattach $vm_env->{vmname} --storagectl sata1 --port $idx --device 0 --type hdd --medium hd${idx}.vmdk >$log 2>&1";
+    }
+  }
+
+  for($idx = 0; $idx < $vm_env->{cds}; $idx++) {
+    if($vm_env->{"cd$idx"}) {
+      system "ln -s $vm_env->{\"cd$idx\"}{image_name} $vm_env->{base}/HardDisks/\"cd$idx\".iso >$log 2>&1";
+      system "VBoxManage storageattach $vm_env->{vmname} --storagectl ide1 --port $idx --device 0 --type dvddrive --medium \"cd$idx\".iso >$log 2>&1";
+    }
+  }
+
+  for($idx = 0; $idx < $vm_env->{fds}; $idx++) {
+    if($vm_env->{"fd$idx"}) {
+      system "ln -s $vm_env->{\"fd$idx\"}{image_name} $vm_env->{base}/HardDisks/\"fd$idx\".img >$log 2>&1";
+      system "VBoxManage storageattach $vm_env->{vmname} --storagectl floppy1 --port $idx --device 0 --type floppy --medium \"fd$idx\".img >$log 2>&1";
+    }
+  }
+
+  system "VBoxManage modifyvm $vm_env->{vmname} --boot1 none >$log 2>&1";
+  system "VBoxManage modifyvm $vm_env->{vmname} --boot2 none >$log 2>&1";
+  system "VBoxManage modifyvm $vm_env->{vmname} --boot3 none >$log 2>&1";
+  system "VBoxManage modifyvm $vm_env->{vmname} --boot4 none >$log 2>&1";
+
+  system "VBoxManage modifyvm $vm_env->{vmname} --boot1 disk >$log 2>&1" if $vm_env->{boot} eq 'hd';
+  system "VBoxManage modifyvm $vm_env->{vmname} --boot1 dvd >$log 2>&1" if $vm_env->{boot} eq 'cd';
+  system "VBoxManage modifyvm $vm_env->{vmname} --boot1 floppy >$log 2>&1" if $vm_env->{boot} eq 'fd';
+
+  print `cat $log`, "\n" if $opt_verbose >= 2;
+}
+
+
+sub run_vbox
+{
+  my $vm_env = shift;
+  my $i;
+
+  my $log = $gfxboot_tmp->file('vbox.log');
+
+  system "VBoxManage startvm $vm_env->{vmname} >$log 2>&1";
+
+  # give it 10 seconds to start
+  for($i = 10; $i > 0; $i--) {
+    sleep 1;
+    last if open V, "$vm_env->{base}/Machines/$vm_env->{vmname}/Logs/VBox.log";
+  }
+
+  print `cat $log`, "\n" if $opt_verbose >= 2;
+
+  # print "*** $i\n";
+
+  return unless $i;
+
+  # monitor log file for hints the vm terminated
+  while(1) {
+    $_ = <V>;
+    if(defined $_) {
+      print if $opt_verbose >= 2;
+    }
+    else {
+      sleep 1;
+    }
+    last if /TERMINATED/;
+  }
+
+  close V;
+
+  sleep 1;
+}
+
+
+sub run_vboxsdl
+{
+  my $vm_env = shift;
+
+  system "VBoxSDL -vm $vm_env->{vmname}";
+}
+
+
+sub prepare_vmware
+{
+  my $vm_env = shift;
+
+  $vm_env->{base} = $gfxboot_tmp->dir('vmware');
+
+  if($vm_env->{hd0}) {
+    open F, ">$vm_env->{base}/hd0.vmdk";
+    print F <<"    vmdk";
+version=1
+CID=12345678
+parentCID=ffffffff
+createType="fullDevice"
+RW $vm_env->{hd0}{size} FLAT \"$vm_env->{hd0}{image_name}\" 0
+ddb.virtualHWVersion = \"3\"
+ddb.geometry.cylinders = \"$vm_env->{hd0}{c}\"
+ddb.geometry.heads = \"$vm_env->{hd0}{h}\"
+ddb.geometry.sectors = \"$vm_env->{hd0}{s}\"
+ddb.geometry.biosCylinders = \"$vm_env->{hd0}{c}\"
+ddb.geometry.biosHeads = \"$vm_env->{hd0}{h}\"
+ddb.geometry.biosSectors = \"$vm_env->{hd0}{s}\"
+    vmdk
+    close F;
+  }
+
+  if($vm_env->{hd1}) {
+    open F, ">$vm_env->{base}/hd1.vmdk";
+    print F <<"    vmdk";
+version=1
+CID=12345679
+parentCID=ffffffff
+createType="fullDevice"
+RW $vm_env->{hd1}{size} FLAT \"$vm_env->{hd1}{image_name}\" 0
+ddb.virtualHWVersion = \"3\"
+ddb.geometry.cylinders = \"$vm_env->{hd1}{c}\"
+ddb.geometry.heads = \"$vm_env->{hd1}{h}\"
+ddb.geometry.sectors = \"$vm_env->{hd1}{s}\"
+ddb.geometry.biosCylinders = \"$vm_env->{hd1}{c}\"
+ddb.geometry.biosHeads = \"$vm_env->{hd1}{h}\"
+ddb.geometry.biosSectors = \"$vm_env->{hd1}{s}\"
+    vmdk
+    close F;
+  }
+
+  open F, ">$vm_env->{base}/gfxboot.vmx";
+  print F
+    "#!/usr/bin/vmware\n" .
+    "config.version = \"7\"\n" .
+    "virtualHW.version = \"3\"\n" .
+    "memsize = \"128\"\n" .
+    "displayName = \"gfxboot\"\n" .
+    "guestOS = \"linux\"\n";
+
+  if($vm_env->{hd0}) {
+    print F
+      "ide0:0.present = \"TRUE\"\n" .
+      "ide0:0.fileName = \"$vm_env->{base}/hd0.vmdk\"\n";
+  }
+
+  if($vm_env->{hd1}) {
+    print F
+      "ide0:1.present = \"TRUE\"\n" .
+      "ide0:1.fileName = \"$vm_env->{base}/hd1.vmdk\"\n";
+  }
+
+  if($vm_env->{cd0}) {
+    print F
+      "ide1:0.present = \"TRUE\"\n" .
+      "ide1:0.fileName = \"$vm_env->{cd0}{image_name}\"\n" .
+      "ide1:0.deviceType = \"cdrom-image\"\n" .
+      "ide1:0.startConnected = \"TRUE\"\n";
+  }
+
+  if($vm_env->{fd0}) {
+    print F
+      "floppy0.present = \"TRUE\"\n" .
+      "floppy0.fileName = \"$vm_env->{fd0}{image_name}\"\n" .
+      "floppy0.fileType = \"file\"\n" .
+      "floppy0.startConnected = \"TRUE\"\n";
+  }
+  else {
+    print F
+      "floppy0.present = \"FALSE\"\n";
+  }
+
+  close F;
+}
+
+
+sub run_vmplayer
+{
+  my $vm_env = shift;
+
+  my $log = $gfxboot_tmp->file('vmware.log');
+
+  system "vmplayer $vm_env->{base}/gfxboot.vmx >$log 2>&1";
+
+  print `cat $log`, "\n" if $opt_verbose >= 2;
+}
+
+
+sub run_vmware
+{
+  my $vm_env = shift;
+
+  my $log = $gfxboot_tmp->file('vmware.log');
+
+  system "vmware -qx $vm_env->{base}/gfxboot.vmx >$log 2>&1";
+
+  print `cat $log`, "\n" if $opt_verbose >= 2;
+}
+
+
+sub prepare_bd
+{
+}
+
+
+sub run_bd
+{
+  my $vm_env = shift;
+  my $q = $vm_list{$opt_vm}{cmd};
+
+  $q .= " $vm_env->{hd0}{image_name}" if $vm_env->{boot} eq 'hd';
+  $q .= " $vm_env->{cd0}{image_name}" if $vm_env->{boot} eq 'cd';
+  $q .= " $vm_env->{fd0}{image_name}" if $vm_env->{boot} eq 'fd';
+
+  system $q;
+}
+
+
+sub prepare_bochs
+{
+}
+
+
+sub run_bochs
+{
+  my $vm_env = shift;
+  my $q = $vm_list{$opt_vm}{cmd};
+
+  if($vm_env->{boot} eq 'hd') {
+    $q .= 
+      " -q 'boot: disk'" .
+      " 'ata0-master: type=disk, path=$vm_env->{hd0}{image_name}, cylinders=$vm_env->{hd0}{c}, heads=$vm_env->{hd0}{h}, spt=$vm_env->{hd0}{s}'".
+      " 'panic: action=report'" .
+      " 'debugger_log: /dev/null'" .
+      " 'log: /dev/null'" .
+      " 'parport1: enabled=0'" .
+      " 'clock: sync=realtime, time0=local'" .
+      " 2>&1";
+  }
+
+  if($vm_env->{boot} eq 'cd') {
+    $q .= 
+      " -q 'boot: cdrom'" .
+      " 'ata0-master: type=cdrom, path=$vm_env->{cd0}{image_name}, status=inserted'".
+      " 'panic: action=report'" .
+      " 'debugger_log: /dev/null'" .
+      " 'log: /dev/null'" .
+      " 'parport1: enabled=0'" .
+      " 'clock: sync=realtime, time0=local'" .
+      " 2>&1";
+  }
+
+  if($vm_env->{boot} eq 'fd') {
+    $q .=
+      " -q 'boot: a'" .
+      " 'floppya: image=$vm_env->{fd0}{image_name}, status=inserted'" .
+      " 'ata0-master: type=disk, path=/dev/null'".
+      " 'panic: action=report'" .
+      " 'debugger_log: /dev/null'" .
+      " 'log: /dev/null'" .
+      " 'parport1: enabled=0'" .
+      " 'clock: sync=realtime, time0=local'" .
+      " 2>&1";
+  }
+
+  system $q;
+}
+
+
+sub find_free_loop
+{
+  local $_;
+  my (@loops, $l);
+
+  my $start = shift;
+
+  @loops = </dev/loop*>;
+
+  @loops = grep {
+    ($l = $_) =~ s#^/dev##;
+    !(`cat /sys/block/$l/size` + 0);
+  } @loops;
+
+  if($start) {
+    @loops = grep { $_ eq $start .. $_ eq "" } @loops;
+    shift @loops;
+  }
+
+  die "error: could not find a free loop device\n" unless $loops[0];
+
+  return $loops[0];
+}
+
+
+sub show_config
+{
+  my $dir = shift;
+
+  my $cfg_file = "$dir/gfxboot.cfg";
+  $cfg_file = $opt_gfxboot_cfg if defined $opt_gfxboot_cfg;
+
+  system "cat $cfg_file 2>/dev/null";
+}
+
+
+sub is_cpio
+{
+  my $file = shift;
+  my ($f, $buf);
+
+  open $f, $file;
+  sysread $f, $buf, 2;
+  close $f;
+
+  return $buf eq "\x71\xc7" || $buf eq "\xc7\x71" ? 1 : 0;
+}
+
+
+sub is_gfxcode
+{
+  my $file = shift;
+  my ($f, $buf);
+
+  open $f, $file;
+  sysread $f, $buf, 4;
+  close $f;
+
+  return $buf eq "\x00\x7f\xd9\xb2" ? 1 : 0;
+}
+
+
+sub unpack_archive
+{
+  my $file = shift;
+  my ($i, $j, $dir, $a_dir, $has_code, $archive_name);
+
+  $dir = $gfxboot_tmp->dir;
+
+  if(-f $file) {
+    $i = system "cat $file | ( cd $dir ; cpio --quiet -dmi 2>/dev/null)";
+    die "$file: failed to unpack archive\n" if $i;
+    $archive_name = $file;
+  }
+  elsif(-d $file) {
+    for $i (<$file/*>) {
+      if(-e $i) {
+        if(is_cpio($i)) {
+          ( $a_dir ) = unpack_archive $i;
+          for $j (<$a_dir/*>) {
+            if(is_gfxcode $j) {
+              $has_code = 1;
+              last;
+            }
+          }
+          if($has_code) {
+            $archive_name = $i;
+            for $j (<$a_dir/*>) {
+              system "cp -a $j $dir"
+            }
+          }
+          else {
+            system "cp -a $i $dir"
+          }
+        }
+        else {
+          system "cp -a $i $dir";
+        }
+      }
+    }
+  }
+  else {
+    die "$file: failed to unpack archive\n";
+  }
+
+  $archive_name =~ s#.*/##;
+
+  return ($dir, $archive_name);
+}
+
+
+sub pack_archive
+{
+  my $dir = shift;
+  my $archive = shift;
+  my ($i, $f, @pack_list, @copy_list, $file);
+
+  if($archive ne "") {
+
+    # Pack non-8.3 files and the startup code into cpio archive, keep
+    # everything else as separate files.
+
+    $file = $gfxboot_tmp->dir;
+
+    for $i (<$dir/*>) {
+      $i =~ s#.*/##;
+      if($i !~ /^[^.]{1,8}(\.[^.]{1,3})?$/ || is_gfxcode("$dir/$i")) {
+        push @pack_list, $i;
+      }
+      else {
+        push @copy_list, $i;
+      }
+    }
+
+    for $i (@copy_list) {
+      system "cp -a $dir/$i $file";
+    }
+
+    if(@pack_list) {
+      open $f, "| ( cd $dir ; cpio --quiet -o ) >$file/$archive";
+      print $f join("\n", @pack_list);
+      close $f;
+    }
+
+  }
+  else {
+    $file = $gfxboot_tmp->file;
+
+    $i = system "cd $dir ; find . | cpio --quiet -o >$file 2>/dev/null";
+    die "$file: failed to create archive\n" if $i;
+  }
+
+  return $file;
+}
+
+
+sub update_archive
+{
+  my $src = shift;
+  my $dst = shift;
+
+  if(-d $dst) {
+    my $bl = $work_archive_name;
+    $bl = 'bootlogo' if $work_archive_name eq '';
+
+    my $packed = pack_archive((unpack_archive $src)[0], $bl);
+
+    if(-w $dst) {
+      system "rm -rf $dst/*" unless $dst eq '/';
+      system "cp -a $packed/* $dst";
+      system "chmod 755 $dst";
+    }
+    else {
+      check_root "Cannot update $dst: Permission denied";
+
+      susystem "rm -rf $dst/*" unless $dst eq '/';
+      susystem "cp -a $packed/* $dst";
+      susystem "chmod 755 $dst";
+    }
+  }
+  else {
+    if(-w $dst || !-e $dst) {
+      system "cp $src $dst";
+      system "chmod 644 $dst";
+    }
+    else {
+      check_root "Cannot update $dst: Permission denied";
+
+      susystem "cp $src $dst";
+      susystem "chmod 644 $dst";
+    }
+  }
+}
+
+
+sub read_gfxboot_config
+{
+  local $_;
+  my $dir = shift;
+  my $section = "base";
+  my ($cfg, $l);
+
+  my $cfg_file = "$dir/gfxboot.cfg";
+  $cfg_file = $opt_gfxboot_cfg if defined $opt_gfxboot_cfg;
+
+  push @{$cfg->{sections}}, $section;
+  $cfg->{sectionnames}{$section} = 1;
+
+  my $first_section = 1;
+
+  open G, $cfg_file;
+  while(<G>) {
+    chomp;
+    s/^\s*//;
+
+    next if $_ eq "";
+
+    if(/^\[(.*?)\]/) {
+      if($first_section) {
+        $first_section = 0;
+
+        # only comments at beginning of file? -> not part of any section
+        if((grep { !/^;/ } @{$cfg->{section}{$section}}) == 0) {
+          $cfg->{comment} = $cfg->{section}{$section};
+          delete $cfg->{section}{$section};
+        }
+      }
+
+      $section = $1 eq "" ? "base" : $1;
+      if(!$cfg->{sectionnames}{$section}) {
+        push @{$cfg->{sections}}, $section;
+        $cfg->{sectionnames}{$section} = 1;
+      }
+      next;
+    }
+
+    push @{$cfg->{section}{$section}}, $_;
+  }
+  close G;
+
+  return $cfg;
+}
+
+
+sub write_gfxboot_config
+{
+  local $_;
+  my $dir = shift;
+  my $cfg = shift;
+  my $section;
+  my $idx = 0;
+
+  my $cfg_file = "$dir/gfxboot.cfg";
+  $cfg_file = $opt_gfxboot_cfg if defined $opt_gfxboot_cfg;
+
+  open G, ">$cfg_file";
+
+  if(@{$cfg->{comment}}) {
+    print G join("\n", @{$cfg->{comment}}), "\n\n";
+  }
+
+  for $section (@{$cfg->{sections}}) {
+    print G "\n" if $idx++;
+    print G "[$section]\n";
+    for (@{$cfg->{section}{$section}}) {
+      print G "$_\n" if $_ ne "";
+    }
+  }
+
+  close G;
+}
+
+
+sub change_config
+{
+  local $_;
+  my ($section, $key, $val);
+  my $dir = shift;
+
+  my $cfg = read_gfxboot_config $dir;
+
+  for (@opt_changeconfig) {
+    next unless /^\s*(\S+)=(.*?)\s*$/;
+    $key = $1;
+    $val = $2;
+
+    $section = "base";
+    if($key =~ s/^(\S*?)::(\S+)/$2/) {
+      $section = $1 eq "" ? "base" : $1;
+    }
+
+    if(!$cfg->{sectionnames}{$section}) {
+      push @{$cfg->{sections}}, $section;
+      $cfg->{sectionnames}{$section} = 1;
+    }
+
+    for (@{$cfg->{section}{$section}}) {
+      if(/^(\S+?)=(.*)$/ && $key eq $1) {
+        $_ = "$key=$val";
+        undef $key;
+        last;
+      }
+    }
+
+    push @{$cfg->{section}{$section}}, "$key=$val" if defined $key;
+  }
+
+  write_gfxboot_config $dir, $cfg;
+}
+
+
+sub rm_config
+{
+  local $_;
+  my ($section, $key);
+  my $dir = shift;
+
+  my $cfg = read_gfxboot_config $dir;
+
+  for (@opt_rmconfig) {
+    $key = $_;
+
+    $section = "base";
+    if($key =~ s/^(\S*?)::(\S+)/$2/) {
+      $section = $1 eq "" ? "base" : $1;
+    }
+
+    next unless $cfg->{sectionnames}{$section};
+
+    for (@{$cfg->{section}{$section}}) {
+      if(/^${key}=/) {
+        undef $_;
+      }
+    }
+  }
+
+  write_gfxboot_config $dir, $cfg;
+}
+
+
+sub rm_section
+{
+  local $_;
+  my ($section);
+  my $dir = shift;
+
+  my $cfg = read_gfxboot_config $dir;
+
+  for (@opt_rmsection) {
+    $cfg->{sectionnames}{$_} = 0;
+  }
+
+  $cfg->{sections} = [ grep { $cfg->{sectionnames}{$_} } @{$cfg->{sections}} ];
+
+  write_gfxboot_config $dir, $cfg;
+}
+
+
+sub add_files
+{
+  local $_;
+  my $dir = shift;
+
+  for (@opt_addfiles) {
+    system "cp $_ $dir" and die "error copying file\n";
+  }
+}
+
+
+sub rm_files
+{
+  local $_;
+  my $dir = shift;
+
+  for (@opt_rmfiles) {
+    s#^/+##;
+    system "cd $dir ; rm $_" and die "error deleting file\n";
+  }
+}
+
+
+sub extract_files
+{
+  local $_;
+  my $dir = shift;
+
+  for (@opt_extractfiles) {
+    if(-f "$dir/$_") {
+      system "cp $dir/$_ ." and die "error copying file\n";
+    }
+    else {
+      die "$_: No such file\n";
+    }
+  }
+}
+
+
+sub update_theme
+{
+  my $theme = shift;
+  my $theme_dir = shift;
+  my $dst = shift;
+  my $src = shift;
+  local $_;
+
+  for (<$src/lang>, <$src/languages>, <$src/translations.*>) {
+    system "cp $_ $dst" if -f $_;
+  }
+
+  for (<$src/*.hlp>, <$src/*.tr>) {
+    $_ = substr $_, length($src) + 1;
+    system "cp $src/$_ $dst";
+    system "cp $theme_dir/$_ $dst" if -f "$theme_dir/$_";
+  }
+}
+
+
+sub short_locale
+{
+  my $l = shift;
+
+  $l =~ s/\_.*//;
+
+  return $l;
+}
+
+
+sub add_languages
+{
+  local $_;
+  my $dir = shift;
+  my ($theme, $theme_dir, $sl, %lang, @langs, $f);
+
+  $theme = get_theme $dir;
+  $theme_dir = "/etc/bootsplash/themes/$theme/bootloader";
+  print "using theme \"$theme\"\n" if $opt_verbose;
+
+  @langs = `cat $dir/languages`;
+  chomp @langs;
+
+  for (@langs) {
+    $lang{$1} = 1 if /^(\S+)/;
+  }
+
+  for (@opt_addlanguages) {
+    $sl = short_locale $_;
+    if(-f "$theme_dir/$_.tr") {
+      system "cp $theme_dir/$_.tr $dir";
+    }
+    elsif(-f "$theme_dir/$sl.tr") {
+      system "cp $theme_dir/$sl.tr $dir";
+    }
+    if(-f "$theme_dir/$_.hlp") {
+      system "cp $theme_dir/$_.hlp $dir";
+    }
+    elsif(-f "$theme_dir/$sl.hlp") {
+      system "cp $theme_dir/$sl.hlp $dir";
+    }
+    if(!$lang{$_}) {
+      push @langs, $_;
+      $lang{$_} = 1;
+    }
+  }
+
+  open $f, ">$dir/languages";
+  print $f "$_\n" for (@langs);
+  close $f;
+}
+
+
+sub rm_languages
+{
+  local $_;
+  my $dir = shift;
+  my ($l, $sl, @lang, %lang, %rmlang);
+
+  for (`cat $dir/languages`) {
+    chomp;
+    push @lang, $_;
+    $lang{$_} = 1;
+  }
+
+  for (@opt_rmlanguages) {
+    $sl = short_locale $_;
+    if($lang{$_}) {
+      $rmlang{$_} = 1;
+    }
+    elsif($sl eq $_) {
+      for $l (@lang) {
+        $rmlang{$l} = 1 if short_locale($l) eq $sl;
+      }
+    }
+  }
+
+  @lang = grep { !$rmlang{$_} } @lang;
+
+  undef %lang;
+  open L, ">$dir/languages";
+  for (@lang) {
+    print L "$_\n";
+    $lang{$_} = 1;
+    $lang{short_locale $_} = 1;
+  }
+  close L;
+
+  for (<$dir/*.tr>, <$dir/*.hlp>) {
+    system "rm -f $_" unless m#/([^/]+)\.(tr|hlp)# && $lang{$1};
+  }
+
+  for (<$dir/translations.*>) {
+    system "rm -f $_" unless m#/translations\.([^/]+)$# && $lang{$1};
+  }
+}
+
+
+sub get_theme
+{
+  local $_;
+  my $dir = shift;
+  my $theme;
+
+  my $cfg_file = "$dir/gfxboot.cfg";
+  $cfg_file = $opt_gfxboot_cfg if defined $opt_gfxboot_cfg;
+
+  for (`cat $cfg_file 2>/dev/null`) {
+    if(/^\s*theme=(.*?)\s*$/) {
+      if( -d "/etc/bootsplash/themes/$1/bootloader") {
+        $theme = $1;
+        last;
+      }
+    }
+  }
+
+  if(!$theme) {
+    for (`cat /etc/sysconfig/bootsplash 2>/dev/null`) {
+      if(/^\s*THEME=\"(.*?)\"\s*$/) {
+        if( -d "/etc/bootsplash/themes/$1/bootloader") {
+          $theme = $1;
+          last;
+        }
+      }
+    }
+  }
+
+  if(!$theme) {
+    $_ = (</etc/bootsplash/themes/*/bootloader>)[0];
+    if(m#themes/(.*?)/bootloader#) {
+      $theme = $1;
+      print STDERR "could not find out current theme, using \"$theme\"\n";
+    }
+  }
+
+  die "sorry, no usable theme found\n" unless $theme;
+
+  return $theme;
+}
+
+
+sub unpack_rpm
+{
+  my $rpm = shift;
+  my $dir = $gfxboot_tmp->dir;
+
+  system "rpm2cpio $rpm | ( cd $dir ; cpio --quiet --sparse -dimu --no-absolute-filenames )";
+
+  return $dir;
+}
+
+
+sub create_vmdk
+{
+  my $hd = shift;
+  my $file = shift;
+
+  if($hd) {
+    open F, ">$file";
+    print F <<"    vmdk";
+# Disk DescriptorFile
+version=1
+CID=ec316048
+parentCID=ffffffff
+createType="fullDevice"
+RW $hd->{size} FLAT \"$hd->{image_name}\" 0
+ddb.virtualHWVersion = \"4\"
+ddb.adapterType=\"ide\"
+ddb.geometry.cylinders = \"$hd->{c}\"
+ddb.geometry.heads = \"$hd->{h}\"
+ddb.geometry.sectors = \"$hd->{s}\"
+ddb.geometry.biosCylinders = \"$hd->{c}\"
+ddb.geometry.biosHeads = \"$hd->{h}\"
+ddb.geometry.biosSectors = \"$hd->{s}\"
+    vmdk
+    close F;
+  }
+}
+

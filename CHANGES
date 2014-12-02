@@ -1,0 +1,59 @@
+"init" --> "gfxtheme"  Other names?
+
+Make MX and antiX bootloader from same source.  Differences
+are in:
+
+    1) background image(s)
+    2) gfxboot (which Fn menus are used)
+    3) contents of options menu
+    4) Help file
+
+Remove as many unused menus as possible to save space to let
+chain.c32 work.  Can it get it to work with 1024 res?
+
+Use text files to customize menus.  We had already been doing
+this for the desktop menu.  Now do it for Options as well.
+
+Given up on "guessing" the default desktop.  Instead just have a
+"default" entry that does not add a desktop= cheat.  I did allow
+for a "desktop.top" file which would set the label on the default
+desktop entry (with no desktop=xxx cheat) but that is just too
+complicated IMO.
+
+Changed format of isolinux.cfg (syslinux.cfg).  Added
+
+    MENU LABEL  ....
+
+fields.  The LABELs are now short single words that are used to
+identify an entry and possibly boot it as well (if all else
+fails).  We also use the labels to turn off the options field on
+some entries.  The MENU LABEL has spaces, not underscores.  We
+only needed the underscores when we used the LABEL field as the
+menu label.
+
+I've easily gotten the size of the gfxtheme (was init) file down
+to 95K but chain.c32 still does not work when I use a resolution
+of 1024.
+
+So for now, but the Options the and Desktop menu will be
+modifiable by the user just be editing a text .men file.  I could
+easily extend this to the Video Mode, Console, and Save menus,
+etc.  Just not Language or Timezone (I think).
+
+
+I have still not figure out how to have "splash=v" when F7
+changes to "Save".  
+
+KNOWN ISSUES:
+
+  1) chain.c32 does not work at 1024x768
+
+  2) nobootoptions in gfxboot.cfg still relies on the visible
+     MENU LABELs, not the abbreviated LABELs.
+
+  3) I may need to add back in menus used by MX such as
+     the DPI menu.  I want to only add back what is needed.
+
+  4) "make antiX-image" and "make MX-images" put their output
+     images in the Input/$DISTRO/ directories which is highly
+     counter-intuitive.  

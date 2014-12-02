@@ -1,0 +1,20 @@
+#!/bin/bash
+
+ME=${0##*/}
+
+usage() {
+    cat  <<Usage >&2
+Usage: $ME <from.html> <blurb.html>
+Convert a master.html file into a format suitible for viewing.
+Usage
+    exit
+}
+
+[ $# -eq 2 ] || usage;
+
+
+cat $1 | sed -r \
+    -e 's:<a name="([^"]*)">(.*)</a>:<span id="\1"><a href="#banner-text">\2</a></span>:' \
+    -e "/^<meta /d"                             \
+    -e "/^<body /d"                             \
+    -e "/^<html>/ r $2"

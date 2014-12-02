@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for file; do
+    base=$(basename $file .po)
+    dir=$(basename $(dirname $file) | sed 's/antix-development\.//')
+    cnt=$(grep '^msgstr "..*"' $file | wc -l)
+    tot=$(grep '^msgstr' $file | wc -l)
+    printf "%-20s %3d %3d %3d%%\n" "$dir/$base" $cnt $tot $(((100 * cnt) /tot))
+done

@@ -1,0 +1,659 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<body>
+    <dum/>
+<div id="">
+
+</div>
+
+<div id="main">
+<h3>
+<a name="main">Help</a>
+</h3>
+
+<p>
+WELCOME to antiX Linux: <em>lean and mean!</em>
+</p>
+<p>
+The <em>demo</em> user password is "<em>demo</em>" (no quotes)<br/>
+The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
+</p>
+
+<ul>
+    <li><a href="#help">      F1</a>  the Help System</li>
+    <li><a href="#language">  F2</a>  Select Language</li>
+    <li><a href="#timezone">  F3</a>  Select Timezone</li>
+    <li><a href="#options1">  F4</a>  Miscellaneous Options</li>
+    <li><a href="#video_mode">F5</a>  Video Mode</li>
+    <li><a href="#desktop">   F6</a>  Choose Desktop Program</li>
+    <li><a href="#console">   F7</a>  Console and Splash</li>
+    <li><a href="#save">      F7</a>  Save Bootloader Settings</li>
+    <li><a href="#persist_frugal"> Persistence and Frugal Install</a></li>
+    <li><a href="#bo_instruct"> Other Boot Options</a></li>
+    <li><a href="#about">       About antiX Linux</a></li>
+</ul>
+
+<p>
+Press the <em>[Esc]</em> key to leave the help system
+</p>
+
+</div>
+
+<div id="help">
+<h3>
+<a name="help">Using the Help System</a>
+</h3>
+
+<p>
+The help system consists of a set of linked pages that you can navigate
+through with the follow keys.  
+<p>
+
+<ul>
+    <li><em>[Up Arrow]</em> -- highlight previous link</li>
+    <li><em>[Down Arrow]</em> -- highlight next link</li>
+    <li><em>[Left Arrow]</em>, <em>[Backspace]</em> -- return to previous page</li>
+    <li><em>[Right Arrow]</em>, <em>[Enter]</em>, <em>[Space]</em> -- follow link</li>
+    <li><em>[Page Up]</em>, <em>[Home]</em> -- go to first link on page</li>
+    <li><em>[Page Down]</em>, <em>[End]</em> -- go to last link on page</li>
+    
+    <li><em>[Esc]</em> -- leave help</li>
+</ul>
+
+<p>
+Using [Left Arrow] or [Backspace] will take you to your place 
+(same highlighted link) on the previous page.
+</p>
+
+<p>
+Go to <a href="#general-help"> General Help</a>
+</p>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | prev
+ | <a href="#general-help">next</a>
+</p>
+
+</div>
+
+<div id="general-help">
+<h3>
+<a name="general-help">General Help</a>
+</h3>
+
+<p>
+This bootloader lets you select which program to launch (<em>antiX
+Linux</em> or <em>memtest</em>) and in the case of antiX Linux select
+which boot parameters (cheat codes) get set when the program launches.
+There are 3 ways to do this:
+</p>
+
+<ul>
+    <li>
+    <em>Main Menu</em><br/>
+    [Up Arrow] and [Down Arrow] select which program to run
+    and some boot options. [Enter] launches the program.
+    </li>
+    <li>
+    <em>Boot Options</em><br/>
+    [Left Arrow], [Right Arrow], and [Backspace] edit some main
+    menu options directly.  You can also type in new options.
+    </li>
+    <li>
+    <em>Function Key Pop-up Menus</em><br/>
+    [F2] through [f6] open menus. Navigate them with the arrow keys.
+    [Enter] selects highlighted option.  [Esc] leaves the pop-up
+    menu without selecting an entry.
+    </li>
+</ul>
+
+
+<p>
+Go to <a href="#help"> Using the Help System</a><br/>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#help">prev</a>
+ | <a href="#language">next</a>
+</p>
+
+</div>
+
+<div id="language">
+<h3>
+<a name="language">F2: Select Language</a>
+</h3>
+
+<p>
+Press <em>F2</em> to get a list of supported languages.  Select your language.
+This will automatically set the keyboard layout and the timezone.  If your
+country has more than one timezone then use <em>F3</em> to explicitly set the
+timezone for your area.  
+</p>
+
+<p>
+The menu is an easy shortcut for entering <em>lang=language-code</em> directly
+on the boot line.
+</p>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#general-help">prev</a>
+ | <a href="#timezone">next</a>
+</p>
+</div>
+
+<div id="timezone">
+<h3>
+<a name="timezone">F3: Select Timezone</a>
+</h3>
+
+<p>
+Press <em>F3</em> to get at list of cities in various time zones.  The cities
+are listed time zone order so they circle the globe eastward.  If your area
+uses Daylight Savings Time then make sure you select a city that does also.
+Your system will be started using the timezone selected.  Locations that
+observe <em>Daylight Savings Time</em> are marked with a trailing <em>*</em>
+(asterisk).  
+</p>
+
+<p>
+<em>NOTE:</em> You do not have to use this option if you have set a language
+and your country has only one time-zone.
+</p>
+
+<p>
+The menu is an easy shortcut for entering <em>tz=timezone</em> directly
+on the boot line.
+<p>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#language">prev</a>
+ | <a href="#options1">next</a>
+</p>
+
+</div>
+
+<div id="options1">
+<h3>
+<a name="options1">F4: Miscellaneous Options</a>
+</h3>
+<ul>
+    <li> <em> checkmd5</em><br/> 
+    check integrity of the install media.</li>
+
+    <li> <em> checkfs </em><br/> 
+    check integrity of the LivUSB and persistent file systems (if any).
+    </li>
+
+    <li> <em> toram</em><br/>
+    copy the compressed file system to RAM.  This takes extra time when you
+    boot but results in a very fast system (if you have enough RAM).</li>
+
+    <li> <em> nousb2</em><br/> 
+    Disable all usb-2 devices.  This helps a few older systems boot LiveUSB.
+    </li>   
+   
+    <li> <em> HP laptop</em><br/> 
+    Some HP laptops need a cheat to get brightness working correctly.
+    </li>   
+</ul>
+<p>
+
+See <a href="#mounting">Mounting Options</a> for the rest of the
+<em>F4</em> menu option.<br/>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#timezone">prev</a>
+ | <a href="#mounting">next</a>
+</p>
+</div>
+
+<div id="mounting">
+<h3>
+<a name="mounting">F4: Mounting Options</a>
+</h3>
+    
+<p>
+The Live system will dynamically update the fstab file whenever a
+usb drive gets plugged in.  You can also choose to have drives
+mounted automatically when they are plugged in.
+</p>
+
+<ul>
+    <li><em>automount</em> -- mount drives when they are plugged in</li>
+    <li><em>mount=usb</em> -- in addition, mount all usb drives at boot time</li>
+    <li><em>mount=all</em> -- in addition, mount non-usb drives at boot time</li>
+</ul>
+
+<p>
+<em>Note:</em>  Your automount choices are saved on persistent systems. 
+</p>
+
+<p>
+See <a href="#options1">Misc. Options</a> for the rest of the
+<em>F4</em> menu options.
+</p>
+
+<p>
+Return to  <a href="#main">Main Menu</a>
+ | <a href="#options1">prev</a>
+ | <a href="#video_mode">next</a>
+</p>
+</div>
+
+<div id="video_mode">
+<h3>
+<a name="video_mode">F5: Video Mode</a>
+</h3>
+<p>
+There are 3 options.  Default should work for most users.
+</p><p>
+The antiX core system has <a href="#console">Console</a> menu instead.
+</p>
+<ul>
+
+   <li> <em> default</em><br/> Detect the correct video driver and screen resolution.</li>
+
+   <li> <em> vesa </em><br/> Use the Vesa driver.  Disable modeset</li>
+
+   <li> <em> safe</em><br/> Use X11 defaults.  Disable modeset.</li>
+
+</ul>
+
+<p>
+You can also set the resolution by directly typing in <em>xres=resolution</em>.
+This is useful if you want to force a resolution.
+</p>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#mounting">prev</a>
+ | <a href="#console">next</a>
+</p>
+</div>
+
+<div id="desktop">
+<h3>
+<a name="desktop">F6: Select Desktop Program</a>
+</h3>
+
+<p>
+On full and base systems, there are a selection of desktop programs
+available.  The <em>F6</em> menu allows you to choose which desktop
+program to use.  The menu also shows you the list of all desktop
+programs that are installed on the standard antiX iso (either full or base).
+</p>
+
+<p>
+Desktops that start with <em>Rox-</em> (Rox pinboard) or <em>Space-</em> 
+(SpaceFM desktop) come with desktop icons.
+These are often convenient for people who are just starting out.
+</p>
+
+<p>
+If you are running a persistent system and you install new desktop programs
+then you can boot into one of them by typing <em>desktop=desktop-program</em>.
+You will need to have already run the program <em>update-default-desktop</em>
+in order for this to work.
+</p>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#console">prev</a>
+ | <a href="#save">next</a>
+</p>
+
+</div>
+
+<div id="save">
+<h3>
+<a name="save">F6: Save Bootloader Settings</a>
+</h3>
+
+<p>
+On LiveUSBs and Frugal installs, the <em>F6 Save</em> menu should
+appear replacing <em>F6 Desktop</em>.
+
+</p>
+
+<p>
+LiveCDs have a <a href="#desktop">Desktop</a> menu instead.
+</p>
+
+<ul>
+    <li> <em>save</em><br/>
+    Save the current popup menu settings as the defaults and create/replace
+    a custom main menu entry if needed for options that are typed in
+    that don't exist in the popup menus.
+    </li>
+
+    <li> <em>reset</em><br/>
+    Restore the original menu defaults.  Does not affect
+    the custom main menu entry.
+    </li>
+
+</ul>
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#desktop">prev</a>
+ | <a href="#console">next</a>
+</p>
+</div>
+
+<div id="console">
+<h3>
+<a name="console">F7: Console and Splash</a>
+</h3>
+<p>
+</p>
+<ul>
+    <li><em>vga=789</em> 800x600</li>
+    <li><em>vga=877</em> 1024x640</li>
+    <li><em>vga=792</em> 1024x768</li>
+    <li><em>vga=864</em> 1280x800</li>
+    <li><em>vga=795</em> 1280x1024</li>
+    <li><em>vga=834</em> 1400x1050</li>
+    <li><em>vga=839</em> 1600x1200</li>
+</ul>
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#save">prev</a>
+ | <a href="#persist_frugal">next</a>
+</p>
+</div>
+
+
+<div id="persist_frugal">
+<h3>
+<a name="persist_frugal">Peristence and Frugal Install</a>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#dpi">prev</a>
+ | <a href="#bo_instruct">next</a>
+</p>
+</div>
+
+<div id="persistence">
+<h3>
+<a name="persistence">Persistence Options</a>
+</h3>
+<p>
+Persistence allows you to save files and settings
+between reboots. There are three types of persistence 
+in the main menu.
+</p>
+<ul>
+    <li> <em> Root Persistence </em><br/>
+    Save all the changes to the file-system in RAM and then
+    transfer these changes to disk right before you shutdown or
+    reboot.  Fast, but space is limited by how much RAM
+    you have.
+    </li>
+
+    <li> <em> Static Root Persistence </em><br/>
+    Saves all your file-system changes directly to a file.  This
+    can be slow but it requires no extra RAM and no changes need
+    to be transfered when you shutdown.
+    </li>
+
+    <li> <em> Home Persistence </em><br/>
+    Only save changes to files and directories under
+    <em>/home</em>.  This will include all of your bookmarks and
+    personal settings.  Like static root persistence, changes are
+    stored immediately to a file but in this case speed is almost
+    never an issue.
+    </li>
+
+</ul>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#dpi">prev</a>
+ | <a href="#bo_instruct">next</a>
+</p>
+
+</div>
+
+<div id="frugal">
+<h3>
+<a name="frugal">Frugal Install</a>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#dpi">prev</a>
+ | <a href="#bo_instruct">next</a>
+</p>
+
+
+</div>
+
+
+
+<div id="bo_instruct">
+<h3>
+<a name="bo_instruct">Boot Option Instructions</a>
+</h3>
+
+<p>
+There are many boot options available.  They are usually only necessary if your
+system will not boot properly. To use the boot options just place the
+appropriate code in the <em>Boot Options</em> box at the bottom of the main
+screen.  You may also need to edit or delete options that are already in the
+<em>Boot Options</em> box.
+</p>
+
+<p>
+You can't make changes permanent on a LiveCD or a LiveDVD.  You have to enter
+them each time you boot.  You can make permanent changes on some LiveUSBs.
+</p>
+<p>
+Go to <a href="#bo_antix">antiX Boot Options</a><br/>
+Go to <a href="#mm_boot">Kernel Boot Options</a>
+</p>
+
+
+<p>
+Return to <a href="#main">Main Menu</a>
+ | <a href="#persistence">prev</a>
+ | <a href="#bo_antix">next</a>
+</p>
+
+</div>
+<div id="bo_antix">
+<h3>
+<a name="bo_antix">antiX Boot Options</a>
+</h3>
+
+<p>
+These are options that are only available in antiX
+</p>
+
+<ul>
+    <li><em>lean</em> -- disable some services including wicd for a fast boot </li>
+    <li><em>mean</em> -- disable dhclient (Internet connection) </li>
+    <li><em>Xtralean</em> -- disable more services for a faster boot</li>
+    <li><em>nodbus</em> -- disable dbus service </li>
+    <li><em>dpi=XX</em> -- set dpi. Default is 96</li>
+</ul>
+
+<p>
+<em>NOTE:</em> Four of these options are combined into the single
+<em>antiX=</em> option.  For example <em>antiX=LMX</em>.
+</p>
+
+<ul>
+    <li><em>L</em> stands for lean</li>
+    <li><em>M</em> stands for mean</li>
+    <li><em>X</em> stands for Xtralean</li>
+    <li><em>D</em> stands for nodbus</li>
+</ul>
+
+<p>
+Back to <a href="#bo_instruct">Boot Option Instructions</a><br/>
+Return to <a href="#main">Main Menu</a>
+ | <a href="#bo_instruct">prev</a>
+ | <a href="#mm_boot">next</a>
+</p>
+
+</div>
+
+<div id="mm_boot">
+<h3>
+<a name="mm_boot">Kernel Boot Options</a>
+</h3>
+
+<p>
+Select a <em>Boot Option</em> to learn more about it.
+</p>
+<ul>
+    <li><a href="#bo_acpi">ACPI</a> -- Advanced Configuration and Power Interface</li>
+    <li><a href="#bo_ide">IDE DMA</a> -- enable/disable DMA for IDE-Drives</li>
+    <li><a href="#bo_no">noXXXX</a> -- skip detection of specific hardware</li>
+    <li><a href="#bo_pci">PCI</a> -- options for non-working PS2 mice and bad PCI controllers</li>
+</ul>
+<p>
+Back to <a href="#bo_instruct">Boot Option Instructions</a><br/>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#bo_antix">prev</a>
+ | <a href="#bo_acpi">next</a>
+</p>
+
+</div>
+
+
+<div id="bo_acpi">
+<h3>
+<a name="bo_acpi">ACPI</a>
+</h3>
+
+<p>
+
+ACPI (Advanced Configuration and Power Interface) is a standard that defines
+power and configuration management interfaces between an operating system and
+the BIOS. By default, <em>acpi</em> is switched on when boot detects a BIOS
+newer than the year 2000. There are several commonly used parameters to control
+the behavior of ACPI:
+</p>
+
+<ul>
+    <li><em>pci=noacpi</em> -- do not use ACPI to route PCI interrupts</li>
+    <li><em>acpi=off</em> -- turn off ACPI completely</li>
+    <li><em>acpi=force</em> -- turn on ACPI, for pre-2000 BIOS</li>
+</ul>
+
+<p>
+Return to <a href="#mm_boot">Boot Options</a>
+ | <a href="#main">Main Menu</a>
+ | <a href="#mm_boot">prev</a>
+ | <a href="#bo_no">next</a>
+</p>
+
+</div>
+
+
+<div id="bo_no">
+<h3>
+<a name="bo_no">noXXXX</a>
+</h3>
+
+<p>
+Skips detection of or enables support for specific hardware.
+<p>
+<ul>
+    <li><em>noauto</em> -- turn off hardware autodetection</li>
+    <li><em>noparallel</em> -- turn off parallel printer support</li>
+    <li><em>nopcmcia</em> -- turn off PCMCIA support</li>
+    <li><em>nousb</em> -- turn off usb device probing</li>
+    <li><em>nousebios</em> -- enable NoUseBios mode needed for some Savage cards</li>
+    <li><em>smouse</em> -- enable only a serial mouse</li>
+    <li><em>swcursor</em> -- enable sw_cursor mode needed for some ATI and Trident cards</li>
+</ul>
+
+<p>
+Return to <a href="#mm_boot">Boot Options</a>
+ | <a href="#main">Main Menu</a>
+ | <a href="#bo_acpi">prev</a>
+ | <a href="#bo_pci">next</a>
+</p>
+
+</div>
+
+<div id="bo_pci">
+<h3>
+<a name="bo_pci">PCI</a>
+</h3>
+
+<p>
+Some PCI options:
+</p>
+
+<ul>
+    <li><em>pci=irqmask=0x0e98</em> -- try this if your PS/2 mouse doesn't work</li>
+    <li><em>pci=bios</em> -- workaround for bad PCI controllers</li>
+</ul>
+
+<p>
+Return to <a href="#mm_boot">Boot Options</a>
+ | <a href="#main">Main Menu</a>
+ | <a href="#bo_no">prev</a>
+ | <a href="#bo_ide">next</a>
+</p>
+
+</div>
+
+
+<div id="bo_ide">
+<h3>
+<a name="bo_ide">nodma</a>
+</h3>
+
+<p>
+To mitigate some hardware problems that occur with IDE hard drives, try this kernel parameter:
+</p>
+<p>
+<em>ide=nodma</em> -- switch off dma for IDE drives
+</p>
+
+<p>
+Return to <a href="#mm_boot">Boot Options</a>
+ | <a href="#main">Main Menu</a>
+ | <a href="#bo_pci">prev</a>
+ | <a href="#about">next</a>
+</p>
+
+</div>
+
+<div id="about">
+<h3>
+<a name="about">Information about antiX</a>
+</h3>
+
+<p>
+Web site: <em>http://antix.mepis.com</em><br/>
+Forums: <em>http://antix.freeforums.org</em>
+</p>
+<p>
+antiX is pronounced like the word <em>antics</em>, which means amusing,
+frivolous, or eccentric behavior. It is distributed as CD or ISO images that
+contain many quality Linux applications.
+</p>
+
+
+<p>
+antiX is compiled to work with Pentium-class Intel and AMD processors or
+better. antiX will not work with 386 and 486 class processors. To install antiX
+on a hard drive, at least 1.5 GB of free space is required and a minimum of 2.5
+GB is recommended.
+</p>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+ | <a href="#bo_ide">prev</a>
+ | next
+</p>
+
+</div>
+
+</body>
+</html>

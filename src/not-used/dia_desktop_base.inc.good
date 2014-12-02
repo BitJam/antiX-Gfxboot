@@ -1,0 +1,137 @@
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%
+% Desktop options dialog for Base Flavour
+%
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Some global vars.
+%
+/desktop_base.default 0 def
+
+/default.default.desktop.label  "Rox-fluxbox" def
+/default.default.desktop.option "fluxbox"     def
+
+/desktop_base.options.raw [
+    /default.desktop.option
+    "desktop=fluxbox noRox"
+    "desktop=jwm"
+    "desktop=jwm noRox"
+    "desktop=dwm"
+    "desktop=wmii"
+    "3 db+"
+] def
+
+/desktop_base.labels.raw [
+    "Rox-Fluxbox"
+    "Fluxbox"
+    "Rox-Jwm"
+    "Jwm"
+    "Dwm"
+    "Wmii"
+    /txt_cmd_line
+  ] def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Build desktop list.
+%
+% ( ) ==> ( )
+%
+/desktop_base.init {
+  /xmenu.desktop_base .xm_size array def
+
+  /xmenu xmenu.desktop_base def
+
+  default.desktop "" eq {
+    /start.index 0 def
+  } {
+    /start.index 1 def
+  }
+  ifelse
+
+  /labels.size desktop_base.labels.raw length start.index add def
+  /labels.max  desktop_base.labels.raw length 1 sub def
+
+  /desktop_base.labels  labels.size array def
+  /desktop_base.options labels.size array def
+
+  default.desktop "" eq {
+    /default.desktop.option "" def
+  } {
+    /default.desktop.option /default.default.desktop.option def
+    desktop_base.labels  0 default.desktop put
+    desktop_base.options 0 ""              put
+  }
+  ifelse
+
+  % Copy raw arrays into non-raw.  Offset dest by one if
+  % there was a default.desktop in the gfxboot.cfg file
+  0 1 labels.max {
+    dup 
+    desktop_base.labels exch dup start.index add exch
+    desktop_base.labels.raw exch get put
+    
+    desktop_base.options exch dup start.index add exch
+    desktop_base.options.raw exch get put
+  } for
+
+  xmenu .xm_current desktop_base.default put
+  xmenu .xm_list    desktop_base.labels  put
+  xmenu .xm_title   /txt_desktop         put
+
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Update desktop mode.
+%
+% ( ) ==> ( )
+%
+/desktop_base.update {
+  /xmenu xmenu.desktop_base def
+
+  /window.action actRedrawPanel def
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Show desktop menu.
+%
+% ( ) => ( )
+%
+/panel.desktop_base {
+  "main" help.setcontext
+
+  window.xmenu
+  dup .xmenu xmenu.desktop_base put
+  dup .xmenu.update /desktop_base.update put
+  dup window.init
+      window.show
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Return width of panel entry.
+%
+% ( ) => ( width )
+%
+/panel.desktop_base.width {
+  /xmenu xmenu.desktop_base def
+
+  pmenu.width
+} def
+
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Redraw panel entry.
+%
+% ( panel ) => ( )
+%
+/panel.desktop_base.update {
+  /xmenu xmenu.desktop_base def
+
+  pmenu.panel.update
+} def
+
+
