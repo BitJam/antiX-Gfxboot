@@ -1,6 +1,7 @@
 .*~
 .*.swp
 other
+Makefile.local
 bin/gfxboot-compile
 src/main.bin
 src/main.log
