@@ -45,7 +45,6 @@
       [ "mount=all"    "mount=all"      ]
       [ "nousb2"       "nousb2"         ]
       [ "acpi=off"     "acpi=off"       ]
-      [ "HP Laptop"    "video.use_bios_initial_backlight=0 video.brightness_switch_enabled=1" ]
   ] def
 
 /.opt.label  0 def
