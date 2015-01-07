@@ -35,10 +35,10 @@
 } def
 
 /video_mode.data [
-  [ /txt_default   ""                             ]
-  [ "vesa"       "nomodeset  xdrvr=vesa"          ]
-  [ "safe"       "nomodeset nouveau.modeset=0"    ]
-%  [ "auto res."    "xres=auto"                   ]
+  [ /txt_default   ""                                     ]
+  [ "vesa"       "nomodeset nouveau.modeset=0 xdrvr=vesa" ]
+  [ "safe"       "nomodeset nouveau.modeset=0"            ]
+%  [ "auto res."    "xres=auto"                           ]
 ] def
 
 % /video_mode.data [
