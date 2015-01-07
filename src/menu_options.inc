@@ -13,7 +13,7 @@
 
   xmenu.options .xm_current
 
-  "options1.def" findfile dup .undef ne {
+  "options.def" findfile dup .undef ne {
     % Copy raw file data into a string then free raw data
     dup dup length dup string dup cvp 4 2 roll memcpy exch free
 
