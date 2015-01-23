@@ -33,14 +33,14 @@
 } def
 
 /desktop.data [
-   [ "Default"        ""                      ]
+   [ "default"        ""                      ]
    [ "Rox-Fluxbox"    "desktop=rox-fluxbox"   ]
    [ "Space-Fluxbox"  "desktop=space-fluxbox" ]
    [ "Fluxbox"        "desktop=fluxbox"       ]
-   [ "min-Fluxbox"    "desktop=min-fluxbox"   ]
    [ "Rox-Jwm"        "desktop=rox-jwm"       ]
    [ "Space-Jwm"      "desktop=space-jwm"     ]
    [ "Jwm"            "desktop=jwm"           ]
+   [ "min-Fluxbox"    "desktop=min-fluxbox"   ]
    [ "min-Jwm"        "desktop=min-jwm"       ]
 ] def
 
