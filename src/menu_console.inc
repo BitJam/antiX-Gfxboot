@@ -13,7 +13,7 @@
 
   xmenu.console .xm_current
 
-  "vga_mode.def" findfile dup .undef ne {
+  "console.def" findfile dup .undef ne {
     % Copy raw file data into a string then free raw data
     dup dup length dup string dup cvp 4 2 roll memcpy exch free
 
