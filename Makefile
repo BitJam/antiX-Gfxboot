@@ -10,7 +10,9 @@ GFXBOOT_BIN     := gfxtheme
 
 ADD_TEXT        := bin/add-image-text
 TEST_TARGETS    := $(addprefix test-,   $(DISTROS))
-OUT_DIRS 		:= $(addprefix Output/, $(DISTROS))
+OUT_ISO_DIRS    := $(addprefix Output/, $(addsuffix /isolinux, $(DISTROS)))
+OUT_SYS_DIRS    := $(addprefix Output/, $(addsuffix /syslinux, $(DISTROS)))
+OUT_DIRS        := $(OUT_SYS_DIRS) $(OUT_ISO_DIRS)
 IMAGE_GROUPS    := $(addsuffix -images, $(DISTROS))
 HELP_DIRS       := $(addprefix Help/,   $(DISTROS))
 HELP_FILES      := $(addsuffix /en.hlp, $(HELP_DIRS))
@@ -53,8 +55,8 @@ help:
 
 all: $(DISTROS)
 
-$(DISTROS): % : Output/% Help/%/en.hlp $(THEME_FILE)
-	cp -a $(COMMON_FILES) Input/$@/* $(word 2,$^) $</
+$(DISTROS): % : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
+	cp -a $(COMMON_FILES) Input/$@/* $(word 3,$^) $</
 	cp $(THEME_FILE) $</$(GFXBOOT_BIN)
 ifdef DEFAULT_LANG
 	@echo $(DEFAULT_LANG) > $</lang.def
@@ -62,6 +64,11 @@ endif
 ifdef NO_1024
 	rm -f $</back1024.jpg
 endif
+	rm -rf $(word 2,$^)
+	cp -a $< $(word 2,$^)
+	mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
+	mv $(word 2,$^)/isolinux.cfg $(word 2,$^)/syslinux.cfg
+	echo 1 > $(word 2,$^)/gfxsave.on
 
 $(HELP_FILES): %/en.hlp : % %/en.html
 	make --directory Help $(<F) 
