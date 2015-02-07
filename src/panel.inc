@@ -197,9 +197,9 @@
   dup "install"    eq { pop [ /panel.install    /panel.install.width    /panel.install.update    /install.init    ] return } if
   dup "options"    eq { pop [ /panel.options    /panel.options.width    /panel.options.update    /options.init    ] return } if
   dup "desktop"    eq { pop [ /panel.desktop    /panel.desktop.width    /panel.desktop.update    /desktop.init    ] return } if
-  dup "video_mode" eq { pop [ /panel.video_mode /panel.video_mode.width /panel.video_mode.update /video_mode.init ] return } if
   dup "gfx_save"   eq { pop [ /panel.gfx_save   /panel.gfx_save.width   /panel.gfx_save.update   /gfx_save.init   ] return } if
   dup "persist"    eq { pop [ /panel.persist    /panel.persist.width    /panel.persist.update    /persist.init    ] return } if
+% dup "video_mode" eq { pop [ /panel.video_mode /panel.video_mode.width /panel.video_mode.update /video_mode.init ] return } if
 % dup "dpi"        eq { pop [ /panel.dpi        /panel.dpi.width        /panel.dpi.update        /dpi.init        ] return } if
 % dup "vga_res"    eq { pop [ /panel.vga_res    /panel.vga_res.width    /panel.vga_res.update    /vga_res.init    ] return } if
 % dup "splash_vga" eq { pop [ /panel.splash_vga /panel.splash_vga.width /panel.splash_vga.update /splash_vga.init ] return } if
