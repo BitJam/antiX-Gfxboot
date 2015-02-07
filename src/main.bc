@@ -12,7 +12,7 @@
 %% include menu_lang.inc
 %% include menu_help.inc
 %% include menu_options.inc
-% %% include menu_video_mode.inc
+%   %% include menu_video_mode.inc
 %% include menu_desktop.inc
 
 %% include menu_persist.inc
