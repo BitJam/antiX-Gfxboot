@@ -69,6 +69,7 @@ endif
 	mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
 	mv $(word 2,$^)/isolinux.cfg $(word 2,$^)/syslinux.cfg
 	echo 1 > $(word 2,$^)/gfxsave.on
+	sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
 
 $(HELP_FILES): %/en.hlp : % %/en.html
 	make --directory Help $(<F) 
