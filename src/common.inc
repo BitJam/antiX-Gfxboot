@@ -363,11 +363,11 @@
     } { pop } ifelse
   } if
 
-  xmenu.video_mode {
-    video_mode.options xmenu.video_mode .xm_current get get dup "" ne {
-      "%s " bc.cmd dup length add sprintf
-    } { pop } ifelse
-  } if
+%  xmenu.video_mode {
+%    video_mode.options xmenu.video_mode .xm_current get get dup "" ne {
+%      "%s " bc.cmd dup length add sprintf
+%    } { pop } ifelse
+%  } if
 
   xmenu.gfx_save {
     gfx_save.options xmenu.gfx_save .xm_current get get dup "" ne {
