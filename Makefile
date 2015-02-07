@@ -89,7 +89,7 @@ distclean: clean
 $(TEST_TARGETS): test-% : %
 	rm -rf $(TEST_DIR)
 	mkdir -p $(TEST_DIR)
-	cp -a Output/$</* $(TEST_DIR)
+	cp -a Output/$</isolinux/* $(TEST_DIR)
 	echo 1 > $(TEST_DIR)/REBOOT
 	sed -i -e "s=%RELEASE_DATE%=$$(date +'%x %X')=g" \
 		   -e "s/%CODE_NAME%/Killah P/g" \
