@@ -36,20 +36,19 @@
 
 /console.data [
     [ /txt_default ""                      ]
-    [ "old: 800×600"     "vga=788 "        ]
-    [ "old: 1024×768"    "vga=792"         ]
-    [ "old: 1366x768"    "vga=895"         ]
-    [ "old: 1280×1024"   "vga=795"         ]
-    [ "old: 1600×1200"   "vga=799"         ]
-    [ "old: 1600×1200*"  "vga=839"         ]   % 839 works in VirtualBox
-
-    [ "new: 1024x768"    "video=1024x768"  ]
-    [ "new: 1280x1024"   "video=1280x1024" ]
-    [ "new: 1366x768"    "video=1366x768"  ]
-    [ "new: 1600x1200"   "video=1600x1200" ]
-    [ "new: 1600x900"    "video=1600x900"  ]
-    [ "new: 1440x900"    "video=1440x900"  ]
-    [ "new: 1920x1080"   "video=1920x1080" ]
+    [ "vga: 800×600"     "vga=788 "        ]
+    [ "vga: 1024×768"    "vga=791"         ]
+    [ "vga: 1366x768"    "vga=895"         ]
+    [ "vga: 1280×1024"   "vga=794"         ]
+    [ "vga: 1600×1200"   "vga=798"         ]
+    [ "vga: 1600×1200*"  "vga=839"         ]   % 839 works in VirtualBox
+%    [ "new: 1024x768"    "video=1024x768"  ]
+%    [ "new: 1280x1024"   "video=1280x1024" ]
+%    [ "new: 1366x768"    "video=1366x768"  ]
+%    [ "new: 1600x1200"   "video=1600x1200" ]
+%    [ "new: 1600x900"    "video=1600x900"  ]
+%    [ "new: 1440x900"    "video=1440x900"  ]
+%    [ "new: 1920x1080"   "video=1920x1080" ]
 ] def
 
 /.vga.label  0 def
