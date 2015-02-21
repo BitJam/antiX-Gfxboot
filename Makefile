@@ -64,6 +64,7 @@ endif
 ifdef NO_1024
 	rm -f $</back1024.jpg
 endif
+	@#bin/make-menu $</isolinux.cfg >> $</isolinux.msg
 	rm -rf $(word 2,$^)
 	cp -a $< $(word 2,$^)
 	mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
