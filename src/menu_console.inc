@@ -28,14 +28,14 @@
 
     dup console.data length ge { pop 0 } if
     %pop 3
-  } { pop 0 } ifelse
+  } { pop 1 } ifelse
 
     put
 
 } def
 
 /console.data [
-    [ /txt_default ""                      ]
+    [ "no vga"           ""                ]
     [ "vga: 800×600"     "vga=788 "        ]
     [ "vga: 1024×768"    "vga=791"         ]
     [ "vga: 1366x768"    "vga=895"         ]
