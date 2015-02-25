@@ -130,7 +130,7 @@ sub read_texts
   else {
     open F, "text.inc";
     for (<F>) {
-      if(/\s+\/(txt_\S+)/) {
+      if(/\s+\/(txt_\w+)/) {
         $txt_ref{$1} = undef;
       }
     }
