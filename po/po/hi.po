@@ -1,19 +1,18 @@
 # LANGUAGE translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
-#
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: NetworkManager-vpnc\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-16 17:10+0200\n"
-"PO-Revision-Date: 2006-01-26 15:19+0100\n"
-"Last-Translator: Priyavert Sharma <priyavert.sharma@agreeya.com>\n"
-"Language-Team: AgreeYa Solutions <www.agreeya.com>\n"
-"Language: \n"
+"Project-Id-Version: antix-development\n"
+"PO-Revision-Date: 2015-01-15 17:42+0000\n"
+"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"Language-Team: Hindi (http://www.transifex.com/projects/p/antix-development/language/hi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: hi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. ok button label
 #. txt_ok
@@ -76,16 +75,6 @@ msgstr ""
 msgid "check md5"
 msgstr ""
 
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr ""
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr ""
-
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
@@ -101,11 +90,6 @@ msgstr ""
 msgid "Desktop"
 msgstr ""
 
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr ""
-
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
@@ -119,11 +103,6 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
-
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
 msgstr ""
 
 #. Title of Time Zone menu.
@@ -161,14 +140,19 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "मेमोरी जांच (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
-
 #. txt_reboot
 msgid "Reboot"
 msgstr ""
+
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+

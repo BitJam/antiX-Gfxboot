@@ -1,26 +1,25 @@
 # LANGUAGE translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
-#
+# 
 # Translators:
+# worktowork <worktowork@ya.ru>, 2015
+# worktowork <worktowork@ya.ru>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"POT-Creation-Date: 2008-09-26 18:04+0200\n"
-"PO-Revision-Date: 2013-02-21 15:11+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/antix-"
-"development/language/ru/)\n"
-"Language: ru\n"
+"PO-Revision-Date: 2015-01-27 04:30+0000\n"
+"Last-Translator: worktowork <worktowork@ya.ru>\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/antix-development/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. ok button label
 #. txt_ok
 msgid "OK"
-msgstr "OK"
+msgstr "Да"
 
 #. cancel button label
 #. txt_cancel
@@ -71,106 +70,91 @@ msgstr "Разрешение"
 #. Like automatic, not automobile.
 #. txt_auto
 msgid "auto"
-msgstr ""
+msgstr "авторежим"
 
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr ""
-
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr ""
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr ""
+msgstr "проверка md5"
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "Консоль"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
 msgid "default"
-msgstr ""
+msgstr "по умолчанию"
 
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
 msgstr "Рабочий стол"
 
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr ""
-
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
-msgstr ""
+msgstr "ни один"
 
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr ""
+msgstr "автоподключение"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
-
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
-msgstr ""
+msgstr "Настройки"
 
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr ""
+msgstr "Часовой пояс"
 
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "выкл."
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "меню"
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "другое"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "оба"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "сбросить"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
-
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "Проверка памяти (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
+msgstr "Сохранить"
 
 #. txt_reboot
 msgid "Reboot"
 msgstr "Перезагрузить"
+
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+

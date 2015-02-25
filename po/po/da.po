@@ -1,20 +1,18 @@
-# translation of da.po to Dansk
-# translation of bootloader.pot_[g4TXCa].po to Dansk
 # LANGUAGE translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
-# Martin Møller <martin@martinm-76.dk>, 2005.
-#
+# 
+# Translators:
+# Martin Møller <martin@martinm-76.dk>, 2005
 msgid ""
 msgstr ""
-"Project-Id-Version: bootloader\n"
-"PO-Revision-Date: 2010-05-11 10:40+0200\n"
-"Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
-"Language-Team: Danish <opensuse-translation@opensuse.org>\n"
-"Language: da\n"
+"Project-Id-Version: antix-development\n"
+"PO-Revision-Date: 2015-01-27 04:30+0000\n"
+"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/antix-development/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. ok button label
@@ -78,16 +76,6 @@ msgstr ""
 msgid "check md5"
 msgstr ""
 
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr ""
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr ""
-
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
@@ -101,12 +89,7 @@ msgstr ""
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
-msgstr ""
-
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr ""
+msgstr "Skrivebord"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
@@ -121,11 +104,6 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
-
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
 msgstr ""
 
 #. Title of Time Zone menu.
@@ -163,14 +141,19 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "Hukommelsestest (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
-
 #. txt_reboot
 msgid "Reboot"
 msgstr "Genstart"
+
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+

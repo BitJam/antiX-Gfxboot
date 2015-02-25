@@ -1,21 +1,19 @@
 # LANGUAGE translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
-#
+# 
 # Translators:
-# megatotoro <jratlsv2@racsa.co.cr>, 2013
+# Roberto Saravia <jratlsv2@racsa.co.cr>, 2013
+# Roberto Saravia <jratlsv2@racsa.co.cr>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-03-02 20:30+0000\n"
-"Last-Translator: megatotoro <jratlsv2@racsa.co.cr>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/antix-"
-"development/language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-01-27 04:30+0000\n"
+"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/antix-development/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. ok button label
@@ -79,16 +77,6 @@ msgstr "automático"
 msgid "check md5"
 msgstr "comprobar md5"
 
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr "línea comand."
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr "Instalador desde la línea de comandos"
-
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
@@ -103,11 +91,6 @@ msgstr "por defecto"
 #. txt_desktop
 msgid "Desktop"
 msgstr "Escritorio"
-
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr "Persistencia de Home"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
@@ -124,11 +107,6 @@ msgstr "automontaje"
 msgid "Options"
 msgstr "Opciones"
 
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
-msgstr "Persistencia de Root"
-
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
@@ -137,44 +115,46 @@ msgstr "Zona horaria"
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "apagado"
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "menús"
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "personalizado"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "ambos"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "reajustar"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
 msgstr "Guardar"
 
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "Prueba de memoria (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr "Persistencia de Root estática"
-
 #. txt_reboot
 msgid "Reboot"
 msgstr "Reiniciar"
 
-#~ msgid "to ram"
-#~ msgstr "a ram"
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+

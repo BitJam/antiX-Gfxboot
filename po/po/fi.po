@@ -1,23 +1,20 @@
-# translation of fi.po to suomi
-# translation of bootloader.fi.po to
-# translation of bootloader.po to
 # LANGUAGE translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
-#
-# Jyri Palokangas <jmp@netti.fi>, 2005, 2006.
-# Jami Saarikoski <jami.saarikoski@gmail.com>, 2006.
+# 
+# Translators:
+# Jami Saarikoski <jami.saarikoski@gmail.com>, 2006
+# Jyri Palokangas <jmp@netti.fi>, 2005-2006
 msgid ""
 msgstr ""
-"Project-Id-Version: bootloader.fi\n"
-"PO-Revision-Date: 2010-09-18 15:57+0300\n"
-"Last-Translator: Katariina Kemppainen <katariina07@yahoo.se>\n"
-"Language-Team: Finnish <opensuse-fi@opensuse.fi>\n"
-"Language: fi\n"
+"Project-Id-Version: antix-development\n"
+"PO-Revision-Date: 2015-01-27 04:30+0000\n"
+"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/antix-development/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms:  nplurals=2; plural=n != 1;\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. ok button label
 #. txt_ok
@@ -80,16 +77,6 @@ msgstr ""
 msgid "check md5"
 msgstr ""
 
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr ""
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr ""
-
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
@@ -103,12 +90,7 @@ msgstr ""
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
-msgstr ""
-
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr ""
+msgstr "Työpöytä"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
@@ -123,11 +105,6 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
-
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
 msgstr ""
 
 #. Title of Time Zone menu.
@@ -165,14 +142,19 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "Muistitesti (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
-
 #. txt_reboot
 msgid "Reboot"
 msgstr "Käynnistä uudelleen"
+
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+

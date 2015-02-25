@@ -1,21 +1,21 @@
 # LANGUAGE translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
-#
+# 
 # Translators:
 # anticapitalista <antiX@operamail.com>, 2013
+# anticapitalista <antiX@operamail.com>, 2013
+# sombreros <sebastiendebierre@gmail.com>, 2013-2014
 # sombreros <sebastiendebierre@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-03-03 09:50+0000\n"
+"PO-Revision-Date: 2015-01-27 04:30+0000\n"
 "Last-Translator: sombreros <sebastiendebierre@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/antix-development/"
-"language/fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/projects/p/antix-development/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. ok button label
@@ -79,16 +79,6 @@ msgstr "auto"
 msgid "check md5"
 msgstr "Vérifier md5"
 
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr "Ligne de commande"
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr "Ligne de commande installation"
-
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
@@ -103,11 +93,6 @@ msgstr "défaut"
 #. txt_desktop
 msgid "Desktop"
 msgstr "Bureau"
-
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr "Persistance Home"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
@@ -124,11 +109,6 @@ msgstr "montage automatique"
 msgid "Options"
 msgstr "Options"
 
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
-msgstr "Persistance Root"
-
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
@@ -137,44 +117,46 @@ msgstr "Fuseau horaire"
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "off"
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "menus"
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "personnalisé"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "les deux"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "réinitialiser"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
-
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "Test de mémoire (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
+msgstr "Sauver"
 
 #. txt_reboot
 msgid "Reboot"
 msgstr "Redémarrer"
 
-#~ msgid "to ram"
-#~ msgstr "à la ram"
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr "le boot failsafe"
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+

@@ -1,19 +1,21 @@
 # LANGUAGE translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
-#
+# 
 # Translators:
+# anticapitalista <antiX@operamail.com>, 2014
 # eadwine, 2014
+# Eadwine Rose, 2014
+# ko <ko.bros@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2014-03-02 20:30+0000\n"
-"Last-Translator: eadwine\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/antix-development/"
-"language/nl/)\n"
-"Language: nl\n"
+"PO-Revision-Date: 2015-01-27 04:30+0000\n"
+"Last-Translator: ko <ko.bros@gmail.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/antix-development/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. ok button label
@@ -77,20 +79,10 @@ msgstr "auto"
 msgid "check md5"
 msgstr "md5 controleren"
 
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr ""
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr ""
-
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "Console"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
@@ -102,11 +94,6 @@ msgstr "standaard"
 msgid "Desktop"
 msgstr "Desktop"
 
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr ""
-
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
@@ -115,17 +102,12 @@ msgstr "geen"
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr ""
+msgstr "automatisch koppelen"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
 msgstr "Opties"
-
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
-msgstr ""
 
 #. Title of Time Zone menu.
 #. txt_timezone
@@ -135,44 +117,46 @@ msgstr "Tijdzone"
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "uit"
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "menus"
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "niet-standaard"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "beide"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "terugstellen"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
-
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "Geheugentest (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
+msgstr "Opslaan"
 
 #. txt_reboot
 msgid "Reboot"
 msgstr "Herstarten"
 
-#~ msgid "to ram"
-#~ msgstr "naar ram"
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+

@@ -72,16 +72,6 @@ msgstr ""
 msgid "check md5"
 msgstr ""
 
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr ""
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr ""
-
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
@@ -97,11 +87,6 @@ msgstr ""
 msgid "Desktop"
 msgstr ""
 
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr ""
-
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
@@ -115,11 +100,6 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
-
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
 msgstr ""
 
 #. Title of Time Zone menu.
@@ -158,15 +138,19 @@ msgid "Save"
 msgstr ""
 
 
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr " (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
-
 #. txt_reboot
 msgid "Reboot"
+msgstr ""
+
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
 msgstr ""
 

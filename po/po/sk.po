@@ -1,25 +1,20 @@
-# translation of bootloader.po to
 # LANGUAGE translations for boot loader
-# Copyright (C) 2004 SUSE LINUX AG
-# , 2004.
-# , 2004.
-# Andrej Kacian <andrej@kacian.sk>, 2005.
-#
+# Copyright (C) 2005 SUSE Linux GmbH
+# 
+# Translators:
+# , 2004
+# Andrej Kacian <andrej@kacian.sk>, 2005
 msgid ""
 msgstr ""
-"Project-Id-Version: bootloader\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2009-10-07 21:13+0100\n"
-"Last-Translator: Rastislav Krupanský <rastislav.krupansky@gmail.com>\n"
-"Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
-"Language: sk\n"
+"Project-Id-Version: antix-development\n"
+"PO-Revision-Date: 2015-01-27 04:30+0000\n"
+"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"Language-Team: Slovak (http://www.transifex.com/projects/p/antix-development/language/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: sk\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-Country: SLOVAKIA\n"
 
 #. ok button label
 #. txt_ok
@@ -82,16 +77,6 @@ msgstr ""
 msgid "check md5"
 msgstr ""
 
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr ""
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr ""
-
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
@@ -105,12 +90,7 @@ msgstr ""
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
-msgstr ""
-
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr ""
+msgstr "Pracovná plocha"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
@@ -125,11 +105,6 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
-
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
 msgstr ""
 
 #. Title of Time Zone menu.
@@ -167,14 +142,19 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "Test pamäte (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
-
 #. txt_reboot
 msgid "Reboot"
 msgstr "Reštartovať"
+
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+

@@ -1,23 +1,21 @@
 # LANGUAGE translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
-#
+# 
 # Translators:
 # AdrianTM <adilecu@gmail.com>, 2014
+# AdrianTM <adilecu@gmail.com>, 2014
+# anticapitalista <antiX@operamail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"Report-Msgid-Bugs-To: translation@suse.de\n"
-"POT-Creation-Date: 2010-04-13 13:36+0200\n"
-"PO-Revision-Date: 2014-03-02 20:30+0000\n"
-"Last-Translator: AdrianTM <adilecu@gmail.com>\n"
-"Language-Team: Romanian (http://www.transifex.com/projects/p/antix-"
-"development/language/ro/)\n"
-"Language: ro\n"
+"PO-Revision-Date: 2015-01-27 04:30+0000\n"
+"Last-Translator: anticapitalista <antiX@operamail.com>\n"
+"Language-Team: Romanian (http://www.transifex.com/projects/p/antix-development/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #. ok button label
 #. txt_ok
@@ -80,20 +78,10 @@ msgstr "auto"
 msgid "check md5"
 msgstr "verifică md5"
 
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr "linie cmd."
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr ""
-
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "Consolă"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
@@ -104,11 +92,6 @@ msgstr ""
 #. txt_desktop
 msgid "Desktop"
 msgstr "Desktop"
-
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr ""
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
@@ -124,11 +107,6 @@ msgstr "montare automatică"
 #. txt_options
 msgid "Options"
 msgstr "Opțiuni"
-
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
-msgstr ""
 
 #. Title of Time Zone menu.
 #. txt_timezone
@@ -165,14 +143,19 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "Test de memorie (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
-
 #. txt_reboot
 msgid "Reboot"
 msgstr "Repornește"
+
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+

@@ -1,20 +1,18 @@
 # LANGUAGE translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
-#
+# 
 # Translators:
+# Pierluigi Mario <pierluigimariomail@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-21 09:35+0200\n"
-"PO-Revision-Date: 2013-02-21 15:11+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/antix-"
-"development/language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2015-01-27 04:30+0000\n"
+"Last-Translator: Pierluigi Mario <pierluigimariomail@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/antix-development/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. ok button label
@@ -51,11 +49,11 @@ msgstr "Aiuto"
 #. power off dialog title
 #. txt_power_off_title
 msgid "Power Off"
-msgstr "Spegnimento"
+msgstr "Chiudi"
 
 #. txt_power_off
 msgid "Halt the system now?"
-msgstr "Arrestare il sistema?"
+msgstr "Arrestare il sistema ora?"
 
 #. label for language selection
 #. txt_language
@@ -71,106 +69,91 @@ msgstr "Modalità video"
 #. Like automatic, not automobile.
 #. txt_auto
 msgid "auto"
-msgstr ""
+msgstr "auto"
 
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr ""
-
-#. Short for "command line".  Please keep it short.
-#. txt_cmd_line
-msgid "cmd. line"
-msgstr ""
-
-#. Boot directly into command line (for low memory systems).
-#. txt_command_line_install
-msgid "Command Line Install"
-msgstr ""
+msgstr "Verifica md5"
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "Terminale"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
 msgid "default"
-msgstr ""
+msgstr "default"
 
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
 msgstr "Desktop"
 
-#. Boot with home persistence enabled.
-#. txt_home_persistence
-msgid "Home Persistence"
-msgstr ""
-
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
-msgstr ""
+msgstr "nessuno"
 
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr ""
+msgstr "auto montaggio"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
-
-#. Boot with root persistence enabled.
-#. txt_root_persistence
-msgid "Root Persistence"
-msgstr ""
+msgstr "Opzioni"
 
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr ""
+msgstr "Fuso orario"
 
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "off"
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "menu"
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "personalizzato"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "entrambi"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "reset"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
-
-#. txt_memtest_full
-msgid "Memory test (memtest86+)"
-msgstr "Verifica della memoria (memtest86+)"
-
-#. txt_static_root_persistence
-msgid "Static Root Persistence"
-msgstr ""
+msgstr "Salva"
 
 #. txt_reboot
 msgid "Reboot"
-msgstr "Riavvio"
+msgstr "Riavvia"
+
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr ""
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr ""
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr ""
+
