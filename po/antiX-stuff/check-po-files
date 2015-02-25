@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for po in *.po *.pot; do
+for po in po/*.po *.pot; do
     count1=$(grep ^msgid  $po | wc -l)
     count2=$(grep ^msgstr $po | wc -l)
     printf "%8s %2d %2d\n" $po $count1 $count2

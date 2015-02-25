@@ -21,7 +21,7 @@ $(TR_DIR):
 	mkdir -p $@
 
 clean:
-	rm -rf .ready text.inc
+	rm -rf .ready text.inc $(TR_DIR)/*.tr
 
 distclean:
 	rm -rf .ready text.inc $(TR_DIR)

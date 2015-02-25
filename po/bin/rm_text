@@ -9,15 +9,22 @@ die "usage: rm_text id\n" if @ARGV != 1;
 $id = shift;
 $id = "txt_$id" unless $id =~ /^txt_/;
 
-mkdir old, 0755;
+mkdir "old", 0755;
+mkdir "old/po", 0755;
 
-for $f ("bootloader.pot", <*.po>) {
+for $f ("bootloader.pot", <po/*.po>) {
+
+  print `grep "$id" $f`;
+
   if(open F, $f) {
     @f = <F>;
     close F;
 
     ( $new, $old ) = drop @f;
     if(open F, ">>old/$f") {
+
+      print "$f\n";
+
       print F @$old;
       close F;
 

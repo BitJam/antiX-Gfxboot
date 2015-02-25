@@ -61,7 +61,7 @@ sub read_texts
   s/.*\///;
 
   for (@f) {
-    if(/^\s*#\.\s*(txt_\S+)/) {
+    if(/^\s*#\.\s*(txt_\w+)/) {
       if($txt) {
         @msgstr = @msgid if $ids || join_msg(\@msgstr) eq "";
         $txts{$txt} = join_msg(\@msgstr);

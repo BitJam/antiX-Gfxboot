@@ -45,7 +45,7 @@ exit unless $_ eq '' || $_ eq 'y';
 
 print "ok\n";
 
-for $f ("bootloader.pot", <*.po>) {
+for $f ("bootloader.pot", <po/*.po>) {
   if(open F, "+<$f") {
     @f = <F>;
     print F "\n" if $f[-1] !~ /^\s*$/;
