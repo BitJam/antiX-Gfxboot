@@ -2,12 +2,11 @@
 # Copyright (C) 2005 SUSE Linux GmbH
 # 
 # Translators:
-# Eduard Selma <selma@tinet.cat>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-01-27 04:30+0000\n"
-"Last-Translator: Eduard Selma <selma@tinet.cat>\n"
+"PO-Revision-Date: 2015-02-25 21:05+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/antix-development/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +22,7 @@ msgstr "D'acord"
 #. cancel button label
 #. txt_cancel
 msgid "Cancel"
-msgstr "Canceŀla"
+msgstr "Cancel·la"
 
 #. txt_boot_harddisk
 msgid "Boot from Hard Disk"
@@ -84,7 +83,7 @@ msgstr "Terminal "
 #. As in "the default option".  Please keep it short.
 #. txt_default
 msgid "default"
-msgstr "per omissió"
+msgstr "per omissió "
 
 #. Title of menu to select desktop program.
 #. txt_desktop
@@ -104,7 +103,7 @@ msgstr "auto muntatge"
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr "Opcions"
+msgstr "Opcions "
 
 #. Title of Time Zone menu.
 #. txt_timezone
@@ -156,4 +155,3 @@ msgstr ""
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr ""
-

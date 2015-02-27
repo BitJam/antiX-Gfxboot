@@ -2,13 +2,11 @@
 # Copyright (C) 2005 SUSE Linux GmbH
 # 
 # Translators:
-# Borislav Mitev <morbid_viper@tkzs.org>, 2004-2006
-# Tony Ivanov <antonivanov8@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-01-27 04:30+0000\n"
-"Last-Translator: Tony Ivanov <antonivanov8@gmail.com>\n"
+"PO-Revision-Date: 2015-02-25 21:05+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/antix-development/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +22,7 @@ msgstr "Добре"
 #. cancel button label
 #. txt_cancel
 msgid "Cancel"
-msgstr "Прекъсване"
+msgstr "Отмяна"
 
 #. txt_boot_harddisk
 msgid "Boot from Hard Disk"
@@ -90,7 +88,7 @@ msgstr "по подразбиране"
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
-msgstr "Десктоп"
+msgstr "Работен плот"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
@@ -157,4 +155,3 @@ msgstr ""
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr ""
-

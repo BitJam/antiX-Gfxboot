@@ -2,13 +2,11 @@
 # Copyright (C) 2005 SUSE Linux GmbH
 # 
 # Translators:
-# anticapitalista <antiX@operamail.com>, 2013
-# anticapitalista <antiX@operamail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-01-27 04:30+0000\n"
-"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"PO-Revision-Date: 2015-02-25 21:05+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/antix-development/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -157,4 +155,3 @@ msgstr ""
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr ""
-

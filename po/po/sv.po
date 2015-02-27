@@ -2,11 +2,11 @@
 # Copyright (C) 2005 SUSE Linux GmbH
 # 
 # Translators:
-# Henry Oquist <henryoquist@comhem.se>, 2014
+# Henry Oquist <henryoquist@comhem.se>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-01-27 04:30+0000\n"
+"PO-Revision-Date: 2015-02-26 21:11+0000\n"
 "Last-Translator: Henry Oquist <henryoquist@comhem.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/antix-development/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -147,13 +147,12 @@ msgstr "Starta om"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "Säkert Videoläge"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Felsäker Start"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
-
+msgstr "Kommandolinje-Start"

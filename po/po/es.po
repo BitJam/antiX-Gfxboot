@@ -2,13 +2,12 @@
 # Copyright (C) 2005 SUSE Linux GmbH
 # 
 # Translators:
-# Roberto Saravia <jratlsv2@racsa.co.cr>, 2013
-# Roberto Saravia <jratlsv2@racsa.co.cr>, 2013-2014
+# Roberto Saravia <jratlsv2@racsa.co.cr>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-01-27 04:30+0000\n"
-"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"PO-Revision-Date: 2015-02-26 19:11+0000\n"
+"Last-Translator: Roberto Saravia <jratlsv2@racsa.co.cr>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/antix-development/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +18,7 @@ msgstr ""
 #. ok button label
 #. txt_ok
 msgid "OK"
-msgstr "OK"
+msgstr "Está bien"
 
 #. cancel button label
 #. txt_cancel
@@ -148,13 +147,12 @@ msgstr "Reiniciar"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "Modo de Vídeo Seguro"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Inicio a prueba de fallos"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
-
+msgstr "Inicio desde la línea de comandos"
