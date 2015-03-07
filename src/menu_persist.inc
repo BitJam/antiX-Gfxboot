@@ -36,7 +36,7 @@
 
 /persist.data [
     [ "off"          ""                          ]    
-    [ "frugal"       "frugal=root!,home"         ]
+    [ "frugal"       "frugal=root,home"          ]
     [ "root persist" "persist=root!,home"        ]
     [ "static root"  "persist=root!,home,static" ]
     [ "home persist" "persist=home!"             ]
