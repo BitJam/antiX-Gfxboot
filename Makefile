@@ -92,6 +92,7 @@ $(TEST_TARGETS): test-% : %
 	mkdir -p $(TEST_DIR)
 	cp -a Output/$</isolinux/* $(TEST_DIR)
 	echo 1 > $(TEST_DIR)/REBOOT
+	@#echo "desktop=rox-fluxbox" > $(TEST_DIR)/desktop.def
 	sed -i -e "s=%RELEASE_DATE%=$$(date +'%x %X')=g" \
 		   -e "s/%CODE_NAME%/Killah P/g" \
            -e "s/%FULL_DISTRO_NAME%/Test gfxboot/g" $(TEST_DIR)/isolinux.cfg
