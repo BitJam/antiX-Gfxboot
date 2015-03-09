@@ -19,24 +19,24 @@
 
     dup dropwhite
 
-    /console.default exch def
-    0
-    console.data {
-      .vga.option get exec console.default eq { exit } if
-      1 add
-    } forall
+  } { pop "" } ifelse
+  /console.default exch def
 
-    dup console.data length ge { pop 0 } if
-    %pop 3
-  } { pop 1 } ifelse
+  0
+  console.data {
+    .console.option get exec console.default eq { exit } if
+    1 add
+  } forall
 
-    put
+  dup console.data length ge { pop 0 } if
+
+  put
 
 } def
 
 /console.data [
-    [ "no vga"           ""                ]
-    [ "vga: 800×600"     "vga=788 "        ]
+    [ /txt_default       ""                ]
+    [ "vga: 800×600"     "vga=788"         ]
     [ "vga: 1024×768"    "vga=791"         ]
     [ "vga: 1366x768"    "vga=895"         ]
     [ "vga: 1280×1024"   "vga=794"         ]
@@ -51,8 +51,8 @@
 %    [ "new: 1920x1080"   "video=1920x1080" ]
 ] def
 
-/.vga.label  0 def
-/.vga.option 1 def
+/.console.label  0 def
+/.console.option 1 def
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 % Build desktop list.
@@ -72,10 +72,10 @@
   0 1 labels.max {
     dup
     console.labels exch dup exch
-    console.data exch get .vga.label get put
+    console.data exch get .console.label get put
 
     console.options exch dup exch
-    console.data exch get .vga.option get put
+    console.data exch get .console.option get put
   } for
 
   console.setdefault
