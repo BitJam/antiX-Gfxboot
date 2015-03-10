@@ -7,7 +7,7 @@
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 % Some global vars.
 %
-/desktop.setdefault {
+/desktop.getdefault {
 
   xmenu.desktop .xm_current
 
@@ -17,18 +17,17 @@
 
     dup dropwhite
 
-    /desktop.default exch def
+    /desktop.default_val exch def
+
     0
     desktop.data {
-      .xvid.option get exec desktop.default eq { exit } if
+      .desktop.option get exec desktop.default_val eq { exit } if
       1 add
     } forall
 
     dup desktop.data length ge { pop 0 } if
 
   } { pop 0 } ifelse
-
-    put
 
 } def
 
@@ -45,8 +44,8 @@
 ] def
 
 /desktop.default 0 def
-/.desk.label  0 def
-/.desk.option 1 def
+/.desktop.label  0 def
+/.desktop.option 1 def
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 % Build desktop list.
@@ -106,7 +105,7 @@
   % Don't increase size of output arrays if there is
   % a duplicate label to default.desktop
   0 1 labels.max {
-      desktop.data exch get .desk.label get
+      desktop.data exch get .desktop.label get
       default.desktop eq { /bump.size 0 def } if
   } for
 
@@ -125,12 +124,12 @@
   0 1 labels.max {
     desktop.options desktop.labels rot
     dup start.index add dup 4 1 roll exch
-    desktop.data exch get dup 4 1 roll .desk.label get
+    desktop.data exch get dup 4 1 roll .desktop.label get
     dup default.desktop eq {
         pop pop pop pop pop
         /start.index 0 def
     } {
-        put .desk.option get put
+        put .desktop.option get put
     } ifelse
 
   } for
@@ -138,8 +137,9 @@
   % This clears the options for the default desktop
   desktop.options 0 "" put
 
-  desktop.setdefault
+  desktop.getdefault
   %xmenu .xm_current desktop.default put
+  xmenu .xm_current rot put
   xmenu .xm_list    desktop.labels  put
   xmenu .xm_title   /txt_desktop    put
 

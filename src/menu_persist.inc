@@ -24,7 +24,7 @@
 
   0
   persist.data {
-    .vga.option get exec persist.default eq { exit } if
+    .persist.option get exec persist.default eq { exit } if
     1 add
   } forall
 
@@ -42,8 +42,8 @@
     [ "home persist" "persist=home!"             ]
 ] def
 
-/.vga.label  0 def
-/.vga.option 1 def
+/.persist.label  0 def
+/.persist.option 1 def
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 % Build desktop list.
@@ -63,10 +63,10 @@
   0 1 labels.max {
     dup
     persist.labels exch dup exch
-    persist.data exch get .vga.label get put
+    persist.data exch get .persist.label get put
 
     persist.options exch dup exch
-    persist.data exch get .vga.option get put
+    persist.data exch get .persist.option get put
   } for
 
   persist.setdefault

@@ -24,7 +24,7 @@
 
   0
   dpi.data {
-    .vga.option get exec dpi.default eq { exit } if
+    .dpi.option get exec dpi.default eq { exit } if
     1 add
   } forall
 
@@ -50,8 +50,8 @@
     [  "86"  "dpi=86"  ]
 ] def
 
-/.vga.label  0 def
-/.vga.option 1 def
+/.dpi.label  0 def
+/.dpi.option 1 def
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 % Build desktop list.
@@ -71,10 +71,10 @@
   0 1 labels.max {
     dup
     dpi.labels exch dup exch
-    dpi.data exch get .vga.label get put
+    dpi.data exch get .dpi.label get put
 
     dpi.options exch dup exch
-    dpi.data exch get .vga.option get put
+    dpi.data exch get .dpi.option get put
   } for
 
   dpi.setdefault
