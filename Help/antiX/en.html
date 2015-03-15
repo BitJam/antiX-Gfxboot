@@ -24,11 +24,11 @@ The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
     <li><a href="#language">  F2</a>  Select Language</li>
     <li><a href="#timezone">  F3</a>  Select Timezone</li>
     <li><a href="#options1">  F4</a>  Miscellaneous Options</li>
-    <li><a href="#video_mode">F5</a>  Video Mode</li>
+    <li><a href="#persistence">F5</a> Persistence Options</li>
     <li><a href="#desktop">   F6</a>  Choose Desktop Program</li>
     <li><a href="#console">   F7</a>  Console and Splash</li>
     <li><a href="#save">      F7</a>  Save Bootloader Settings</li>
-    <li><a href="#persist_frugal"> Persistence and Frugal Install</a></li>
+    <li><a href="#main_menu">   Main Menu Choices</a></li>
     <li><a href="#bo_instruct"> Other Boot Options</a></li>
     <li><a href="#about">       About antiX Linux</a></li>
 </ul>
@@ -71,8 +71,6 @@ Go to <a href="#general-help"> General Help</a>
 
 <p>
 Return to the <a href="#main">Main Menu</a>
- | prev
- | <a href="#general-help">next</a>
 </p>
 
 </div>
@@ -112,8 +110,6 @@ There are 3 ways to do this:
 <p>
 Go to <a href="#help"> Using the Help System</a><br/>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#help">prev</a>
- | <a href="#language">next</a>
 </p>
 
 </div>
@@ -137,8 +133,6 @@ on the boot line.
 
 <p>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#general-help">prev</a>
- | <a href="#timezone">next</a>
 </p>
 </div>
 
@@ -168,8 +162,6 @@ on the boot line.
 
 <p>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#language">prev</a>
- | <a href="#options1">next</a>
 </p>
 
 </div>
@@ -194,17 +186,12 @@ Return to the <a href="#main">Main Menu</a>
     Disable all usb-2 devices.  This helps a few older systems boot LiveUSB.
     </li>   
    
-    <li> <em> HP laptop</em><br/> 
-    Some HP laptops need a cheat to get brightness working correctly.
-    </li>   
 </ul>
 <p>
 
 See <a href="#mounting">Mounting Options</a> for the rest of the
 <em>F4</em> menu option.<br/>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#timezone">prev</a>
- | <a href="#mounting">next</a>
 </p>
 </div>
 
@@ -236,39 +223,49 @@ See <a href="#options1">Misc. Options</a> for the rest of the
 
 <p>
 Return to  <a href="#main">Main Menu</a>
- | <a href="#options1">prev</a>
- | <a href="#video_mode">next</a>
 </p>
 </div>
 
-<div id="video_mode">
+<div id="persistence">
 <h3>
-<a name="video_mode">F5: Video Mode</a>
+<a name="persistence">F5: Persistence Options</a>
 </h3>
 <p>
-There are 3 options.  Default should work for most users.
-</p><p>
-The antiX core system has <a href="#console">Console</a> menu instead.
+Persistence allows you to save files and settings
+between reboots. There are three types of persistence 
+in the main menu.
 </p>
+
+<p>
 <ul>
+    <li> <em> Frugal</em><br/>
 
-   <li> <em> default</em><br/> Detect the correct video driver and screen resolution.</li>
+    </li>
+    <li> <em> Root Persist </em><br/>
+    Save all the changes to the file-system in RAM and then
+    transfer these changes to disk right before you shutdown or
+    reboot.  Fast, but space is limited by how much RAM
+    you have.
+    </li>
 
-   <li> <em> vesa </em><br/> Use the Vesa driver.  Disable modeset</li>
+    <li> <em> Static Root</em><br/>
+    Saves all your file-system changes directly to a file.  This
+    can be slow but it requires no extra RAM and no changes need
+    to be transfered when you shutdown.
+    </li>
 
-   <li> <em> safe</em><br/> Use X11 defaults.  Disable modeset.</li>
+    <li> <em> Home Persist </em><br/>
+    Only save changes to files and directories under
+    <em>/home</em>.  This will include all of your bookmarks and
+    personal settings.  Like static root persistence, changes are
+    stored immediately to a file but in this case speed is almost
+    never an issue.
+    </li>
 
 </ul>
 
 <p>
-You can also set the resolution by directly typing in <em>xres=resolution</em>.
-This is useful if you want to force a resolution.
-</p>
-
-<p>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#mounting">prev</a>
- | <a href="#console">next</a>
 </p>
 </div>
 
@@ -299,15 +296,13 @@ in order for this to work.
 
 <p>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#console">prev</a>
- | <a href="#save">next</a>
 </p>
 
 </div>
 
 <div id="save">
 <h3>
-<a name="save">F6: Save Bootloader Settings</a>
+<a name="save">F7: Save Bootloader Settings</a>
 </h3>
 
 <p>
@@ -335,14 +330,12 @@ LiveCDs have a <a href="#desktop">Desktop</a> menu instead.
 </ul>
 <p>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#desktop">prev</a>
- | <a href="#console">next</a>
 </p>
 </div>
 
 <div id="console">
 <h3>
-<a name="console">F7: Console and Splash</a>
+<a name="console">F7: Console</a>
 </h3>
 <p>
 </p>
@@ -357,63 +350,9 @@ Return to the <a href="#main">Main Menu</a>
 </ul>
 <p>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#save">prev</a>
- | <a href="#persist_frugal">next</a>
 </p>
 </div>
 
-
-<div id="persist_frugal">
-<h3>
-<a name="persist_frugal">Peristence and Frugal Install</a>
-
-<p>
-Return to the <a href="#main">Main Menu</a>
- | <a href="#dpi">prev</a>
- | <a href="#bo_instruct">next</a>
-</p>
-</div>
-
-<div id="persistence">
-<h3>
-<a name="persistence">Persistence Options</a>
-</h3>
-<p>
-Persistence allows you to save files and settings
-between reboots. There are three types of persistence 
-in the main menu.
-</p>
-<ul>
-    <li> <em> Root Persistence </em><br/>
-    Save all the changes to the file-system in RAM and then
-    transfer these changes to disk right before you shutdown or
-    reboot.  Fast, but space is limited by how much RAM
-    you have.
-    </li>
-
-    <li> <em> Static Root Persistence </em><br/>
-    Saves all your file-system changes directly to a file.  This
-    can be slow but it requires no extra RAM and no changes need
-    to be transfered when you shutdown.
-    </li>
-
-    <li> <em> Home Persistence </em><br/>
-    Only save changes to files and directories under
-    <em>/home</em>.  This will include all of your bookmarks and
-    personal settings.  Like static root persistence, changes are
-    stored immediately to a file but in this case speed is almost
-    never an issue.
-    </li>
-
-</ul>
-
-<p>
-Return to the <a href="#main">Main Menu</a>
- | <a href="#dpi">prev</a>
- | <a href="#bo_instruct">next</a>
-</p>
-
-</div>
 
 <div id="frugal">
 <h3>
@@ -421,12 +360,41 @@ Return to the <a href="#main">Main Menu</a>
 
 <p>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#dpi">prev</a>
- | <a href="#bo_instruct">next</a>
 </p>
 
 
 </div>
+
+<div id="main_menu">
+<h3>
+<a name="main_menu">Main Menu Choices</a>
+</h3>
+
+<ul>
+    <li> <em>antiX-VERSION (DATE)</em>
+    </li>
+
+    <li> <em>Safe Video Mode</em>
+    </li>
+
+    <li> <em>Failsafe Boot</em>
+    </li>
+
+    <li> <em>Boot from Hard Drive</em>
+    </li>
+
+    <li> <em>Test Memory</em>
+    </li>
+
+</ul>
+<p>
+Return to the <a href="#main">Main Menu</a>
+</p>
+
+
+</div>
+
+
 
 
 
@@ -455,8 +423,6 @@ Go to <a href="#mm_boot">Kernel Boot Options</a>
 
 <p>
 Return to <a href="#main">Main Menu</a>
- | <a href="#persistence">prev</a>
- | <a href="#bo_antix">next</a>
 </p>
 
 </div>
@@ -492,8 +458,6 @@ These are options that are only available in antiX
 <p>
 Back to <a href="#bo_instruct">Boot Option Instructions</a><br/>
 Return to <a href="#main">Main Menu</a>
- | <a href="#bo_instruct">prev</a>
- | <a href="#mm_boot">next</a>
 </p>
 
 </div>
@@ -515,8 +479,6 @@ Select a <em>Boot Option</em> to learn more about it.
 <p>
 Back to <a href="#bo_instruct">Boot Option Instructions</a><br/>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#bo_antix">prev</a>
- | <a href="#bo_acpi">next</a>
 </p>
 
 </div>
@@ -545,8 +507,6 @@ the behavior of ACPI:
 <p>
 Return to <a href="#mm_boot">Boot Options</a>
  | <a href="#main">Main Menu</a>
- | <a href="#mm_boot">prev</a>
- | <a href="#bo_no">next</a>
 </p>
 
 </div>
@@ -573,8 +533,6 @@ Skips detection of or enables support for specific hardware.
 <p>
 Return to <a href="#mm_boot">Boot Options</a>
  | <a href="#main">Main Menu</a>
- | <a href="#bo_acpi">prev</a>
- | <a href="#bo_pci">next</a>
 </p>
 
 </div>
@@ -596,8 +554,6 @@ Some PCI options:
 <p>
 Return to <a href="#mm_boot">Boot Options</a>
  | <a href="#main">Main Menu</a>
- | <a href="#bo_no">prev</a>
- | <a href="#bo_ide">next</a>
 </p>
 
 </div>
@@ -618,8 +574,6 @@ To mitigate some hardware problems that occur with IDE hard drives, try this ker
 <p>
 Return to <a href="#mm_boot">Boot Options</a>
  | <a href="#main">Main Menu</a>
- | <a href="#bo_pci">prev</a>
- | <a href="#about">next</a>
 </p>
 
 </div>
@@ -649,8 +603,6 @@ GB is recommended.
 
 <p>
 Return to the <a href="#main">Main Menu</a>
- | <a href="#bo_ide">prev</a>
- | next
 </p>
 
 </div>
