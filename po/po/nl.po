@@ -3,11 +3,12 @@
 # 
 # Translators:
 # Eadwine Rose, 2015
+# ko <ko.bros@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-02-26 20:21+0000\n"
-"Last-Translator: Eadwine Rose\n"
+"PO-Revision-Date: 2015-03-11 10:49+0000\n"
+"Last-Translator: ko <ko.bros@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/antix-development/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -151,8 +152,8 @@ msgstr "Veilige Video Modus"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Failsafe Boot"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "Command Line Boot"

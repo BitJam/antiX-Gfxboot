@@ -2,11 +2,12 @@
 # Copyright (C) 2005 SUSE Linux GmbH
 # 
 # Translators:
+# WPSchulz <fly@wp-schulz.de>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-02-25 21:05+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2015-03-12 12:21+0000\n"
+"Last-Translator: WPSchulz <fly@wp-schulz.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/antix-development/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -146,12 +147,12 @@ msgstr "Neustarten"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "Sicherer Videomodus"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Störungssicherer Boot"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "Kommandozeilen Boot"
