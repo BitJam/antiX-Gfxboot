@@ -35,7 +35,7 @@
         /config.key.F8 "gfx_save" def
     } {
         clip.size pop 800 eq {
-          /config.key.F7 "gfx_save" def
+          /config.key.F8 "gfx_save" def
         } if
     } ifelse
   } if
