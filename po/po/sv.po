@@ -79,7 +79,7 @@ msgstr "Kolla md5"
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr "Kommandoprompt"
+msgstr "Console"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default

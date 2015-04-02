@@ -99,7 +99,7 @@ msgstr "keine"
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr "automatisches Einhängen"
+msgstr "auto mount"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
@@ -124,7 +124,7 @@ msgstr "Menüs"
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr "benutzerdefiniert"
+msgstr "custom"
 
 #. Please keep it short like the English
 #. txt_both
