@@ -36,13 +36,13 @@
 
 /console.data [
     [ /txt_default       ""                ]
-    [ "800×600"     "vga=788"         ]
-    [ "1024×768"    "vga=791"         ]
-    [ "1280×1024"   "vga=794"         ]
-    [ "1366x768"    "vga=895"         ]
-    [ "1600×900"    "vga=980"         ]
-    [ "1600×1200"   "vga=798"         ]
-    [ "1600×1200*"  "vga=839"         ]   % 839 works in VirtualBox
+    [ "vga: 800×600"     "vga=788"         ]
+    [ "vga: 1024×768"    "vga=791"         ]
+    [ "vga: 1280×1024"   "vga=794"         ]
+    [ "vga: 1366x768"    "vga=895"         ]
+    [ "vga: 1600×900"    "vga=980"         ]
+    [ "vga: 1600×1200"   "vga=798"         ]
+    [ "vga: 1600×1200*"  "vga=839"         ]   % 839 works in VirtualBox
 %    [ "new: 1024x768"    "video=1024x768"  ]
 %    [ "new: 1280x1024"   "video=1280x1024" ]
 %    [ "new: 1366x768"    "video=1366x768"  ]
@@ -63,6 +63,34 @@
 /console.init {
   /xmenu.console .xm_size array def
   /xmenu xmenu.console          def
+
+  "console.men" findfile dup .undef ne {
+
+    % Copy raw file data into a string then free raw data
+    dup dup length dup string dup cvp 4 2 roll memcpy exch free
+
+    % remove trailing spaces and newlines
+    dup dropwhite
+
+    % Convert to an array of strings
+    '\n' split
+
+    % Create array to hold the data
+    dup length dup
+    /console.data exch array def
+
+    % Now have: Array, length in stack
+
+    1 sub
+    0 1 rot {
+      over over get strdup '`' split
+      dup 0 get dropspaces
+      dup 1 get dropspaces
+      console.data 3 1 roll put
+    } for
+
+  } if
+  pop
 
   /labels.size console.data length       def
   /labels.max  console.data length 1 sub def
