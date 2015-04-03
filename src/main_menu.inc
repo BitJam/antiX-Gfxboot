@@ -216,7 +216,9 @@
   /menu.bar.width
     menu.bar.min.width
     %-jbb No. XXX also left space for timeout indicator (+24)
+    font.large setfont
     menu.texts { menuitemmap strsize pop menu.text.xofs 2 mul add 2 add max } forall
+    font.normal setfont
   def
 
   % center menu
