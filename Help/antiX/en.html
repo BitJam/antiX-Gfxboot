@@ -18,20 +18,26 @@ WELCOME to antiX Linux: <em>lean and mean!</em>
 The <em>demo</em> user password is "<em>demo</em>" (no quotes)<br/>
 The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
 </p>
-
+<p>
 <ul>
     <li><a href="#help">      F1</a>  the Help System</li>
     <li><a href="#language">  F2</a>  Select Language</li>
     <li><a href="#timezone">  F3</a>  Select Timezone</li>
-    <li><a href="#options1">  F4</a>  Miscellaneous Options</li>
-    <li><a href="#persistence">F5</a> Persistence Options</li>
+    <li><a href="#options">   F4</a>  Miscellaneous Options</li>
+    <li><a href="#persist">   F5</a>  Persistence Options</li>
     <li><a href="#desktop">   F6</a>  Choose Desktop Program</li>
     <li><a href="#console">   F7</a>  Console and Splash</li>
-    <li><a href="#save">      F7</a>  Save Bootloader Settings</li>
+    <li><a href="#save">      F8</a>  Save Bootloader Settings</li>
+</ul>
+</p>
+
+<p>
+<ul>
     <li><a href="#main_menu">   Main Menu Choices</a></li>
     <li><a href="#bo_instruct"> Other Boot Options</a></li>
     <li><a href="#about">       About antiX Linux</a></li>
 </ul>
+</p>
 
 <p>
 Press the <em>[Esc]</em> key to leave the help system
@@ -46,7 +52,7 @@ Press the <em>[Esc]</em> key to leave the help system
 
 <p>
 The help system consists of a set of linked pages that you can navigate
-through with the follow keys.  
+through with the follow keys.
 <p>
 
 <ul>
@@ -56,12 +62,12 @@ through with the follow keys.
     <li><em>[Right Arrow]</em>, <em>[Enter]</em>, <em>[Space]</em> -- follow link</li>
     <li><em>[Page Up]</em>, <em>[Home]</em> -- go to first link on page</li>
     <li><em>[Page Down]</em>, <em>[End]</em> -- go to last link on page</li>
-    
+
     <li><em>[Esc]</em> -- leave help</li>
 </ul>
 
 <p>
-Using [Left Arrow] or [Backspace] will take you to your place 
+Using [Left Arrow] or [Backspace] will take you to your place
 (same highlighted link) on the previous page.
 </p>
 
@@ -123,7 +129,7 @@ Return to the <a href="#main">Main Menu</a>
 Press <em>F2</em> to get a list of supported languages.  Select your language.
 This will automatically set the keyboard layout and the timezone.  If your
 country has more than one timezone then use <em>F3</em> to explicitly set the
-timezone for your area.  
+timezone for your area.
 </p>
 
 <p>
@@ -147,7 +153,7 @@ are listed time zone order so they circle the globe eastward.  If your area
 uses Daylight Savings Time then make sure you select a city that does also.
 Your system will be started using the timezone selected.  Locations that
 observe <em>Daylight Savings Time</em> are marked with a trailing <em>*</em>
-(asterisk).  
+(asterisk).
 </p>
 
 <p>
@@ -166,15 +172,15 @@ Return to the <a href="#main">Main Menu</a>
 
 </div>
 
-<div id="options1">
+<div id="options">
 <h3>
-<a name="options1">F4: Miscellaneous Options</a>
+<a name="options">F4: Miscellaneous Options</a>
 </h3>
 <ul>
-    <li> <em> checkmd5</em><br/> 
+    <li> <em> checkmd5</em><br/>
     check integrity of the install media.</li>
 
-    <li> <em> checkfs </em><br/> 
+    <li> <em> checkfs </em><br/>
     check integrity of the LivUSB and persistent file systems (if any).
     </li>
 
@@ -182,10 +188,10 @@ Return to the <a href="#main">Main Menu</a>
     copy the compressed file system to RAM.  This takes extra time when you
     boot but results in a very fast system (if you have enough RAM).</li>
 
-    <li> <em> nousb2</em><br/> 
+    <li> <em> nousb2</em><br/>
     Disable all usb-2 devices.  This helps a few older systems boot LiveUSB.
-    </li>   
-   
+    </li>
+
 </ul>
 <p>
 
@@ -199,7 +205,7 @@ Return to the <a href="#main">Main Menu</a>
 <h3>
 <a name="mounting">F4: Mounting Options</a>
 </h3>
-    
+
 <p>
 The Live system will dynamically update the fstab file whenever a
 usb drive gets plugged in.  You can also choose to have drives
@@ -213,11 +219,11 @@ mounted automatically when they are plugged in.
 </ul>
 
 <p>
-<em>Note:</em>  Your automount choices are saved on persistent systems. 
+<em>Note:</em>  Your automount choices are saved on persistent systems.
 </p>
 
 <p>
-See <a href="#options1">Misc. Options</a> for the rest of the
+See <a href="#options">Misc. Options</a> for the rest of the
 <em>F4</em> menu options.
 </p>
 
@@ -226,41 +232,35 @@ Return to  <a href="#main">Main Menu</a>
 </p>
 </div>
 
-<div id="persistence">
+<div id="persist">
 <h3>
-<a name="persistence">F5: Persistence Options</a>
+<a name="persist">F5: Persistence Options</a>
 </h3>
-<p>
-Persistence allows you to save files and settings
-between reboots. There are three types of persistence 
-in the main menu.
-</p>
 
 <p>
 <ul>
     <li> <em> Frugal</em><br/>
-
+    Copy files from the install media (LiveCD/USB) to an internal
+    hard drive partition and finish booting from that.  Think of
+    this as a to-disk analogy of <em>toram</em> boot parameter.<br/>
     </li>
+
     <li> <em> Root Persist </em><br/>
     Save all the changes to the file-system in RAM and then
     transfer these changes to disk right before you shutdown or
-    reboot.  Fast, but space is limited by how much RAM
-    you have.
-    </li>
+    reboot.  Fast, but space is limited by how much RAM you
+    have.<br/> </li>
 
     <li> <em> Static Root</em><br/>
     Saves all your file-system changes directly to a file.  This
     can be slow but it requires no extra RAM and no changes need
-    to be transfered when you shutdown.
-    </li>
+    to be transfered when you shutdown.<br/> </li>
 
     <li> <em> Home Persist </em><br/>
     Only save changes to files and directories under
     <em>/home</em>.  This will include all of your bookmarks and
-    personal settings.  Like static root persistence, changes are
-    stored immediately to a file but in this case speed is almost
-    never an issue.
-    </li>
+    personal settings.  Changes are stored immediately and speed
+    is almost never an issue.  </li>
 
 </ul>
 
@@ -275,62 +275,32 @@ Return to the <a href="#main">Main Menu</a>
 </h3>
 
 <p>
-On full and base systems, there are a selection of desktop programs
-available.  The <em>F6</em> menu allows you to choose which desktop
-program to use.  The menu also shows you the list of all desktop
-programs that are installed on the standard antiX iso (either full or base).
+On full and base systems, there are a number of desktop programs (window
+managers) available.  The <em>F6</em> menu allows you to choose which desktop
+program to use.  This menu also shows you which desktop programs are installed
+on the standard antiX iso (either full or base).
 </p>
 
 <p>
-Desktops that start with <em>Rox-</em> (Rox pinboard) or <em>Space-</em> 
-(SpaceFM desktop) come with desktop icons.
-These are often convenient for people who are just starting out.
+Desktop codes that start with <em>Rox-</em> (Rox pinboard) or <em>Space-</em>
+(SpaceFM desktop) come with desktop icons. These are often convenient for
+people who are just starting out.  The <em>min-</em> prefix goes in the
+opposite direction and boots the selected window manager with the least
+amount of additional bells and whistles.  
 </p>
 
 <p>
-If you are running a persistent system and you install new desktop programs
-then you can boot into one of them by typing <em>desktop=desktop-program</em>.
-You will need to have already run the program <em>update-default-desktop</em>
-in order for this to work.
-</p>
 
-<p>
-Return to the <a href="#main">Main Menu</a>
-</p>
-
-</div>
-
-<div id="save">
-<h3>
-<a name="save">F7: Save Bootloader Settings</a>
-</h3>
-
-<p>
-On LiveUSBs and Frugal installs, the <em>F6 Save</em> menu should
-appear replacing <em>F6 Desktop</em>.
+If you are running a persistent system and you install new window manager programs
+then you can boot into them by typing <em>desktop=program-name</em>.  Look in the
+/usr/share/xsessions/ directory to see what names should be used.
 
 </p>
 
-<p>
-LiveCDs have a <a href="#desktop">Desktop</a> menu instead.
-</p>
-
-<ul>
-    <li> <em>save</em><br/>
-    Save the current popup menu settings as the defaults and create/replace
-    a custom main menu entry if needed for options that are typed in
-    that don't exist in the popup menus.
-    </li>
-
-    <li> <em>reset</em><br/>
-    Restore the original menu defaults.  Does not affect
-    the custom main menu entry.
-    </li>
-
-</ul>
 <p>
 Return to the <a href="#main">Main Menu</a>
 </p>
+
 </div>
 
 <div id="console">
@@ -338,15 +308,30 @@ Return to the <a href="#main">Main Menu</a>
 <a name="console">F7: Console</a>
 </h3>
 <p>
+
+This menu allows you to set the resolution of the virtual consoles
+using the deprecated <em>vga</em> kernel boot parameter.  This works
+well on many older systems but on newer systems with wide screen displays
+the codes used are non-standard.  For example the <em>1600x1200*</em>
+resolution works in Virtual Box but may not work elsewhere.
+
+</p>
+
+<p>
+Most newer systems support Kernel Mode
+Setting (KMS) which lets the video driver handle the consoles and automatically
+sets the highest resolution possible.
+
 </p>
 <ul>
-    <li><em>vga=789</em> 800x600</li>
-    <li><em>vga=877</em> 1024x640</li>
-    <li><em>vga=792</em> 1024x768</li>
-    <li><em>vga=864</em> 1280x800</li>
-    <li><em>vga=795</em> 1280x1024</li>
-    <li><em>vga=834</em> 1400x1050</li>
-    <li><em>vga=839</em> 1600x1200</li>
+   <li><em>vga=788</em> 800×600</li>    
+   <li><em>vga=791</em> 1024×768</li>   
+   <li><em>vga=794</em> 1280×1024</li>  
+   <li><em>vga=895</em> 1366x768</li>   
+   <li><em>vga=980</em> 1600×900</li>   
+   <li><em>vga=798</em> 1600×1200</li>  
+   <li><em>vga=839</em> 1600×1200*</li> 
+   <li><em>vga=ask</em> ask</li> 
 </ul>
 <p>
 Return to the <a href="#main">Main Menu</a>
@@ -361,8 +346,36 @@ Return to the <a href="#main">Main Menu</a>
 <p>
 Return to the <a href="#main">Main Menu</a>
 </p>
+</div>
 
+<div id="save">
+<h3>
+<a name="save">F8: Save Bootloader Settings</a>
+</h3>
 
+<p>
+On LiveUSBs and Frugal installs, the <em>F8 Save</em> menu should
+appear.   A LiveUSB made with the "dd" command acts like a LiveCD
+and does not have the <em>F8 Save</em> menu.
+
+</p>
+
+<ul>
+    <li> <em>save</em><br/>
+    Save the current function key popup menu settings as the defaults and
+    create/replace a custom main menu entry if needed for options that are
+    typed if they don't exist in the popup menus.
+    </li>
+
+    <li> <em>reset</em><br/>
+    Restore the original menu defaults.  Does not affect
+    the custom main menu entry (if one was created).
+    </li>
+
+</ul>
+<p>
+Return to the <a href="#main">Main Menu</a>
+</p>
 </div>
 
 <div id="main_menu">
@@ -370,23 +383,31 @@ Return to the <a href="#main">Main Menu</a>
 <a name="main_menu">Main Menu Choices</a>
 </h3>
 
-<ul>
-    <li> <em>antiX-VERSION (DATE)</em>
-    </li>
+    <em>antiX-VERSION (DATE)</em><br/>
+    Boot the system normally.  You can use the Function key menus
+    to select various options such as 
+    <a href=#console>Console</a> resolution, various
+    <a href="#options">Options</a>, or
+    <a href="#persist">Persistence</a>. 
 
-    <li> <em>Safe Video Mode</em>
-    </li>
+    <br/><br/> <em>Safe Video Mode</em><br/>
+    Disable KMS (kernel mode set) video drivers and force the use
+    of the <em>vesa</em> video driver.  Try this option of
+    the system seems to boot but the screen is blank.
+    
+    <br/><br/> <em>Failsafe Boot</em><br/>
+    In addition to forcing safe video, also load all drivers
+    early in the boot process.  Try this option if the system
+    does not boot at all.
 
-    <li> <em>Failsafe Boot</em>
-    </li>
+    <br/><br/> <em>Boot from Hard Drive</em><br/>
+    This will try to do a legacy (BIOS) from the first internal hard drive.
+    Windows 8 and above use UEFI instead of BIOS so this entry won't be
+    able to boot them.
 
-    <li> <em>Boot from Hard Drive</em>
-    </li>
+    <br/> <br/> <em>Test Memory</em><br/>
+    Test the system memory without booting into any operating system.      
 
-    <li> <em>Test Memory</em>
-    </li>
-
-</ul>
 <p>
 Return to the <a href="#main">Main Menu</a>
 </p>
