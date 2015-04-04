@@ -54,6 +54,34 @@
   /xmenu.persist .xm_size array def
   /xmenu xmenu.persist          def
 
+  "persist.men" findfile dup .undef ne {
+
+    % Copy raw file data into a string then free raw data
+    dup dup length dup string dup cvp 4 2 roll memcpy exch free
+
+    % remove trailing spaces and newlines
+    dup dropwhite
+
+    % Convert to an array of strings
+    '\n' split
+
+    % Create array to hold the data
+    dup length dup
+    /persist.data exch array def
+
+    % Now have: Array, length in stack
+
+    1 sub
+    0 1 rot {
+      over over get strdup '`' split
+      dup 0 get dropspaces
+      dup 1 get dropspaces
+      persist.data 3 1 roll put
+    } for
+
+  } if
+  pop
+
   /labels.size persist.data length       def
   /labels.max  persist.data length 1 sub def
 
