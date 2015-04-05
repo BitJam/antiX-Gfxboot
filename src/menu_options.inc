@@ -35,18 +35,18 @@
 } def
 
 /options.data [
-      [ /txt_none       ""               ]
-      [ "checkmd5"      "checkmd5"       ]
-      [ "checkfs"       "checkfs"        ]
-      [ "toram"         "toram"          ]
-      [ "from=usb"      "from=usb"       ]
-      [ "automount"     "automount"      ]
-      [ "mount=usb"     "mount=usb"      ]
-      [ "mount=all"     "mount=all"      ]
-      [ "nousb2"        "nousb2"         ]
-      [ "acpi=off"      "acpi=off"       ]
-      [ "hwclock=utc"   "hwclock=utc"    ]
-      [ "hwclock=local" "hwclock=local"  ]
+      [ /txt_none         ""                 ]
+      [ "checkmd5"        "checkmd5"         ]
+      [ "checkfs"         "checkfs"          ]
+      [ "toram"           "toram"            ]
+      [ "from=usb"        "from=usb"         ]
+      [ "automount"       "automount"        ]
+      [ "mount=usb"       "mount=usb"        ]
+      [ "mount=all"       "mount=all"        ]
+      [ "nousb2"          "nousb2"           ]
+      [ "acpi=off"        "acpi=off"         ]
+      [ "hwclock=utc"     "hwclock=utc"      ]
+      [ "hwclock=local"   "hwclock=local"    ]
   ] def
 
 /.opt.label  0 def

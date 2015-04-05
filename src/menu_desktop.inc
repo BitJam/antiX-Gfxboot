@@ -32,15 +32,17 @@
 } def
 
 /desktop.data [
-   [ "default"        ""                      ]
-   [ "Rox-Fluxbox"    "desktop=rox-fluxbox"   ]
-   [ "Space-Fluxbox"  "desktop=space-fluxbox" ]
-   [ "Fluxbox"        "desktop=fluxbox"       ]
-   [ "Rox-Jwm"        "desktop=rox-jwm"       ]
-   [ "Space-Jwm"      "desktop=space-jwm"     ]
-   [ "Jwm"            "desktop=jwm"           ]
-   [ "min-Fluxbox"    "desktop=min-fluxbox"   ]
-   [ "min-Jwm"        "desktop=min-jwm"       ]
+   [ "default"          ""                      ]
+   [ "Rox-Fluxbox"      "desktop=rox-fluxbox"   ]
+   [ "Space-Fluxbox"    "desktop=space-fluxbox" ]
+   [ "Fluxbox"          "desktop=fluxbox"       ]
+   [ "Rox-Jwm"          "desktop=rox-jwm"       ]
+   [ "Space-Jwm"        "desktop=space-jwm"     ]
+   [ "Jwm"              "desktop=jwm"           ]
+   [ "min-Fluxbox"      "desktop=min-fluxbox"   ]
+   [ "min-Jwm"          "desktop=min-jwm"       ]
+   [ "desktheme=dark"   "desktheme=dark"        ]
+   [ "desktheme=light"  "desktheme=light"       ]
 ] def
 
 /desktop.default 0 def
