@@ -25,7 +25,7 @@ $(HELP_FILES): %.hlp: %-split %.html
 	rm -rf $</* $@
 	$(SPLIT) --dir $< $(word 2, $^)
 	$(GFXBOOT) --help-create $@ $</*.html || true
-	sed -i 's/•/*/g' $@
+	@#sed -i 's/•/*/g' $@
 	test -e $@
 
 $(TEST_GROUPS): test-% : test/%.html
