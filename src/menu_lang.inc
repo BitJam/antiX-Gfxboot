@@ -20,7 +20,7 @@
 
 /lang.defaultnames [
   [ "af_ZA" "us"                   false "Afrikaans"                                     "us" ] % Afrikaans
-  [ "ar_EG" "arabic"               true  "\ufef2\ufe91\ufeae\ufecb"                     "ara" ] % Arabic
+  [ "ar_EG" "arabic"               true  "Arabic"                                       "ara" ] % Arabic
   [ "ast_ES" "es"                  false "Asturianu"                                     "es" ] % Asturian
   [ "bg_BG" "us"                   false "Български"                                     "bg" ] % Bulgarian
   [ "bn_BD" "us"                   false "\u09ac\u09be\u0982\u09b2\u09be"                "in" ] % Bengali
@@ -39,7 +39,7 @@
   [ "es_ES" "es"                   false "Español"                                       "es" ] % Spanish
   [ "eu_ES" "es"                   false "Euskara"                                       "eu" ] % Euskal
   [ "et_EE" "et"                   false "Eesti"                                         "ee" ] % Estonian
-  [ "fa_IR" "us"                   true  "\ufbfd\ufeb4\u0631\ufe8e\ufed3"                "us" ] % Farsi
+  [ "fa_IR" "us"                   true  "فارسی"                                         "us" ] % Farsi
   [ "fr_FR" "fr-latin1"            false "Français"                                      "fr" ] % French
   [ "fr_BE" "be-latin1"            false "Fr, (Belgique)"                                "be" ] % French (Belgium)
   [ "gl_ES" "es"                   false "Galego"                                        "es" ] % Galician
