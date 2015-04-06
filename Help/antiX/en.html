@@ -20,14 +20,14 @@ The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
 </p>
 <p>
 <ul>
-    <li><a href="#help">      F1</a>  the Help System</li>
-    <li><a href="#language">  F2</a>  Select Language</li>
-    <li><a href="#timezone">  F3</a>  Select Timezone</li>
-    <li><a href="#options">   F4</a>  Miscellaneous Options</li>
-    <li><a href="#persist">   F5</a>  Persistence Options</li>
-    <li><a href="#desktop">   F6</a>  Choose Desktop Program</li>
-    <li><a href="#console">   F7</a>  Console Resolution </li>
-    <li><a href="#save">      F8</a>  Save Bootloader Settings</li>
+    <li><a href="#help">      F1 Help System</a></li>
+    <li><a href="#language">  F2 Select Language</a></li>
+    <li><a href="#timezone">  F3 Select Timezone</a></li>
+    <li><a href="#options">   F4 Miscellaneous Options</a></li>
+    <li><a href="#persist">   F5 Persistence Options</a></li>
+    <li><a href="#desktop">   F6 Choose Desktop Program</a></li>
+    <li><a href="#console">   F7 Console Resolution </a></li>
+    <li><a href="#save">      F8 Save Bootloader Settings</a></li>
 </ul>
 </p>
 
@@ -40,7 +40,7 @@ The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
 </p>
 
 <p>
-Press the <em>[Esc]</em> key to leave the help system
+<em>Tip:</em> press [<em>Esc</em>] at any time to leave the help system.
 </p>
 
 </div>
@@ -67,7 +67,7 @@ through with the follow keys.
 </ul>
 
 <p>
-Using [Left Arrow] or [Backspace] will take you to your place
+<em>Tip:</em> use [<em>Left Arrow</em>] or [<em>Backspace</em>] to go back to your place
 (same highlighted link) on the previous page.
 </p>
 
@@ -87,31 +87,37 @@ Return to the <a href="#main">Main Menu</a>
 </h3>
 
 <p>
-This bootloader lets you select which program to launch (<em>antiX
-Linux</em> or <em>memtest</em>) and in the case of antiX Linux select
-which boot parameters (cheat codes) get set when the program launches.
-There are 3 ways to do this:
-</p>
+This bootloader lets you select what to boot: <em>antiX
+Linux</em>, <em>hard drive boot</em>, or <em>memtest</em>.
+In the case of antiX Linux you can select which boot parameters
+(cheat codes) get set.  There are three ways to enter information: </p>
 
 <ul>
     <li>
     <em>Main Menu</em><br/>
-    [Up Arrow] and [Down Arrow] select which program to run
-    and some boot options. [Enter] launches the program.
+    [<em>Up Arrow</em>] and [<em>Down Arrow</em>] select which
+    program to run and some boot options. [<em>Enter</em>]
+    starts the boot process.<br/>
     </li>
     <li>
     <em>Boot Options</em><br/>
-    [Left Arrow], [Right Arrow], and [Backspace] edit some main
-    menu options directly.  You can also type in new options.
+    [<em>Left Arrow</em>], [<em>Right Arrow</em>], and
+    [<em>Backspace</em>] edit some main menu options directly.
+    You can also type in new options.<br/>
     </li>
     <li>
     <em>Function Key Pop-up Menus</em><br/>
-    [F2] through [f6] open menus. Navigate them with the arrow keys.
-    [Enter] selects highlighted option.  [Esc] leaves the pop-up
-    menu without selecting an entry.
+    [<em>F2</em>] through [<em>F8</em>] open menus. Navigate them
+    with the arrow keys.  [<em>Enter</em>] selects highlighted option.
+    [<em>Esc</em>] leaves the pop-up menu without selecting an entry.  
     </li>
+
 </ul>
 
+<p>
+<em>Tip:</em> press [<em>F12</em>] to see all the currently selected
+boot options.
+</p>
 
 <p>
 Go to <a href="#help"> Using the Help System</a><br/>
@@ -126,15 +132,21 @@ Return to the <a href="#main">Main Menu</a>
 </h3>
 
 <p>
-Press <em>F2</em> to get a list of supported languages.  Select your language.
-This will automatically set the keyboard layout and the timezone.  If your
-country has more than one timezone then use <em>F3</em> to explicitly set the
-timezone for your area.
+Press [<em>F2</em>] to get a list of supported languages.  Select
+your language.  In addition to setting the language, this option
+will also set the keyboard layout and timezone.  If your country
+has more than one timezone then use the <em>F3 Timezone</em> menu
+to explicitly set the timezone for your area.
 </p>
 
 <p>
-The menu is an easy shortcut for entering <em>lang=language-code</em> directly
-on the boot line.
+This menu is an easy shortcut for entering
+<em>lang=[language-code]</em> directly
+on the boot options line.
+</p>
+
+<p>
+The default language is <em>American English</em>.
 </p>
 
 <p>
@@ -148,23 +160,26 @@ Return to the <a href="#main">Main Menu</a>
 </h3>
 
 <p>
-Press <em>F3</em> to get at list of cities in various time zones.  The cities
-are listed time zone order so they circle the globe eastward.  If your area
+Press [<em>F3</em>] to get at list of cities in various time zones.  The cities
+are listed in time zone order so they circle the globe eastward.  If your area
 uses Daylight Savings Time then make sure you select a city that does also.
-Your system will be started using the timezone selected.  Locations that
-observe <em>Daylight Savings Time</em> are marked with a trailing <em>*</em>
-(asterisk).
+These cities are marked with a trailing <em>*</em> (asterisk).  Your system will
+be started using the timezone selected. 
 </p>
 
 <p>
-<em>NOTE:</em> You do not have to use this option if you have set a language
-and your country has only one time-zone.
-</p>
-
-<p>
-The menu is an easy shortcut for entering <em>tz=timezone</em> directly
+The menu is an easy shortcut for entering <em>tz=[your-timezone]</em> directly
 on the boot line.
 <p>
+
+<p>
+The default time zone is <em>Eastern Time</em> (EST or EDT
+depending on the time of year).
+</p>
+<p>
+<em>Tip:</em> you do not have to use this menu if you have set a language
+and your country/area has only one time-zone.
+</p>
 
 <p>
 Return to the <a href="#main">Main Menu</a>
