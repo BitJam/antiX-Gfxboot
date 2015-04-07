@@ -136,8 +136,7 @@ Press [<em>F2</em>] to get a list of supported languages.  Select
 your language.  In addition to setting the language, this option
 will also set the keyboard layout and timezone.  If your country
 has more than one timezone then use the <em>F3 Timezone</em> menu
-to explicitly set the timezone for your area.
-</p>
+to explicitly set the timezone for your area.  </p>
 
 <p>
 This menu is an easy shortcut for entering
@@ -160,16 +159,18 @@ Return to the <a href="#main">Main Menu</a>
 </h3>
 
 <p>
-Press [<em>F3</em>] to get at list of cities in various time zones.  The cities
-are listed in time zone order so they circle the globe eastward.  If your area
-uses Daylight Savings Time then make sure you select a city that does also.
-These cities are marked with a trailing <em>*</em> (asterisk).  Your system will
-be started using the timezone selected. 
+Press [<em>F3</em>] to get at list of cities in various time
+zones.  The cities are listed in time zone order so they circle
+the globe eastward.  If your area uses Daylight Savings Time then
+make sure you select a city that does also.  These cities are
+marked with a trailing <em>*</em> (asterisk).  Your system will
+be started using the timezone selected.
 </p>
 
 <p>
-The menu is an easy shortcut for entering <em>tz=[your-timezone]</em> directly
-on the boot line.
+
+The menu is an easy shortcut for entering
+<em>tz=[your-timezone]</em> directly on the boot line.
 <p>
 
 <p>
@@ -177,8 +178,10 @@ The default time zone is <em>Eastern Time</em> (EST or EDT
 depending on the time of year).
 </p>
 <p>
-<em>Tip:</em> you do not have to use this menu if you have set a language
-and your country/area has only one time-zone.
+
+<em>Tip:</em> you do not have to use this menu if you have set a
+language and your country/area has only one time-zone.
+
 </p>
 
 <p>
@@ -324,18 +327,19 @@ Return to the <a href="#main">Main Menu</a>
 </h3>
 <p>
 
-This menu allows you to set the resolution of the virtual consoles
-using the deprecated <em>vga</em> kernel boot parameter.  This works
-well on many older systems but on newer systems with wide screen displays
-the codes used are non-standard.  For example the <em>1600x1200*</em>
-resolution works in Virtual Box but may not work elsewhere.
+This menu allows you to set the resolution of the virtual
+consoles using the deprecated <em>vga</em> kernel boot parameter.
+This works well on many older systems but on newer systems with
+wide screen displays the codes used are non-standard.  For
+example the <em>1600x1200*</em> resolution works in Virtual Box
+but may not work elsewhere.
 
 </p>
 
 <p>
-Most newer systems support Kernel Mode
-Setting (KMS) which lets the video driver handle the consoles and automatically
-sets the highest resolution possible.
+Most newer systems support Kernel Mode Setting (KMS) which lets
+the video driver handle the consoles and automatically sets the
+highest resolution possible.
 
 </p>
 <ul>
@@ -427,12 +431,7 @@ Return to the <a href="#main">Main Menu</a>
 Return to the <a href="#main">Main Menu</a>
 </p>
 
-
 </div>
-
-
-
-
 
 <div id="bo_instruct">
 <h3>
@@ -440,22 +439,25 @@ Return to the <a href="#main">Main Menu</a>
 </h3>
 
 <p>
-There are many boot options available.  They are usually only necessary if your
-system will not boot properly. To use the boot options just place the
-appropriate code in the <em>Boot Options</em> box at the bottom of the main
-screen.  You may also need to edit or delete options that are already in the
-<em>Boot Options</em> box.
+There are many boot options available.  They are usually only
+necessary if your system will not boot properly. To use the boot
+options just place the appropriate code in the <em>Boot
+Options</em> box at the bottom of the main screen.  You may also
+need to edit or delete options that are already in the <em>Boot
+Options</em> box.
+
 </p>
 
 <p>
-You can't make changes permanent on a LiveCD or a LiveDVD.  You have to enter
-them each time you boot.  You can make permanent changes on some LiveUSBs.
+You can't make permanent changes on a LiveCD or a LiveDVD.  You
+have to enter them each time you boot.  You can make permanent
+changes on some LiveUSBs.
+
 </p>
 <p>
 Go to <a href="#bo_antix">antiX Boot Options</a><br/>
 Go to <a href="#mm_boot">Kernel Boot Options</a>
 </p>
-
 
 <p>
 Return to <a href="#main">Main Menu</a>
@@ -527,12 +529,12 @@ Return to the <a href="#main">Main Menu</a>
 
 <p>
 
-ACPI (Advanced Configuration and Power Interface) is a standard that defines
-power and configuration management interfaces between an operating system and
-the BIOS. By default, <em>acpi</em> is switched on when boot detects a BIOS
-newer than the year 2000. There are several commonly used parameters to control
-the behavior of ACPI:
-</p>
+ACPI (Advanced Configuration and Power Interface) is a standard
+that defines power and configuration management interfaces
+between an operating system and the BIOS. By default,
+<em>acpi</em> is switched on when boot detects a BIOS newer than
+the year 2000. There are several commonly used parameters to
+control the behavior of ACPI: </p>
 
 <ul>
     <li><em>pci=noacpi</em> -- do not use ACPI to route PCI interrupts</li>
@@ -601,7 +603,9 @@ Return to <a href="#mm_boot">Boot Options</a>
 </h3>
 
 <p>
-To mitigate some hardware problems that occur with IDE hard drives, try this kernel parameter:
+To mitigate some hardware problems that occur with IDE hard
+drives, try this kernel parameter:
+
 </p>
 <p>
 <em>ide=nodma</em> -- switch off dma for IDE drives
@@ -624,17 +628,18 @@ Web site: <em>http://antix.mepis.com</em><br/>
 Forums: <em>http://antix.freeforums.org</em>
 </p>
 <p>
-antiX is pronounced like the word <em>antics</em>, which means amusing,
-frivolous, or eccentric behavior. It is distributed as CD or ISO images that
-contain many quality Linux applications.
+antiX is pronounced like the word <em>antics</em>, which means
+amusing, frivolous, or eccentric behavior. It is distributed as
+CD or ISO images that contain many quality Linux applications.
 </p>
 
 
 <p>
-antiX is compiled to work with Pentium-class Intel and AMD processors or
-better. antiX will not work with 386 and 486 class processors. To install antiX
-on a hard drive, at least 1.5 GB of free space is required and a minimum of 2.5
-GB is recommended.
+antiX is compiled to work with Pentium-class Intel and AMD
+processors or better. antiX will not work with 386 and 486 class
+processors. To install antiX on a hard drive, at least 1.5 GB of
+free space is required and a minimum of 2.5 GB is recommended.
+
 </p>
 
 <p>
