@@ -11,5 +11,5 @@ Icewm            `desktop=icewm
 min-fluxbox      `desktop=min-fluxbox
 min-jwm          `desktop=min-jwm
 min-icewm        `desktop=min-icewm
-desktheme=dark   `desktheme=dark
-desktheme=light  `desktheme=light
+Dark theme       `desktheme=dark
+Light theme      `desktheme=light

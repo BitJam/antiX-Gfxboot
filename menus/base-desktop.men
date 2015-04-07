@@ -11,5 +11,5 @@ min-Fluxbox      `desktop=min-fluxbox
 min-Jwm          `desktop=min-jwm
 min-Dwm          `desktop=min-dwm
 min-Wmii         `desktop=min-wmii
-desktheme=dark   `desktheme=dark
-desktheme=light  `desktheme=light
+Dark theme       `desktheme=dark
+Light theme      `desktheme=light
