@@ -25,8 +25,8 @@ The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
     <li><a href="#timezone">  F3 Select Timezone</a></li>
     <li><a href="#options">   F4 Miscellaneous Options</a></li>
     <li><a href="#persist">   F5 Persistence Options</a></li>
-    <li><a href="#desktop">   F6 Choose Desktop Program</a></li>
-    <li><a href="#console">   F7 Console Resolution </a></li>
+    <li><a href="#desktop">   F6 Select Desktop Program</a></li>
+    <li><a href="#console">   F7 Set Console Resolution </a></li>
     <li><a href="#save">      F8 Save Bootloader Settings</a></li>
 </ul>
 </p>
@@ -34,6 +34,7 @@ The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
 <p>
 <ul>
     <li><a href="#main_menu">   Main Menu Choices</a></li>
+    <li><a href="#main_options">   Main Menu Options</a></li>
     <li><a href="#bo_instruct"> Other Boot Options</a></li>
     <li><a href="#about">       About antiX Linux</a></li>
 </ul>
@@ -309,17 +310,18 @@ amount of additional bells and whistles.
 
 <p>
 
-If you are running a persistent system and you install new window manager programs
-then you can boot into them by typing <em>desktop=program-name</em>.  Look in the
-/usr/share/xsessions/ directory to see what names should be used.
+If you are running a persistent system and you install new window manager
+programs then you can boot into them by typing <em>desktop=program-name</em>.
+Look in the /usr/share/xsessions/ directory to see what names should be used.
 
 </p>
 
 <p>
 
-New for antiX-15: there are now two theme related options in the <em>F6</em> menu
-called <em>Dark theme</em> and <em>Light theme</em>.  Since dark is the default
-use <em>Light theme</em> to change the color scheme of all the desktop programs.
+<em>New for antiX-15:</em> there are now two theme related options in the
+<em>F6</em> menu called <em>Dark theme</em> and <em>Light theme</em>.  Since
+dark is the default use <em>Light theme</em> to change the color scheme of all
+the desktop programs (Fluxbox, IceWM, etc).
 
 </p>
 
@@ -331,7 +333,7 @@ Return to the <a href="#main">Main Menu</a>
 
 <div id="console">
 <h3>
-<a name="console">F7: Console Resolution</a>
+<a name="console">F7: Set Console Resolution</a>
 </h3>
 <p>
 
@@ -434,6 +436,55 @@ Return to the <a href="#main">Main Menu</a>
 
     <br/> <br/> <em>Test Memory</em><br/>
     Test the system memory without booting into any operating system.      
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+</p>
+
+</div>
+
+<div id="main_options">
+<h3>
+<a name="main_options">Main Menu Options</a>
+</h3>
+
+<p>
+These are the options that show up in the <em>Boot Options</em> box.
+<p>
+
+<em>quiet</em><br>
+Tell the kernel to <em>not</em> print a lot of debugging information to the screen.
+</p>
+
+<p>
+<em>splash=v</em><br>
+Enable background decoration on the virtual (text) consoles.  Delete it or set it
+to <em>off</em> to disable these decorations.
+</p>
+
+<p>
+<em><a href="#bo_antix">disable_srv=LX</a></em><br>
+Disable some startup services for faster booting and less RAM usage.
+</p>
+
+<p>
+<em>nomodeset</em><br>
+Do not let the video driver take over the console.  If the screen goes blank
+early in the boot process then you probably need this option.
+</p>
+
+<p>
+<em>xorg=safe</em><br>
+Disable the hardware video driver from controlling graphics mode.  Some drivers
+have trouble with older hardware.
+
+</p>
+<p>
+<em>failsafe</em><br>
+Load all drivers early in the boot process <em>and</em> enable safe video mode.
+Use this if the live media fails to boot. To only load all drivers use
+<em>load=all</em>.
+</p>
 
 <p>
 Return to the <a href="#main">Main Menu</a>
