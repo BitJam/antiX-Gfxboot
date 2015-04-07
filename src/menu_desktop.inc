@@ -41,8 +41,8 @@
    [ "Jwm"              "desktop=jwm"           ]
    [ "min-Fluxbox"      "desktop=min-fluxbox"   ]
    [ "min-Jwm"          "desktop=min-jwm"       ]
-   [ "desktheme=dark"   "desktheme=dark"        ]
-   [ "desktheme=light"  "desktheme=light"       ]
+   [ "Dark theme"       "desktheme=dark"        ]
+   [ "Light theme"      "desktheme=light"       ]
 ] def
 
 /desktop.default 0 def
