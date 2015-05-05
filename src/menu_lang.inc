@@ -37,6 +37,11 @@
   [ "en_GB" "uk"                   false "English (UK)"                                  "gb" ] % English
   [ "en_US" "us"                   false "English (US)"                                  "us" ] % English
   [ "es_ES" "es"                   false "Español"                                       "es" ] % Spanish
+  [ "es_AR" "es"                   false "Español (AR)"                                  "es" ] % Spanish (Argentina)
+  [ "es_BO" "es"                   false "Español (BO)"                                  "es" ] % Spanish (Bolivia)
+  [ "es_MX" "es"                   false "Español (MX)"                                  "es" ] % Spanish (Mexico)
+  [ "es_NI" "es"                   false "Español (NI)"                                  "es" ] % Spanish (Nicarugua)
+  [ "es_PE" "es"                   false "Español (PE)"                                  "es" ] % Spanish (Peru)
   [ "eu_ES" "es"                   false "Euskara"                                       "eu" ] % Euskal
   [ "et_EE" "et"                   false "Eesti"                                         "ee" ] % Estonian
   [ "fa_IR" "us"                   true  "فارسی"                                         "us" ] % Farsi
