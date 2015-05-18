@@ -32,21 +32,23 @@
   [ "de_BE" "be-latin1"            false "Deutsch (Belgien)"                             "be" ] % Germal (Belgium)
   [ "de_DE" "de-latin1-nodeadkeys" false "Deutsch"                                       "de" ] % German
   [ "el_GR" "gr"                   false "Ελληνικά"                                      "el" ] % Greek
-  [ "en_AU" "us"                   false "English (Au)"                                  "gb" ] % English
-  [ "en_NZ" "us"                   false "English (NZ)"                                  "gb" ] % English
-  [ "en_GB" "uk"                   false "English (UK)"                                  "gb" ] % English
-  [ "en_US" "us"                   false "English (US)"                                  "us" ] % English
+  [ "en_AU" "us"                   false "English (AU)"                                  "gb" ] % English (Australia)
+  [ "en_NZ" "us"                   false "English (NZ)"                                  "gb" ] % English (New Zealand)
+  [ "en_GB" "uk"                   false "English (UK)"                                  "gb" ] % English (United Kingdom)
+  [ "en_US" "us"                   false "English (US)"                                  "us" ] % English (United States)
   [ "es_ES" "es"                   false "Español"                                       "es" ] % Spanish
   [ "es_AR" "es"                   false "Español (AR)"                                  "es" ] % Spanish (Argentina)
   [ "es_BO" "es"                   false "Español (BO)"                                  "es" ] % Spanish (Bolivia)
   [ "es_MX" "es"                   false "Español (MX)"                                  "es" ] % Spanish (Mexico)
   [ "es_NI" "es"                   false "Español (NI)"                                  "es" ] % Spanish (Nicarugua)
   [ "es_PE" "es"                   false "Español (PE)"                                  "es" ] % Spanish (Peru)
+  [ "es_US" "es"                   false "Español (US)"                                  "es" ] % Spanish (US)
   [ "eu_ES" "es"                   false "Euskara"                                       "eu" ] % Euskal
   [ "et_EE" "et"                   false "Eesti"                                         "ee" ] % Estonian
   [ "fa_IR" "us"                   true  "فارسی"                                         "us" ] % Farsi
   [ "fr_FR" "fr-latin1"            false "Français"                                      "fr" ] % French
-  [ "fr_BE" "be-latin1"            false "Fr, (Belgique)"                                "be" ] % French (Belgium)
+  [ "fr_BE" "be-latin1"            false "Français (BE)"                                 "be" ] % French (Belgium)
+  [ "fr_CA" "fr-latin1"            false "Français (CA)"                                 "fr" ] % French (Canada)
   [ "gl_ES" "es"                   false "Galego"                                        "es" ] % Galician
   [ "ka_GE" "us"                   false "ქართული"                                       "us" ] % Kartuli
   [ "gu_IN" "us"                   false "\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4\u0ac0"    "in" ] % Gujarati
@@ -69,11 +71,11 @@
   [ "mr_IN" "us"                   false "\u092e\u0930\u093e\u0920\u0940"                "in" ] % Marathi
   [ "nb_NO" "no-latin1"            false "Norsk"                                         "no" ] % Norwegian
   [ "nl_NL" "us"                   false "Nederlands"                                    "nl" ] % Dutch
-  [ "nl_BE" "be-latin1"            false "Ned. (België)"                                 "be" ] % Dutch (Belgium)
+  [ "nl_BE" "be-latin1"            false "Nederlands (BE)"                               "be" ] % Dutch (Belgium)
   [ "nn_NO" "no-latin1"            false "Nynorsk"                                       "no" ] % Nynorsk
   [ "pa_IN" "us"                   false "\u0a2a\u0a70\u0a1c\u0a3e\u0a2c\u0a40"          "in" ] % Punjabi
   [ "pl_PL" "Pl02"                 false "Polski"                                        "pl" ] % Polish
-  [ "pt_BR" "br-abnt2"             false "Port. (Brasil)"                                "br" ] % Portuguese (Brazilian)
+  [ "pt_BR" "br-abnt2"             false "Português (BR)"                                "br" ] % Portuguese (Brazilian)
   [ "pt_PT" "pt-latin1"            false "Português"                                     "pt" ] % Portuguese
   [ "ro_RO" "us"                   false "Română"                                        "ro" ] % Romanian
   [ "ru_RU" "ruwin_alt-UTF-8"      false "Русский"                                       "ru" ] % Russian
