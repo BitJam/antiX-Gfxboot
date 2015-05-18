@@ -40,7 +40,7 @@
   [ "es_AR" "es"                   false "Español (AR)"                                  "es" ] % Spanish (Argentina)
   [ "es_BO" "es"                   false "Español (BO)"                                  "es" ] % Spanish (Bolivia)
   [ "es_MX" "es"                   false "Español (MX)"                                  "es" ] % Spanish (Mexico)
-  [ "es_NI" "es"                   false "Español (NI)"                                  "es" ] % Spanish (Nicarugua)
+  [ "es_NI" "es"                   false "Español (NI)"                                  "es" ] % Spanish (Nicaragua)
   [ "es_PE" "es"                   false "Español (PE)"                                  "es" ] % Spanish (Peru)
   [ "es_US" "es"                   false "Español (US)"                                  "es" ] % Spanish (US)
   [ "eu_ES" "es"                   false "Euskara"                                       "eu" ] % Euskal
