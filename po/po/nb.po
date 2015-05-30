@@ -103,7 +103,7 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
+msgstr "Alternativer"
 
 #. Title of Time Zone menu.
 #. txt_timezone

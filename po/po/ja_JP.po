@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-02-27 14:22+0000\n"
+"PO-Revision-Date: 2015-05-21 19:35+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/antix-development/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"

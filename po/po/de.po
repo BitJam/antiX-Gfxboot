@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-03-12 12:21+0000\n"
+"PO-Revision-Date: 2015-05-21 19:35+0000\n"
 "Last-Translator: WPSchulz <fly@wp-schulz.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/antix-development/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,7 @@ msgstr "keine"
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr "auto mount"
+msgstr "automatisches Einhängen"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
@@ -124,7 +124,7 @@ msgstr "Menüs"
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr "custom"
+msgstr "benutzerdefiniert"
 
 #. Please keep it short like the English
 #. txt_both

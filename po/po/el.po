@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-03-02 13:44+0000\n"
+"PO-Revision-Date: 2015-05-21 19:35+0000\n"
 "Last-Translator: anticapitalista <antiX@operamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/antix-development/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "Έξοδος..."
 
 #. txt_help
 msgid "Help"
-msgstr "Βοήθεια"
+msgstr "Βοήθεια "
 
 #. power off dialog title
 #. txt_power_off_title
@@ -89,7 +89,7 @@ msgstr "προεπιλογή"
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
-msgstr "Desktop"
+msgstr "Επιφάνεια εργασίας"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
@@ -109,7 +109,7 @@ msgstr "Επιλογές"
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr "ζώνη ώρας"
+msgstr "Ζώνη ώρας:"
 
 #. Please keep it short like the English
 #. txt_off
@@ -129,7 +129,7 @@ msgstr "προσαρμόσῃ"
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr "και τα δύο"
+msgstr "και τα δύο "
 
 #. Please keep it short like the English
 #. txt_reset
@@ -151,7 +151,7 @@ msgstr "Ασφαλή Ρύθμισης Οθόνης"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr "Ασφαλή εκκίνηση"
+msgstr "Ασφαλή εκκίνηση "
 
 #. txt_command_line_boot
 msgid "Command Line Boot"

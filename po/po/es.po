@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-02-26 19:11+0000\n"
+"PO-Revision-Date: 2015-05-21 19:35+0000\n"
 "Last-Translator: Roberto Saravia <jratlsv2@racsa.co.cr>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/antix-development/language/es/)\n"
 "MIME-Version: 1.0\n"

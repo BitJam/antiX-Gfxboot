@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-03-11 10:49+0000\n"
+"PO-Revision-Date: 2015-05-21 19:35+0000\n"
 "Last-Translator: ko <ko.bros@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/antix-development/language/nl/)\n"
 "MIME-Version: 1.0\n"

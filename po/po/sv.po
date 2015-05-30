@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-02-26 21:11+0000\n"
+"PO-Revision-Date: 2015-05-21 19:35+0000\n"
 "Last-Translator: Henry Oquist <henryoquist@comhem.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/antix-development/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "Kolla md5"
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr "Console"
+msgstr "Kommandoprompt"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
