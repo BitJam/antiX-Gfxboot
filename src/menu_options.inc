@@ -47,6 +47,7 @@
       [ "acpi=off"        "acpi=off"         ]
       [ "hwclock=utc"     "hwclock=utc"      ]
       [ "hwclock=local"   "hwclock=local"    ]
+      [ "private"         "private"          ]
   ] def
 
 /.opt.label  0 def
