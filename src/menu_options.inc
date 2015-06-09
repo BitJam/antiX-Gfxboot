@@ -48,6 +48,8 @@
       [ "hwclock=utc"     "hwclock=utc"      ]
       [ "hwclock=local"   "hwclock=local"    ]
       [ "private"         "private"          ]
+      [ "bootchart"       "bootchart initcall_debug printk.time=y" ]
+
   ] def
 
 /.opt.label  0 def
