@@ -47,7 +47,6 @@
       [ "acpi=off"        "acpi=off"         ]
       [ "hwclock=utc"     "hwclock=utc"      ]
       [ "hwclock=local"   "hwclock=local"    ]
-      [ "sis graphics"    "xorg=sisimedia"   ]
       [ "private"         "private"          ]
       [ "bootchart"       "bootchart initcall_debug printk.time=y" ]
 
