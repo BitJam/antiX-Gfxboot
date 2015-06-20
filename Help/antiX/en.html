@@ -195,27 +195,32 @@ Return to the <a href="#main">Main Menu</a>
 <h3>
 <a name="options">F4: Miscellaneous Options</a>
 </h3>
-<ul>
-    <li> <em> checkmd5</em><br/>
-    check integrity of the install media.</li>
+<p>
 
-    <li> <em> checkfs </em><br/>
-    check integrity of the LivUSB and persistent file systems (if any).
-    </li>
+You can only select one of these options.  If you want more than one then you
+will need to type some of them in manually.  Normally <em>checkfs</em>,
+<em>savestate</em>, and <em>nosavestate</em> are only useful on the LiveUSB or a
+frugal install.
+</p>
 
-    <li> <em> toram</em><br/>
-    copy the compressed file system to RAM.  This takes extra time when you
-    boot but results in a very fast system (if you have enough RAM).</li>
+<p>
+<em>checkmd5</em> ............ Check integrity of the install media.<br/>
+<em>checkfs</em> ............... Check integrity of the LivUSB and persistent file systems.<br/>
+<em>toram</em> .................. Copy the compressed file system to RAM. <br/>
+<em>from=usb</em> ............ Finish booting from a LiveUSB<br/>
+<em>nousb2</em> ................ Disable all usb-2 devices.  This helps a few older systems boot.<br/>
+<em>acpi=off</em> ............. Disable acpi.  This helps on some older laptops.<br/>
+<em>hwclock=utc</em> ...... Use UTC for hardware clock (Linux-only systems)<br/>
+<em>hwclock=local</em> .. Use localtime for hardware clock (Windows systems)<br/>
+<em>savestate</em> .......... Save some files across reboots (LiveUSB only)<br/>
+<em>nosavestate</em> ......  Don't save files across reboots (LiveUSB only)<br/>
+<em>private</em> .............. Change passwords before booting<br/>
+<em>bootchart</em> .......... Create /var/log/bootchart.tgz<br/>
 
-    <li> <em> nousb2</em><br/>
-    Disable all usb-2 devices.  This helps a few older systems boot LiveUSB.
-    </li>
-
-</ul>
 <p>
 
 See <a href="#mounting">Mounting Options</a> for the rest of the
-<em>F4</em> menu option.<br/>
+<em>F4</em> menu options.<br/>
 Return to the <a href="#main">Main Menu</a>
 </p>
 </div>
