@@ -221,8 +221,37 @@ frugal install.
 
 See <a href="#mounting">Mounting Options</a> for the rest of the
 <em>F4</em> menu options.<br/>
+See <a href="#option-details">Option Details</a> for details on some of these options.<br/>
 Return to the <a href="#main">Main Menu</a>
 </p>
+</div>
+<div id="option-details">
+<h3>
+<a name="option-details">F4: Option Details</a>
+</h3>
+
+<em>Check File Systems</em> (checkfs)<br/>
+Check all ext2/3/4 file systems used by the LiveUSB/frugal-install and by persistence.
+Will not check a LiveCD or a LiveUSB made with a fat32 file system.
+<br/><br/>
+<em>To Ram</em> (toram)<br/>
+Copy the linuxfs file to RAM.  This takes some time during the boot but it will
+make LiveCDs and USB-1.0 LiveUSBs run much faster after the boot is complete.
+<br/><br/>
+<em>Hardware Clock</em> (hwclock=[utc|local])<br/>
+The hardware clock saves the time and date between boots.  If you are dual booting
+with Windows then use local, otherwise utc is best.
+<br/><br/>
+<em>Saving State</em> (savestate, nosavestate)<br/>
+These options should only appear on a LiveUSB/frugal-install.  Even if persistence
+is not enabled we will save some files for you across reboots which can be handy.
+See the directory /antiX/state/ on the LiveUSB which will be created on the first
+boot.
+<p>
+Back to <a href="#options">Miscellaneous Options</a><br/>
+Return to  <a href="#main">Main Menu</a>
+</p>
+
 </div>
 
 <div id="mounting">
