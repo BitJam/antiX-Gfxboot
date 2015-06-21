@@ -37,11 +37,11 @@ p {
     margin-top:                            0.5em;
     margin-bottom:                         0.5em;
     padding-left:                           .5em;
-    width:                                  33em;
+    width:                                  40em;
 }
 
 li {
-    width:                                  32em;
+    width:                                  38em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -61,7 +61,7 @@ h3 {
     margin-top:                              1em;
     margin-bottom:                           0em;
     font-size:                             1.0em;
-    width:                                  35em;
+    width:                                  40em;
     border-top:                1px solid #a0a0a0;
     border-bottom:             1px solid #a0a0a0;
     background:                          #1d3f6f;
@@ -109,7 +109,7 @@ div#banner-text {
     border-top:                1px solid #a0a0a0;
     border-bottom:             1px solid #a0a0a0;
     width:                                  100%;
-    width:                                  36em;
+    width:                                  40em;
     top:                                     0px;
     height:                                111px;
     background-color:                    #1d3f6f;
