@@ -38,6 +38,7 @@
     [ "off"          ""                          ]    
     [ "frugal"       "frugal=root,home"          ]
     [ "root persist" "persist=root!,home"        ]
+    [ "only root"    "persist=root!"             ]
     [ "static root"  "persist=root!,home,static" ]
     [ "home persist" "persist=home!"             ]
 ] def
