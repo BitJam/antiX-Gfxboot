@@ -352,6 +352,13 @@
   } if
 
   xmenu.desktop {
+    mx-options.options xmenu.mx-options .xm_current get get dup "" ne {
+      "%s " bc.cmd dup length add sprintf
+    } { pop } ifelse
+  } if
+
+
+  xmenu.desktop {
     desktop.options xmenu.desktop .xm_current get get dup "" ne {
       "%s " bc.cmd dup length add sprintf
     } { pop } ifelse
