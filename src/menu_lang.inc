@@ -276,7 +276,7 @@
     dup
     setlang { /window.action actRedraw def } if
     getkeymapfromlocale setkeymap
-    %keymap.setdefault
+    keymap.setdefault
   } ifelse
 
 } def
