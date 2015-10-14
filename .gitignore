@@ -1,6 +1,7 @@
 .*~
 .*.swp
 other
+Junk
 Makefile.local
 bin/gfxboot-compile
 src/main.bin
@@ -8,6 +9,7 @@ src/main.log
 po/tr
 po/text.inc
 po/.ready
+*/.ready
 test-gfxboot.iso
 Help/*/en-split
 Help/*/en.hlp
