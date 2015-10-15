@@ -38,7 +38,11 @@
           /config.key.F8 "gfx_save" def
         } if
     } ifelse
-  } if
+  } {
+    "f7save.on" filesize .undef ne {
+        /config.key.F7 "gfx_save" def
+    } if
+  } ifelse
 
   % define panel layout
   /panel [
