@@ -388,6 +388,13 @@
   } { pop } ifelse
   } if
 
+  xmenu.safeboot {
+  safeboot.options xmenu.safeboot .xm_current get get dup "" ne {
+    "%s " bc.cmd dup length add sprintf
+  } { pop } ifelse
+  } if
+
+
 %  xmenu.vga_res {
 %    vga_res.options xmenu.vga_res .xm_current get get dup "" ne {
 %      "%s " bc.cmd dup length add sprintf

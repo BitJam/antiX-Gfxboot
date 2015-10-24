@@ -13,6 +13,7 @@
 %% include menu_help.inc
 %% include menu_options.inc
 %% include menu_mx_options.inc
+%% include menu_safeboot.inc
 %   %% include menu_video_mode.inc
 %% include menu_desktop.inc
 
