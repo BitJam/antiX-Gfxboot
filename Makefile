@@ -6,7 +6,12 @@ ADD_TEXT_OPTS   := --position 280,490 --text "press F1 for help"
 
 DISTROS         := antiX MX
 COMMON_FILES    := Input/common/* fonts/*.fnt po/tr/*.tr
+
 GFXBOOT_BIN     := gfxtheme
+CPIO_FILE       := cpiofile
+CPIO_FILES      := *.tr *.hlp $(GFXBOOT_BIN) *.fnt *.jpg
+
+CPIO_DIR        := cpio-temp
 
 ADD_TEXT        := bin/add-image-text
 TEST_TARGETS    := $(addprefix test-,   $(DISTROS))
@@ -16,6 +21,8 @@ OUT_DIRS        := $(OUT_SYS_DIRS) $(OUT_ISO_DIRS)
 IMAGE_GROUPS    := $(addsuffix -images, $(DISTROS))
 HELP_DIRS       := $(addprefix Help/,   $(DISTROS))
 HELP_FILES      := $(addsuffix /en.hlp, $(HELP_DIRS))
+
+DISTROS_OLD     := $(addsuffix -old, $(DISTROS))
 
 THEME_FILE      := src/main.bin
 SRC_FILES       := $(wildcard src/*.inc) src/main.bc
@@ -38,6 +45,9 @@ help:
 	@echo "    MX           : create gfxboot for MX distro"
 	@echo "    antiX        : create gfxboot for antiX distro"
 	@echo ""
+	@echo "    MX-old       : create old version of gfxboot for MX distro"
+	@echo "    antiX-old    : create old version gfxboot for antiX distro"
+	@echo ""
 	@echo "    clean        : delete output files but not intermediate files"
 	@echo "    disclean     : delete all created files"
 	@echo "    help         : show this help"
@@ -50,6 +60,7 @@ help:
 	@echo "    MX-images    : Create bg images with text in Input/MX"
 	@echo ""
 	@echo "Create Makefile.local to modify the variables above"
+	@echo ""
 	@echo ""
 
 
@@ -64,6 +75,33 @@ endif
 ifdef NO_1024
 	rm -f $</back1024.jpg
 endif
+
+	sed -i -r 's/^(\s*UI\s+gfxboot\s+)[^ ]+(\s)/\1$(CPIO_FILE)\2/' $</isolinux.cfg
+	rm -rf $(CPIO_DIR)
+	mkdir -p $(CPIO_DIR)
+	mv $(addprefix $</, $(CPIO_FILES)) $(CPIO_DIR)/
+	cp $</gfxboot.cfg $(CPIO_DIR)/
+	@# cp $</isolinux.cfg $(CPIO_DIR)/
+	@# sed -i 's/gfxcpio/gfxtheme/' $(CPIO_DIR)/isolinux.cfg
+	(cd $(CPIO_DIR) && find . -depth | cpio -o) > $</$(CPIO_FILE)
+
+	rm -rf $(word 2,$^)
+	cp -a $< $(word 2,$^)
+	mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
+	mv $(word 2,$^)/isolinux.cfg $(word 2,$^)/syslinux.cfg
+	echo 1 > $(word 2,$^)/gfxsave.on
+	sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
+
+$(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
+	cp -a $(COMMON_FILES) Input/$(subst -old,,$@)/* $(word 3,$^) $</
+	cp $(THEME_FILE) $</$(GFXBOOT_BIN)
+ifdef DEFAULT_LANG
+	@echo $(DEFAULT_LANG) > $</lang.def
+endif
+ifdef NO_1024
+	rm -f $</back1024.jpg
+endif
+	sed -i -r 's/^(\s*UI\s+gfxboot\s+)[^ ]+(\s)/\1$(GFXBOOT_BIN)\2/' $</isolinux.cfg
 	@#bin/make-menu $</isolinux.cfg >> $</isolinux.msg
 	rm -rf $(word 2,$^)
 	cp -a $< $(word 2,$^)
@@ -73,7 +111,7 @@ endif
 	sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
 
 $(HELP_FILES): %/en.hlp : % %/en.html
-	make --directory Help $(<F) 
+	make --directory Help $(<F)
 
 $(THEME_FILE): $(SRC_FILES)
 	make --directory $(@D)
@@ -82,7 +120,7 @@ $(OUT_DIRS):
 	mkdir -p $@
 
 clean:
-	rm -rf Output $(ISO_FILE) $(dir $(TEST_DIR))
+	rm -rf Output $(ISO_FILE) $(dir $(TEST_DIR)) $(CPIO_DIR)
 
 distclean: clean
 	@for i in $(SUB_DIRS) ; do [ ! -f $$i/Makefile ] || make -C $$i distclean || break ; done
