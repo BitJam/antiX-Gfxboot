@@ -9,7 +9,7 @@ COMMON_FILES    := Input/common/* fonts/*.fnt po/tr/*.tr
 
 GFXBOOT_BIN     := gfxtheme
 CPIO_FILE       := cpiofile
-CPIO_FILES      := *.tr *.hlp $(GFXBOOT_BIN) *.fnt *.jpg
+CPIO_FILES      := *.tr *.hlp $(GFXBOOT_BIN) *.fnt *.jpg gfxboot.cfg
 
 CPIO_DIR        := cpio-temp
 
@@ -80,9 +80,7 @@ endif
 	rm -rf $(CPIO_DIR)
 	mkdir -p $(CPIO_DIR)
 	mv $(addprefix $</, $(CPIO_FILES)) $(CPIO_DIR)/
-	cp $</gfxboot.cfg $(CPIO_DIR)/
-	@# cp $</isolinux.cfg $(CPIO_DIR)/
-	@# sed -i 's/gfxcpio/gfxtheme/' $(CPIO_DIR)/isolinux.cfg
+	@# cp $</gfxboot.cfg $(CPIO_DIR)/
 	(cd $(CPIO_DIR) && find . -depth | cpio -o) > $</$(CPIO_FILE)
 
 	rm -rf $(word 2,$^)
