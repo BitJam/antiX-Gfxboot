@@ -8,7 +8,7 @@ DISTROS         := antiX MX
 COMMON_FILES    := Input/common/* fonts/*.fnt po/tr/*.tr
 
 GFXBOOT_BIN     := gfxtheme
-CPIO_FILE       := cpiofile
+CPIO_FILE       := gfx-cpio
 CPIO_FILES      := *.tr *.hlp $(GFXBOOT_BIN) *.fnt *.jpg gfxboot.cfg
 
 CPIO_DIR        := cpio-temp
