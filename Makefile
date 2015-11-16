@@ -9,7 +9,7 @@ COMMON_FILES    := Input/common/* fonts/*.fnt po/tr/*.tr
 
 GFXBOOT_BIN     := gfxtheme
 CPIO_FILE       := gfx-cpio
-CPIO_FILES      := *.tr *.hlp $(GFXBOOT_BIN) *.fnt *.jpg gfxboot.cfg languages
+CPIO_FILES      := *.tr *.hlp $(GFXBOOT_BIN) *.fnt *.jpg gfxboot.cfg languages *.men *.def
 
 CPIO_DIR        := cpio-temp
 
@@ -79,7 +79,8 @@ endif
 	sed -i -r 's/^(\s*UI\s+gfxboot\s+)[^ ]+(\s)/\1$(CPIO_FILE)\2/' $</isolinux.cfg
 	rm -rf $(CPIO_DIR)
 	mkdir -p $(CPIO_DIR)
-	mv $(addprefix $</, $(CPIO_FILES)) $(CPIO_DIR)/
+	# This prevents errors if a * glob has no matches  (sigh)
+	for f in $(addprefix $</, $(CPIO_FILES)); do ! test -e $$f || mv $$f $(CPIO_DIR)/; done
 	@# cp $</gfxboot.cfg $(CPIO_DIR)/
 	(cd $(CPIO_DIR) && find . -depth | cpio -o) > $</$(CPIO_FILE)
 
@@ -87,8 +88,17 @@ endif
 	cp -a $< $(word 2,$^)
 	mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
 	mv $(word 2,$^)/isolinux.cfg $(word 2,$^)/syslinux.cfg
-	echo 1 > $(word 2,$^)/gfxsave.on
 	sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
+	sed -r -i "0,/^font\.normal=/ s/^(font\.normal)=.*/\1=16x16.fnt/" $(CPIO_DIR)/gfxboot.cfg
+	if   grep -q "^key\.F7=" $(CPIO_DIR)/gfxboot.cfg; then \
+		sed -r -i  "/^key\.F7/akey.F8=gfx_save" $(CPIO_DIR)/gfxboot.cfg; \
+	elif grep -q "^key\.F6=" $(CPIO_DIR)/gfxboot.cfg; then \
+		sed -r -i  "/^key\.F6/akey.F7=gfx_save" $(CPIO_DIR)/gfxboot.cfg; \
+	else \
+	    echo "key.F8=save" >> $(CPIO_DIR)/gfxboot.cfg; \
+	fi \
+
+	(cd $(CPIO_DIR) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
 
 $(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
 	cp -a $(COMMON_FILES) Input/$(subst -old,,$@)/* $(word 3,$^) $</
