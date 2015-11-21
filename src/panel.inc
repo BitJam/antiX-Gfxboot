@@ -200,7 +200,7 @@
   dup "video"      eq { pop [ /panel.video      /panel.video.width      /panel.video.update      /video.init      ] return } if
   dup "install"    eq { pop [ /panel.install    /panel.install.width    /panel.install.update    /install.init    ] return } if
   dup "options"    eq { pop [ /panel.options    /panel.options.width    /panel.options.update    /options.init    ] return } if
-  dup "mx-options" eq { pop [ /panel.mx-options /panel.mx-options.width /panel.mx-options.update /mx-options.init    ] return } if
+  dup "mx-options" eq { pop [ /panel.mx-options /panel.mx-options.width /panel.mx-options.update /mx-options.init ] return } if
   dup "desktop"    eq { pop [ /panel.desktop    /panel.desktop.width    /panel.desktop.update    /desktop.init    ] return } if
   dup "gfx_save"   eq { pop [ /panel.gfx_save   /panel.gfx_save.width   /panel.gfx_save.update   /gfx_save.init   ] return } if
   dup "persist"    eq { pop [ /panel.persist    /panel.persist.width    /panel.persist.update    /persist.init    ] return } if
