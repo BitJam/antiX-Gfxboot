@@ -21,7 +21,7 @@
 
     /mx-options.default exch def
     0
-    options.data {
+    mx-options.data {
       .opt.option get exec options.default eq { exit } if
       1 add
     } forall
