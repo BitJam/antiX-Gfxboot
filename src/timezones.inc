@@ -34,9 +34,11 @@
     [ "Paris*"            "Europe/Paris"                   ]  % GMT+1 DST
     [ "Algiers"           "Africa/Algiers"                 ]  % GMT+1
     [ "Amsterdam*"        "Europe/Amsterdam"               ]  % GMT+1 DST
+    [ "Rome*"             "Europe/Rome"                    ]  % GMT+1 DST
     [ "Berlin*"           "Europe/Berlin"                  ]  % GMT+1 DST
     [ "Belgrade*"         "Europe/Belgrade"                ]  % GMT+1 DST
     [ "Athens*"           "Europe/Athens"                  ]  % GMT+2 DST
+    [ "Helsinki*"         "Europe/Helsinki"                ]  % GMT+2 DST
     [ "Bucharest*"        "Europe/Bucharest"               ]  % GMT+2 DST
     [ "Johannesburg"      "Africa/Johannesburg"            ]  % GMT+2
     [ "Istanbul*"         "Europe/Istanbul"                ]  % GMT+2 DST
