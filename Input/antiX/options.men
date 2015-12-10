@@ -4,6 +4,7 @@ checkfs         `checkfs
 toram           `toram
 from=usb        `from=usb
 automount       `automount
+mount=ask       `mount=ask
 mount=usb       `mount=usb
 mount=all       `mount=all
 nousb2          `nousb2

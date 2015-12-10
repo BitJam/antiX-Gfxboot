@@ -45,6 +45,7 @@
       [ "mount=all"       "mount=all"        ]
       [ "nousb2"          "nousb2"           ]
       [ "acpi=off"        "acpi=off"         ]
+      [ "hwclock=ask"     "hwclock=ask"      ]
       [ "hwclock=utc"     "hwclock=utc"      ]
       [ "hwclock=local"   "hwclock=local"    ]
       [ "private"         "private"          ]
