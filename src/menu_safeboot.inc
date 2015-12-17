@@ -38,6 +38,7 @@
     [ "default"     ""                         ]
     [ "Safe Video"  "nomodeset xorg=safe"      ]
     [ "Failsafe"    "nomodeset failsafe"       ]
+    [ "nomodeset"   "nomodeset"                ]
     [ "load=all"    "load=all"                 ]
 
 ] def
