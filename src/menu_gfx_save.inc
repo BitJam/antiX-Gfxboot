@@ -41,7 +41,6 @@
     %[ /txt_both    "gfxsave=both"   ]
     [ "save"        "gfxsave=both"   ]
     [ /txt_reset    "gfxsave=reset"  ]
-    [ "always"      "gfxsave=always" ]
 ] def
 
 /.gfx_save.label  0 def
