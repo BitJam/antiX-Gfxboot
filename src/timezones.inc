@@ -10,7 +10,7 @@
 
 /timezones [
     [ "auto"              ""                               ]
-    [ "UTC"               "Etc/UTC utc"                    ]
+    [ "UTC"               "Etc/UTC"                        ]
     [ "Honolulu"          "Pacific/Honolulu"               ]  % GMT-10
     [ "Anchorage*"        "America/Anchorage"              ]  % GMT-9 DST
     [ "Los Angeles*"      "America/Los_Angeles"            ]  % GMT-8 DST
