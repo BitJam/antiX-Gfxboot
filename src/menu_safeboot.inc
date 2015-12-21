@@ -40,6 +40,7 @@
     [ "Failsafe"    "nomodeset failsafe"       ]
     [ "nomodeset"   "nomodeset"                ]
     [ "load=all"    "load=all"                 ]
+    [ "intel igfx off" "intel_iommu=igfx_off"  ]
 
 ] def
 
