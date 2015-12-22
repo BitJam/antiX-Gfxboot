@@ -9,5 +9,3 @@ hwclock=ask     `hwclock=ask
 hwclock=utc     `hwclock=utc
 hwclock=local   `hwclock=local
 private         `private
-savestate       `savestate
-nosavestate     `nosavestate
