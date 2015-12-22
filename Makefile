@@ -90,7 +90,7 @@ endif
 	cp -a $< $(word 2,$^)
 	mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
 	mv $(word 2,$^)/isolinux.cfg $(word 2,$^)/syslinux.cfg
-	sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
+	#sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
 	sed -r -i "0,/^font\.normal=/ s/^(font\.normal)=.*/\1=16x16.fnt/" $(CPIO_DIR)/gfxboot.cfg
 	if   grep -q "^key\.F7=" $(CPIO_DIR)/gfxboot.cfg; then \
 		sed -r -i  "/^key\.F7/akey.F8=gfx_save" $(CPIO_DIR)/gfxboot.cfg; \
