@@ -34,7 +34,7 @@ TEST_DIR      	:= iso-dir/isolinux
 ISO_FILE     	:= test-gfxboot.iso
 ISO_SYMLINK  	:= /data/ISO/test-antiX.iso
 
-SAVE_STATE_SED := "$ asavestate       \`savestate\nnosavestate     \`nosavestate"
+SAVE_STATE_SED := "$$ asavestate       \`savestate\nnosavestate     \`nosavestate"
 
 -include Makefile.local
 
