@@ -20,13 +20,14 @@ The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
 </p>
 <p>
 <ul>
-    <li><a href="#help">      F1 Help System</a></li>
-    <li><a href="#language">  F2 Select Language</a></li>
-    <li><a href="#timezone">  F3 Select Timezone</a></li>
-    <li><a href="#options">   F4 Miscellaneous Options</a></li>
-    <li><a href="#persist">   F5 Persistence Options</a></li>
-    <li><a href="#console">   F6 Set Console Resolution </a></li>
-    <li><a href="#save">      F8 Save Bootloader Settings</a></li>
+    <li><a href="#help">           F1 Help System</a></li>
+    <li><a href="#language">       F2 Select Language</a></li>
+    <li><a href="#timezone">       F3 Select Timezone</a></li>
+    <li><a href="#options">        F4 Miscellaneous Options</a></li>
+    <li><a href="#persist+frugal"> F5 Persistence and Frugal Options</a></li>
+    <li><a href="#failsafe">       F6 Failsafe Booting and Safe Video Options</a></li>
+    <li><a href="#console">        F7 Set Text Console Resolution </a></li>
+    <li><a href="#save">           F8 Save Bootloader Settings</a></li>
 </ul>
 </p>
 
@@ -197,37 +198,37 @@ Return to the <a href="#main">Main Menu</a>
 <p>
 
 You can only select one of these options.  If you want more than one then you
-will need to type some of them in manually.  Normally <em>checkfs</em>,
-<em>savestate</em>, and <em>nosavestate</em> are only useful on the LiveUSB or a
-frugal install.
-</p>
+will need to type some of them in manually.  </p>
 
 <p>
-<em>checkmd5</em> ............ Check integrity of the install media.<br/>
-<em>checkfs</em> .............. Check integrity of the LivUSB and persistent file systems.<br/>
-<em>toram</em> .................. Copy the compressed file system to RAM. <br/>
-<em>from=usb</em> ............ Finish booting from a LiveUSB<br/>
-<em>nousb2</em> ................ Disable all usb-2 devices.  This helps a few older systems boot.<br/>
-<em>acpi=off</em> ............. Disable acpi.  This helps on some older laptops.<br/>
-<em>hwclock=utc</em> ...... Use UTC for hardware clock (Linux-only systems)<br/>
-<em>hwclock=local</em> .. Use localtime for hardware clock (Windows systems)<br/>
-<em>private</em> .............. Change passwords before booting<br/>
-<em>bootchart</em> .......... Create /var/log/bootchart.tgz<br/>
-<em>savestate</em> .......... Save some files across reboots (LiveUSB only)<br/>
-<em>nosavestate</em> ......  Don't save files across reboots (LiveUSB only)<br/>
+<em>checkmd5</em> -------- Check integrity of the install media.<br/>
+<em>checkfs</em> ------------ Check LiveUSB ext2/3/4 and persistent file systems.<br/>
+<em>toram</em> --------------- Copy the compressed file system to RAM. <br/>
+<em>from=usb</em> --------- Finish booting from a LiveUSB<br/>
+<em>nousb2</em> ------------ Disable all usb-2 devices.<br/>
+<em>acpi=off</em> ----------- Disable ACPI.  This helps on some older laptops.<br/>
+<em>hwclock=utc</em> ----- Use UTC for hardware clock (Linux-only systems)<br/>
+<em>hwclock=local</em> --- Use localtime for hardware clock (Windows systems)<br/>
+<em>hwclock=ask</em> ---- Have the system help determine the clock setting<br/>
+<em>private</em> ------------ Change passwords before booting<br/>
+<em>savestate</em> --------- Save some files across reboots (LiveUSB only)<br/>
+<em>nosavestate</em> ------  Don't save files across reboots (LiveUSB only)<br/>
 
 <p>
 
-See <a href="#option-details">Option Details</a> for details on some
-of these options.<br/> Return to the <a href="#main">Main Menu</a>
+See <a href="#option-details-1">Option Details One</a> for details on some of these options<br/>
+See <a href="#option-details-2">Option Details Two</a> for details on more of these options<br/>
+Return to the <a href="#main">Main Menu</a>
 
 </p>
 </div>
-<div id="option-details">
+
+<div id="option-details-1">
 <h3>
-<a name="option-details">F4: Option Details</a>
+<a name="option-details-1">F4 Option Details One</a>
 </h3>
 <p>
+
 <em>Check File Systems</em> (checkfs)<br/>
 Check all ext2/3/4 file systems used by the LiveUSB/frugal-install and
 by persistence.  Will not check a LiveCD or a LiveUSB made with a
@@ -240,6 +241,26 @@ but it will make LiveCDs and USB-1.0 LiveUSBs run much faster after
 the boot is complete.
 
 <br/><br/>
+<em>From USB</em> (from=usb)<br/>
+For machines that can't boot directly from usb, this lets you start
+booting from a LiveCD and finish booting from a LiveUSB.  It provides
+most of the features that are only available on the LiveUSB
+
+
+</p>
+<p>
+See <a href="#option-details-2">Option Details Two</a> for details on other options<br/>
+Back to <a href="#options">F4 Miscellaneous Options List</a><br/>
+Return to  <a href="#main">Main Menu</a>
+</p>
+
+</div>
+<div id="option-details-2">
+<h3>
+<a name="option-details-2">F4 Option Details Two</a>
+</h3>
+<p>
+
 <em>Hardware Clock</em> (hwclock=[utc|local])<br/>
 The hardware clock saves the time and date between boots.  If you are
 dual booting with Windows then use local, otherwise utc is best.
@@ -252,10 +273,53 @@ persistence is not enabled we will save some files for you across
 reboots which can be handy.  See the directory /antiX/state/ on the
 LiveUSB which will be created on the first boot.
 
+<br/><br/>
+<em>Use your own passwords</em> (private)<br/>
+The system will prompt you for a new root and new demo password when it boots.
+The well known default passwords are not secure.  This simple step greatly
+increases the security of your live system.
 </p>
 <p>
-Back to <a href="#options">Miscellaneous Options</a><br/>
+See <a href="#option-details-1">Option Details One</a> for details on other options<br/>
+Back to <a href="#options">F4 Miscellaneous Options List</a><br/>
 Return to  <a href="#main">Main Menu</a>
+</p>
+
+</div>
+
+
+<div id="persist+frugal">
+<h3>
+<a name="persist+frugal">F5: Persistence and Frugal Options</a>
+</h3>
+<p>
+<em>Root Persistence</em> let you save your file system between boots and makes
+the Live system act like an installed system in many ways.  The amount of
+changes you can save this way is limited so you should periodically do
+a remaster to save all of your changes in the compressed linuxfs file and
+reset the root persistence.
+</p>
+
+<p>
+
+<em>Home persistence</em> just saves the files under the /home directory.  The
+only limit to how much you can save is how large you make the homefs file.
+If you want to save a lot of data or large files on a live system then enable
+home persistence and save the files under your home directory.
+</p>
+
+<p>
+<em>Frugal</em>, when first used, will do a "frugal" install on an existing hard
+drive partition without hurting what is already there.  You can do a frugal
+install on a Windows partition. After the first time, will boot into the
+previously created frugal system.  Works like a LiveUSB but has the speed
+of the hard drive it is installed on.
+
+</p>
+<p>
+<a href="persist">Persistence only options</a><br/>
+<a href="frugal">Frugal options</a><br/>
+Return to the <a href="#main">Main Menu</a>
 </p>
 
 </div>
@@ -264,31 +328,118 @@ Return to  <a href="#main">Main Menu</a>
 <h3>
 <a name="persist">F5: Persistence Options</a>
 </h3>
+<ul>
 
 <p>
-<ul>
-    <li> <em> Frugal</em><br/>
-    Copy files from the install media (LiveCD/USB) to an internal
-    hard drive partition and finish booting from that.  Think of
-    this as a to-disk analogy of <em>toram</em> boot parameter.<br/>
-    </li>
+Dynamic root persistence (the default) is fast but it is limited by how much
+RAM you have.  Static root persistence is only limited by the size of the
+rootfs file but it can be painfully slow.
+</p>
 
-    <li> <em> Root Persist </em><br/>
+<li><em>all persist </em>
+    Both root and home persistence.
+<br/>
+</li>
+
+<li><em>root persist </em>
     Save all the changes to the file-system in RAM and then
     transfer these changes to disk right before you shutdown or
-    reboot.  Fast, but space is limited by how much RAM you
-    have.<br/> </li>
+    reboot.
+<br/>
+</li>
 
-    <li> <em> Static Root</em><br/>
+<li><em>static root </em>
     Saves all your file-system changes directly to a file.  This
     can be slow but it requires no extra RAM and no changes need
-    to be transfered when you shutdown.<br/> </li>
+    to be transfered when you shutdown.
+<br/>
+</li>
 
-    <li> <em> Home Persist </em><br/>
+<li><em>home persist </em>
     Only save changes to files and directories under
     <em>/home</em>.  This will include all of your bookmarks and
     personal settings.  Changes are stored immediately and speed
-    is almost never an issue.  </li>
+    is almost never an issue.
+
+</li>
+
+</ul>
+
+<a href="persist+frugal">Persistence and Frugal Introduction</a><br/>
+<a href="frugal">Frugal options</a><br/>
+Return to the <a href="#main">Main Menu</a>
+
+</div>
+
+<div id="frugal">
+<h3>
+<a name="frugal">F5: Frugal Options</a>
+</h3>
+<p>
+<em>Frugal</em> will create a frugal install on an existing partition
+if one does not already exist.  If one exits then boots directly
+into it.  This may be the fastest and easiest way to install Linux.
+Think of it as a to-disk analog of the <em>toram</em> option.
+</p>
+
+<ul>
+<li><em>frugal/persist </em>
+    Frugal plus both dynamic-root and home persistence.
+<br/></li>
+
+<li><em>frugal/root </em>
+    Frugal plus dynamic root-persistence.
+<br/></li>
+
+<li><em> frugal/static </em>
+    Frugal plus static root-persistence.
+<br/></li>
+
+<li><em>frugal/home</em>
+    Frugal plus home persistence.  
+<br/></li>
+
+<li><em>only frugal</em>
+    Only do (or boot into) a frugal installation.  No persistence is enabled.
+<br/></li>
+
+</ul>
+
+<p>
+<a href="persist+frugal">Persistence and Frugal Introduction</a><br/>
+<a href="persist">Persistence only options</a><br/>
+Return to the <a href="#main">Main Menu</a>
+</p>
+</div>
+
+<div id="old-persist">
+<p>
+<ul>
+    <li> <em> Frugal</em>
+    Copy files from the install media (LiveCD/USB) to an internal
+    hard drive partition and finish booting from that.  Think of
+    this as a to-disk analogy of <em>toram</em> boot parameter.
+<br/></li>
+
+    <li> <em> Root Persist </em>
+    Save all the changes to the file-system in RAM and then
+    transfer these changes to disk right before you shutdown or
+    reboot.  Fast, but space is limited by how much RAM you
+    have.
+<br/> </li>
+
+    <li> <em> Static Root</em>
+    Saves all your file-system changes directly to a file.  This
+    can be slow but it requires no extra RAM and no changes need
+    to be transfered when you shutdown.
+<br/></li>
+
+    <li> <em> Home Persist </em>
+    Only save changes to files and directories under
+    <em>/home</em>.  This will include all of your bookmarks and
+    personal settings.  Changes are stored immediately and speed
+    is almost never an issue.
+<br/></li>
 
 </ul>
 
@@ -297,19 +448,57 @@ Return to the <a href="#main">Main Menu</a>
 </p>
 </div>
 
+<div id="failsafe">
+<h3>
+<a name="failsafe">F6: Failsafe Booting and Safe Video</a>
+</h3>
+Try these options of you have trouble booting or if you can can't get
+to X-Windows (the GUI).
+
+<ul>
+
+<li> <em> Safe Video</em> In addition to using nomodeset (see below) also force
+    the use of the simple Vesa video driver.  This will lack performance and
+    2-D and 3-D acceleration but should get you to a working X-Windows GUI.
+<br/></li>
+
+<li> <em> Failsafe </em> Combines Safe Video (above) with load=all (below).
+    If you just want it to work, use this option.  The system may not be
+    optimal but it should boot.
+<br/></li>
+
+<li> <em> nomodeset</em>  Some video drivers take control of the text consoles
+    as well as the graphics screen.  If the text console goes haywire or goes
+    blank early in the boot process then try this option.
+<br/></li>
+
+<li> <em> load=all</em> If you get a warning message that the system can't
+    find the linuxfs, try this option.
+<br/></li>
+
+<li> <em> intel igfx off</em> The Intel graphics driver in some kernels
+    doesn't work on the newer Broadwell systems.  This boot parameter
+    might help.
+<br/></li>
+</ul>
+
+<p>
+Return to the <a href="#main">Main Menu</a>
+</p>
+</div>
 
 <div id="console">
 <h3>
-<a name="console">F6: Set Console Resolution</a>
+<a name="console">F7: Set Console Resolution</a>
 </h3>
 <p>
 
 This menu allows you to set the resolution of the virtual
-consoles using the deprecated <em>vga</em> kernel boot parameter.
-This works well on many older systems but on newer systems with
-wide screen displays the codes used are non-standard.  For
-example the <em>1600x1200*</em> resolution works in Virtual Box
-but may not work elsewhere.
+consoles using the deprecated <em>vga</em> kernel boot
+parameter.  This works well on many older systems but the codes
+for newer systems with wide screen displays are non-standard.
+For example the <em>1600x1200*</em> resolution works in Virtual
+Box but may not work elsewhere.
 
 </p>
 
@@ -379,29 +568,28 @@ Return to the <a href="#main">Main Menu</a>
 <a name="main_menu">Main Menu Entries</a>
 </h3>
 <p>
-    <em>MX-VERSION (DATE)</em><br/>
+    <em>MX-VERSION (DATE)</em>
     Boot the system normally.  You can use the Function key menus
     to select various options such as
     <a href=#console>Console</a> resolution, various
     <a href="#options">Options</a>, or
     <a href="#persist">Persistence</a>.
 
-    <br/><br/> <em>Safe Video Mode</em><br/>
-    Disable KMS (kernel mode set) video drivers and force the use
-    of the <em>vesa</em> video driver.  Try this option of
-    the system seems to boot but the screen is blank.
+    <br/><br/>
+    The 32-bit version comes with PAE and non-PAE options.  The
+    PAE feature allows 32-bit system to access more than 4 Gig
+    of RAM but it does not work on all 32-bit processors.  We
+    suggest you try PAE first.  If you have a very old computer
+    or if PAE does not boot at all then try non-PAE.
 
-    <br/><br/> <em>Failsafe Boot</em><br/>
-    In addition to forcing safe video, also load all drivers
-    early in the boot process.  Try this option if the system
-    does not boot at all.
-
-    <br/><br/> <em>Boot from Hard Drive</em><br/>
+    <br/><br/> 
+    
+    <em>Boot from Hard Drive</em>
     This will try to do a legacy (BIOS) from the first internal hard drive.
     Windows 8 and above use UEFI instead of BIOS so this entry won't be
     able to boot them.
 
-    <br/> <br/> <em>Test Memory</em><br/>
+    <br/> <br/> <em>Test Memory</em>
     Test the system memory without booting into any operating system.
 </p>
 <p>
@@ -424,12 +612,6 @@ Tell the kernel to <em>not</em> print a lot of debugging information to the scre
 </p>
 
 <p>
-<em>splash=v</em><br>
-Enable background decoration on the virtual (text) consoles.  Delete it or set it
-to <em>off</em> to disable these decorations.
-</p>
-
-<p>
 <em><a href="#boot_mx">disable_srv=LX</a></em><br>
 Disable some startup services for faster booting and less RAM usage.
 </p>
@@ -438,19 +620,6 @@ Disable some startup services for faster booting and less RAM usage.
 <em>nomodeset</em><br>
 Do not let the video driver take over the console.  If the screen goes blank
 early in the boot process then you probably need this option.
-</p>
-
-<p>
-<em>xorg=safe</em><br>
-Disable the hardware video driver from controlling graphics mode.  Some drivers
-have trouble with older hardware.
-
-</p>
-<p>
-<em>failsafe</em><br>
-Load all drivers early in the boot process <em>and</em> enable safe video mode.
-Use this if the live media fails to boot. To only load all drivers use
-<em>load=all</em>.
 </p>
 
 <p>
@@ -501,15 +670,15 @@ These are options that are only available in MX
 
 <ul>
     <li><em>lean</em> -- disable some services including wicd for a fast boot </li>
-    <li><em>mean</em> -- disable dhclient (Internet connection) </li>
+    <li><em>mean</em> -- disable Internet connection </li>
     <li><em>Xtralean</em> -- disable more services for a faster boot</li>
-    <li><em>nodbus</em> -- disable dbus service </li>
+    <li><em>nodbus</em> -- disable dbus service </li><br/>
     <li><em>dpi=XX</em> -- set dpi. Default is 96</li>
 </ul>
 
 <p>
 <em>NOTE:</em> Four of these options are combined into the single
-<em>disable_srv=</em> option.  For example <em>disable_srv=LMX</em>.
+<em>nosysv=</em> option.  For example <em>nosysv=LMX</em>.
 </p>
 
 <ul>
@@ -517,6 +686,7 @@ These are options that are only available in MX
     <li><em>M</em> stands for mean</li>
     <li><em>X</em> stands for Xtralean</li>
     <li><em>D</em> stands for nodbus</li>
+    <li><em>V</em> disables Virtual Box services</li>
 </ul>
 
 <p>
@@ -674,7 +844,7 @@ MX is compiled to work with Pentium-class Intel and AMD 486 processors
 or better with at least 512 Meg of RAM.  MX will not work with 386
 class processors. To install MX on a hard drive, a minimum of 5 GB is
 needed.  We recommend at least 1 Gig of RAM, 10 Gig of free hard
-drive space, and a i686 processor or better.
+drive space, and an i686 processor or better.
 
 </p>
 

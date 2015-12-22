@@ -34,6 +34,8 @@ TEST_DIR      	:= iso-dir/isolinux
 ISO_FILE     	:= test-gfxboot.iso
 ISO_SYMLINK  	:= /data/ISO/test-antiX.iso
 
+SAVE_STATE_SED := "$ asavestate       \`savestate\nnosavestate     \`nosavestate"
+
 -include Makefile.local
 
 .PHONY: all clean distclean antiX MX $(ANTIX_DIR) $(IMAGE_GROUPS)
@@ -98,6 +100,7 @@ endif
 	    echo "key.F8=save" >> $(CPIO_DIR)/gfxboot.cfg; \
 	fi \
 
+	sed -i $(SAVE_STATE_SED) $(CPIO_DIR)/options.men
 	(cd $(CPIO_DIR) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
 
 $(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
