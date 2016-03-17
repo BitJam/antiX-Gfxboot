@@ -2,7 +2,7 @@
 title-text:     ""
 title-font:     "DejaVu Sans Bold 18"
 title-color:    "#ffffff"
-desktop-image:  "Squam_Lake-grub.png"
+desktop-image:  "background.png"
 desktop-color:  "#000000"
 message-font:   "DejaVu Sans Bold 12"
 
