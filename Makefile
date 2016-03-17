@@ -4,8 +4,11 @@ DEFAULT_LANG    :=
 NO_1024         :=
 ADD_TEXT_OPTS   := --position 280,490 --text "press F1 for help"
 
+TEMPLATE_FILLER := ../Build-iso/Tools/bootloader-template
+
 DISTROS         := antiX MX
-COMMON_FILES    := Input/common/* fonts/*.fnt po/tr/*.tr
+COMMON_FILES    := Input/common/isolinux/* fonts/*.fnt po/tr/*.tr
+ISO_FILES       := Input/common/iso/*
 
 GFXBOOT_BIN     := gfxtheme
 CPIO_FILE       := gfx-cpio
@@ -15,8 +18,9 @@ CPIO_DIR        := cpio-temp
 
 ADD_TEXT        := bin/add-image-text
 TEST_TARGETS    := $(addprefix test-,   $(DISTROS))
-OUT_ISO_DIRS    := $(addprefix Output/, $(addsuffix /isolinux, $(DISTROS)))
-OUT_SYS_DIRS    := $(addprefix Output/, $(addsuffix /syslinux, $(DISTROS)))
+XLAT_TARGETS    := $(addprefix xlat-,   $(DISTROS))
+OUT_ISO_DIRS    := $(addprefix Output/, $(addsuffix /boot/isolinux, $(DISTROS)))
+OUT_SYS_DIRS    := $(addprefix Output/, $(addsuffix /boot/syslinux, $(DISTROS)))
 OUT_DIRS        := $(OUT_SYS_DIRS) $(OUT_ISO_DIRS)
 IMAGE_GROUPS    := $(addsuffix -images, $(DISTROS))
 HELP_DIRS       := $(addprefix Help/,   $(DISTROS))
@@ -29,7 +33,8 @@ SRC_FILES       := $(wildcard src/*.inc) src/main.bc
 
 SUB_DIRS        := Help src po
 
-TEST_DIR      	:= iso-dir/isolinux
+TEST_DIR      	:= iso-dir
+TEST_ISOLINUX   := $(TEST_DIR)/boot/isolinux
 
 ISO_FILE     	:= test-gfxboot.iso
 ISO_SYMLINK  	:= /data/ISO/test-antiX.iso
@@ -68,8 +73,9 @@ help:
 
 all: $(DISTROS)
 
-$(DISTROS): % : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
-	cp -a $(COMMON_FILES) Input/$@/* $(word 3,$^) $</
+$(DISTROS): % : Output/%/boot/isolinux Output/%/boot/syslinux Help/%/en.hlp $(THEME_FILE)
+	cp -a $(ISO_FILES) Input/$@/iso/* Output/$@/
+	cp -a $(COMMON_FILES) Input/$@/isolinux/* $(word 3,$^) $</
 	cp $(THEME_FILE) $</$(GFXBOOT_BIN)
 ifdef DEFAULT_LANG
 	@echo $(DEFAULT_LANG) > $</lang.def
@@ -131,27 +137,33 @@ $(OUT_DIRS):
 	mkdir -p $@
 
 clean:
-	rm -rf Output $(ISO_FILE) $(dir $(TEST_DIR)) $(CPIO_DIR)
+	rm -rf Output $(ISO_FILE) $(TEST_DIR) $(CPIO_DIR)
 
 distclean: clean
 	@for i in $(SUB_DIRS) ; do [ ! -f $$i/Makefile ] || make -C $$i distclean || break ; done
 
-$(TEST_TARGETS): test-% : %
+$(TEST_TARGETS): test-% : % %-data
 	rm -rf $(TEST_DIR)
 	mkdir -p $(TEST_DIR)
-	cp -a Output/$</isolinux/* $(TEST_DIR)
-	echo 1 > $(TEST_DIR)/REBOOT
+	cp -a Output/$</* $(TEST_DIR)
+
+	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(TEST_DIR)
+
+	echo 1 > $(CPIO_DIR)/REBOOT
 	@#echo "desktop=rox-fluxbox" > $(TEST_DIR)/desktop.def
-	sed -i -e "s=%RELEASE_DATE%=$$(date +'%x %X')=g" \
-		   -e "s/%CODE_NAME%/Killah P/g" \
-           -e "s/%FULL_DISTRO_NAME%/Test gfxboot/g" $(TEST_DIR)/isolinux.cfg
+	@#sed -i  "/F8=gfx_save/d" $(CPIO_DIR)/gfxboot.cfg
+
+	(cd $(CPIO_DIR) && find . -depth | cpio -o) > $(TEST_ISOLINUX)/$(CPIO_FILE)
 	make -B $(ISO_FILE)
+
+$(XLAT_TARGETS): xlat-% : %-data
+	$(TEMPLATE_FILLER) -i --data=$< Output/$(subst -data,,$<)
 
 $(ISO_FILE):
 	[ -L $(ISO_SYMLINK) -o ! -e $(ISO_SYMLINK) ] && ln -sf $$(readlink -f $(ISO_FILE)) $(ISO_SYMLINK) || true
 	mkisofs -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4 \
-    	-boot-info-table -gid 0 -uid 0 -b isolinux/isolinux.bin \
-        -c isolinux/isolinux.cat -o $@ iso-dir
+    	-boot-info-table -gid 0 -uid 0 -b boot/isolinux/isolinux.bin \
+        -c boot/isolinux/isolinux.cat -o $@ iso-dir
 
 iso-only:
 	make -B $(ISO_FILE)
