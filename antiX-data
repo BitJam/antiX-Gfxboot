@@ -2,5 +2,5 @@
  DISTRO_VERSION="16"
        ISO_ARCH="386"
       CODE_NAME="Berta Cáceres"
-        FLAVOUR="full"
+           FLAV="full"
         OPTIONS="quiet splash=v nosysv=LX"
