@@ -4,8 +4,10 @@ DEFAULT_LANG    :=
 NO_1024         :=
 ADD_TEXT_OPTS   := --position 280,490 --text "press F1 for help"
 
-TEMPLATE_FILLER := ../Build-iso/Tools/bootloader-template
+TOOLS           := ../Build-iso/Tools
+TEMPLATE_FILLER := $(TOOLS)/bootloader-template
 
+README          := readme.msg
 DISTROS         := antiX MX
 COMMON_FILES    := Input/common/isolinux/* fonts/*.fnt po/tr/*.tr
 ISO_FILES       := Input/common/iso/*
@@ -69,7 +71,7 @@ help:
 	@echo "    antiX-images : Create bg images with text in Input/antiX"
 	@echo "    MX-images    : Create bg images with text in Input/MX"
 	@echo ""
-	@echo "Create Makefile.local to modify the variables above"
+	@echo "Create a Makefile.local file to modify the variables above"
 	@echo ""
 	@echo ""
 
@@ -163,9 +165,9 @@ $(TEST_TARGETS): test-% : % %-data
 	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(TEST_DIR)
 
 	echo 1 > $(ISOLINUX_CPIO)/REBOOT
-	@#echo "desktop=rox-fluxbox" > $(TEST_DIR)/desktop.def
+	@#echo "desktop=rox-fluxbox" > $(ISOLINUX_CPIO)/desktop.def
 	@#sed -i  "/F8=gfx_save/d" $(ISOLINUX_CPIO)/gfxboot.cfg
-
+	$(TOOLS)/make-isolinux-menu < $(TEST_ISOLINUX)/isolinux.cfg >> $(TEST_ISOLINUX)/$(README)
 	make iso-only
 
 $(XLAT_TARGETS): xlat-% : %-data
