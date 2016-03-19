@@ -14,7 +14,9 @@ GFXBOOT_BIN     := gfxtheme
 CPIO_FILE       := gfx-cpio
 CPIO_FILES      := *.tr *.hlp $(GFXBOOT_BIN) *.fnt *.jpg gfxboot.cfg languages *.men *.def
 
-CPIO_DIR        := cpio-temp
+ISOLINUX_CPIO   := isolinux-cpio
+SYSLINUX_CPIO   := syslinux-cpio
+CPIO_DIRS       := $(ISOLINUX_CPIO) $(SYSLINUX_CPIO)
 
 ADD_TEXT        := bin/add-image-text
 TEST_TARGETS    := $(addprefix test-,   $(DISTROS))
@@ -39,7 +41,8 @@ TEST_ISOLINUX   := $(TEST_DIR)/boot/isolinux
 ISO_FILE     	:= test-gfxboot.iso
 ISO_SYMLINK  	:= /data/ISO/test-antiX.iso
 
-SAVE_STATE_SED := "$$ asavestate       \`savestate\nnosavestate     \`nosavestate"
+SAVE_STATE_SED  := "$$ asavestate       \`savestate\nnosavestate     \`nosavestate"
+SAVE_STATE_SED2 := "/bootchart/ isavestate       \`savestate\nnosavestate     \`nosavestate"
 
 -include Makefile.local
 
@@ -85,29 +88,39 @@ ifdef NO_1024
 endif
 
 	sed -i -r 's/^(\s*UI\s+gfxboot\s+)[^ ]+(\s)/\1$(CPIO_FILE)\2/' $</isolinux.cfg
-	rm -rf $(CPIO_DIR)
-	mkdir -p $(CPIO_DIR)
+	rm -rf $(CPIO_DIRS)
+	mkdir -p $(CPIO_DIRS)
 	# This prevents errors if a * glob has no matches  (sigh)
-	for f in $(addprefix $</, $(CPIO_FILES)); do ! test -e $$f || mv $$f $(CPIO_DIR)/; done
-	@# cp $</gfxboot.cfg $(CPIO_DIR)/
-	(cd $(CPIO_DIR) && find . -depth | cpio -o) > $</$(CPIO_FILE)
-
+	for f in $(addprefix $</, $(CPIO_FILES)); do ! test -e $$f || mv $$f $(ISOLINUX_CPIO)/; done
+	@# cp $</gfxboot.cfg $(ISOLINUX_CPIO)/
+	(cd $(ISOLINUX_CPIO) && find . -depth | cpio -o) > $</$(CPIO_FILE)
+	cp -r $(ISOLINUX_CPIO)/* $(SYSLINUX_CPIO)
 	rm -rf $(word 2,$^)
 	cp -a $< $(word 2,$^)
 	mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
 	mv $(word 2,$^)/isolinux.cfg $(word 2,$^)/syslinux.cfg
-	#sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
-	sed -r -i "0,/^font\.normal=/ s/^(font\.normal)=.*/\1=16x16.fnt/" $(CPIO_DIR)/gfxboot.cfg
-	if   grep -q "^key\.F7=" $(CPIO_DIR)/gfxboot.cfg; then \
-		sed -r -i  "/^key\.F7/akey.F8=gfx_save" $(CPIO_DIR)/gfxboot.cfg; \
-	elif grep -q "^key\.F6=" $(CPIO_DIR)/gfxboot.cfg; then \
-		sed -r -i  "/^key\.F6/akey.F7=gfx_save" $(CPIO_DIR)/gfxboot.cfg; \
+	sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
+
+	# I couldn't get ifeq ($@,antiX) to work
+	# Only use smaller normal font in antiX LiveUSB. All others use larger normal font
+	! echo $@ | grep -q antiX  || \
+	sed -r -i "0,/^font\.normal=/ s/^(font\.normal)=.*/\1=16x16.fnt/" $(SYSLINUX_CPIO)/gfxboot.cfg
+
+	if   grep -q "^key\.F7=" $(SYSLINUX_CPIO)/gfxboot.cfg; then \
+		sed -r -i  "/^key\.F7/akey.F8=save" $(SYSLINUX_CPIO)/gfxboot.cfg; \
+	elif grep -q "^key\.F6=" $(SYSLINUX_CPIO)/gfxboot.cfg; then \
+		sed -r -i  "/^key\.F6/akey.F7=save" $(SYSLINUX_CPIO)/gfxboot.cfg; \
 	else \
-	    echo "key.F8=save" >> $(CPIO_DIR)/gfxboot.cfg; \
+	    echo "key.F8=save" >> $(SYSLINUX_CPIO)/gfxboot.cfg; \
 	fi \
 
-	sed -i $(SAVE_STATE_SED) $(CPIO_DIR)/options.men
-	(cd $(CPIO_DIR) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
+	if grep -q bootchart $(SYSLINUX_CPIO)/options.men; then \
+		sed -i $(SAVE_STATE_SED2) $(SYSLINUX_CPIO)/options.men; \
+	else \
+		sed -i $(SAVE_STATE_SED) $(SYSLINUX_CPIO)/options.men; \
+	fi
+
+	(cd $(SYSLINUX_CPIO) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
 
 $(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
 	cp -a $(COMMON_FILES) Input/$(subst -old,,$@)/* $(word 3,$^) $</
@@ -137,7 +150,7 @@ $(OUT_DIRS):
 	mkdir -p $@
 
 clean:
-	rm -rf Output $(ISO_FILE) $(TEST_DIR) $(CPIO_DIR)
+	rm -rf Output $(ISO_FILE) $(TEST_DIR) $(CPIO_DIRS)
 
 distclean: clean
 	@for i in $(SUB_DIRS) ; do [ ! -f $$i/Makefile ] || make -C $$i distclean || break ; done
@@ -149,12 +162,11 @@ $(TEST_TARGETS): test-% : % %-data
 
 	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(TEST_DIR)
 
-	echo 1 > $(CPIO_DIR)/REBOOT
+	echo 1 > $(ISOLINUX_CPIO)/REBOOT
 	@#echo "desktop=rox-fluxbox" > $(TEST_DIR)/desktop.def
-	@#sed -i  "/F8=gfx_save/d" $(CPIO_DIR)/gfxboot.cfg
+	@#sed -i  "/F8=gfx_save/d" $(ISOLINUX_CPIO)/gfxboot.cfg
 
-	(cd $(CPIO_DIR) && find . -depth | cpio -o) > $(TEST_ISOLINUX)/$(CPIO_FILE)
-	make -B $(ISO_FILE)
+	make iso-only
 
 $(XLAT_TARGETS): xlat-% : %-data
 	$(TEMPLATE_FILLER) -i --data=$< Output/$(subst -data,,$<)
@@ -166,6 +178,7 @@ $(ISO_FILE):
         -c boot/isolinux/isolinux.cat -o $@ iso-dir
 
 iso-only:
+	(cd $(ISOLINUX_CPIO) && find . -depth | cpio -o) > $(TEST_ISOLINUX)/$(CPIO_FILE)
 	make -B $(ISO_FILE)
 
 # FIXME: a bit backward
