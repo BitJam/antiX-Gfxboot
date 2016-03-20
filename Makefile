@@ -2,6 +2,8 @@ SHELL           := /bin/bash
 
 DEFAULT_LANG    :=
 NO_1024         :=
+NO_SYSLINUX_F1  := true
+
 ADD_TEXT_OPTS   := --position 280,490 --text "press F1 for help"
 
 TOOLS           := ../Build-iso/Tools
@@ -116,6 +118,9 @@ endif
 	    echo "key.F8=save" >> $(SYSLINUX_CPIO)/gfxboot.cfg; \
 	fi \
 
+ifdef NO_SYSLINUX_F1
+	sed -i "/^key\.F1=/d" $(SYSLINUX_CPIO)/gfxboot.cfg
+endif
 	if grep -q bootchart $(SYSLINUX_CPIO)/options.men; then \
 		sed -i $(SAVE_STATE_SED2) $(SYSLINUX_CPIO)/options.men; \
 	else \
