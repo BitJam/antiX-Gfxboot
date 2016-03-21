@@ -203,6 +203,7 @@
   dup "mx-options" eq { pop [ /panel.mx-options /panel.mx-options.width /panel.mx-options.update /mx-options.init ] return } if
   dup "desktop"    eq { pop [ /panel.desktop    /panel.desktop.width    /panel.desktop.update    /desktop.init    ] return } if
   dup "gfx_save"   eq { pop [ /panel.gfx_save   /panel.gfx_save.width   /panel.gfx_save.update   /gfx_save.init   ] return } if
+  dup "save"       eq { pop [ /panel.gfx_save   /panel.gfx_save.width   /panel.gfx_save.update   /gfx_save.init   ] return } if
   dup "persist"    eq { pop [ /panel.persist    /panel.persist.width    /panel.persist.update    /persist.init    ] return } if
   dup "safeboot"   eq { pop [ /panel.safeboot   /panel.safeboot.width   /panel.safeboot.update   /safeboot.init   ] return } if
 % dup "video_mode" eq { pop [ /panel.video_mode /panel.video_mode.width /panel.video_mode.update /video_mode.init ] return } if

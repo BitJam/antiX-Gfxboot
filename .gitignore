@@ -15,5 +15,8 @@ Help/*/en-split
 Help/*/en.hlp
 Output
 iso-dir
-cpio-temp
+syslinux-cpio
+isolinux-cpio
 TODO
+Tools
+Template
