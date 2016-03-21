@@ -6,7 +6,7 @@ NO_SYSLINUX_F1  := true
 
 ADD_TEXT_OPTS   := --position 280,490 --text "press F1 for help"
 
-TOOLS           := ../Build-iso/Tools
+TOOLS           := Tools
 TEMPLATE_FILLER := $(TOOLS)/bootloader-template
 
 README          := readme.msg
