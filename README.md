@@ -26,8 +26,3 @@ get copied directly over the the output directory.
 IoW: what was in Input/antiX/ is now in Input/antiX/isolinux
 and all of the added "UEFI" files are under Input/antiX/iso/.
 Same thing with Input/common and Input/MX.
-
-TODO
-----
-
-Why do I add savestate F4-Options entries with the Makefile?

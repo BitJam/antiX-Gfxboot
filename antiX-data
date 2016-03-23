@@ -4,3 +4,4 @@
       CODE_NAME="Berta Cáceres"
            FLAV="full"
         OPTIONS="quiet splash=v nosysv=LX"
+   CORE_OPTIONS="quiet splash=v nosysv=LXD"
