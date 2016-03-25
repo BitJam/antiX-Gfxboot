@@ -13,7 +13,7 @@ terminal-box:   "inbox_*.png"
 
 # Use this able as a title
 + label {
-    left  = 33%
+    left  = 30%
     top   = 8%
     width = 100%
     text  = "Welcome to MX-15 (Fusion)!"
@@ -24,7 +24,7 @@ terminal-box:   "inbox_*.png"
 
 # Show the boot menu
 + boot_menu {
-    left        = 33%
+    left        = 30%
     top         = 20%
     width       = 50%
     height      = 42%
@@ -48,7 +48,7 @@ terminal-box:   "inbox_*.png"
 # --using individual labels instead of a vbox
 
 + label {
-    left  = 33%
+    left  = 30%
     top   = 60%
     width = 100%
     text  = "Press <Esc> to return to the main menu"
@@ -58,7 +58,7 @@ terminal-box:   "inbox_*.png"
 }
 
 + label {
-    left  = 33%
+    left  = 30%
     top   = 65%
     width = 100%
     text  = "Press 'e' to edit the selected entry"
@@ -70,7 +70,7 @@ terminal-box:   "inbox_*.png"
 # Show a styled horizontal progress bar
 + progress_bar {
     id              = "__timeout__"
-    left            = 33%
+    left            = 20%
     top             = 75%
     width           = 50%
     height          = 18
@@ -84,5 +84,3 @@ terminal-box:   "inbox_*.png"
     bar_style       = "progress_bar_*.png"
     highlight_style = "progress_highlight_*.png"
 }
-
-
