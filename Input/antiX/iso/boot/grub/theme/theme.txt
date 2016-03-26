@@ -11,12 +11,12 @@ terminal-font:  "Fixed Regular 13"
 
 terminal-box:   "inbox_*.png"
 
-# Use this able as a title
+# Use this label as a title
 + label {
     left  = 30%
     top   = 8%
     width = 100%
-    text  = "Welcome to MX-15 (Fusion)!"
+    text  = "Welcome to %DISTRO% (%CODE_NAME%)!"
     color = "#ffffff"
     align = "left"
     font  = "DejaVu Sans Regular 18"
@@ -49,30 +49,30 @@ terminal-box:   "inbox_*.png"
 
 + label {
     left  = 30%
-    top   = 60%
-    width = 100%
-    text  = "Press <Esc> to return to the main menu"
+    top   = 65%
+    width = 70%
+    text  = "Press 'e' to edit the selected entry"
     color = "#fafafa"
     align = "left"
-    font  = "DejaVu Sans Regular 14"
+    font  = "DejaVu Sans Bold 14"
 }
 
 + label {
     left  = 30%
-    top   = 65%
-    width = 100%
-    text  = "Press 'e' to edit the selected entry"
+    top   = 70%
+    width = 70%
+    text  = "Press <Esc> to return to the main menu"
     color = "#fafafa"
     align = "left"
-    font  = "DejaVu Sans Regular 14"
+    font  = "DejaVu Sans Bold 14"
 }
 
 # Show a styled horizontal progress bar
 + progress_bar {
     id              = "__timeout__"
-    left            = 20%
-    top             = 75%
-    width           = 50%
+    left            = 22%
+    top             = 80%
+    width           = 60%
     height          = 18
     bg_color        = "201, 0, 22"
     fg_color        = "255, 99,9"
@@ -80,7 +80,8 @@ terminal-box:   "inbox_*.png"
     show_text       = true
     text_color      = "#fafafa"
     font            = "DejaVu Sans Regular 14"
-    text            = "@TIMEOUT_NOTIFICATION_LONG@"
+    #text            = "@TIMEOUT_NOTIFICATION_LONG@"
+    text            = "The highlighted entry will run in %d seconds"
     bar_style       = "progress_bar_*.png"
     highlight_style = "progress_highlight_*.png"
 }
