@@ -50,7 +50,7 @@ terminal-box:   "inbox_*.png"
     left  = 30%
     top   = 75%
     width = 70%
-    text  = "Press 'e' to edit the selected entry"
+    text  = "Press 'e' to edit entry, 'p' to poweroff, 'r' to reboot."
     color = "#fafafa"
     align = "left"
     font  = "DejaVu Sans Bold 14"
