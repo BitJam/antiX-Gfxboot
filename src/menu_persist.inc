@@ -36,10 +36,10 @@
 
 /persist.data [
     [ "off"              ""                ]    
-    [ "all-persist"      "all-persist"     ]
-    [ "root-persist"     "root-persist"    ]
-    [ "static-root"      "static-root"     ]
-    [ "home-persist"     "home-persist"    ]
+    [ "persist-all"      "persist-all"     ]
+    [ "persist-root"     "persist-root"    ]
+    [ "persist-static"   "persist-static"  ]
+    [ "persist-home"     "persist-home"    ]
     [ "frugal-persist"   "frugal-persist"  ]
     [ "frugal-root"      "frugal-root"     ]
     [ "frugal-static"    "frugal-static"   ]
