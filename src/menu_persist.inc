@@ -44,7 +44,7 @@
     [ "frugal-root"      "frugal-root"     ]
     [ "frugal-static"    "frugal-static"   ]
     [ "frugal-home"      "frugal-home"     ]
-    [ "only-frugal"      "only-frugal"     ]
+    [ "frugal-only"      "frugal-only"     ]
 ] def
 
 /.persist.label  0 def
