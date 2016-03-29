@@ -1,13 +1,12 @@
 # Global Property
 title-text:     ""
-title-font:     "DejaVu Sans Bold 18"
+title-font:     "DejaVu Sans Regular 18"
 title-color:    "#ffffff"
 desktop-image:  "background.png"
 desktop-color:  "#000000"
-message-font:   "DejaVu Sans Bold 12"
+# message-font:   "DejaVu Sans Bold 12"
 
 terminal-font:  "Fixed Regular 13"
-#terminal-font:  "Droid Sans Mono Regular 14"
 
 terminal-box:   "inbox_*.png"
 
@@ -25,9 +24,9 @@ terminal-box:   "inbox_*.png"
 # Show the boot menu
 + boot_menu {
     left        = 30%
-    top         = 20%
+    top         = 18%
     width       = 50%
-    height      = 42%
+    height      = 55%
     item_color                 = "#a0a0a0"
     selected_item_color        = "#ffffff"
     selected_item_pixmap_style = "select_*.png"

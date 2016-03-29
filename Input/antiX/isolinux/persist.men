@@ -1,10 +1,10 @@
 off             `
-all persist     `persist=root!,home
-root persist    `persist=root!
-static root     `persist=root!,home,static
-home persist    `persist=home!
-frugal/persist  `frugal=root!,home
-frugal/root     `frugal=root!
-frugal/static   `frugal=root!,home,static
-frugal/home     `frugal=home!
-only frugal     `frugal
+all-persist     `all-persist
+root-persist    `root-persist
+static-root     `static-root
+home-persist    `home-persist
+frugal-persist  `frugal-persist
+frugal-root     `frugal-root
+frugal-static   `frugal-static
+frugal-home     `frugal-home
+only-frugal     `only-frugal
