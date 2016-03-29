@@ -35,15 +35,16 @@
 } def
 
 /persist.data [
-    [ "off"             ""                          ]    
-    [ "all persist"     "persist=root!,home"        ]
-    [ "root persist"    "persist=root!"             ]
-    [ "static root"     "persist=root!,home,static" ]
-    [ "home persist"    "persist=home!"             ]
-    [ "frugal/root"     "frugal=root!,home"         ]
-    [ "frugal/static"   "frugal=root!,home,static"  ]
-    [ "frugal/home"     "frugal=home!"              ]
-    [ "only frugal"     "frugal"                    ]
+    [ "off"              ""                ]    
+    [ "all-persist"      "all-persist"     ]
+    [ "root-persist"     "root-persist"    ]
+    [ "static-root"      "static-root"     ]
+    [ "home-persist"     "home-persist"    ]
+    [ "frugal-persist"   "frugal-persist"  ]
+    [ "frugal-root"      "frugal-root"     ]
+    [ "frugal-static"    "frugal-static"   ]
+    [ "frugal-home"      "frugal-home"     ]
+    [ "only-frugal"      "only-frugal"     ]
 ] def
 
 /.persist.label  0 def
