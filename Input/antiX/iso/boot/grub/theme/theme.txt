@@ -1,6 +1,6 @@
 # Global Property
 title-text:     ""
-title-font:     "DejaVu Sans Regular 18"
+title-font:     "DejaVu Sans Bold 18"
 title-color:    "#ffffff"
 desktop-image:  "background.png"
 desktop-color:  "#000000"
@@ -15,10 +15,10 @@ terminal-box:   "inbox_*.png"
     left  = 30%
     top   = 8%
     width = 100%
-    text  = "Welcome to %DISTRO% (%ASCII_CODE_NAME%)!"
+    text  = " Welcome to %DISTRO% (%ASCII_CODE_NAME%)!"
     color = "#ffffff"
     align = "left"
-    font  = "DejaVu Sans Regular 18"
+    font  = "DejaVu Sans Bold 18"
 }
 
 # Show the boot menu
