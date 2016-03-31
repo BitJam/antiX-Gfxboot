@@ -1,5 +1,7 @@
 SHELL           := /bin/bash
 
+MUNGE_GRUB_BG   := true
+
 DEFAULT_LANG    :=
 NO_1024         :=
 NO_SYSLINUX_F1  := true
@@ -8,7 +10,7 @@ ADD_TEXT_OPTS   := --position 280,490 --text "press F1 for help"
 
 TOOLS           := Tools
 TEMPLATE_FILLER := $(TOOLS)/bootloader-template
-
+BG_MUNGER       := $(TOOLS)/bg-image-text
 README          := readme.msg
 DISTROS         := antiX MX
 COMMON_FILES    := Input/common/isolinux/* fonts/*.fnt po/tr/*.tr
@@ -80,7 +82,7 @@ help:
 
 all: $(DISTROS)
 
-$(DISTROS): % : Output/%/boot/isolinux Output/%/boot/syslinux Help/%/en.hlp $(THEME_FILE)
+$(DISTROS): % : Output/%/boot/isolinux  Output/%/boot/syslinux  Help/%/en.hlp  $(THEME_FILE)
 	cp -a $(ISO_FILES) Input/$@/iso/* Output/$@/
 	cp -a $(COMMON_FILES) Input/$@/isolinux/* $(word 3,$^) $</
 	cp $(THEME_FILE) $</$(GFXBOOT_BIN)
@@ -117,6 +119,11 @@ endif
 	else \
 	    echo "key.F8=save" >> $(SYSLINUX_CPIO)/gfxboot.cfg; \
 	fi \
+
+ifdef MUNGE_GRUB_BG
+	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-1024.png Output/$@/boot/grub/theme/bg-1024.png 
+	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-800.png  Output/$@/boot/grub/theme/bg-800.png 
+endif
 
 ifdef NO_SYSLINUX_F1
 	sed -i "/^key\.F1=/d" $(SYSLINUX_CPIO)/gfxboot.cfg
