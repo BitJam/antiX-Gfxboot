@@ -2,24 +2,24 @@
 title-text:     ""
 title-font:     "DejaVu Sans Bold 18"
 title-color:    "#ffffff"
-desktop-image:  "background.png"
+desktop-image:  "bg-1024.png"
 desktop-color:  "#000000"
-# message-font:   "DejaVu Sans Bold 12"
 
-terminal-font:  "Fixed Regular 13"
+#terminal-font:  "Fixed Regular 13"
+terminal-font:  "Unifont Regular 16"
 
 terminal-box:   "inbox_*.png"
 
-# Use this label as a title
-+ label {
-    left  = 30%
-    top   = 8%
-    width = 100%
-    text  = " Welcome to %DISTRO% (%ASCII_CODE_NAME%)!"
-    color = "#ffffff"
-    align = "left"
-    font  = "DejaVu Sans Bold 18"
-}
+#- # Use this label as a title
+#- + label {
+#-     left  = 30%
+#-     top   = 8%
+#-     width = 100%
+#-     text  = " Welcome to %DISTRO% (%ASCII_CODE_NAME%)!"
+#-     color = "#ffffff"
+#-     align = "left"
+#-     font  = "DejaVu Sans Bold 18"
+#- }
 
 # Show the boot menu
 + boot_menu {
@@ -46,25 +46,25 @@ terminal-box:   "inbox_*.png"
 # Show informational messages below the boot menu
 # --using individual labels instead of a vbox
 
-+ label {
-    left  = 30%
-    top   = 75%
-    width = 70%
-    text  = "Press 'e' to edit entry, 'P' to poweroff, 'R' to reboot."
-    color = "#fafafa"
-    align = "left"
-    font  = "DejaVu Sans Bold 14"
-}
-
-+ label {
-    left  = 30%
-    top   = 80%
-    width = 70%
-    text  = "Press <Esc> to return to the main menu"
-    color = "#fafafa"
-    align = "left"
-    font  = "DejaVu Sans Bold 14"
-}
+#-- + label {
+#--     left  = 30%
+#--     top   = 75%
+#--     width = 70%
+#--     text  = "Press 'e' to edit entry, 'P' to poweroff, 'R' to reboot."
+#--     color = "#fafafa"
+#--     align = "left"
+#--     font  = "DejaVu Sans Bold 14"
+#-- }
+#-- 
+#-- + label {
+#--     left  = 30%
+#--     top   = 80%
+#--     width = 70%
+#--     text  = "Press <Esc> to return to the main menu"
+#--     color = "#fafafa"
+#--     align = "left"
+#--     font  = "DejaVu Sans Bold 14"
+#-- }
 
 # Show a styled horizontal progress bar
 + progress_bar {
