@@ -16,6 +16,8 @@ DISTROS         := antiX MX
 COMMON_FILES    := Input/common/isolinux/* fonts/*.fnt po/tr/*.tr
 ISO_FILES       := Input/common/iso/*
 
+MKISOFS         := genisoimage
+
 GFXBOOT_BIN     := gfxtheme
 CPIO_FILE       := gfx-cpio
 CPIO_FILES      := *.tr *.hlp $(GFXBOOT_BIN) *.fnt *.jpg gfxboot.cfg languages *.men *.def
@@ -187,7 +189,7 @@ $(XLAT_TARGETS): xlat-% : %-data
 
 $(ISO_FILE):
 	[ -L $(ISO_SYMLINK) -o ! -e $(ISO_SYMLINK) ] && ln -sf $$(readlink -f $(ISO_FILE)) $(ISO_SYMLINK) || true
-	mkisofs -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4 \
+	$(MKISOFS) -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4 \
     	-boot-info-table -gid 0 -uid 0 -b boot/isolinux/isolinux.bin \
         -c boot/isolinux/isolinux.cat -o $@ iso-dir
 
