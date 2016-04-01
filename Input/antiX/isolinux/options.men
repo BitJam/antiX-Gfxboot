@@ -3,12 +3,13 @@ checkmd5        `checkmd5
 checkfs         `checkfs
 toram           `toram
 from=usb        `from=usb
+nousb2          `nousb2
 automount       `automount
-mount=ask       `mount=ask
 mount=usb       `mount=usb
 mount=all       `mount=all
-nousb2          `nousb2
+mount=off       `mount=off
 acpi=off        `acpi=off
+hwclock=ask     `hwclock=ask
 hwclock=utc     `hwclock=utc
 hwclock=local   `hwclock=local
 private         `private
