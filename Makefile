@@ -101,6 +101,7 @@ endif
 	# This prevents errors if a * glob has no matches  (sigh)
 	for f in $(addprefix $</, $(CPIO_FILES)); do ! test -e $$f || mv $$f $(ISOLINUX_CPIO)/; done
 	@# cp $</gfxboot.cfg $(ISOLINUX_CPIO)/
+	find $(ISOLINUX_CPIO) -name ".*.swp" -o -name ".*.swo" -delete
 	(cd $(ISOLINUX_CPIO) && find . -depth | cpio -o) > $</$(CPIO_FILE)
 	cp -r $(ISOLINUX_CPIO)/* $(SYSLINUX_CPIO)
 	rm -rf $(word 2,$^)
@@ -137,6 +138,9 @@ endif
 	fi
 
 	(cd $(SYSLINUX_CPIO) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
+
+	find Output/$@/ -name ".*.swp" -o -name ".*.swo" -delete
+
 
 $(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
 	cp -a $(COMMON_FILES) Input/$(subst -old,,$@)/* $(word 3,$^) $</
