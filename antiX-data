@@ -4,5 +4,5 @@
       CODE_NAME="Berta Cáceres"
 ASCII_CODE_NAME="Berta Caceres"
            FLAV="full"
-        OPTIONS="quiet splash=v nosysv=LX"
-   CORE_OPTIONS="quiet splash=v nosysv=LXD"
+        OPTIONS="quiet splash=v disable=LX"
+   CORE_OPTIONS="quiet splash=v disable=LXD"
