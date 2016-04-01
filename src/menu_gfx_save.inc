@@ -39,7 +39,7 @@
     %[ /txt_menus   "gfxsave=menus"  ]
     %[ /txt_custom  "gfxsave=custom" ]
     %[ /txt_both    "gfxsave=both"   ]
-    [ "save"        "gfxsave=both"   ]
+    [ "save"        "gfxsave"        ]
     [ /txt_reset    "gfxsave=reset"  ]
 ] def
 
