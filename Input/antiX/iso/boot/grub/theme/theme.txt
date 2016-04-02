@@ -33,8 +33,8 @@ terminal-box:   "inbox_*.png"
 
     #menu_pixmap_style          = "inbox_*.png"
 
-    selected_item_font = "DejaVu Sans Bold 14"
-    item_font          = "DejaVu Sans Bold 14"
+    selected_item_font = "DejaVu Sans Regular 16"
+    item_font          = "DejaVu Sans Regular 16"
     item_height        = 32
     item_padding       = 5
     item_spacing       = 0
