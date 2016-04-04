@@ -6,7 +6,7 @@ DEFAULT_LANG    :=
 NO_1024         :=
 NO_SYSLINUX_F1  := true
 
-ADD_TEXT_OPTS   := --position 280,490 --text "press F1 for help"
+ADD_TEXT_OPTS   := --position 320,490 --size 22 --text "press F1 for help"
 
 TOOLS           := Tools
 TEMPLATE_FILLER := $(TOOLS)/bootloader-template
