@@ -1,5 +1,5 @@
     DISTRO_NAME="MX"
- DISTRO_VERSION="16"
-       ISO_ARCH="386"
-      CODE_NAME="Cold Fusion"
+ DISTRO_VERSION="15"
+       ISO_ARCH="x64"
+      CODE_NAME="Fusion"
         OPTIONS="quiet"
