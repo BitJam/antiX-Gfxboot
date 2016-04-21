@@ -49,8 +49,8 @@ TEST_ISOLINUX   := $(TEST_DIR)/boot/isolinux
 ISO_FILE     	:= test-gfxboot.iso
 ISO_SYMLINK  	:= /data/ISO/test-antiX.iso
 
-SAVE_STATE_SED  := "$$ anostore         \`nostore\nsavestate       \`savestate\nnosavestate     \`nosavestate"
-SAVE_STATE_SED2 := "/bootchart/ inostore         \`nostore\nsavestate       \`savestate\nnosavestate     \`nosavestate"
+SAVE_STATE_SED  := "$$ anostore         \`nostore\ndostore         \`dostore\nsavestate       \`savestate\nnosavestate     \`nosavestate"
+SAVE_STATE_SED2 := "/bootchart/ inostore         \`nostore\ndostore         \`dostore\nsavestate       \`savestate\nnosavestate     \`nosavestate"
 
 -include Makefile.local
 
