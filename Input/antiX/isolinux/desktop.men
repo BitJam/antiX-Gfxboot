@@ -1,0 +1,25 @@
+Default        `
+Rox-IceWM      `desktop=rox-icewm
+Space-IceWM    `desktop=space-icewm
+IceWM          `desktop=icewm
+Rox-Fluxbox    `desktop=rox-fluxbox
+Space-Fluxbox  `desktop=space-fluxbox
+Fluxbox        `desktop=fluxbox
+Rox-Jwm        `desktop=rox-jwm
+Space-Jwm      `desktop=space-jwm
+Jwm            `desktop=jwm
+Herbstluftwm   `desktop=min-herbstluftwm
+min-IceWM      `desktop=min-icewm
+min-Fluxbox    `desktop=min-fluxbox
+min-Jwm        `desktop=min-jwm
+Dark theme     `desktheme=dark
+Light theme    `desktheme=light
+fontsize=.8    `fontsize=.8
+fontsize=.9    `fontsize=.9
+fontsize=1.1   `fontsize=1.1
+fontsize=1.2   `fontsize=1.2
+fontsize=1.3   `fontsize=1.3
+fontsize=1.5   `fontsize=1.5
+fontsize=1.7   `fontsize=1.7
+fontsize=2.0   `fontsize=2.0
+fontsize=2.2   `fontsize=2.2
