@@ -1,0 +1,30 @@
+                     Help for booting %DISTRO% Live via UEFI
+
+The demo user password is "demo".  The root password is "root".  For help, go to
+one of these forums and make sure you say you are trying to boot %DISTRO% via
+UEFI:  http://forum.mepiscommunity.org/ or http://antix.freeforums.org/. Or
+send and email to: liveboot@mxlinux.org
+
+%DISTRO% Customize Boot (text menus)
+    Allows you to set the language, the timezone, and a lot of other things with
+    text menus early in the boot process. If you select the save option then a
+    custom entry  will be created/updated in this bootloader menu with the
+    options you selected.
+
+There are several useful boot options under ">>> Advanced Options for %DISTRO% <<<"
+
+%DISTRO% Failsafe
+    If you are having trouble booting or getting to X-Windows (the GUI) then try
+    using this entry.
+
+%DISTRO% Create Bootchart
+    Creates a /var/log/bootchart.tgz file that can be converted to an image
+    using the pybootchartgui program.  The image will show timing and diagnostic
+    information for the boot process.
+
+The other entries let you set the console resolution during the EARLY part of
+the boot process.  Normally, the resolution will be set to the maximum unless
+the "nomodeset" or "video=WWWWxHHHH" cheats are used.
+
+Hints: Use the "menus" cheat to customize your system using text menus.
+       Use "bootsave" to save the boot parameters you've entered manually.
