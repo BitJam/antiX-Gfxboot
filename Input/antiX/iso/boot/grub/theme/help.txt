@@ -8,8 +8,8 @@ send and email to: liveboot@mxlinux.org
 %DISTRO% Customize Boot (text menus)
     Allows you to set the language, the timezone, and a lot of other things with
     text menus early in the boot process. If you select the save option then a
-    custom entry in this bootloader menu will be created with the options you
-    selected.
+    custom entry  will be created/updated in this bootloader menu with the
+    options you selected.
 
 There are several useful boot options under ">>> Advanced Options for %DISTRO% <<<"
 
