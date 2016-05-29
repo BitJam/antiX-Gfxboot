@@ -5,17 +5,17 @@ one of these forums and make sure you say you are trying to boot %DISTRO% via
 UEFI:  http://forum.mepiscommunity.org/ or http://antix.freeforums.org/. Or
 send and email to: liveboot@mxlinux.org
 
-There are several useful boot options under ">>> Advanced Options for %DISTRO% <<<"
-
-%DISTRO% Failsafe
-    If you are having trouble booting or getting to X-Windows (the GUI) then try
-    using this entry.  
-    
 %DISTRO% Customize Boot (text menus)
     Allows you to set the language, the timezone, and a lot of other things with
     text menus early in the boot process. If you select the save option then a
     custom entry in this bootloader menu will be created with the options you
-    selected.  
+    selected.
+
+There are several useful boot options under ">>> Advanced Options for %DISTRO% <<<"
+
+%DISTRO% Failsafe
+    If you are having trouble booting or getting to X-Windows (the GUI) then try
+    using this entry.
 
 %DISTRO% Create Bootchart
     Creates a /var/log/bootchart.tgz file that can be converted to an image
