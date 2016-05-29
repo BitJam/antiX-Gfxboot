@@ -11,7 +11,7 @@ send and email to: liveboot@mxlinux.org
     custom entry  will be created/updated in this bootloader menu with the
     options you selected.
 
-There are several useful boot options under ">>> Advanced Options for %DISTRO% <<<"
+There are several useful boot entries under ">>> Advanced Options for %DISTRO% <<<"
 
 %DISTRO% Failsafe
     If you are having trouble booting or getting to X-Windows (the GUI) then try
@@ -27,4 +27,4 @@ the boot process.  Normally, the resolution will be set to the maximum unless
 the "nomodeset" or "video=WWWWxHHHH" cheats are used.
 
 Hints: Use the "menus" cheat to customize your system using text menus.
-       Use "bootsave" to save the boot parameters you've entered manually.
+       Use "bootsave" to save boot parameters you've entered manually.
