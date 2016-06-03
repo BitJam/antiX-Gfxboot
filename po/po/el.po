@@ -156,3 +156,8 @@ msgstr "Ασφαλή εκκίνηση "
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr "Γραμμή εντολών"
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr ""
+

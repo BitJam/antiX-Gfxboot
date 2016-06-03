@@ -156,3 +156,8 @@ msgstr "Inicio a prueba de fallos"
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr "Inicio desde la línea de comandos"
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr ""
+

@@ -156,3 +156,8 @@ msgstr "Avvio in modalità Failsafe"
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr "Avvio a Linea di Comando"
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr ""
+
