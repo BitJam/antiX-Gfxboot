@@ -156,3 +156,8 @@ msgstr "Redémarrage à sécurité intégrée"
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr "Redémarrage en ligne de commande"
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr ""
+

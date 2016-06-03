@@ -156,3 +156,8 @@ msgstr "Störungssicherer Boot"
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr "Kommandozeilen Boot"
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr ""
+

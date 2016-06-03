@@ -155,3 +155,8 @@ msgstr ""
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr ""
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr ""
+

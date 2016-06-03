@@ -156,3 +156,8 @@ msgstr "Arrenca a prova de fallades "
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr "Arrenca amb línia d'ordres "
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr ""
+

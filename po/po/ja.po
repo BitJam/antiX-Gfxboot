@@ -156,3 +156,8 @@ msgstr "フェイルセーフ起動"
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr "コマンドライン起動"
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr ""
+

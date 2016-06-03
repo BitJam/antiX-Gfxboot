@@ -156,3 +156,8 @@ msgstr "Bezpieczny (ratunkowy) rozruch"
 #. txt_command_line_boot
 msgid "Command Line Boot"
 msgstr "Rozruch do linii komend"
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr ""
+
