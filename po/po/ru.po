@@ -2,12 +2,14 @@
 # Copyright (C) 2005 SUSE Linux GmbH
 # 
 # Translators:
+# Translators:
+# Вячеслав Волошин <vol_vel@mail.ru>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-02-25 21:05+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/antix-development/language/ru/)\n"
+"PO-Revision-Date: 2016-06-03 08:36+0000\n"
+"Last-Translator: Вячеслав Волошин <vol_vel@mail.ru>\n"
+"Language-Team: Russian (http://www.transifex.com/anticapitalista/antix-development/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -73,7 +75,7 @@ msgstr "авторежим"
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr "проверка md5"
+msgstr "Проверка md5"
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
@@ -146,17 +148,16 @@ msgstr "Перезагрузить"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "Безопасный видеорежим"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Безопасная загрузка"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "Загрузка из командной строки"
 
 #. txt_fast_boot
 msgid "Fast Boot"
-msgstr ""
-
+msgstr "Быстрая загрузка"
