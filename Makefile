@@ -4,6 +4,8 @@ MUNGE_GRUB_BG   := true
 
 DEFAULT_LANG    :=
 NO_1024         :=
+
+NO_ISOLINUX_F1  := true
 NO_SYSLINUX_F1  := true
 
 ADD_TEXT_OPTS   := --position 320,490 --size 22 --text "press F1 for help"
@@ -126,6 +128,10 @@ endif
 ifdef MUNGE_GRUB_BG
 	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-1024.png Output/$@/boot/grub/theme/bg-1024.png 
 	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-800.png  Output/$@/boot/grub/theme/bg-800.png 
+endif
+
+ifdef NO_ISOLINUX_F1
+	sed -i "/^key\.F1=/d" $(ISOLINUX_CPIO)/gfxboot.cfg
 endif
 
 ifdef NO_SYSLINUX_F1
