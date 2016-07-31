@@ -49,7 +49,7 @@
       [ "hwclock=ask"     "hwclock=ask"      ]
       [ "hwclock=utc"     "hwclock=utc"      ]
       [ "hwclock=local"   "hwclock=local"    ]
-      [ "private"         "private"          ]
+      [ "password"        "password"         ]
       [ "bootchart"       "bootchart initcall_debug printk.time=y" ]
       [ "savestate"       "savestate"        ]
       [ "nosavestate"     "nosavestate"      ]
