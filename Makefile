@@ -205,6 +205,7 @@ $(ISO_FILE):
 	[ -L $(ISO_SYMLINK) -o ! -e $(ISO_SYMLINK) ] && ln -sf $$(readlink -f $(ISO_FILE)) $(ISO_SYMLINK) || true
 	$(MKISOFS) -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4 \
     	-boot-info-table -gid 0 -uid 0 -b boot/isolinux/isolinux.bin \
+		-eltorito-alt-boot -eltorito-platform 0xEF -eltorito-boot boot/grub/efi.img -no-emul-boot \
         -c boot/isolinux/isolinux.cat -o $@ iso-dir
 
 iso-only:
