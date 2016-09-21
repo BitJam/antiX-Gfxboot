@@ -13,6 +13,8 @@ ADD_TEXT_OPTS   := --position 320,490 --size 22 --text "press F1 for help"
 TOOLS           := Tools
 TEMPLATE_FILLER := $(TOOLS)/bootloader-template
 BG_MUNGER       := $(TOOLS)/bg-image-text
+MAKE_EFI_IMG    := $(TOOLS)/make-efi-img
+
 README          := readme.msg
 DISTROS         := antiX MX
 COMMON_FILES    := Input/common/isolinux/* fonts/*.fnt po/tr/*.tr
@@ -146,6 +148,8 @@ endif
 	(cd $(SYSLINUX_CPIO) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
 
 	find Output/$@/ -name ".*.swp" -o -name ".*.swo" -delete
+
+	$(MAKE_EFI_IMG) Output/$@/
 
 
 $(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
