@@ -205,15 +205,41 @@ will need to type some of them in manually.  </p>
 <em>checkfs</em> ------------ Check LiveUSB ext2/3/4 and persistent file systems.<br/>
 <em>toram</em> --------------- Copy the compressed file system to RAM. <br/>
 <em>from=usb</em> --------- Finish booting from a LiveUSB<br/>
+<em>from=hd</em> ---------- Finish booting from a hard drive<br/>
 <em>nousb2</em> ------------ Disable all usb-2 devices.<br/>
 <em>acpi=off</em> ----------- Disable ACPI.  This helps on some older laptops.<br/>
 <em>hwclock=utc</em> ----- Use UTC for hardware clock (Linux-only systems)<br/>
 <em>hwclock=local</em> --- Use localtime for hardware clock (Windows systems)<br/>
 <em>hwclock=ask</em> ---- Have the system help determine the clock setting<br/>
-<em>private</em> ------------ Change passwords before booting<br/>
-<em>savestate</em> --------- Save some files across reboots (LiveUSB only)<br/>
-<em>nosavestate</em> ------  Don't save files across reboots (LiveUSB only)<br/>
+<em>password</em> ------------ Change passwords before booting<br/>
 
+<p>
+
+See <a href="#option-details-1">Option Details One</a> for details on some of these options<br/>
+See <a href="#option-details-2">Option Details Two</a> for details on more of these options<br/>
+See <a href="#option-usb">Option Details Two</a> for LiveUSB-only options<br/>
+Return to the <a href="#main">Main Menu</a>
+
+</p>
+</div>
+
+<div id="options-usb">
+<h3>
+<a name="usb-options">F4: LiveUSB Options</a>
+</h3>
+<p>
+These options only work in LiveUSBs (or frugal installs).  LiveUSB-Storage
+and saving files across reboots are both enabled by default.  These options
+eare "sticky".  They are remembered across reboots.  Therefore they are not
+saved in the bootloader (see <a href="save">F8 Save</a>).
+</p>
+
+<p>
+<em>nostore</em> ------ Disable the LiveUSB-Storage feature<br/>
+<em>dostore</em> --------- Enable the LiveUSB-Storage feature<br/>
+<em>savestate</em> --------- Save some files across reboots<br/>
+<em>nosavestate</em> ------  Don't save files across reboots<br/>
+</p>
 <p>
 
 See <a href="#option-details-1">Option Details One</a> for details on some of these options<br/>
@@ -222,6 +248,7 @@ Return to the <a href="#main">Main Menu</a>
 
 </p>
 </div>
+
 
 <div id="option-details-1">
 <h3>
@@ -274,7 +301,7 @@ reboots which can be handy.  See the directory /antiX/state/ on the
 LiveUSB which will be created on the first boot.
 
 <br/><br/>
-<em>Use your own passwords</em> (private)<br/>
+<em>Use your own passwords</em> (password)<br/>
 The system will prompt you for a new root and new demo password when it boots.
 The well known default passwords are not secure.  This simple step greatly
 increases the security of your live system.

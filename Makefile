@@ -13,6 +13,8 @@ ADD_TEXT_OPTS   := --position 320,490 --size 22 --text "press F1 for help"
 TOOLS           := Tools
 TEMPLATE_FILLER := $(TOOLS)/bootloader-template
 BG_MUNGER       := $(TOOLS)/bg-image-text
+MAKE_EFI_IMG    := $(TOOLS)/make-efi-img
+
 README          := readme.msg
 DISTROS         := antiX MX
 COMMON_FILES    := Input/common/isolinux/* fonts/*.fnt po/tr/*.tr
@@ -147,6 +149,8 @@ endif
 
 	find Output/$@/ -name ".*.swp" -o -name ".*.swo" -delete
 
+	$(MAKE_EFI_IMG) Output/$@/
+
 
 $(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
 	cp -a $(COMMON_FILES) Input/$(subst -old,,$@)/* $(word 3,$^) $</
@@ -201,6 +205,7 @@ $(ISO_FILE):
 	[ -L $(ISO_SYMLINK) -o ! -e $(ISO_SYMLINK) ] && ln -sf $$(readlink -f $(ISO_FILE)) $(ISO_SYMLINK) || true
 	$(MKISOFS) -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4 \
     	-boot-info-table -gid 0 -uid 0 -b boot/isolinux/isolinux.bin \
+		-eltorito-alt-boot -eltorito-platform 0xEF -eltorito-boot boot/grub/efi.img -no-emul-boot \
         -c boot/isolinux/isolinux.cat -o $@ iso-dir
 
 iso-only:
