@@ -149,8 +149,6 @@ endif
 
 	find Output/$@/ -name ".*.swp" -o -name ".*.swo" -delete
 
-	$(MAKE_EFI_IMG) Output/$@/
-
 
 $(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
 	cp -a $(COMMON_FILES) Input/$(subst -old,,$@)/* $(word 3,$^) $</
@@ -200,6 +198,7 @@ $(TEST_TARGETS): test-% : % %-data
 
 $(XLAT_TARGETS): xlat-% : %-data
 	$(TEMPLATE_FILLER) -i --data=$< Output/$(subst -data,,$<)
+	$(MAKE_EFI_IMG) Output/$(subst -data,,$<)
 
 $(ISO_FILE):
 	[ -L $(ISO_SYMLINK) -o ! -e $(ISO_SYMLINK) ] && ln -sf $$(readlink -f $(ISO_FILE)) $(ISO_SYMLINK) || true
