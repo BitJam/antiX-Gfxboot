@@ -17,6 +17,9 @@ MAKE_EFI_IMG    := $(TOOLS)/make-efi-img
 
 README          := readme.msg
 DISTROS         := antiX MX
+
+BDIR            := antiX
+
 COMMON_FILES    := Input/common/isolinux/* fonts/*.fnt po/tr/*.tr
 ISO_FILES       := Input/common/iso/*
 
@@ -146,6 +149,8 @@ endif
 	fi
 
 	(cd $(SYSLINUX_CPIO) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
+
+	mkdir -p Output/$@/$(BDIR)
 
 	find Output/$@/ -name ".*.swp" -o -name ".*.swo" -delete
 
