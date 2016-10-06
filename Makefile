@@ -17,6 +17,9 @@ MAKE_EFI_IMG    := $(TOOLS)/make-efi-img
 
 README          := readme.msg
 DISTROS         := antiX MX
+
+BDIR            := antiX
+
 COMMON_FILES    := Input/common/isolinux/* fonts/*.fnt po/tr/*.tr
 ISO_FILES       := Input/common/iso/*
 
@@ -147,9 +150,9 @@ endif
 
 	(cd $(SYSLINUX_CPIO) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
 
-	find Output/$@/ -name ".*.swp" -o -name ".*.swo" -delete
+	mkdir -p Output/$@/$(BDIR)
 
-	$(MAKE_EFI_IMG) Output/$@/
+	find Output/$@/ -name ".*.swp" -o -name ".*.swo" -delete
 
 
 $(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
@@ -200,6 +203,7 @@ $(TEST_TARGETS): test-% : % %-data
 
 $(XLAT_TARGETS): xlat-% : %-data
 	$(TEMPLATE_FILLER) -i --data=$< Output/$(subst -data,,$<)
+	$(MAKE_EFI_IMG) Output/$(subst -data,,$<)
 
 $(ISO_FILE):
 	[ -L $(ISO_SYMLINK) -o ! -e $(ISO_SYMLINK) ] && ln -sf $$(readlink -f $(ISO_FILE)) $(ISO_SYMLINK) || true
