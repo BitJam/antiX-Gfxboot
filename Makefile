@@ -5,7 +5,7 @@ MUNGE_GRUB_BG   := true
 DEFAULT_LANG    :=
 NO_1024         :=
 
-NO_ISOLINUX_F1  := true
+NO_ISOLINUX_F1  :=
 NO_SYSLINUX_F1  := true
 
 ADD_TEXT_OPTS   := --position 320,490 --size 22 --text "press F1 for help"
