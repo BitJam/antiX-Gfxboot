@@ -4,7 +4,7 @@ checkfs         `checkfs
 toram           `toram
 from=usb        `from=usb
 from=hd         `from=hd
-nousb2          `nousb2
+from=all        `from=all
 acpi=off        `acpi=off
 hwclock=ask     `hwclock=ask
 hwclock=utc     `hwclock=utc
