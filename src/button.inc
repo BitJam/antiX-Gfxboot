@@ -97,7 +97,7 @@
   fillrect
   drawborder
   moveto 1 1 rmoveto
-  bt.default { white black } { black white } ifelse
+  bt.default { white white } { black black } ifelse
   bt.width 2 sub bt.height 2 sub drawborder
   moveto
   % 2 2 rmoveto white black bt.width 4 sub bt.height 4 sub drawborder
