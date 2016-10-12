@@ -1,5 +1,6 @@
     DISTRO_NAME="MX"
- DISTRO_VERSION="15"
+ DISTRO_VERSION="16"
        ISO_ARCH="x64"
-      CODE_NAME="Fusion"
+      CODE_NAME="Metamorphosis"
+ASCII_CODE_NAME="Metamorphosis"
         OPTIONS="quiet"
