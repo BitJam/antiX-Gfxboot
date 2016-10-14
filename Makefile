@@ -194,6 +194,7 @@ $(TEST_TARGETS): test-% : % %-data
 	cp -a Output/$</* $(TEST_DIR)
 
 	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(TEST_DIR)
+	$(MAKE_EFI_IMG) $(TEST_DIR)
 
 	echo 1 > $(ISOLINUX_CPIO)/REBOOT
 	@#echo "desktop=rox-fluxbox" > $(ISOLINUX_CPIO)/desktop.def
