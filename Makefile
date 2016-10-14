@@ -131,8 +131,8 @@ endif
 	fi \
 
 ifdef MUNGE_GRUB_BG
-	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-1024.png Output/$@/boot/grub/theme/bg-1024.png
-	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-800.png  Output/$@/boot/grub/theme/bg-800.png
+	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-1024.png Output/$@/boot/grub/theme/bg-1024.png 
+	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-800.png  Output/$@/boot/grub/theme/bg-800.png 
 endif
 
 ifdef NO_ISOLINUX_F1
