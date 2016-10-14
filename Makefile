@@ -7,6 +7,13 @@ NO_1024         :=
 
 NO_ISOLINUX_F1  :=
 NO_SYSLINUX_F1  := true
+USE_EFI_IMG     :=
+
+MKISOFS_OPTS    := -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4
+MKISOFS_OPTS	+= -boot-info-table -gid 0 -uid 0 -b boot/isolinux/isolinux.bin
+MKISOFS_OPTS	+= -c boot/isolinux/isolinux.cat
+
+EFI_OPTS        := -eltorito-alt-boot -eltorito-platform 0xEF -eltorito-boot boot/grub/efi.img -no-emul-boot
 
 ADD_TEXT_OPTS   := --position 320,490 --size 22 --text "press F1 for help"
 
@@ -131,8 +138,8 @@ endif
 	fi \
 
 ifdef MUNGE_GRUB_BG
-	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-1024.png Output/$@/boot/grub/theme/bg-1024.png 
-	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-800.png  Output/$@/boot/grub/theme/bg-800.png 
+	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-1024.png Output/$@/boot/grub/theme/bg-1024.png
+	$(BG_MUNGER) --$(@) Input/$@/iso/boot/grub/theme/bg-800.png  Output/$@/boot/grub/theme/bg-800.png
 endif
 
 ifdef NO_ISOLINUX_F1
@@ -194,7 +201,9 @@ $(TEST_TARGETS): test-% : % %-data
 	cp -a Output/$</* $(TEST_DIR)
 
 	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(TEST_DIR)
-
+ifdef USE_EFI_IMG
+	$(MAKE_EFI_IMG) $(TEST_DIR)
+endif
 	echo 1 > $(ISOLINUX_CPIO)/REBOOT
 	@#echo "desktop=rox-fluxbox" > $(ISOLINUX_CPIO)/desktop.def
 	@#sed -i  "/F8=gfx_save/d" $(ISOLINUX_CPIO)/gfxboot.cfg
@@ -207,10 +216,11 @@ $(XLAT_TARGETS): xlat-% : %-data
 
 $(ISO_FILE):
 	[ -L $(ISO_SYMLINK) -o ! -e $(ISO_SYMLINK) ] && ln -sf $$(readlink -f $(ISO_FILE)) $(ISO_SYMLINK) || true
-	$(MKISOFS) -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4 \
-    	-boot-info-table -gid 0 -uid 0 -b boot/isolinux/isolinux.bin \
-		-eltorito-alt-boot -eltorito-platform 0xEF -eltorito-boot boot/grub/efi.img -no-emul-boot \
-        -c boot/isolinux/isolinux.cat -o $@ iso-dir
+ifdef USE_EFI_IMG
+	$(MKISOFS) $(MKISOFS_OPTS) $(EFI_OPTS) -o $@ iso-dir
+else
+	$(MKISOFS) $(MKISOFS_OPTS) -o $@ iso-dir
+endif
 
 iso-only:
 	(cd $(ISOLINUX_CPIO) && find . -depth | cpio -o) > $(TEST_ISOLINUX)/$(CPIO_FILE)

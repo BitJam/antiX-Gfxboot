@@ -17,3 +17,4 @@
 /txt_repain_system              "Repair Installed System"                            def
 /txt_rescue                     "Rescue System"                                      def
 /txt_safe_linux                 "Linux--Safe Settings"                               def
+/txt_fast_boot                  "Fast Boot"                                          def
