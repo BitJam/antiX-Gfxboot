@@ -116,6 +116,7 @@ endif
 	for f in $(addprefix $</, $(CPIO_FILES)); do ! test -e $$f || mv $$f $(ISOLINUX_CPIO)/; done
 	@# cp $</gfxboot.cfg $(ISOLINUX_CPIO)/
 	find $(ISOLINUX_CPIO) -name ".*.swp" -o -name ".*.swo" -delete
+
 	(cd $(ISOLINUX_CPIO) && find . -depth | cpio -o) > $</$(CPIO_FILE)
 	cp -r $(ISOLINUX_CPIO)/* $(SYSLINUX_CPIO)
 	rm -rf $(word 2,$^)
@@ -200,7 +201,9 @@ $(TEST_TARGETS): test-% : % %-data
 	mkdir -p $(TEST_DIR)
 	cp -a Output/$</* $(TEST_DIR)
 
+	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(ISOLINUX_CPIO)/en.hlp
 	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(TEST_DIR)
+
 ifdef USE_EFI_IMG
 	$(MAKE_EFI_IMG) $(TEST_DIR)
 endif
@@ -212,7 +215,6 @@ endif
 
 $(XLAT_TARGETS): xlat-% : %-data
 	$(TEMPLATE_FILLER) -i --data=$< Output/$(subst -data,,$<)
-	$(MAKE_EFI_IMG) Output/$(subst -data,,$<)
 
 $(ISO_FILE):
 	[ -L $(ISO_SYMLINK) -o ! -e $(ISO_SYMLINK) ] && ln -sf $$(readlink -f $(ISO_FILE)) $(ISO_SYMLINK) || true
