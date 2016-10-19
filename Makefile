@@ -116,6 +116,9 @@ endif
 	for f in $(addprefix $</, $(CPIO_FILES)); do ! test -e $$f || mv $$f $(ISOLINUX_CPIO)/; done
 	@# cp $</gfxboot.cfg $(ISOLINUX_CPIO)/
 	find $(ISOLINUX_CPIO) -name ".*.swp" -o -name ".*.swo" -delete
+	
+	$(TEMPLATE_FILLER) -i --data=$@-data $(ISOLINUX_CPIO)/en.hlp
+
 	(cd $(ISOLINUX_CPIO) && find . -depth | cpio -o) > $</$(CPIO_FILE)
 	cp -r $(ISOLINUX_CPIO)/* $(SYSLINUX_CPIO)
 	rm -rf $(word 2,$^)
