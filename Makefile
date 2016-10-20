@@ -1,6 +1,6 @@
 SHELL           := /bin/bash
 
-MUNGE_GRUB_BG   := true
+MUNGE_GRUB_BG   :=
 
 DEFAULT_LANG    :=
 NO_1024         :=

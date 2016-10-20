@@ -2,7 +2,7 @@
 title-text:     ""
 title-font:     "DejaVu Sans Bold 18"
 title-color:    "#ffffff"
-desktop-image:  "background.png"
+desktop-image:  "background.jpg"
 desktop-color:  "#000000"
 message-font:   "DejaVu Sans Bold 12"
 
@@ -28,11 +28,9 @@ terminal-box:   "inbox_*.png"
     top         = 20%
     width       = 50%
     height      = 42%
-    item_color                 = "#a0a0a0"
+    item_color                 = "#ffffff"
     selected_item_color        = "#ffffff"
     selected_item_pixmap_style = "select_*.png"
-
-    #menu_pixmap_style          = "inbox_*.png"
 
     selected_item_font = "DejaVu Sans Bold 14"
     item_font          = "DejaVu Sans Bold 14"
@@ -52,7 +50,7 @@ terminal-box:   "inbox_*.png"
     top   = 75%
     width = 70%
     text  = "Press 'e' to edit the selected entry"
-    color = "#fafafa"
+    color = "#ffffff"
     align = "left"
     font  = "DejaVu Sans Bold 14"
 }
@@ -62,7 +60,7 @@ terminal-box:   "inbox_*.png"
     top   = 80%
     width = 70%
     text  = "Press <Esc> to return to the main menu"
-    color = "#fafafa"
+    color = "#ffffff"
     align = "left"
     font  = "DejaVu Sans Bold 14"
 }
