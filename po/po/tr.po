@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2016-06-03 06:05+0000\n"
+"PO-Revision-Date: 2016-10-27 03:02+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/anticapitalista/antix-development/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -139,7 +139,7 @@ msgstr ""
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 #. txt_reboot
 msgid "Reboot"
