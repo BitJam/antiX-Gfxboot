@@ -22,7 +22,6 @@
     [ "Lima"              "America/Lima"                   ]  % GMT-5
     [ "Bogota"            "America/Bogota"                 ]  % GMT-5
     [ "New York*"         "America/New_York"               ]  % GMT-5 DST
-    [ "Caracas"           "America/Caracas"                ]  % GMT-430
     [ "Santiago*"         "America/Santiago"               ]  % GMT-4 DST
     [ "La Paz"            "America/La_Paz"                 ]  % GMT-4
     [ "Halifax*"          "America/Halifax"                ]  % GMT-4 DST
