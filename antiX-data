@@ -2,7 +2,6 @@
  DISTRO_VERSION="16b"
        ISO_ARCH="x64"
       CODE_NAME="Berta Cáceres"
-ASCII_CODE_NAME="Berta Caceres"
            FLAV="full"
         OPTIONS="quiet splash=v disable=lx"
    CORE_OPTIONS="quiet splash=v disable=lxd"

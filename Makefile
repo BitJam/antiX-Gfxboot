@@ -1,5 +1,7 @@
 SHELL           := /bin/bash
 
+MX_32BIT        :=
+
 MUNGE_GRUB_BG   :=
 
 DEFAULT_LANG    :=
@@ -91,6 +93,7 @@ help:
 	@echo "    antiX-images : Create bg images with text in Input/antiX"
 	@echo "    MX-images    : Create bg images with text in Input/MX"
 	@echo ""
+	@echo "Add MX-32BIT=true to make dual kernel MX bootloaders"
 	@echo "Create a Makefile.local file to modify the variables above"
 	@echo ""
 	@echo ""
@@ -101,6 +104,12 @@ all: $(DISTROS)
 $(DISTROS): % : Output/%/boot/isolinux  Output/%/boot/syslinux  Help/%/en.hlp  $(THEME_FILE)
 	cp -a $(ISO_FILES) Input/$@/iso/* Output/$@/
 	cp -a $(COMMON_FILES) Input/$@/isolinux/* $(word 3,$^) $</
+
+ifdef MX_32BIT
+	cp -a Input/MX-32bit/iso/* Output/$@/
+	cp -a Input/MX-32bit/isolinux/* $</
+endif
+
 	cp $(THEME_FILE) $</$(GFXBOOT_BIN)
 ifdef DEFAULT_LANG
 	@echo $(DEFAULT_LANG) > $</lang.def
