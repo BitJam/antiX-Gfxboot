@@ -1,7 +1,7 @@
-# LANGUAGE translations for boot loader
+# Kazakh translations for boot loader
 # Copyright (C) 2005 SUSE Linux GmbH
 #
-# Translators:
+# Translators: Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
