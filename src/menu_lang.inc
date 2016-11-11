@@ -43,6 +43,7 @@
   [ "es_NI"  "es-la"    false "Español (NI)"                                  "es" ] % Spanish (Nicaragua)
   [ "es_PE"  "es-la"    false "Español (PE)"                                  "es" ] % Spanish (Peru)
   [ "es_US"  "us"       false "Español (US)"                                  "es" ] % Spanish (US)
+  [ "es_VE"  "us"       false "Español (VE)"                                  "es" ] % Spanish (Venezuela)
   [ "eu_ES"  "es"       false "Euskara"                                       "eu" ] % Euskal
   [ "et_EE"  "et"       false "Eesti"                                         "ee" ] % Estonian
   [ "fa_IR"  "us"       true  "فارسی"                                         "us" ] % Farsi
