@@ -62,6 +62,7 @@
   [ "it_IT"  "it"       false "Italiano"                                      "it" ] % Italian
   [ "ja_JP"  "jp"       false "日本語"                                        "jp" ] % Japanese
   [ "jv_ID"  "us"       false "Basa Jawa"                                     "us" ] % Javanese
+  [ "kk_KZ"  "us"       false "Қазақша"                                       "us" ] % Kazakh
   [ "km_KH"  "khmer"    false "Khmer"                                         "kh" ] % Khmer
   [ "ko_KR"  "kr"       false "한글"                                          "kr" ] % Korean
   [ "ky_KG"  "us"       false "Кыргызча"                                      "kg" ] % Kirghiz
