@@ -53,7 +53,7 @@ The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
 
 <p>
 The help system consists of a set of linked pages that you can navigate
-through with the follow keys.
+through with the following keys.
 <p>
 
 <ul>
@@ -160,7 +160,7 @@ Return to the <a href="#main">Main Menu</a>
 </h3>
 
 <p>
-Press [<em>F3</em>] to get at list of cities in various time
+Press [<em>F3</em>] to get a list of cities in various time
 zones.  The cities are listed in time zone order so they circle
 the globe eastward.  If your area uses Daylight Savings Time then
 make sure you select a city that does also.  These cities are
@@ -638,16 +638,7 @@ These are the options that show up in the <em>Boot Options</em> box.
 Tell the kernel to <em>not</em> print a lot of debugging information to the screen.
 </p>
 
-<p>
-<em><a href="#boot_mx">disable_srv=LX</a></em><br>
-Disable some startup services for faster booting and less RAM usage.
-</p>
 
-<p>
-<em>nomodeset</em><br>
-Do not let the video driver take over the console.  If the screen goes blank
-early in the boot process then you probably need this option.
-</p>
 
 <p>
 Return to the <a href="#main">Main Menu</a>
@@ -677,7 +668,7 @@ changes on some LiveUSBs.
 
 </p>
 <p>
-Go to <a href="#boot_mx">MX Boot Options</a><br/>
+Go to <a href="#boot_mx">MX Linux Boot Options</a><br/>
 Go to <a href="#mm_boot">Kernel Boot Options</a>
 </p>
 
@@ -688,32 +679,40 @@ Return to <a href="#main">Main Menu</a>
 </div>
 <div id="boot_mx">
 <h3>
-<a name="boot_mx">MX Boot Options</a>
+<a name="boot_mx">MX Linux Boot Options</a>
 </h3>
 
 <p>
-These are options that are only available in MX
+These are options that are only available in MX Linux
 </p>
 
 <ul>
     <li><em>lean</em> -- disable some services including wicd for a fast boot </li>
-    <li><em>mean</em> -- disable Internet connection </li>
-    <li><em>Xtralean</em> -- disable more services for a faster boot</li>
+    <li><em>mean</em> -- disable dhclient (Internet connection) </li>
+    <li><em>Xtralean</em> -- disable more services including NFS shares for a faster boot</li>
     <li><em>nodbus</em> -- disable dbus service </li><br/>
     <li><em>dpi=XX</em> -- set dpi. Default is 96</li>
 </ul>
 
 <p>
 <em>NOTE:</em> Four of these options are combined into the single
-<em>nosysv=</em> option.  For example <em>nosysv=LMX</em>.
+<em>disable=</em> option.  For example <em>disable=lmx</em>.
 </p>
 
 <ul>
-    <li><em>L</em> stands for lean</li>
-    <li><em>M</em> stands for mean</li>
-    <li><em>X</em> stands for Xtralean</li>
-    <li><em>D</em> stands for nodbus</li>
-    <li><em>V</em> disables Virtual Box services</li>
+    <li><em>L/l</em> lean - disable some services</li>
+    <li><em>M/m</em> mean - disable networking</li>
+    <li><em>X/x</em> Xtralean - disable more services</li>
+    <li><em>d/D</em> disable dbus</li>
+    <li><em>v</em> disable vbox services</li>
+    <li><em>n</em> disable NFS service</li>
+    <li><em>k</em> Do not set the console or X keyboard layout</li>
+    <li><em>S</em> nostore</li>
+    <li><em>P</em> enable standard PAM message-of-the-day</li>
+    <li><em>s</em> don't save state on LiveUSB systems</li>
+    <li><em>r</em> don't localize repos based on timezone</li>
+    <li><em>a</em> disable acpid</li>
+    <li><em>c1</em> set desktop-session delay in seconds. Can also use points eg c0.5</li>
 </ul>
 
 <p>
@@ -843,33 +842,30 @@ Return to <a href="#mm_boot">Boot Options</a>
 
 <div id="about">
 <h3>
-<a name="about">Information about MX-15</a>
+<a name="about">Information about MX Linux</a>
 </h3>
 
 <p>
 
 <ul>
-<li>Web site: http://www.mepiscommunity.org/mx</li>
-<li>Forums:  http://antix.freeforums.org</li>
-<li>Forums:  http://forum.mepiscommunity.org/viewforum.php?f=91</li>
+<li>Web site: https://mxlinux.org</li>
+<li>Forums: https://forum.mxlinux.org</li>
 </ul>
 
 <p>
 
-MX-15 is a midweight OS designed to combine an elegant and efficient
+MX Linux is a midweight OS designed to combine an elegant and efficient
 desktop with simple configuration, solid performance, and medium-sized
 footprint. It is a collaborative product from the Mepis and antiX
 developers and communities, relying on the excellent upstream work by
-Linux, Debian, and Xfce. It also incorporates the independent and
-innovative development products Whisker Menu, simsu and gottet, Midori
-Browser, smxi and inxi.
+Linux, Debian, and Xfce.
 
 </p>
 <p>
 
-MX is compiled to work with Pentium-class Intel and AMD 486 processors
-or better with at least 512 Meg of RAM.  MX will not work with 386
-class processors. To install MX on a hard drive, a minimum of 5 GB is
+MX Linux is compiled to work with Pentium-class Intel and AMD 486 processors
+or better with at least 512 Meg of RAM.  MX Linux will not work with 386
+class processors. To install MX Linux on a hard drive, a minimum of 5 GB is
 needed.  We recommend at least 1 Gig of RAM, 10 Gig of free hard
 drive space, and an i686 processor or better.
 
