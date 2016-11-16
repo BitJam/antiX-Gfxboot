@@ -1,7 +1,5 @@
-BINDIR      := $(shell [ -x ../../../gfxboot-font ] && echo ../../../ )
-
-GFXBOOT_FONT = $(BINDIR)gfxboot-font
-KEYMAPCHARS  = $(BINDIR)bin/keymapchars
+GFXBOOT_FONT = /usr/bin/gfxboot-font
+KEYMAPCHARS  = /usr/share/gfxboot/bin/keymapchars
 
 all: .ready
 
@@ -10,15 +8,15 @@ fonts: 16x16.fnt
 .ready:
 	@touch .ready
 
-16x16.fnt: ../po/en.tr ../src/main.log
-	cat ../po/*.tr ../help-*/*/*.html >tmp.txt
+16x16.fnt: ../po/tr/en.tr ../src/main.log
+	cat ../po/tr/*.tr ../Help/*/*.html >tmp.txt
 	$(GFXBOOT_FONT) -v -l 18 \
 	-a 0x2022-0x2023 \
 	-c ISO-8859-15 -c ISO-8859-2 -c koi8-r \
 	`$(KEYMAPCHARS) ../keymaps/keymap.*.inc` \
 	-t tmp.txt \
 	-t ../src/main.log \
-	-t ../data-install/languages \
+	-t ../Input/common/isolinux/languages \
 	-f NachlieliCLM-Bold:size=14:c=0x590-0x5ff \
 	-f KacstBook:size=12:c=0x600-0x6ff,0xfe70-0xfefc:dy=2 \
 	-f MuktiNarrow:size=18:c=0x0981-0x09fa:bold=1 \
