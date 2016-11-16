@@ -1,5 +1,5 @@
     DISTRO_NAME="MX"
- DISTRO_VERSION="16"
-       ISO_ARCH="x64"
-      CODE_NAME="via make test-MX"
+ DISTRO_VERSION="16-beta2"
+       ISO_ARCH="386"
+      CODE_NAME="Metamorphosis"
         OPTIONS="quiet"
