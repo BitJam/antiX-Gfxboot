@@ -70,7 +70,7 @@ SAVE_STATE_SED2 := "/bootchart/ inostore         \`nostore\ndostore         \`do
 
 -include Makefile.local
 
-.PHONY: all clean distclean antiX MX $(ANTIX_DIR) $(IMAGE_GROUPS)
+.PHONY: all clean distclean antiX MX lang-list tz-list $(ANTIX_DIR) $(IMAGE_GROUPS)
 
 help:
 	@echo "Targets:"
@@ -82,13 +82,16 @@ help:
 	@echo "    MX-old       : create old version of gfxboot for MX distro"
 	@echo "    antiX-old    : create old version gfxboot for antiX distro"
 	@echo ""
+	@echo "    lang-list    : list languaage codes and names"
+	@echo "    tz-list      : list timezone names and codes"
+	@echo ""
 	@echo "    clean        : delete output files but not intermediate files"
 	@echo "    disclean     : delete all created files"
 	@echo "    help         : show this help"
 	@echo ""
 	@echo "    test-antiX   : create iso file to test antiX bootloader"
 	@echo "    test-MX      : create iso file to test MX bootloader"
-	@echo "    iso-only     : rebuild the iso file"
+	@echo "    iso-only     : rebuild the gfx-cpio and the iso file"
 	@echo ""
 	@echo "    antiX-images : Create bg images with text in Input/antiX"
 	@echo "    MX-images    : Create bg images with text in Input/MX"
@@ -236,6 +239,12 @@ endif
 iso-only:
 	(cd $(ISOLINUX_CPIO) && find . -depth | cpio -o) > $(TEST_ISOLINUX)/$(CPIO_FILE)
 	make -B $(ISO_FILE)
+
+lang-list:
+	for c in `cat Input/common/isolinux/languages`; do grep $$c src/menu_lang.inc | grep "^ "; done | cut -b 6-140 | sed 's/".*%//'
+
+tz-list:
+	grep "% GMT" src/timezones.inc | cut -c 8-57 | sed 's/"//g'
 
 # FIXME: a bit backward
 $(IMAGE_GROUPS): %-images : images/%-back.jpg Input/%
