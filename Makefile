@@ -133,9 +133,10 @@ endif
 	cp -r $(ISOLINUX_CPIO)/* $(SYSLINUX_CPIO)
 	rm -rf $(word 2,$^)
 	cp -a $< $(word 2,$^)
-	mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
+	@#mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
 	mv $(word 2,$^)/isolinux.cfg $(word 2,$^)/syslinux.cfg
 	sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
+	rm $(word 2,$^)/isolinux.bin
 
 	# I couldn't get ifeq ($@,antiX) to work
 	# Only use smaller normal font in antiX LiveUSB. All others use larger normal font
