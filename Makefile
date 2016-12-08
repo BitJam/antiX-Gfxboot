@@ -1,12 +1,10 @@
 SHELL           := /bin/bash
 
+MEM_TEST_BUG    := true
 MX_32BIT        :=
-
 MUNGE_GRUB_BG   :=
-
 DEFAULT_LANG    :=
 NO_1024         :=
-
 NO_ISOLINUX_F1  :=
 NO_SYSLINUX_F1  := true
 USE_EFI_IMG     :=
@@ -172,6 +170,10 @@ endif
 	(cd $(SYSLINUX_CPIO) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
 
 	mkdir -p Output/$@/$(BDIR)
+
+ifdef MEM_TEST_BUG
+	sed -i "/memtest/,$$ s/^/#--memtest /" $(word 2,$^)/syslinux.cfg
+endif
 
 	find Output/$@/ -name ".*.swp" -o -name ".*.swo" -delete
 
