@@ -1,6 +1,6 @@
 SHELL           := /bin/bash
 
-MEM_TEST_BUG    := true
+MEM_TEST_BUG    :=
 MX_32BIT        :=
 MUNGE_GRUB_BG   :=
 DEFAULT_LANG    :=
