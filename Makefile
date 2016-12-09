@@ -136,9 +136,6 @@ endif
 	sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
 	rm $(word 2,$^)/isolinux.bin
 
-	# I couldn't get ifeq ($@,antiX) to work
-	# Only use smaller normal font in antiX LiveUSB. All others use larger normal font
-	! echo $@ | grep -q antiX  || \
 	sed -r -i "0,/^font\.normal=/ s/^(font\.normal)=.*/\1=16x16.fnt/" $(SYSLINUX_CPIO)/gfxboot.cfg
 
 	if   grep -q "^key\.F7=" $(SYSLINUX_CPIO)/gfxboot.cfg; then \
