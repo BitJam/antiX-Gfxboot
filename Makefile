@@ -217,7 +217,7 @@ $(TEST_TARGETS): test-% : % %-data
 	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(TEST_DIR)
 
 ifdef USE_EFI_IMG
-	$(MAKE_EFI_IMG) $(TEST_DIR)
+	$(MAKE_EFI_IMG) $(TEST_DIR) "$<-LIVE"
 endif
 	echo 1 > $(ISOLINUX_CPIO)/REBOOT
 	@#echo "desktop=rox-fluxbox" > $(ISOLINUX_CPIO)/desktop.def
