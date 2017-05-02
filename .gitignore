@@ -2,6 +2,7 @@
 .*.swp
 .*.swo
 other
+Private
 Junk
 Makefile.local
 bin/gfxboot-compile
