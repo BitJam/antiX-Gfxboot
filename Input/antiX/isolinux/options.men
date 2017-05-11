@@ -13,4 +13,9 @@ hwclock=ask     `hwclock=ask
 hwclock=utc     `hwclock=utc
 hwclock=local   `hwclock=local
 password        `password
+confont=8       `confont=8
+confont=10      `confont=10
+confont=12      `confont=12
+confont=14      `confont=14
+confont=16      `confont=16
 bootchart       `bootchart initcall_debug printk.time=y
