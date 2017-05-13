@@ -212,7 +212,7 @@ $(TEST_TARGETS): test-% : % %-data
 	rm -rf $(TEST_DIR)
 	mkdir -p $(TEST_DIR)
 	cp -a Output/$</* $(TEST_DIR)
-
+	cd $(TEST_DIR)/EFI/BOOT && cp grubx64.efi fallback.efi
 	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(ISOLINUX_CPIO)/en.hlp
 	$(TEMPLATE_FILLER) -i --data=$(word 2,$^) $(TEST_DIR)
 
