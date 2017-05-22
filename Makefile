@@ -133,6 +133,7 @@ endif
 	cp -a $< $(word 2,$^)
 	@#mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
 	mv $(word 2,$^)/isolinux.cfg $(word 2,$^)/syslinux.cfg
+	test -d Input/$@/syslinux && cp Input/$@/syslinux/* $(word 2,$^)/ || true
 	sed -i 's/APPEND hd0/APPEND hd1/' $(word 2,$^)/syslinux.cfg
 	rm $(word 2,$^)/isolinux.bin
 
