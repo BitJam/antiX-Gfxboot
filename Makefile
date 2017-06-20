@@ -119,7 +119,7 @@ ifdef NO_1024
 	rm -f $</back1024.jpg
 endif
 
-	sed -i -r 's/^(\s*UI\s+gfxboot\s+)[^ ]+(\s)/\1$(CPIO_FILE)\2/' $</isolinux.cfg
+	@#sed -i -r 's/^(\s*UI\s+gfxboot\s+)[^ ]+(\s)/\1$(CPIO_FILE)\2/' $</isolinux.cfg
 	rm -rf $(CPIO_DIRS)
 	mkdir -p $(CPIO_DIRS)
 	# This prevents errors if a * glob has no matches  (sigh)
