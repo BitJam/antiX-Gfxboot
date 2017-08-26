@@ -176,7 +176,8 @@ ifdef MEM_TEST_BUG
 	sed -i "/memtest/,$$ s/^/#--memtest /" $(word 2,$^)/syslinux.cfg
 endif
 
-	find Output/$@/ -name ".*.swp" -o -name ".*.swo" -delete
+	find Output/$@/ -name ".*.swp"  -delete
+	find Output/$@/ -name  ".*.swo" -delete
 
 
 $(DISTROS_OLD): %-old : Output/%/isolinux Output/%/syslinux Help/%/en.hlp $(THEME_FILE)
