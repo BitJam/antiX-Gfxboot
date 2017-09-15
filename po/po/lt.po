@@ -3,10 +3,11 @@
 # 
 # Translators:
 # Translators:
+# Moo, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2016-06-03 06:05+0000\n"
+"PO-Revision-Date: 2017-09-15 04:58+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Lithuanian (http://www.transifex.com/anticapitalista/antix-development/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +24,7 @@ msgstr "Gerai"
 #. cancel button label
 #. txt_cancel
 msgid "Cancel"
-msgstr "Atšaukti"
+msgstr "Atsisakyti"
 
 #. txt_boot_harddisk
 msgid "Boot from Hard Disk"
@@ -31,7 +32,7 @@ msgstr "Paleisti iš standžiojo disko"
 
 #. txt_memtest
 msgid "Memory Test"
-msgstr "Atminties testas"
+msgstr "Atminties išbandymas"
 
 #. txt_bootoptions
 msgid "Boot Options"
@@ -74,12 +75,12 @@ msgstr ""
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr ""
+msgstr "tikrinti md5"
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "Pultas"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
@@ -94,7 +95,7 @@ msgstr "Darbalaukis"
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
-msgstr ""
+msgstr "nėra"
 
 #. Enable automatic mounting.
 #. txt_automount
@@ -104,12 +105,12 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
+msgstr "Parametrai"
 
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr ""
+msgstr "Laiko juosta"
 
 #. Please keep it short like the English
 #. txt_off
@@ -119,7 +120,7 @@ msgstr ""
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "meniu"
 
 #. Please keep it short like the English
 #. txt_custom
@@ -139,11 +140,11 @@ msgstr ""
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
+msgstr "Įrašyti"
 
 #. txt_reboot
 msgid "Reboot"
-msgstr "Perkrauti"
+msgstr "Paleisti iš naujo"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
@@ -159,4 +160,8 @@ msgstr ""
 
 #. txt_fast_boot
 msgid "Fast Boot"
+msgstr ""
+
+#. txt_vbox_video
+msgid "Virtual Box Video"
 msgstr ""

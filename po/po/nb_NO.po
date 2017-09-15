@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2016-06-03 06:05+0000\n"
+"PO-Revision-Date: 2017-09-15 04:58+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/anticapitalista/antix-development/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
@@ -159,4 +159,8 @@ msgstr ""
 
 #. txt_fast_boot
 msgid "Fast Boot"
+msgstr ""
+
+#. txt_vbox_video
+msgid "Virtual Box Video"
 msgstr ""

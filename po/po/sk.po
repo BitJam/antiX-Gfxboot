@@ -3,10 +3,11 @@
 # 
 # Translators:
 # Translators:
+# Miroslav Sido <miro_redhawk@hotmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2016-06-03 06:05+0000\n"
+"PO-Revision-Date: 2017-09-15 04:58+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/anticapitalista/antix-development/language/sk/)\n"
 "MIME-Version: 1.0\n"
@@ -69,22 +70,22 @@ msgstr "Zobrazovací režim"
 #. Like automatic, not automobile.
 #. txt_auto
 msgid "auto"
-msgstr ""
+msgstr "automaticky"
 
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr ""
+msgstr "kontrola md5"
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "konzola"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
 msgid "default"
-msgstr ""
+msgstr "predvolený"
 
 #. Title of menu to select desktop program.
 #. txt_desktop
@@ -94,52 +95,52 @@ msgstr "Pracovná plocha"
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
-msgstr ""
+msgstr "nič"
 
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr ""
+msgstr "automatické pripojenie"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
+msgstr "Nastavenia"
 
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr ""
+msgstr "Časová zóna"
 
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "Vypnúť"
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "ponuky"
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "iný"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "oba"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "reset"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
+msgstr "ulož"
 
 #. txt_reboot
 msgid "Reboot"
@@ -147,16 +148,20 @@ msgstr "Reštartovať"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "bezpečný video mód"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "núdzový štart"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "štart v príkazovom riadku"
 
 #. txt_fast_boot
 msgid "Fast Boot"
+msgstr "rýchly štart"
+
+#. txt_vbox_video
+msgid "Virtual Box Video"
 msgstr ""

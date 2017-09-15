@@ -3,13 +3,14 @@
 # 
 # Translators:
 # Translators:
-# BALLOON a.k.a. Fu-sen., 2016
-# BALLOON a.k.a. Fu-sen., 2015
+# ふうせん Fu-sen. | BALLOON a.k.a. Fu-sen., 2016
+# ふうせん Fu-sen. | BALLOON a.k.a. Fu-sen., 2015
+# ふうせん Fu-sen. | BALLOON a.k.a. Fu-sen., 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2016-08-12 00:36+0000\n"
-"Last-Translator: BALLOON a.k.a. Fu-sen.\n"
+"PO-Revision-Date: 2017-09-15 04:58+0000\n"
+"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/anticapitalista/antix-development/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +34,7 @@ msgstr "ハードディスクから起動"
 
 #. txt_memtest
 msgid "Memory Test"
-msgstr "メモリテスト"
+msgstr ""
 
 #. txt_bootoptions
 msgid "Boot Options"
@@ -55,7 +56,7 @@ msgstr "電源オフ"
 
 #. txt_power_off
 msgid "Halt the system now?"
-msgstr "システムを停止しますか？"
+msgstr ""
 
 #. label for language selection
 #. txt_language
@@ -76,7 +77,7 @@ msgstr "自動"
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr "MD5 確認"
+msgstr ""
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
@@ -131,7 +132,7 @@ msgstr "カスタム"
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr "both"
+msgstr ""
 
 #. Please keep it short like the English
 #. txt_reset
@@ -149,16 +150,20 @@ msgstr "再起動"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr "セーフビデオモード"
+msgstr ""
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr "フェイルセーフ起動"
+msgstr ""
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr "コマンドライン起動"
+msgstr ""
 
 #. txt_fast_boot
 msgid "Fast Boot"
-msgstr "高速起動"
+msgstr ""
+
+#. txt_vbox_video
+msgid "Virtual Box Video"
+msgstr ""

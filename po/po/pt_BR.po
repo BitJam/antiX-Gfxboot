@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2016-11-07 15:04+0000\n"
+"PO-Revision-Date: 2017-09-15 04:58+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/anticapitalista/antix-development/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. ok button label
 #. txt_ok
 msgid "OK"
-msgstr "OK"
+msgstr "Aceitar"
 
 #. cancel button label
 #. txt_cancel
@@ -69,17 +69,17 @@ msgstr "Modo de vídeo"
 #. Like automatic, not automobile.
 #. txt_auto
 msgid "auto"
-msgstr ""
+msgstr "automático"
 
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr ""
+msgstr "verificação md5"
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "Terminal"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
@@ -99,7 +99,7 @@ msgstr "nenhum"
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr ""
+msgstr "montar automaticamente"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
@@ -109,7 +109,7 @@ msgstr "Opções"
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr ""
+msgstr "Fuso Horário"
 
 #. Please keep it short like the English
 #. txt_off
@@ -124,22 +124,22 @@ msgstr ""
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "personalizar"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "ambos"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "reiniciar"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #. txt_reboot
 msgid "Reboot"
@@ -147,16 +147,20 @@ msgstr "Reiniciar"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "Vídeo em Modo Seguro"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Iniciar em Modo Seguro"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "Iniciar pelo Terminal de Linha de Commando"
 
 #. txt_fast_boot
 msgid "Fast Boot"
-msgstr ""
+msgstr "Iniciar em Modo Rápido"
+
+#. txt_vbox_video
+msgid "Virtual Box Video"
+msgstr "Virtual Box Vídeo"

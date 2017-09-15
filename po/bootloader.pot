@@ -160,3 +160,7 @@ msgstr "Command Line Boot"
 msgid "Fast Boot"
 msgstr ""
 
+#. txt_vbox_video
+msgid "Virtual Box Video"
+msgstr ""
+
