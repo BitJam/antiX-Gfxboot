@@ -8,6 +8,7 @@ NO_1024         :=
 NO_ISOLINUX_F1  :=
 NO_SYSLINUX_F1  := true
 USE_EFI_IMG     :=
+CONSOLE_ASK_SAVE := true
 
 MKISOFS_OPTS    := -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4
 MKISOFS_OPTS	+= -boot-info-table -gid 0 -uid 0 -b boot/isolinux/isolinux.bin
@@ -167,6 +168,10 @@ endif
 	else \
 		sed -i $(SAVE_STATE_SED) $(SYSLINUX_CPIO)/options.men; \
 	fi
+
+ifdef CONSOLE_ASK_SAVE
+	echo "ask+save \`vga=ask+save" >> $(SYSLINUX_CPIO)/console.men
+endif
 
 	(cd $(SYSLINUX_CPIO) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
 
