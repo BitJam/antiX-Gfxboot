@@ -3,13 +3,13 @@
 # 
 # Translators:
 # Translators:
-# Eadwine Rose, 2015-2016
+# Eadwine Rose, 2015-2017
 # ko <ko.bros@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2017-09-15 04:58+0000\n"
-"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"PO-Revision-Date: 2017-09-15 07:35+0000\n"
+"Last-Translator: Eadwine Rose\n"
 "Language-Team: Dutch (http://www.transifex.com/anticapitalista/antix-development/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -165,4 +165,4 @@ msgstr "Snel Opstarten"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"
-msgstr ""
+msgstr "Virtual Box Video"
