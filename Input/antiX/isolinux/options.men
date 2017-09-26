@@ -5,9 +5,7 @@ toram           `toram
 from=usb        `from=usb
 nousb2          `nousb2
 automount       `automount
-mount=usb       `mount=usb
-mount=all       `mount=all
-mount=off       `mount=off
+noautomount     `noautomount
 acpi=off        `acpi=off
 hwclock=ask     `hwclock=ask
 hwclock=utc     `hwclock=utc
@@ -21,4 +19,5 @@ conwidth=100    `conwidth=100
 conwidth=110    `conwidth=110
 conwidth=140    `conwidth=140
 conwidth=160    `conwidth=160
+conwidth=200    `conwidth=200
 bootchart       `bootchart initcall_debug printk.time=y
