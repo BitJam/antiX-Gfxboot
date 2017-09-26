@@ -170,7 +170,7 @@ endif
 	fi
 
 ifdef CONSOLE_ASK_SAVE
-	echo "ask+save \`vga=ask gfxsave" >> $(SYSLINUX_CPIO)/console.men
+	echo "ask+save    \`vga=ask gfxsave" >> $(SYSLINUX_CPIO)/console.men
 endif
 
 	(cd $(SYSLINUX_CPIO) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
