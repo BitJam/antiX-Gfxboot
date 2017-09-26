@@ -8,7 +8,7 @@ NO_1024         :=
 NO_ISOLINUX_F1  :=
 NO_SYSLINUX_F1  := true
 USE_EFI_IMG     :=
-CONSOLE_ASK_SAVE := true
+CONSOLE_ASK_SAVE :=
 
 MKISOFS_OPTS    := -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4
 MKISOFS_OPTS	+= -boot-info-table -gid 0 -uid 0 -b boot/isolinux/isolinux.bin
