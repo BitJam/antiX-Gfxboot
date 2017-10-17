@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2017-09-15 04:58+0000\n"
+"PO-Revision-Date: 2017-09-23 06:22+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/anticapitalista/antix-development/language/kk/)\n"
 "MIME-Version: 1.0\n"
