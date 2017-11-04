@@ -10,3 +10,10 @@ hwclock=ask     `hwclock=ask
 hwclock=utc     `hwclock=utc
 hwclock=local   `hwclock=local
 password        `password
+conwidth=80     `conwidth=80
+conwidth=100    `conwidth=100
+conwidth=110    `conwidth=110
+conwidth=120    `conwidth=120
+conwidth=140    `conwidth=140
+conwidth=160    `conwidth=160
+conwidth=200    `conwidth=200
