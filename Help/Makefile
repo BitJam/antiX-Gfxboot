@@ -1,5 +1,7 @@
-BINDIR       := $(shell [ -x bin/gfxboot ] && echo bin/ )
-GFXBOOT      := $(BINDIR)gfxboot
+GFXBOOT      := gfxboot
+
+export PATH  := $(PATH):../bin
+
 SPLIT        := bin/split-html
 
 BLURB        := test/blurb.html
