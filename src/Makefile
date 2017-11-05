@@ -7,9 +7,6 @@ PO_READY        := ../po/.ready
 
 .PHONY: all clean distclean
 
-test:
-	echo $(PATH)
-
 all: main.bin
 
 main.bin: main.bc *.inc $(PO_READY)
