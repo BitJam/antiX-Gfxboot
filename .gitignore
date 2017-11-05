@@ -5,7 +5,6 @@ other
 Private
 Junk
 Makefile.local
-bin/gfxboot-compile
 src/main.bin
 src/main.log
 po/tr

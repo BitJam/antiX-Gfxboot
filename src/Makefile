@@ -1,10 +1,14 @@
-BINDIR          := $(shell [ -x ../bin/gfxboot-compile ] && echo ../bin/ )
+GFXBOOT_COMPILE := gfxboot-compile
 
-GFXBOOT_COMPILE := $(BINDIR)gfxboot-compile
+export PATH := $(PATH):../bin
+
 BFLAGS          := -O -v -L ../..
 PO_READY        := ../po/.ready
 
 .PHONY: all clean distclean
+
+test:
+	echo $(PATH)
 
 all: main.bin
 
