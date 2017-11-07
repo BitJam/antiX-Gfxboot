@@ -44,6 +44,11 @@ CPIO_DIRS       := $(ISOLINUX_CPIO) $(SYSLINUX_CPIO)
 ADD_TEXT        := bin/add-image-text
 TEST_TARGETS    := $(addprefix test-,   $(DISTROS))
 XLAT_TARGETS    := $(addprefix xlat-,   $(DISTROS))
+TEMPLATE_TARGETS := $(addprefix template-,   $(DISTROS))
+
+ISO_TEMPLATE_DIR  := iso-template
+ISO_TEMPLATE_FILE := $(ISO_TEMPLATE_DIR).tar.gz
+
 OUT_ISO_DIRS    := $(addprefix Output/, $(addsuffix /boot/isolinux, $(DISTROS)))
 OUT_SYS_DIRS    := $(addprefix Output/, $(addsuffix /boot/syslinux, $(DISTROS)))
 OUT_DIRS        := $(OUT_SYS_DIRS) $(OUT_ISO_DIRS)
@@ -213,7 +218,7 @@ $(OUT_DIRS):
 	mkdir -p $@
 
 clean:
-	rm -rf Output $(ISO_FILE) $(TEST_DIR) $(CPIO_DIRS)
+	rm -rf Output $(ISO_FILE) $(TEST_DIR) $(CPIO_DIRS) $(ISO_TEMPLATE_DIR) $(ISO_TEMPLATE_FILE)
 
 distclean: clean
 	@for i in $(SUB_DIRS) ; do [ ! -f $$i/Makefile ] || make -C $$i distclean || break ; done
@@ -237,6 +242,13 @@ endif
 
 $(XLAT_TARGETS): xlat-% : %-data
 	$(TEMPLATE_FILLER) -i --data=$< Output/$(subst -data,,$<)
+
+$(TEMPLATE_TARGETS): template-% : % xlat-%
+	rm -rf $(ISO_TEMPLATE_DIR) $(ISO_TEMPLATE_FILE)
+	mkdir $(ISO_TEMPLATE_DIR)
+	cp -a Output/$</* $(ISO_TEMPLATE_DIR)
+	Tools/make-efi-img $(ISO_TEMPLATE_DIR) $<-uefi
+	tar czf $(ISO_TEMPLATE_FILE) --owner=root --group=root $(ISO_TEMPLATE_DIR)
 
 $(ISO_FILE):
 	[ -L $(ISO_SYMLINK) -o ! -e $(ISO_SYMLINK) ] && ln -sf $$(readlink -f $(ISO_FILE)) $(ISO_SYMLINK) || true
