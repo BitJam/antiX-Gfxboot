@@ -42,8 +42,8 @@ SYSLINUX_CPIO   := syslinux-cpio
 CPIO_DIRS       := $(ISOLINUX_CPIO) $(SYSLINUX_CPIO)
 
 ADD_TEXT        := bin/add-image-text
-TEST_TARGETS    := $(addprefix test-,   $(DISTROS))
-XLAT_TARGETS    := $(addprefix xlat-,   $(DISTROS))
+TEST_TARGETS    := $(addprefix test-,        $(DISTROS))
+XLAT_TARGETS    := $(addprefix xlat-,        $(DISTROS))
 TEMPLATE_TARGETS := $(addprefix template-,   $(DISTROS))
 
 ISO_TEMPLATE_DIR  := iso-template
