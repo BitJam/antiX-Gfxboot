@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2017-10-01 10:48+0000\n"
+"PO-Revision-Date: 2017-11-05 22:47+0000\n"
 "Last-Translator: Pierluigi Mario <pierluigimariomail@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/anticapitalista/antix-development/language/it/)\n"
 "MIME-Version: 1.0\n"

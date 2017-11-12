@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2017-10-04 18:46+0000\n"
+"PO-Revision-Date: 2017-11-05 20:46+0000\n"
 "Last-Translator: Vinzenz Vietzke <vinz@vinzv.de>\n"
 "Language-Team: German (http://www.transifex.com/anticapitalista/antix-development/language/de/)\n"
 "MIME-Version: 1.0\n"
