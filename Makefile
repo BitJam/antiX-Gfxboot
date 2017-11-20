@@ -67,7 +67,7 @@ TEST_DIR      	:= iso-dir
 TEST_ISOLINUX   := $(TEST_DIR)/boot/isolinux
 
 ISO_FILE     	:= test-gfxboot.iso
-ISO_SYMLINK  	:= /data/ISO/test-antiX.iso
+ISO_SYMLINK  	:= /data/iso/test-antiX.iso
 
 SAVE_STATE_SED  := "$$ anostore         \`nostore\ndostore         \`dostore\nsavestate       \`savestate\nnosavestate     \`nosavestate"
 SAVE_STATE_SED2 := "/bootchart/ inostore         \`nostore\ndostore         \`dostore\nsavestate       \`savestate\nnosavestate     \`nosavestate"
