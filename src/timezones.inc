@@ -47,6 +47,7 @@
     [ "Jerusalem*"        "Asia/Jerusalem"                 ]  % GMT+2 DST
     [ "Moscow*"           "Europe/Moscow"                  ]  % GMT+3 DST
     [ "Minsk"             "Europe/Minsk"                   ]  % GMT+3
+    [ "Addis Ababa"	"Africa/Addis Ababa"            ]  % GMT+3
     [ "Baghdad"           "Asia/Baghdad"                   ]  % GMT+3
     [ "Yerevan"           "Asia/Yerevan"                   ]  % GMT+4
     [ "Tbilisi"           "Asia/Tbilisi"                   ]  % GMT+4

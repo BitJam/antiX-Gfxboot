@@ -65,7 +65,7 @@
   [ "English (IE)"            "uk"                   keymap.uk                   ]
   [ "English (UK)"            "uk"                   keymap.uk                   ]
   [ "English (US)"            "us"                   .undef                      ]
-  [ "Estonian"                "et"                   keymap.et                   ]
+  [ "Estonian"                "ee"                   keymap.et                   ]
   [ "Finnish"                 "fi"                   keymap.fi-latin1            ]
   [ "French"                  "fr"                   keymap.fr-latin1            ]
   [ "French (Canada)"         "cf"                   keymap.cf                   ]
