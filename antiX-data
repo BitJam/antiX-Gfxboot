@@ -1,5 +1,5 @@
     DISTRO_NAME="antiX"
- DISTRO_VERSION="17.b3x"
+ DISTRO_VERSION="17.3"
        ISO_ARCH="x64"
       CODE_NAME="Heather Heyer"
            FLAV="full"
