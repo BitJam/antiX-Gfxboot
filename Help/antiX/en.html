@@ -12,7 +12,7 @@
 </h3>
 
 <p>
-WELCOME to %DSITRO% Linux: <em>Lean and Mean!</em>
+WELCOME to antiX Linux: <em>Lean and Mean!</em>
 </p>
 <p>
 The <em>demo</em> user password is "<em>demo</em>" (no quotes)<br/>
@@ -53,7 +53,7 @@ The <em>root</em> password is "<em>root</em>" (no quotes)<br/>
 
 <p>
 The help system consists of a set of linked pages that you can navigate
-through with the follow keys.
+through with the following keys.
 <p>
 
 <ul>
@@ -160,7 +160,7 @@ Return to the <a href="#main">Main Menu</a>
 </h3>
 
 <p>
-Press [<em>F3</em>] to get at list of cities in various time
+Press [<em>F3</em>] to get a list of cities in various time
 zones.  The cities are listed in time zone order so they circle
 the globe eastward.  If your area uses Daylight Savings Time then
 make sure you select a city that does also.  These cities are
@@ -207,14 +207,16 @@ frugal install.
 <em>checkmd5</em> ............ Check integrity of the install media.<br/>
 <em>checkfs</em> .............. Check integrity of the LivUSB and persistent file systems.<br/>
 <em>toram</em> .................. Copy the compressed file system to RAM. <br/>
-<em>from=usb</em> ............ Finish booting from a LiveUSB<br/>
+<em>from=usb</em> ............ Sets default booting device to a LiveUSB<br/>
 <em>nousb2</em> ................ Disable all usb-2 devices.  This helps a few older systems boot.<br/>
 <em>acpi=off</em> ............. Disable acpi.  This helps on some older laptops.<br/>
+<em>hwclock=ask</em> ..... Have the system help determine the clock setting<br/>
 <em>hwclock=utc</em> ...... Use UTC for hardware clock (Linux-only systems)<br/>
 <em>hwclock=local</em> .. Use localtime for hardware clock (Windows systems)<br/>
-<em>private</em> .............. Change passwords before booting<br/>
+<em>private</em> .............. Change default root and demo passwords before booting for increased security<br/>
+<em>nostore</em> ......... Disable LiveUSB-Storage feature.<br/>
 <em>bootchart</em> .......... Create /var/log/bootchart.tgz<br/>
-<em>savestate</em> .......... Save some files across reboots (LiveUSB only)<br/>
+<em>savestate</em> .......... Save some files across reboots eg alsa sound, networking (LiveUSB only)<br/>
 <em>nosavestate</em> ......  Don't save files across reboots (LiveUSB only)<br/>
 
 <p>
@@ -269,7 +271,8 @@ mounted automatically when they are plugged in.
 <ul>
     <li><em>automount</em> -- mount drives when they are plugged in</li>
     <li><em>mount=usb</em> -- in addition, mount all usb drives at boot time</li>
-    <li><em>mount=all</em> -- in addition, mount non-usb drives at boot time</li>
+    <li><em>mount=all</em> -- in addition, mount ALL devices at boot time</li>
+    <li><em>mount=off</em> -- disable all extra mounting</li>
 </ul>
 
 <p>
@@ -289,6 +292,28 @@ Return to  <a href="#main">Main Menu</a>
 <div id="persist">
 <h3>
 <a name="persist">F5: Persistence Options</a>
+</h3>
+
+<p>
+<em>off</em> ......... 	   No Persistence/No frugal<br/>
+<em>persist_all</em> ..... Fast. Saves root and home (uses RAM, saves at shutdown)<br/>
+<em>persist_root</em> .... Fast. Only saves root (uses RAM, saves at shutdown)<br/>
+<em>persist_static</em> .. Slow. Saves root and home (no RAM use, saves constantly)<br/>
+<em>persist_home</em> .... Only home persistence<br/>
+<em>frugal_persist</em> .. Frugal with both root and home persistence<br/>
+<em>frugal_root</em> ..... Frugal with only root persistence<br/>
+<em>frugal_static</em> ... Frugal with home and static root persistence<br/>
+<em>frugal_home</em> ..... Frugal with only home persistence<br/>
+<em>frugal_only</em> ..... Only Frugal, no persistence<br/>
+<p>
+
+See <a href="#persist-details">Persist Details</a> for details on some of these options.<br/>
+Return to the <a href="#main">Main Menu</a>
+</p>
+</div>
+<div id="persist-details">
+<h3>
+<a name="persist-details">F5: Persist Details</a>
 </h3>
 
 <p>
@@ -331,33 +356,30 @@ Return to the <a href="#main">Main Menu</a>
 <p>
 On full and base systems, there are a number of desktop programs (window
 managers) available.  The <em>F6</em> menu allows you to choose which desktop
-program to use.  This menu also shows you which desktop programs are installed
-on the standard antiX iso (either full or base).
+program to use.
 </p>
 
 <p>
-Desktop codes that start with <em>Rox-</em> (Rox pinboard) or <em>Space-</em>
-(SpaceFM desktop) come with desktop icons. These are often convenient for
-people who are just starting out.  The <em>min-</em> prefix goes in the
-opposite direction and boots the selected window manager with the least
-amount of additional bells and whistles.
+Desktop names that start with <em>Rox-</em> (Rox pinboard) or <em>Space-</em>
+(SpaceFM desktop) provide desktop icons, convenient for
+people who are just starting out.  The <em>min-</em> prefix, however, boots the selected
+window manager with the least amount of additional bells and whistles.
 </p>
 
 <p>
-
 If you are running a persistent system and you install new window manager
 programs then you can boot into them by typing <em>desktop=program-name</em>.
 Look in the /usr/share/xsessions/ directory to see what names should be used.
-
 </p>
 
 <p>
 
-<em>New for antiX-15:</em> there are now two theme related options in the
-<em>F6</em> menu called <em>Dark theme</em> and <em>Light theme</em>.  Since
-dark is the default use <em>Light theme</em> to change the color scheme of all
+<em>New for antiX:</em> The <em>F6</em> menu also provides <em>Dark theme</em>
+and <em>Light theme</em> options.  Since light is the default, use
+<em>Dark theme</em> to change the color scheme of all
 the desktop programs (Fluxbox, IceWM, etc).
 
+There is also the option to set the <em>font-size</em>.
 </p>
 
 <p>
@@ -465,7 +487,7 @@ Return to the <a href="#main">Main Menu</a>
     does not boot at all.
 
     <br/><br/> <em>Boot from Hard Drive</em><br/>
-    This will try to do a legacy (BIOS) from the first internal hard drive.
+    This will attempt a legacy (BIOS) from the first internal hard drive.
     Windows 8 and above use UEFI instead of BIOS so this entry won't be
     able to boot them.
 
@@ -498,7 +520,7 @@ to <em>off</em> to disable these decorations.
 </p>
 
 <p>
-<em><a href="#bo_antix">disable_srv=LX</a></em><br>
+<em><a href="#bo_antix">disable=lx</a></em><br>
 Disable some startup services for faster booting and less RAM usage.
 </p>
 
@@ -570,21 +592,31 @@ These are options that are only available in antiX
 <ul>
     <li><em>lean</em> -- disable some services including wicd for a fast boot </li>
     <li><em>mean</em> -- disable dhclient (Internet connection) </li>
-    <li><em>Xtralean</em> -- disable more services for a faster boot</li>
+    <li><em>Xtralean</em> -- disable more services including NFS shares for a faster boot</li>
     <li><em>nodbus</em> -- disable dbus service </li>
     <li><em>dpi=XX</em> -- set dpi. Default is 96</li>
 </ul>
 
 <p>
 <em>NOTE:</em> Four of these options are combined into the single
-<em>disable_srv=</em> option.  For example <em>disable_srv=LMX</em>.
+<em>disable=</em> option.  For example <em>disable=lmx</em>.
 </p>
 
 <ul>
-    <li><em>L</em> stands for lean</li>
-    <li><em>M</em> stands for mean</li>
-    <li><em>X</em> stands for Xtralean</li>
-    <li><em>D</em> stands for nodbus</li>
+    <li><em>L/l</em> lean - disable some services</li>
+    <li><em>M/m</em> mean - disable networking</li>
+    <li><em>X/x</em> Xtralean - disable more services</li>
+    <li><em>d/D</em> disable dbus</li>
+    <li><em>v</em> disable vbox services</li>
+    <li><em>n</em> disable NFS service</li>
+    <li><em>g</em> disable gpm service</li>
+    <li><em>k</em> Do not set the console or X keyboard layout</li>
+    <li><em>S</em> nostore</li>
+    <li><em>P</em> enable standard PAM message-of-the-day</li>
+    <li><em>s</em> don't save state on LiveUSB systems</li>
+    <li><em>r</em> don't localize repos based on timezone</li>
+    <li><em>a</em> disable acpid</li>
+    <li><em>c1</em> set desktop-session delayin seconds. Can also use points eg c0.5</li>
 </ul>
 
 <p>
@@ -718,8 +750,8 @@ Return to <a href="#mm_boot">Boot Options</a>
 </h3>
 
 <p>
-Web site: <em>http://antix.mepis.com</em><br/>
-Forums: <em>http://antix.freeforums.org</em>
+Web site: <em>https://antixlinux.com</em><br/>
+Forums: <em>https://www.antixforum.com</em>
 </p>
 <p>
 antiX is pronounced like the word <em>antics</em>, which means
