@@ -1,0 +1,167 @@
+# LANGUAGE translations for boot loader
+# Copyright (C) 2005 SUSE Linux GmbH
+# 
+# Translators:
+# Translators:
+# samson <sambelet@yahoo.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: antix-development\n"
+"PO-Revision-Date: 2018-02-02 16:55+0000\n"
+"Last-Translator: samson <sambelet@yahoo.com>\n"
+"Language-Team: Amharic (http://www.transifex.com/anticapitalista/antix-development/language/am/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: am\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. ok button label
+#. txt_ok
+msgid "OK"
+msgstr "እሺ"
+
+#. cancel button label
+#. txt_cancel
+msgid "Cancel"
+msgstr "መሰረዣ"
+
+#. txt_boot_harddisk
+msgid "Boot from Hard Disk"
+msgstr "ከ ሀርድ ዲስክ ማስነሻ"
+
+#. txt_memtest
+msgid "Memory Test"
+msgstr "ማስታወሻ መሞከሪያ"
+
+#. txt_bootoptions
+msgid "Boot Options"
+msgstr "የ ማስነሻ ምርጫዎች"
+
+#. window title for exit dialog
+#. txt_exit_title (see txt_exit_dialog)
+msgid "Exiting..."
+msgstr "በ መውጣት ላይ..."
+
+#. txt_help
+msgid "Help"
+msgstr "እርዳታ"
+
+#. power off dialog title
+#. txt_power_off_title
+msgid "Power Off"
+msgstr "ሐይል ማጥፊያ"
+
+#. txt_power_off
+msgid "Halt the system now?"
+msgstr "ስርአቱን አሁን ላስቁም?"
+
+#. label for language selection
+#. txt_language
+msgid "Language"
+msgstr "ቋንቋ "
+
+#. video mode/display size menu title
+#. ** please keep it really short (comparable to the english text) **
+#. txt_video_mode
+msgid "Video Mode"
+msgstr "በ ቪዲዮ ዘዴ"
+
+#. Like automatic, not automobile.
+#. txt_auto
+msgid "auto"
+msgstr "በራሱ"
+
+#. Perform md5 check. "md5" should not be translated?
+#. txt_check_md5
+msgid "check md5"
+msgstr "md5 መመርመሪያ"
+
+#. Title for console resolution menu.  Please keep it short.
+#. txt_console
+msgid "Console"
+msgstr "Console"
+
+#. As in "the default option".  Please keep it short.
+#. txt_default
+msgid "default"
+msgstr "ነባር"
+
+#. Title of menu to select desktop program.
+#. txt_desktop
+msgid "Desktop"
+msgstr "ዴስክቶፕ"
+
+#. Default for Options menu.  Please keep it short.
+#. txt_none
+msgid "none"
+msgstr "ምንም"
+
+#. Enable automatic mounting.
+#. txt_automount
+msgid "auto mount"
+msgstr "በራሱ መጫኛ"
+
+#. Title of Options menu.  Please keep it short.
+#. txt_options
+msgid "Options"
+msgstr "ምርጫዎች"
+
+#. Title of Time Zone menu.
+#. txt_timezone
+msgid "Timezone"
+msgstr "የ ሰአት ክልል"
+
+#. Please keep it short like the English
+#. txt_off
+msgid "off"
+msgstr "ማጥፊያ"
+
+#. Please keep it short like the English
+#. txt_menus
+msgid "menus"
+msgstr "ዝርዝር "
+
+#. Please keep it short like the English
+#. txt_custom
+msgid "custom"
+msgstr "ማስተካከያ "
+
+#. Please keep it short like the English
+#. txt_both
+msgid "both"
+msgstr "ሁለቱንም"
+
+#. Please keep it short like the English
+#. txt_reset
+msgid "reset"
+msgstr "እንደ ነበር መመለሻ"
+
+#. Please keep it short like the English
+#. txt_save
+msgid "Save"
+msgstr "ማስቀመጫ"
+
+#. txt_reboot
+msgid "Reboot"
+msgstr "ዳግም ማስጀመሪያ"
+
+#. txt_safe_video_mode
+msgid "Safe Video Mode"
+msgstr "በ አስተማማኝ የ ቪዲዮ ዘዴ"
+
+#. txt_failsafe_boot
+msgid "Failsafe Boot"
+msgstr "Failsafe Boot"
+
+#. txt_command_line_boot
+msgid "Command Line Boot"
+msgstr "በ ትእዛዝ መስመር ማስነሻ"
+
+#. txt_fast_boot
+msgid "Fast Boot"
+msgstr "በፍጥነት ማስነሻ"
+
+#. txt_vbox_video
+msgid "Virtual Box Video"
+msgstr "Virtual Box Video"
