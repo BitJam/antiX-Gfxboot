@@ -138,7 +138,7 @@ endif
 
 	(cd $(ISOLINUX_CPIO) && find . -depth | cpio -o) > $</$(CPIO_FILE)
 	cp -r $(ISOLINUX_CPIO)/* $(SYSLINUX_CPIO)
-	for bg in Input/$@/syslinux/back*.jpg; do cp $$bg $(SYSLINUX_CPIO); done
+	#- for bg in Input/$@/syslinux/back*.jpg; do cp $$bg $(SYSLINUX_CPIO); done
 	rm -rf $(word 2,$^)
 	cp -a $< $(word 2,$^)
 	@#mv $(word 2,$^)/isolinux.bin $(word 2,$^)/syslinux.bin
