@@ -235,7 +235,7 @@ $(TEST_TARGETS): test-% : % %-data
 ifdef USE_EFI_IMG
 	$(MAKE_EFI_IMG) $(TEST_DIR) "$<-uefi"
 endif
-	echo 1 > $(ISOLINUX_CPIO)/REBOOT
+	#echo 1 > $(ISOLINUX_CPIO)/REBOOT
 	@#echo "desktop=rox-fluxbox" > $(ISOLINUX_CPIO)/desktop.def
 	@#sed -i  "/F8=gfx_save/d" $(ISOLINUX_CPIO)/gfxboot.cfg
 	$(TOOLS)/make-isolinux-menu < $(TEST_ISOLINUX)/isolinux.cfg >> $(TEST_ISOLINUX)/$(README)
