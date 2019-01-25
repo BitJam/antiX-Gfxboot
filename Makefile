@@ -7,7 +7,7 @@ DEFAULT_LANG    :=
 NO_1024         :=
 NO_ISOLINUX_F1  :=
 NO_SYSLINUX_F1  := true
-USE_EFI_IMG     := true
+USE_EFI_IMG     :=
 CONSOLE_ASK_SAVE := true
 
 MKISOFS_OPTS    := -l -V gfxboot-test -R -J -pad -no-emul-boot -boot-load-size 4
