@@ -182,6 +182,7 @@ endif
 	(cd $(SYSLINUX_CPIO) && find . -depth | cpio -o) > $(word 2,$^)/$(CPIO_FILE)
 
 	mkdir -p Output/$@/$(BDIR)
+	touch Output/$@/$(BDIR)/.keep
 
 ifdef MEM_TEST_BUG
 	sed -i "/memtest/,$$ s/^/#--memtest /" $(word 2,$^)/syslinux.cfg
