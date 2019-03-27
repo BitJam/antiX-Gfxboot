@@ -69,7 +69,7 @@
   [ "ja_JP"  "jp"       false "日本語"                                        "jp" ] % Japanese
   [ "jv_ID"  "us"       false "Basa Jawa"                                     "us" ] % Javanese
   [ "kk_KZ"  "us"       false "Қазақша"                                       "us" ] % Kazakh
-  [ "kk_KZ"  "us"       false "Kazakh"                                        "us" ] % Kazakh
+%  [ "kk_KZ"  "us"       false "Kazakh"                                        "us" ] % Kazakh
   [ "so_KE"  "us"       false "Kenya"                                         "ke" ] % Kenya
   [ "km_KH"  "khmer"    false "Khmer"                                         "kh" ] % Khmer
   [ "ko_KR"  "kr"       false "한글"                                         "kr" ] % Korean
