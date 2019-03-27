@@ -1,7 +1,7 @@
     DISTRO_NAME="antiX"
  DISTRO_VERSION="17.4"
        ISO_ARCH="x64"
-      CODE_NAME="Heather Heyer"
+      CODE_NAME="Helen Keller"
            FLAV="full"
         OPTIONS="quiet splash=v disable=lx"
    CORE_OPTIONS="quiet splash=v disable=lxd"
