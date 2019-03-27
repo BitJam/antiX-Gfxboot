@@ -1,4 +1,0 @@
-default     `
-Safe Video  `nomodeset xorg=safe
-Failsafe    `nomodeset failsafe
-load=all    `load=all
