@@ -47,7 +47,7 @@
     [ "Jerusalem*"        "Asia/Jerusalem"                 ]  % GMT+2 DST
     [ "Moscow*"           "Europe/Moscow"                  ]  % GMT+3 DST
     [ "Minsk"             "Europe/Minsk"                   ]  % GMT+3
-    [ "Addis Ababa"	"Africa/Addis Ababa"            ]  % GMT+3
+    [ "Addis Ababa"       "Africa/Addis Ababa"             ]  % GMT+3
     [ "Baghdad"           "Asia/Baghdad"                   ]  % GMT+3
     [ "Yerevan"           "Asia/Yerevan"                   ]  % GMT+4
     [ "Tbilisi"           "Asia/Tbilisi"                   ]  % GMT+4
@@ -62,7 +62,8 @@
     [ "Krasnoyarsk*"      "Asia/Krasnoyarsk"               ]  % GMT+7 DST % _RU
     [ "Bangkok"           "Asia/Bangkok"                   ]  % GMT+7
     [ "Irkutsk*"          "Asia/Irkutsk"                   ]  % GMT+8 DST % _RU
-    [ "Beijing"           "Asia/Shanghai"                  ]  % GMT+8
+    [ "Hong Kong"         "Asia/Hong_Kong"                 ]  % GMT+8
+    [ "Beijing"           "Asia/Macau"                     ]  % GMT+8
     [ "Taipei"            "Asia/Taipei"                    ]  % GMT+8
     [ "Seoul"             "Asia/Seoul"                     ]  % GMT+9
     [ "Yakutsk*"          "Asia/Yakutsk"                   ]  % GMT+9 DST % _RU
