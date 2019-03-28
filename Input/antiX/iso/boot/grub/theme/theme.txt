@@ -10,16 +10,16 @@ terminal-font:  "Unifont Regular 16"
 
 terminal-box:   "inbox_*.png"
 
-#- # Use this label as a title
-#- + label {
-#-     left  = 30%
-#-     top   = 8%
-#-     width = 100%
-#-     text  = " Welcome to %DISTRO% (%ASCII_CODE_NAME%)!"
-#-     color = "#ffffff"
-#-     align = "left"
-#-     font  = "DejaVu Sans Bold 18"
-#- }
+# Use this label as a title
++ label {
+    left  = 30%
+    top   = 8%
+    width = 100%
+    text  = " Welcome to %DISTRO% (%ASCII_CODE_NAME%)!"
+    color = "#ffffff"
+    align = "left"
+    font  = "DejaVu Sans Bold 18"
+}
 
 # Show the boot menu
 + boot_menu {
@@ -46,16 +46,16 @@ terminal-box:   "inbox_*.png"
 # Show informational messages below the boot menu
 # --using individual labels instead of a vbox
 
-#-- + label {
-#--     left  = 30%
-#--     top   = 75%
-#--     width = 70%
-#--     text  = "Press 'e' to edit entry, 'P' to poweroff, 'R' to reboot."
-#--     color = "#fafafa"
-#--     align = "left"
-#--     font  = "DejaVu Sans Bold 14"
-#-- }
-#-- 
++ label {
+    left  = 40%
+    top   = 80%
+    width = 50%
+    text  = "Press 'e' to edit entry."
+    color = "#fafafa"
+    align = "left"
+    font  = "DejaVu Sans Regular 14"
+}
+
 #-- + label {
 #--     left  = 30%
 #--     top   = 80%
