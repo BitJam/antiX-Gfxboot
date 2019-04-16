@@ -2,9 +2,11 @@ off             `
 persist_all     `persist_all
 persist_root    `persist_root
 persist_static  `persist_static
+p_static_root   `persist_static_root
 persist_home    `persist_home
 frugal_persist  `frugal_persist
 frugal_root     `frugal_root
 frugal_static   `frugal_static
+f_static_root   `frugal_static_root
 frugal_home     `frugal_home
 frugal_only     `frugal_only
