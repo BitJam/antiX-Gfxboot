@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2017-11-21 22:32+0000\n"
-"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"PO-Revision-Date: 2019-04-29 16:50+0000\n"
+"Last-Translator: José Vieira <jvieira33@sapo.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/anticapitalista/antix-development/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr "Cancelar"
 
 #. txt_boot_harddisk
 msgid "Boot from Hard Disk"
-msgstr "Iniciar a partir do Disco Rígido"
+msgstr "Arrancar a partir do Disco Rígido"
 
 #. txt_memtest
 msgid "Memory Test"
@@ -35,7 +35,7 @@ msgstr "Teste de Memória"
 
 #. txt_bootoptions
 msgid "Boot Options"
-msgstr "Opções de Iniciação"
+msgstr "Opções de Arranque"
 
 #. window title for exit dialog
 #. txt_exit_title (see txt_exit_dialog)
@@ -79,7 +79,7 @@ msgstr "verificação md5"
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr "Terminal"
+msgstr "Consola"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
@@ -99,7 +99,7 @@ msgstr "nenhuma"
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr "montar automaticamente"
+msgstr "montagem automática"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
@@ -134,7 +134,7 @@ msgstr "ambos"
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr "reiniciar"
+msgstr "restabelecer"
 
 #. Please keep it short like the English
 #. txt_save
@@ -147,19 +147,19 @@ msgstr "Reiniciar"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr "Vídeo em Modo Seguro"
+msgstr "Modo de Vídeo Seguro"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr "Iniciar em Modo Seguro"
+msgstr "Arrancar em Modo Seguro"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr "Iniciar pelo Terminal de Linha de Commando"
+msgstr "Arrancar pela Linha de Commando"
 
 #. txt_fast_boot
 msgid "Fast Boot"
-msgstr "Iniciar em Modo Rápido"
+msgstr "Arranque Rápido"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"

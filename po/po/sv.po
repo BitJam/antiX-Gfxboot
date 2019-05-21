@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2018-01-02 17:20+0000\n"
+"PO-Revision-Date: 2018-08-20 05:01+0000\n"
 "Last-Translator: Henry Oquist <henryoquist@comhem.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/anticapitalista/antix-development/language/sv/)\n"
 "MIME-Version: 1.0\n"

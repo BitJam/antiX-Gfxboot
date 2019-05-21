@@ -3,18 +3,19 @@
 # 
 # Translators:
 # Translators:
+# joyinko <joyinko@azet.sk>, 2018
 # Miroslav Sido <miro_redhawk@hotmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2017-09-22 00:59+0000\n"
-"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"PO-Revision-Date: 2018-10-28 07:21+0000\n"
+"Last-Translator: joyinko <joyinko@azet.sk>\n"
 "Language-Team: Slovak (http://www.transifex.com/anticapitalista/antix-development/language/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sk\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
 #. ok button label
 #. txt_ok
@@ -54,7 +55,7 @@ msgstr "Vypnúť"
 
 #. txt_power_off
 msgid "Halt the system now?"
-msgstr "Chcete vypnúť počítač teraz?"
+msgstr "Chcete vypnúť počítač?"
 
 #. label for language selection
 #. txt_language
@@ -164,4 +165,4 @@ msgstr "rýchly štart"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"
-msgstr ""
+msgstr "Virtual Box Video"

@@ -3,164 +3,165 @@
 # 
 # Translators:
 # Translators:
+# samson <sambelet@yahoo.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-01-05 16:08+0000\n"
-"Last-Translator: prolinux ukrainian <prolinux@ukr.net>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/anticapitalista/antix-development/language/uk/)\n"
+"PO-Revision-Date: 2018-02-02 16:55+0000\n"
+"Last-Translator: samson <sambelet@yahoo.com>\n"
+"Language-Team: Amharic (http://www.transifex.com/anticapitalista/antix-development/language/am/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: uk\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"Language: am\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. ok button label
 #. txt_ok
 msgid "OK"
-msgstr "Гаразд"
+msgstr "እሺ"
 
 #. cancel button label
 #. txt_cancel
 msgid "Cancel"
-msgstr "Скасувати"
+msgstr "መሰረዣ"
 
 #. txt_boot_harddisk
 msgid "Boot from Hard Disk"
-msgstr "Завантажити з жорсткого диска"
+msgstr "ከ ሀርድ ዲስክ ማስነሻ"
 
 #. txt_memtest
 msgid "Memory Test"
-msgstr "Тест пам'яті"
+msgstr "ማስታወሻ መሞከሪያ"
 
 #. txt_bootoptions
 msgid "Boot Options"
-msgstr "Параметри завантаження"
+msgstr "የ ማስነሻ ምርጫዎች"
 
 #. window title for exit dialog
 #. txt_exit_title (see txt_exit_dialog)
 msgid "Exiting..."
-msgstr "Вихід..."
+msgstr "በ መውጣት ላይ..."
 
 #. txt_help
 msgid "Help"
-msgstr "Довідка"
+msgstr "እርዳታ"
 
 #. power off dialog title
 #. txt_power_off_title
 msgid "Power Off"
-msgstr "Вимкнути живлення"
+msgstr "ሐይል ማጥፊያ"
 
 #. txt_power_off
 msgid "Halt the system now?"
-msgstr "Хочете зараз вимкнути систему?"
+msgstr "ስርአቱን አሁን ላስቁም?"
 
 #. label for language selection
 #. txt_language
 msgid "Language"
-msgstr "Мова"
+msgstr "ቋንቋ "
 
 #. video mode/display size menu title
 #. ** please keep it really short (comparable to the english text) **
 #. txt_video_mode
 msgid "Video Mode"
-msgstr "Відеорежим"
+msgstr "በ ቪዲዮ ዘዴ"
 
 #. Like automatic, not automobile.
 #. txt_auto
 msgid "auto"
-msgstr ""
+msgstr "በራሱ"
 
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr ""
+msgstr "md5 መመርመሪያ"
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "Console"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
 msgid "default"
-msgstr ""
+msgstr "ነባር"
 
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
-msgstr "Стільниця"
+msgstr "ዴስክቶፕ"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
-msgstr ""
+msgstr "ምንም"
 
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr ""
+msgstr "በራሱ መጫኛ"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr "Параметри"
+msgstr "ምርጫዎች"
 
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr ""
+msgstr "የ ሰአት ክልል"
 
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "ማጥፊያ"
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "ዝርዝር "
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "ማስተካከያ "
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "ሁለቱንም"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "እንደ ነበር መመለሻ"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr "Зберегти"
+msgstr "ማስቀመጫ"
 
 #. txt_reboot
 msgid "Reboot"
-msgstr "Перезавантажити"
+msgstr "ዳግም ማስጀመሪያ"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "በ አስተማማኝ የ ቪዲዮ ዘዴ"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Failsafe Boot"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "በ ትእዛዝ መስመር ማስነሻ"
 
 #. txt_fast_boot
 msgid "Fast Boot"
-msgstr ""
+msgstr "በፍጥነት ማስነሻ"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"
-msgstr ""
+msgstr "Virtual Box Video"

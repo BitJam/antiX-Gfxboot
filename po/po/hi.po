@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2017-09-22 00:59+0000\n"
-"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"PO-Revision-Date: 2018-06-10 08:14+0000\n"
+"Last-Translator: Panwar108 <caspian7pena@gmail.com>\n"
 "Language-Team: Hindi (http://www.transifex.com/anticapitalista/antix-development/language/hi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -89,12 +89,12 @@ msgstr ""
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
-msgstr ""
+msgstr "डेस्कटॉप"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
-msgstr ""
+msgstr "कोई नहीं"
 
 #. Enable automatic mounting.
 #. txt_automount
@@ -104,7 +104,7 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
+msgstr "विकल्प"
 
 #. Title of Time Zone menu.
 #. txt_timezone
@@ -143,7 +143,7 @@ msgstr ""
 
 #. txt_reboot
 msgid "Reboot"
-msgstr ""
+msgstr "पुनः आरंभ करें"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"

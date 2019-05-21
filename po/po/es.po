@@ -3,13 +3,13 @@
 # 
 # Translators:
 # Translators:
-# Richard  Holt <richard.holt@gmail.com>, 2016
+# Richard  Holt <richard.holt@gmail.com>, 2016,2018
 # Roberto Saravia <jratlsv2@racsa.co.cr>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2017-12-10 16:34+0000\n"
-"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"PO-Revision-Date: 2018-02-19 21:38+0000\n"
+"Last-Translator: Richard  Holt <richard.holt@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/anticapitalista/antix-development/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -165,4 +165,4 @@ msgstr "Inicio rapido"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"
-msgstr ""
+msgstr "Vídeo de Virtual Box"
