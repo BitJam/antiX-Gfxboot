@@ -166,3 +166,8 @@ msgstr "Inicio rapido"
 #. txt_vbox_video
 msgid "Virtual Box Video"
 msgstr "Vídeo de Virtual Box"
+
+#. txt_to_grub
+msgid "Switch to Grub Bootloader"
+msgstr ""
+
