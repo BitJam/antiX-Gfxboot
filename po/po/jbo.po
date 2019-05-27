@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2015-02-25 21:05+0000\n"
+"PO-Revision-Date: 2019-05-26 00:15+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Lojban (http://www.transifex.com/anticapitalista/antix-development/language/jbo/)\n"
 "MIME-Version: 1.0\n"
@@ -168,4 +168,3 @@ msgstr ""
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
 msgstr ""
-

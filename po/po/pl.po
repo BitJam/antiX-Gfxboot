@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-03-01 20:23+0000\n"
-"Last-Translator: Filip Bog <mxlinuxpl@gmail.com>\n"
+"PO-Revision-Date: 2019-05-26 00:15+0000\n"
+"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/anticapitalista/antix-development/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -170,4 +170,3 @@ msgstr "Virtual Box Video"
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
 msgstr ""
-

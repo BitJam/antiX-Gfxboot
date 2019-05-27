@@ -3,12 +3,12 @@
 # 
 # Translators:
 # Translators:
-# anticapitalista <anticapitalista@riseup.net>, 2017
+# anticapitalista <anticapitalista@riseup.net>, 2017,2019
 # anticapitalista <anticapitalista@riseup.net>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2017-11-17 18:29+0000\n"
+"PO-Revision-Date: 2019-05-27 12:40+0000\n"
 "Last-Translator: anticapitalista <anticapitalista@riseup.net>\n"
 "Language-Team: Greek (http://www.transifex.com/anticapitalista/antix-development/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -169,5 +169,4 @@ msgstr "Virtual Box Video"
 
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
-msgstr ""
-
+msgstr "Μετάβαση στο Bootloader του Grub"
