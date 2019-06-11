@@ -11,8 +11,6 @@ hwclock=ask     `hwclock=ask
 hwclock=utc     `hwclock=utc
 hwclock=local   `hwclock=local
 password        `password
-wicd            `wicd
-nowicd          `nowicd
 conwidth=off    `conwidth=off
 conwidth=80     `conwidth=80
 conwidth=100    `conwidth=100
