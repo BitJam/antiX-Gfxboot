@@ -24,7 +24,7 @@ There are several useful boot entries under ">>> Advanced Options for %DISTRO% <
 
 The other entries let you set the console resolution during the EARLY part of
 the boot process.  Normally, the resolution will be set to the maximum unless
-the "nomodeset" or "video=WWWWxHHHH" cheats are used.
+the "video=WWWWxHHHH" cheats is used.
 
 Hints: Use the "menus" cheat to customize your system using text menus.
        Use "bootsave" to save boot parameters you've entered manually.

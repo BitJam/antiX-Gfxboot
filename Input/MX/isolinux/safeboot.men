@@ -1,7 +1,7 @@
 default     `
-Safe Video  `nomodeset xorg=safe
-Failsafe    `nomodeset failsafe
-nomodeset   `nomodeset
+Safe Video  `xorg=safe
+Vesa Driver `xorg=vesa
+Failsafe    `failsafe
 load=all    `load=all
 noxorg      `noxorg
 modesetting `xorg=modesetting
