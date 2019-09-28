@@ -7,7 +7,7 @@ nousb2          `nousb2
 automount       `automount
 noautomount     `noautomount
 acpi=off        `acpi=off
-i915 invert     `i915.invert_brightness=1
+i915 invert     `i915_invert
 hwclock=ask     `hwclock=ask
 hwclock=utc     `hwclock=utc
 hwclock=local   `hwclock=local
