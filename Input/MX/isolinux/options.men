@@ -6,8 +6,8 @@ from=usb        `from=usb
 from=hd         `from=hd
 from=all        `from=all
 acpi=off        `acpi=off
-i915 invert     `i915_invert
-no_i915 invert  `no_i915_invert
+i915_invert     `i915_invert
+no_invert       `no_i915_invert
 hwclock=ask     `hwclock=ask
 hwclock=utc     `hwclock=utc
 hwclock=local   `hwclock=local
