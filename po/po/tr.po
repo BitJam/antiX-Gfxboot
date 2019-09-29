@@ -3,11 +3,12 @@
 # 
 # Translators:
 # Translators:
+# Emin Huckleberry, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-26 00:15+0000\n"
-"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"PO-Revision-Date: 2019-09-07 22:08+0000\n"
+"Last-Translator: Emin Huckleberry\n"
 "Language-Team: Turkish (http://www.transifex.com/anticapitalista/antix-development/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,7 +54,7 @@ msgstr "Bilgisayarı Kapat"
 
 #. txt_power_off
 msgid "Halt the system now?"
-msgstr "Şimdi sistemi durdurulsun mu?"
+msgstr "Sistem şimdi durdurulsun mu?"
 
 #. label for language selection
 #. txt_language
@@ -69,7 +70,7 @@ msgstr "Video Modu"
 #. Like automatic, not automobile.
 #. txt_auto
 msgid "auto"
-msgstr ""
+msgstr "oto"
 
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
@@ -109,7 +110,7 @@ msgstr "Seçenekler"
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr "Saat Dilim"
+msgstr "Saat Dilimi"
 
 #. Please keep it short like the English
 #. txt_off

@@ -3,11 +3,12 @@
 # 
 # Translators:
 # Translators:
+# Arnold Marko <arnold.marko@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-26 00:15+0000\n"
-"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
+"PO-Revision-Date: 2019-08-27 08:34+0000\n"
+"Last-Translator: Arnold Marko <arnold.marko@gmail.com>\n"
 "Language-Team: Slovenian (http://www.transifex.com/anticapitalista/antix-development/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,12 +36,12 @@ msgstr "Testiranje pomnilnika"
 
 #. txt_bootoptions
 msgid "Boot Options"
-msgstr "Možnosti pri zagonu"
+msgstr "Možnosti ob zagonu"
 
 #. window title for exit dialog
 #. txt_exit_title (see txt_exit_dialog)
 msgid "Exiting..."
-msgstr "Zaključevanje..."
+msgstr "Zapiranje..."
 
 #. txt_help
 msgid "Help"
@@ -49,7 +50,7 @@ msgstr "Pomoč"
 #. power off dialog title
 #. txt_power_off_title
 msgid "Power Off"
-msgstr "Zaustavitev sistema"
+msgstr "Izklop sistema"
 
 #. txt_power_off
 msgid "Halt the system now?"
@@ -64,27 +65,27 @@ msgstr "Jezik"
 #. ** please keep it really short (comparable to the english text) **
 #. txt_video_mode
 msgid "Video Mode"
-msgstr ""
+msgstr "Zaslonski način"
 
 #. Like automatic, not automobile.
 #. txt_auto
 msgid "auto"
-msgstr ""
+msgstr "samodejno"
 
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr ""
+msgstr "preveri md5"
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "Konzola"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
 msgid "default"
-msgstr ""
+msgstr "privzeto"
 
 #. Title of menu to select desktop program.
 #. txt_desktop
@@ -94,77 +95,77 @@ msgstr "Namizje"
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
-msgstr ""
+msgstr "brez"
 
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr ""
+msgstr "samodejni priklop"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
+msgstr "Opcije"
 
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr ""
+msgstr "Časovni pas"
 
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "izklopljeno"
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "meniji"
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "po meri"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "oboje"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "ponastavi"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
+msgstr "Shrani"
 
 #. txt_reboot
 msgid "Reboot"
-msgstr "Restart"
+msgstr "Ponovni zagon"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "Varen način prikaza slike"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Varen zagon"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "Zagon v ukazno vrstico"
 
 #. txt_fast_boot
 msgid "Fast Boot"
-msgstr ""
+msgstr "Hitri zagon"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"
-msgstr ""
+msgstr "Prikaz slike v virtualnem boksu"
 
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
-msgstr ""
+msgstr "Preklopi na Grub zaganjalnik"
