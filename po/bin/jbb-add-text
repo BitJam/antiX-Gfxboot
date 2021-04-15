@@ -1,0 +1,121 @@
+#!/bin/bash
+
+ME=${0##*/}
+
+INC_FILE="text.inc"
+POT_FILE="bootloader.pot"
+
+usage() {
+    cat<<Usage
+    usage: $ME [options] <name> string
+Where <name> is the name of the new variable and <string> is
+the string to be translated.
+Options:
+
+    -h --help    Show this usage
+    -c --check   Just check the counts
+Usage
+}
+
+fatal() {
+    local fmt=$1 ; shift
+    printf "$ME error: $fmt\n" "$@" >&2
+    exit 2
+}
+
+warn() {
+    local fmt=$1 ; shift
+    printf "warning: $fmt\n" "$@" >&2
+}
+
+main() {
+    while [[ $1 =~ ^- ]]; do
+        local param=$1 ; shift
+        case $param in
+            -h|--help) usage        ; exit 0 ;;
+            -c|--check) check_lines ; exit 0 ;;
+            *) fatal "Unknown parameter %s" "$param"
+        esac
+    done
+
+    [[ $# -eq 2 ]] || fatal "Expected exactly two parameters"
+
+    local name=txt_${1#txt_}  string=$2
+
+    local file
+    for file in $INC_FILE $POT_FILE; do
+        test -e "$file" || fatal "Could not find file %s" "$file"
+        test -r "$file" || fatal "Can not write to file %s" "$file"
+    done
+
+    if ! grep -q "$name$" "$INC_FILE"; then
+        add_to_inc "$name" "$INC_FILE"
+    else
+        warn "name <%s> already exists in %s" "$name" "$INC_FILE"
+    fi
+
+    for file in $POT_FILE po/*.po; do
+        add_to_pot "$name" "$string" "$file"
+    done
+
+    check_lines
+}
+
+check_lines() {
+
+    confirm_line_counts "$INC_FILE" "$POT_FILE"  po/*.po || return 1
+    echo "All line counts were correct"
+}
+
+add_to_inc() {
+    local name=$1  file=$2
+    data="  /$name\n$(grep /txt_ $file)"
+    cat<<Add_to_Inc > $INC_FILE
+%
+% This file is generated automatically. Editing it is pointless.
+%
+
+/texts [
+$(echo -e "$data" | LC_ALL=C sort)
+] def
+Add_to_Inc
+
+}
+
+add_to_pot() {
+    local name=$1 string=$2  file=$3
+
+    if grep -q "$name$" "$file"; then
+        warn "name <%s> already exists in %s" "$name" "$file"
+        return
+    fi
+
+    cat<<Add_to_Pot >> $file
+
+#. $name
+msgid "$string"
+msgstr ""
+Add_to_Pot
+}
+
+confirm_line_counts() {
+    local f1=$1 ; shift
+    local str="txt_"
+    local c1=$(grep -c "$str" "$f1")
+    local warn=0
+    local file cnt
+    for file; do
+        cnt=$(grep -c "$str" "$file")
+        [[ $cnt -eq $c1 ]] && continue
+        echo >&2
+        warn "Line counts don't match!"
+        grep -c "$str" $f1 $file >&2
+        : $((warn+=1))
+    done
+
+    [[ $warn -gt 0 ]] && return 2
+    return 0
+}
+
+
+main "$@"

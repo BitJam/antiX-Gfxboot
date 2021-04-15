@@ -170,3 +170,24 @@ msgstr ""
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
 msgstr ""
+
+#. txt_use_legacy
+msgid "Use Legacy Kernel"
+msgstr ""
+
+
+#. txt_use_modern
+msgid "Use Modern Kernel"
+msgstr ""
+
+#. txt_back_to_top
+msgid "Back to Top"
+msgstr ""
+
+#. txt_normal_boot
+msgid "Normal Boot"
+msgstr ""
+
+#. txt_safe_video_mode_boot
+msgid "Safe Video Mode Boot"
+msgstr ""

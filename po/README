@@ -3,13 +3,16 @@ boot loader translations
 
 o How do I add a new text?
 
-  - Use the gfxboot/po/bin/add_text script; example:
+  - Use the gfxboot/po/bin/gbb-add-text script; example:
 
-      add_text help 'Help'
+      bin/jbb-add-text help "Help ME"
 
-    This will define txt_help; the 'txt_' prefix is optional.
+    This will define add a txt_help entry in the files
+    bootloader.pot and text.inc.  We keep text.inc sorted
+    but don't sort bootloader.pot
 
 o How do I remove a text that's no longer needed?
+jbb: I have not verified this recently
 
   - Use the gfxboot/po/bin/rm_text script; example:
 
@@ -19,6 +22,9 @@ o How do I remove a text that's no longer needed?
     directory.
 
 o How do I add a new language?
+jbb: this is not needed since we just copy in the .po files from
+
+transifex.
 
   - Copy bootloader.pot to <lang>.po. Remember to get <lang>.po translated.
 

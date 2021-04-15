@@ -1,0 +1,39 @@
+#!/bin/bash
+
+ME=${0##*/}
+
+usage() {
+    cat<<Usage
+    usage $ME <name>
+Remove the <name> entries from bootloader.pot, text.inc and
+all the po/*.po files
+Usage
+
+    exit 0
+}
+
+main() {
+    [[ $# -gt 1 || ! $1 =~ [a-z]  ]] && usage
+
+    local name="txt_${1#txt_}"
+
+    local fcnt=$(grep -l "$name$" text.inc bootloader.pot po/*.po | grep . | wc -l)
+    if [[ $fcnt -eq 0 ]]; then
+        echo "No files matching <$name> were found"
+        return 1
+    fi
+    local file tmp_file=$(mktemp $ME-XXXX)
+
+    for file in bootloader.pot po/*.po; do
+        sed "/$name$/,+2 d" $file > $tmp_file
+        cat -s $tmp_file | sed "s/\s\+$//" > $file
+        
+    done
+    rm $tmp_file
+
+    sed -i "/$name$/ d" text.inc
+
+    return 0
+}
+
+main "$@"
