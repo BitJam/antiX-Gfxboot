@@ -4,11 +4,13 @@
 # Translators:
 # Translators:
 # Hugo Carvalho <hugokarvalho@hotmail.com>, 2019
+# José Vieira <jvieira33@sapo.pt>, 2019
+# Paulo Carvalho <paulop1976@gmail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-26 22:08+0000\n"
-"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"PO-Revision-Date: 2021-04-15 09:51+0000\n"
+"Last-Translator: Paulo Carvalho <paulop1976@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/anticapitalista/antix-development/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,7 +112,7 @@ msgstr "Opções"
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr "Fuso Horário"
+msgstr "Zona Horária"
 
 #. Please keep it short like the English
 #. txt_off
@@ -172,21 +174,20 @@ msgstr "Mudar para o carregador do arranque Grub"
 
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
-msgstr ""
-
+msgstr "Usar Kernel Legacy"
 
 #. txt_use_modern
 msgid "Use Modern Kernel"
-msgstr ""
+msgstr "Usar Kernel Moderno"
 
 #. txt_back_to_top
 msgid "Back to Top"
-msgstr ""
+msgstr "Ir para o Topo"
 
 #. txt_normal_boot
 msgid "Normal Boot"
-msgstr ""
+msgstr "Arranque normal"
 
 #. txt_safe_video_mode_boot
 msgid "Safe Video Mode Boot"
-msgstr ""
+msgstr "Arranque em Modo de Vídeo Seguro "

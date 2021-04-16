@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-26 00:15+0000\n"
+"PO-Revision-Date: 2021-04-15 03:50+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Icelandic (http://www.transifex.com/anticapitalista/antix-development/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -172,7 +172,6 @@ msgstr ""
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
 msgstr ""
-
 
 #. txt_use_modern
 msgid "Use Modern Kernel"

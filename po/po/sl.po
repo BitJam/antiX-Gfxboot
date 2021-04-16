@@ -3,12 +3,12 @@
 # 
 # Translators:
 # Translators:
-# Arnold Marko <arnold.marko@gmail.com>, 2019
+# Arnold Marko <arnold.marko@gmail.com>, 2019,2021
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-08-27 08:34+0000\n"
-"Last-Translator: Arnold Marko <arnold.marko@gmail.com>\n"
+"PO-Revision-Date: 2021-04-15 03:50+0000\n"
+"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Slovenian (http://www.transifex.com/anticapitalista/antix-development/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -164,7 +164,7 @@ msgstr "Hitri zagon"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"
-msgstr "Prikaz slike v virtualnem boksu"
+msgstr "Prikaz slike v virtualnem okvirju"
 
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
@@ -173,7 +173,6 @@ msgstr "Preklopi na Grub zaganjalnik"
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
 msgstr ""
-
 
 #. txt_use_modern
 msgid "Use Modern Kernel"

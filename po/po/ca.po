@@ -3,11 +3,11 @@
 # 
 # Translators:
 # Translators:
-# Eduard Selma <selma@tinet.cat>, 2015-2017,2019
+# Eduard Selma <selma@tinet.cat>, 2015-2017,2019,2021
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-06-17 17:08+0000\n"
+"PO-Revision-Date: 2021-04-15 18:52+0000\n"
 "Last-Translator: Eduard Selma <selma@tinet.cat>\n"
 "Language-Team: Catalan (http://www.transifex.com/anticapitalista/antix-development/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -172,21 +172,20 @@ msgstr "Commuta al Carregador GRUB"
 
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
-msgstr ""
-
+msgstr "Usa el kernel antic"
 
 #. txt_use_modern
 msgid "Use Modern Kernel"
-msgstr ""
+msgstr "Usa el kernel modern "
 
 #. txt_back_to_top
 msgid "Back to Top"
-msgstr ""
+msgstr "Torna a dalt "
 
 #. txt_normal_boot
 msgid "Normal Boot"
-msgstr ""
+msgstr "Arrencada normal "
 
 #. txt_safe_video_mode_boot
 msgid "Safe Video Mode Boot"
-msgstr ""
+msgstr "Arrencada en mode segur de vídeo"

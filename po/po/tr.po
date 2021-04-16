@@ -3,12 +3,13 @@
 # 
 # Translators:
 # Translators:
-# Emin Huckleberry, 2019
+# e0360fc3c0afcd70e5aed1cfc885bac6, 2019
+# mahmut özcan <mahmutozcan@protonmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-09-07 22:08+0000\n"
-"Last-Translator: Emin Huckleberry\n"
+"PO-Revision-Date: 2021-04-15 03:50+0000\n"
+"Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/anticapitalista/antix-development/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,7 +76,7 @@ msgstr "oto"
 #. Perform md5 check. "md5" should not be translated?
 #. txt_check_md5
 msgid "check md5"
-msgstr ""
+msgstr "md5'i denetle"
 
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
@@ -100,7 +101,7 @@ msgstr "hiçbiri"
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr ""
+msgstr "otomatik bağlama"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
@@ -115,27 +116,27 @@ msgstr "Saat Dilimi"
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "kapalı"
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "menüler"
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "özel"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "her ikisi de"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "sıfırlama"
 
 #. Please keep it short like the English
 #. txt_save
@@ -148,32 +149,31 @@ msgstr "Yeniden Başlat"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "Korumalı Video Kipi"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Güvenli Önyükleme"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "Komut Satırı ile Önyükleme"
 
 #. txt_fast_boot
 msgid "Fast Boot"
-msgstr ""
+msgstr "Hızlı Önyükleme"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"
-msgstr ""
+msgstr "Virtual Box Video"
 
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
-msgstr ""
+msgstr "Grub Önyükleyiciye Geç"
 
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
 msgstr ""
-
 
 #. txt_use_modern
 msgid "Use Modern Kernel"

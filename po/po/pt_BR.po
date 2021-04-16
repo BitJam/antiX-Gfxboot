@@ -5,10 +5,12 @@
 # Translators:
 # cmenemrs <cmenemrs@gmail.com>, 2018
 # cmenemrs <cmenemrs@gmail.com>, 2018
+# José Vieira <jvieira33@sapo.pt>, 2019
+# marcelo cripe <marcelocripe@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-26 00:15+0000\n"
+"PO-Revision-Date: 2021-04-15 03:50+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/anticapitalista/antix-development/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -86,12 +88,12 @@ msgstr "Console"
 #. As in "the default option".  Please keep it short.
 #. txt_default
 msgid "default"
-msgstr "pré-definição"
+msgstr "padrão"
 
 #. Title of menu to select desktop program.
 #. txt_desktop
 msgid "Desktop"
-msgstr "Ambiente de trabalho"
+msgstr "Área de Trabalho"
 
 #. Default for Options menu.  Please keep it short.
 #. txt_none
@@ -136,12 +138,12 @@ msgstr "ambos"
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr "reset"
+msgstr "reiniciar"
 
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr "Guardar"
+msgstr "Salvar"
 
 #. txt_reboot
 msgid "Reboot"
@@ -157,7 +159,7 @@ msgstr "Inicialização à prova de falhas"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr "Inicialização de linha de comando"
+msgstr "Inicialização por meio de Linha de Comando"
 
 #. txt_fast_boot
 msgid "Fast Boot"
@@ -169,12 +171,11 @@ msgstr "Vídeo Virtual Box"
 
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
-msgstr ""
+msgstr "Mudar para o carregador de inicialização Grub"
 
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
 msgstr ""
-
 
 #. txt_use_modern
 msgid "Use Modern Kernel"

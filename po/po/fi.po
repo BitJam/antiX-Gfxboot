@@ -4,10 +4,11 @@
 # Translators:
 # Translators:
 # En Kerro <inactive+ekeimaja@transifex.com>, 2018
+# Oi Suomi On! <oisuomion@protonmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-26 00:15+0000\n"
+"PO-Revision-Date: 2021-04-15 03:50+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/anticapitalista/antix-development/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -100,7 +101,7 @@ msgstr "ei mitään"
 #. Enable automatic mounting.
 #. txt_automount
 msgid "auto mount"
-msgstr ""
+msgstr "automaattinen liittäminen"
 
 #. Title of Options menu.  Please keep it short.
 #. txt_options
@@ -115,27 +116,27 @@ msgstr "Aikavyöhyke"
 #. Please keep it short like the English
 #. txt_off
 msgid "off"
-msgstr ""
+msgstr "pois"
 
 #. Please keep it short like the English
 #. txt_menus
 msgid "menus"
-msgstr ""
+msgstr "valikot"
 
 #. Please keep it short like the English
 #. txt_custom
 msgid "custom"
-msgstr ""
+msgstr "mukautettu"
 
 #. Please keep it short like the English
 #. txt_both
 msgid "both"
-msgstr ""
+msgstr "molemmat"
 
 #. Please keep it short like the English
 #. txt_reset
 msgid "reset"
-msgstr ""
+msgstr "nollaa"
 
 #. Please keep it short like the English
 #. txt_save
@@ -148,15 +149,15 @@ msgstr "Käynnistä uudelleen"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
-msgstr ""
+msgstr "Turvallinen videotila"
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "Virheturvallinen käynnistys"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "Komentorivikäynnistys"
 
 #. txt_fast_boot
 msgid "Fast Boot"
@@ -164,16 +165,15 @@ msgstr "Nopea käynnistys"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"
-msgstr ""
+msgstr "Virtual Box video"
 
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
-msgstr ""
+msgstr "Vaihda Grub-käynnistyslataimeen"
 
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
 msgstr ""
-
 
 #. txt_use_modern
 msgid "Use Modern Kernel"

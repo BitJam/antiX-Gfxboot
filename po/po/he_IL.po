@@ -3,10 +3,12 @@
 # 
 # Translators:
 # Translators:
+# Omeritzics Games <omeritzicschwartz@gmail.com>, 2020
+# Omeritzics Games <omeritzicschwartz@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-26 00:15+0000\n"
+"PO-Revision-Date: 2021-04-15 03:50+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Hebrew (Israel) (http://www.transifex.com/anticapitalista/antix-development/language/he_IL/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +20,7 @@ msgstr ""
 #. ok button label
 #. txt_ok
 msgid "OK"
-msgstr ""
+msgstr "אישור"
 
 #. cancel button label
 #. txt_cancel
@@ -27,7 +29,7 @@ msgstr "ביטול"
 
 #. txt_boot_harddisk
 msgid "Boot from Hard Disk"
-msgstr ""
+msgstr "אתחול מהכונן הקשיח"
 
 #. txt_memtest
 msgid "Memory Test"
@@ -35,12 +37,12 @@ msgstr ""
 
 #. txt_bootoptions
 msgid "Boot Options"
-msgstr ""
+msgstr "אפשרויות אתחול"
 
 #. window title for exit dialog
 #. txt_exit_title (see txt_exit_dialog)
 msgid "Exiting..."
-msgstr ""
+msgstr "כעת ביציאה..."
 
 #. txt_help
 msgid "Help"
@@ -49,7 +51,7 @@ msgstr "עזרה"
 #. power off dialog title
 #. txt_power_off_title
 msgid "Power Off"
-msgstr ""
+msgstr "כיבוי"
 
 #. txt_power_off
 msgid "Halt the system now?"
@@ -58,7 +60,7 @@ msgstr ""
 #. label for language selection
 #. txt_language
 msgid "Language"
-msgstr ""
+msgstr "שפה"
 
 #. video mode/display size menu title
 #. ** please keep it really short (comparable to the english text) **
@@ -79,7 +81,7 @@ msgstr ""
 #. Title for console resolution menu.  Please keep it short.
 #. txt_console
 msgid "Console"
-msgstr ""
+msgstr "שורת פקודה"
 
 #. As in "the default option".  Please keep it short.
 #. txt_default
@@ -104,12 +106,12 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
+msgstr "אפשרויות"
 
 #. Title of Time Zone menu.
 #. txt_timezone
 msgid "Timezone"
-msgstr ""
+msgstr "אזור זמן"
 
 #. Please keep it short like the English
 #. txt_off
@@ -139,11 +141,11 @@ msgstr ""
 #. Please keep it short like the English
 #. txt_save
 msgid "Save"
-msgstr ""
+msgstr "שמירה"
 
 #. txt_reboot
 msgid "Reboot"
-msgstr ""
+msgstr "אתחול"
 
 #. txt_safe_video_mode
 msgid "Safe Video Mode"
@@ -151,15 +153,15 @@ msgstr ""
 
 #. txt_failsafe_boot
 msgid "Failsafe Boot"
-msgstr ""
+msgstr "אתחול Failsafe"
 
 #. txt_command_line_boot
 msgid "Command Line Boot"
-msgstr ""
+msgstr "אתחול שורת פקודה"
 
 #. txt_fast_boot
 msgid "Fast Boot"
-msgstr ""
+msgstr "אתחול מהיר"
 
 #. txt_vbox_video
 msgid "Virtual Box Video"
@@ -167,12 +169,11 @@ msgstr ""
 
 #. txt_to_grub
 msgid "Switch to Grub Bootloader"
-msgstr ""
+msgstr "מעבר אל Grub Bootloader"
 
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
 msgstr ""
-
 
 #. txt_use_modern
 msgid "Use Modern Kernel"

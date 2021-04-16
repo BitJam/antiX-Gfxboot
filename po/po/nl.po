@@ -3,12 +3,12 @@
 # 
 # Translators:
 # Translators:
-# Eadwine Rose, 2015-2017,2019
+# Eadwine Rose, 2015-2017,2019,2021
 # ko <ko.bros@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-29 19:11+0000\n"
+"PO-Revision-Date: 2021-04-16 18:53+0000\n"
 "Last-Translator: Eadwine Rose\n"
 "Language-Team: Dutch (http://www.transifex.com/anticapitalista/antix-development/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -173,21 +173,20 @@ msgstr "Wissel naar  Grub Bootloader"
 
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
-msgstr ""
-
+msgstr "Gebruik Legacy Kernel"
 
 #. txt_use_modern
 msgid "Use Modern Kernel"
-msgstr ""
+msgstr "Gebruik Moderne Kernel"
 
 #. txt_back_to_top
 msgid "Back to Top"
-msgstr ""
+msgstr "Terug naar boven"
 
 #. txt_normal_boot
 msgid "Normal Boot"
-msgstr ""
+msgstr "Normale Opstart"
 
 #. txt_safe_video_mode_boot
 msgid "Safe Video Mode Boot"
-msgstr ""
+msgstr "Veilige Video Modus Opstart"

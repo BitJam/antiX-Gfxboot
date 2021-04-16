@@ -3,12 +3,12 @@
 # 
 # Translators:
 # Translators:
-# anticapitalista <anticapitalista@riseup.net>, 2017,2019
+# anticapitalista <anticapitalista@riseup.net>, 2017,2019,2021
 # anticapitalista <anticapitalista@riseup.net>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-27 12:40+0000\n"
+"PO-Revision-Date: 2021-04-15 11:08+0000\n"
 "Last-Translator: anticapitalista <anticapitalista@riseup.net>\n"
 "Language-Team: Greek (http://www.transifex.com/anticapitalista/antix-development/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -173,21 +173,20 @@ msgstr "Μετάβαση στο Bootloader του Grub"
 
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
-msgstr ""
-
+msgstr "Εκκίνηση Παλαιού Πυρήνα"
 
 #. txt_use_modern
 msgid "Use Modern Kernel"
-msgstr ""
+msgstr "Εκκίνηση Μοντέρνου Πυρήνα"
 
 #. txt_back_to_top
 msgid "Back to Top"
-msgstr ""
+msgstr "Επιστροφή στην κορυφή"
 
 #. txt_normal_boot
 msgid "Normal Boot"
-msgstr ""
+msgstr "Κανονική εκκίνηση"
 
 #. txt_safe_video_mode_boot
 msgid "Safe Video Mode Boot"
-msgstr ""
+msgstr "Εκκίνηση ασφαλούς λειτουργίας βίντεο"

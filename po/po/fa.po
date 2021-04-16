@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: antix-development\n"
-"PO-Revision-Date: 2019-05-26 00:15+0000\n"
+"PO-Revision-Date: 2021-04-15 03:50+0000\n"
 "Last-Translator: James Bowlin <BitJam@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/anticapitalista/antix-development/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #. cancel button label
 #. txt_cancel
 msgid "Cancel"
-msgstr ""
+msgstr "لغو"
 
 #. txt_boot_harddisk
 msgid "Boot from Hard Disk"
@@ -94,7 +94,7 @@ msgstr "میزکار "
 #. Default for Options menu.  Please keep it short.
 #. txt_none
 msgid "none"
-msgstr ""
+msgstr "هیچکدام"
 
 #. Enable automatic mounting.
 #. txt_automount
@@ -104,7 +104,7 @@ msgstr ""
 #. Title of Options menu.  Please keep it short.
 #. txt_options
 msgid "Options"
-msgstr ""
+msgstr "تنظیمات"
 
 #. Title of Time Zone menu.
 #. txt_timezone
@@ -172,7 +172,6 @@ msgstr ""
 #. txt_use_legacy
 msgid "Use Legacy Kernel"
 msgstr ""
-
 
 #. txt_use_modern
 msgid "Use Modern Kernel"
